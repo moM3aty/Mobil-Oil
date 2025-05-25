@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Oil.Models.ProductCategory>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="mb-4 text-primary fw-bold">📦 أقسام المنتجات</h2>
+
+<div class="d-flex justify-content-end mb-3">
+    <a asp-action="Create" class="btn btn-outline-primary shadow-sm fw-semibold">
+        ➕ إضافة قسم جديد
+    </a>
+</div>
+
+<div class="card shadow-sm border-0">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover table-striped align-middle mb-0">
+                <thead class="table-primary text-center">
+                    <tr>
+                        <th>📁 اسم القسم</th>
+                        <th>🖼️ الصورة</th>
+                        <th style="width: 180px;">⚙️ التحكم</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var category in Model)
+                    {
+                        <tr>
+                            <td class="text-nowrap">@category.NameAr</td>
+                            <td class="text-center">
+                                @if (!string.IsNullOrEmpty(category.ImagePath))
+                                {
+                                    <img src="@category.ImagePath" alt="Category Image"
+                                         class="img-thumbnail" style="max-width: 140px; max-height: 90px;" />
+                                }
+                                else
+                                {
+                                    <span class="text-muted fst-italic">لا صورة</span>
+                                }
+                            </td>
+                            <td class="text-center">
+                                <a asp-action="Edit" asp-route-id="@category.Id"
+                                   class="btn btn-sm btn-outline-secondary me-1">
+                                    ✏️ تعديل
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@category.Id"
+                                   class="btn btn-sm btn-outline-danger"
+                                   onclick="return confirm('هل أنت متأكد من أنك تريد حذف القسم؟');">
+                                    🗑️ حذف
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

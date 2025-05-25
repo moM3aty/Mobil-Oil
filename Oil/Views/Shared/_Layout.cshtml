@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="lang-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="نعمل باستمرار على توفير زيوت عالية الأداء تتماشى مع أحدث التقنيات في عالم المحركات، ونلتزم بأعلى المعايير الأوروبية والدولية. رؤيتنا لا تقتصر على بيع منتج، بل نسعى لبناء علاقة شراكة طويلة الأمد مع عملائنا مبنية على الثقة، الالتزام، والاستمرارية. نحن نعلم أن كل نقطة زيت نقدمها يجب أن تعكس قيمنا وسمعتنا، ولهذا نختار مكوناتنا بعناية ونراقب عمليات الإنتاج بأعلى درجات الدقة.">
+    <meta name="author" content="Mobil Company">
+    <meta name="keywords" content="Cars, Oils, Engine Oil , motorcycles, Mobil company">
+    <title data-ar="شركة موبيل اويل للزيوت" data-en="Mobil Oil Company">شركة موبيل اويل للزيوت</title>
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/all.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
+
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+    <link href="~/imgs/logo.png" rel="icon" />
+
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="100" tabindex="0">
+    <header class="hero-section text-white">
+        <nav class="navbar navbar-expand-lg hero-navbar navbar-dark position-fixed fixed-top">
+            <div class="container align-items-center">
+                <a class="navbar-brand nav-logo" asp-action="index" asp-controller="Home">
+                    <img src="~/imgs/logo.png" alt="Logo" class="logo text-center">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="قائمة التنقل">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0 align-items-center gap-lg-4 gap-2 text-center">
+                        <li class="nav-item">
+                            @{
+                                bool isHomePage = ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" &&
+                                ViewContext.RouteData.Values["Action"]?.ToString() == "Index";
+                            }
+                            <a class="nav-link @(isHomePage ? "active" : "")"
+                               href="@(isHomePage ? "#home" : Url.Action("Index", "Home") + "#home")"
+                               data-ar="الرئيسية"
+                               data-en="Home">
+                                الرئيسية
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@(isHomePage ? "#about-us" : Url.Action("Index", "Home") + "#about-us")" data-ar="عن الشركة" data-en="About Us">عن الشركة</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@(isHomePage ? "#services" : Url.Action("Index", "Home") + "#services")" data-ar="خدماتنا" data-en="Services">خدماتنا</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@(isHomePage ? "#products" : Url.Action("Index", "Home") + "#products")" data-ar="المنتجات" data-en="Products">المنتجات</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Parts" data-ar="الأقسام" data-en="Parts">الأقسام</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex gap-2 justify-content-center mt-4 mt-lg-0 pb-4 pb-lg-0">
+                        <a href="@(isHomePage ? "#contact" : Url.Action("Index", "Home") + "#contact")" class="btn btn-danger" data-en="Get In Touch" data-ar="تواصل معنا">تواصل معنا</a>
+                        <div class="language-switcher">
+                            <select id="language-select" class="form-select">
+                                <option value="ar">العربية</option>
+                                <option value="en">English</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+            <div class="container text-center mt-5 mt-lg-0" id="home">
+                <div class="row g-2 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="inner shadow-sm mt-5" data-aos="zoom-in" data-aos-delay="100">
+                            <h1 class="display-5 w-100 fw-bold lh-base mb-3" data-en="To give your engine longer life and stronger performance because every drop makes a difference" data-ar="لأن كل قطرة تصنع الفرق لكى تمنح محركك حياة أطول وأداءً أقوى">لكى تمنح محركك حياة أطول وأداءً أقوى لأن كل قطرة تصنع الفرق</h1>
+                            <p class="lead" data-ar="من المحركات الصغيرة إلى الثقيلة، نقدم لك تركيبة الزيت المثالية لكل تحدٍ" data-en="From small to heavy-duty engines, we offer the perfect oil formula for every challenge.">من المحركات الصغيرة إلى الثقيلة، نقدم لك تركيبة الزيت المثالية لكل تحدٍ</p>
+                            <div class="mt-4 d-flex gap-2 justify-content-center">
+                                <a href="#contact" class="btn btn-danger" data-ar="تواصل معنا" data-en="Get In Touch">تواصل معنا</a>
+                                <a href="#products" class="btn btn-primary" data-ar="اعرض المنتجات" data-en="Show Products">اعرض المنتجات</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="inner image">
+                            <img src="~/imgs/header2.png" alt="Valve" class="valve-img">
+                        </div>
+                    </div>
+                </div>
+                <div class="smoke"></div>
+            </div>    
+    </header>
+
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4 justify-content-lg-center align-items-center border-bottom border-white border-opacity-25">
+                <div class="col-md-5 col-lg-3">
+                    <div class="logo">
+                        <img class="logo-image" src="~/imgs/logo.png" alt="image">
+                    </div>
+                </div>
+                <div class="col-md-7 col-lg-5">
+                    <div class="inner d-flex justify-content-md-center align-items-center">
+                        <ul class="links list-unstyled d-flex gap-4 align-items-center">
+                            <li><a class="d-inline-block fs-6" data-en="Home" data-ar="الرئيسية" href="#home">الرئيسية</a></li>
+                            <li><a class="d-inline-block fs-6" data-en="About Us" data-ar="عن الشركة" href="#about-us">عن الشركة</a></li>
+                            <li><a class="d-inline-block fs-6" data-ar="خدماتنا" data-en="Services" href="#services">خدماتنا</a></li>
+                            <li><a class="d-inline-block fs-6" href="#products" data-ar="المنتجات" data-en="Products">المنتجات</a></li>
+                            <li><a class="d-inline-block fs-6" href="Parts.html" data-ar="الاقسام" data-en="Parts">الاقسام</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="inner">
+                        <ul class="list-unstyled d-flex gap-4 justify-content-md-center align-items-center icons">
+                            <li><a href="tel:+201017799332" class="mx-1"><i class="fa-solid fa-phone-volume"></i> </a></li>
+                            <li><a href="https://www.facebook.com/share/1AJpSLbrq2/?mibextid=wwXIfr" target="_blank" class="mx-1"><i class="fa-brands  fa-facebook"></i></a></li>
+                            <li><a href="https://www.instagram.com/mobiloil.alahram?igsh=eXMwaDJob3BlMGlx&utm_source=qr" target="_blank" class="mx-1"><i class="fa-brands  fa-instagram"></i></a></li>
+                            <li><a href="https://wa.me/201017799332" target="_blank" class="mx-1"><i class="fa-brands fa-whatsapp"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <div class="text-center mt-5">
+                    <p data-ar="جميع الحقوق محفوظة 2025 &copy;  موبيل اويل للزيوت " data-en="© 2025 Mobile Oil Company. All Rights Reserved.">
+                        جميع الحقوق محفوظة 2025 &copy; موبيل اويل للزيوت.
+                    </p>
+                </div>
+                <div class="d-flex justify-content-center align-items-center gap-2">
+                    <span class="text-center" data-en="Design and programming by" data-ar="تصميم وبرمجه">تصميم وبرمجه </span>
+                    <div class="gmt-logo">
+                        <a href="https://www.facebook.com/profile.php?id=100090592885243&mibextid=ZbWKwL" target="_blank" class=""><img src="~/imgs/GMT.png" alt="GMT logo" class="GMT"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="fixed-contact-buttons">
+        <a href="https://wa.me/201017799332" target="_blank" class="whatsapp-button" aria-label="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+201017799332" class="phone-button" aria-label="Call Us">
+            <i class="fas fa-phone-alt"></i>
+        </a>
+        <button id="scrollToTopBtn" title="Go to top" aria-label="Scroll to top" class="scroll-top" style="display: none;">
+            ↑
+        </button>
+    </div>
+
+    <div class="fixed-cart-button position-fixed bottom-0 start-0 m-4">
+        <a asp-action="Index" asp-controller="Cart" class="cart d-flex justify-content-center align-items-center text-decoration-none">
+            <i class="fa-solid fa-cart-shopping fs-4 text-white"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                0
+                <span class="visually-hidden">cart items</span>
+            </span>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="~/js/index.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

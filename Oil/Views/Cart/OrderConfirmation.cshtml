@@ -1,0 +1,103 @@
+﻿@model Oil.Models.Order
+
+@{
+    ViewBag.Title = "تأكيد الطلب";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .confirmation-container {
+        max-width: 650px;
+        margin: 80px auto;
+        padding: 40px;
+        background: #fefefe;
+        border-radius: 16px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .confirmation-header {
+        text-align: center;
+        color: #2980b9;
+        font-size: 2rem;
+        margin-bottom: 30px;
+        font-weight: 700;
+        position: relative;
+    }
+
+        .confirmation-header::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #2980b9;
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+
+    .confirmation-detail {
+        background: #f8f9fa;
+        border-left: 5px solid #2980b9;
+        padding: 15px 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+        .confirmation-detail span {
+            font-weight: 600;
+            color: #333;
+        }
+
+    .confirmation-icon {
+        font-size: 3rem;
+        color: #2980b9;
+        text-align: center;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .back-home {
+        display: block;
+        margin: 30px auto 0;
+        padding: 12px 30px;
+        background: #2980b9;
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.1rem;
+        border-radius: 10px;
+        text-align: center;
+        transition: background 0.3s ease;
+    }
+
+        .back-home:hover {
+            background: #0099dd;
+        }
+</style>
+
+    <div class="confirmation-container">
+        <div class="confirmation-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h2 class="confirmation-header" data-ar="تم استلام طلبك بنجاح" data-en="Request Received Successfully">تم استلام طلبك بنجاح</h2>
+
+        <div class="confirmation-detail"><span data-ar ="الاسم:" data-en="Name:">الاسم:</span> @Model.Name</div>
+        <div class="confirmation-detail"><span data-en="Phone Number:" data-ar="رقم الهاتف:">رقم الهاتف:</span> @Model.Phone</div>
+        <div class="confirmation-detail"><span data-en="Address:" data-ar="العنوان:">العنوان:</span> @Model.Address</div>
+        <div class="confirmation-detail"><span data-en="payment method:" data-ar="طريقة الدفع:">طريقة الدفع:</span> @Model.PaymentMethod</div>
+        <div class="confirmation-detail"><span data-en="Order date:" data-ar="تاريخ الطلب:">تاريخ الطلب:</span> @Model.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy hh:mm tt")</div>
+
+@if (Model.PaymentMethod?.ToLower() == "visa")
+{
+    <div class="confirmation-detail text-bg-warning" data-ar="بمجرد إتمام التحويل سنبدأ مباشرة بتحضير المنتج وإرساله." data-en="Once the payment is confirmed, we will immediately start preparing and shipping your product.">
+        بمجرد إتمام التحويل سنبدأ مباشرة بتحضير المنتج وإرساله.
+    </div>
+}
+        <a asp-controller="Home" asp-action="Index" class="back-home" data-en="Back to Home Page" data-ar="العودة إلى الصفحة الرئيسية">العودة إلى الصفحة الرئيسية</a>
+    </div>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            localStorage.removeItem('cart');
+        });
+    </script>

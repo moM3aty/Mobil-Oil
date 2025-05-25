@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Oil.Models.Product>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="mb-4 text-primary fw-bold">🛒 المنتجات</h2>
+
+<div class="d-flex justify-content-end mb-3">
+    <a asp-action="Create" class="btn btn-outline-primary fw-semibold shadow-sm">
+        ➕ إضافة منتج جديد
+    </a>
+</div>
+
+<div class="card shadow-sm border-0">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover table-striped align-middle mb-0 text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>📌 العنوان</th>
+                        <th>🧾 النوع</th>
+                        <th>💰 السعر</th>
+                        <th>⚖️ الوزن</th>
+                        <th>📁 القسم</th>
+                        <th style="width: 180px;">⚙️ التحكم</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model)
+                    {
+                        <tr>
+                            <td>@product.TitleAr</td>
+                            <td>@product.TypeAr</td>
+                            <td>@product.Price.ToString("C")</td>
+                            <td>@product.WeightAr</td>
+                            <td>@product.Category?.NameAr</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@product.Id"
+                                   class="btn btn-sm btn-outline-secondary me-1">
+                                    ✏️ تعديل
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@product.Id"
+                                   class="btn btn-sm btn-outline-danger"
+                                   onclick="return confirm('هل أنت متأكد من حذف المنتج ؟');">
+                                    🗑️ حذف
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

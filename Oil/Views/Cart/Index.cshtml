@@ -1,0 +1,679 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+<style>
+    /* Styles for cart page as provided by user */
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f9fafb;
+        color: #2c3e50;
+        margin: 0;
+        padding: 0;
+    }
+
+    .cart-section {
+        padding: 60px 15px;
+        background: #ffffff;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .cart-container {
+        width: 100%;
+        max-width: 1100px;
+    }
+
+    .cart-title {
+        font-size: 2.8rem;
+        font-weight: 900;
+        color: #34495e;
+        text-align: center;
+        margin-bottom: 45px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+
+    .cart-table-wrapper {
+        overflow-x: auto;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.07);
+        transition: box-shadow 0.3s ease;
+    }
+
+        .cart-table-wrapper:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+    table.cart-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 15px;
+        min-width: 850px;
+    }
+
+    thead.cart-thead tr th {
+        background: #2c3e50;
+        color: #ecf0f1;
+        font-weight: 700;
+        padding: 18px 25px;
+        text-align: center;
+        font-size: 1.1rem;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        user-select: none;
+    }
+
+    tbody.cart-tbody tr {
+        background: #f7f9fc;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        border-radius: 12px;
+        transition: background 0.25s ease;
+    }
+
+        tbody.cart-tbody tr:hover {
+            background: #e3f0ff;
+        }
+
+        tbody.cart-tbody tr td {
+            padding: 15px 20px;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 1rem;
+            color: #34495e;
+        }
+
+            tbody.cart-tbody tr td img {
+                max-width: 70px;
+                border-radius: 10px;
+                object-fit: cover;
+                box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            }
+
+    .qty-input {
+        width: 60px;
+        padding: 6px 10px;
+        border: 1.5px solid #ccc;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 1rem;
+        color: #2c3e50;
+        transition: border-color 0.25s ease;
+    }
+
+        .qty-input:focus {
+            outline: none;
+            border-color: #2980b9;
+            box-shadow: 0 0 8px #2980b9aa;
+        }
+
+    .remove-btn {
+        background: transparent;
+        border: none;
+        color: #e74c3c;
+        font-size: 1.3rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+        .remove-btn:hover {
+            color: #c0392b;
+        }
+
+    .cart-total-wrapper {
+        margin-top: 35px;
+        padding: 18px 30px;
+        background: #ecf0f1;
+        border-radius: 14px;
+        box-shadow: inset 0 0 15px #bdc3c7aa;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #2c3e50;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .cart-total-label {
+        text-transform: uppercase;
+        color: #34495e;
+    }
+
+    .cart-total-amount {
+        color: #2980b9;
+        font-weight: 900;
+        font-size: 2rem;
+    }
+
+    .cart-currency {
+        font-weight: 700;
+        color: #2980b9;
+        font-size: 1.5rem;
+    }
+
+    .cart-checkout-wrapper {
+        margin-top: 45px;
+        text-align: right;
+    }
+
+    .cart-checkout-btn {
+        padding: 15px 45px;
+        background: linear-gradient(90deg, #2980b9, #3498db);
+        border: none;
+        border-radius: 50px;
+        color: #fff;
+        font-size: 1.3rem;
+        font-weight: 700;
+        box-shadow: 0 6px 18px rgba(52, 152, 219, 0.4);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        letter-spacing: 1.1px;
+    }
+
+        .cart-checkout-btn:hover {
+            background: linear-gradient(90deg, #3498db, #2980b9);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.6);
+        }
+
+    .modal-content {
+        border-radius: 16px !important;
+        background: #fff;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        border: none;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .modal-header {
+        background: #2980b9;
+        color: #fff;
+        border-radius: 16px 16px 0 0;
+        padding: 20px 25px;
+        font-weight: 700;
+        font-size: 1.5rem;
+    }
+
+    .modal-body {
+        padding: 30px 35px;
+        background: #fefefe;
+    }
+
+    .form-check {
+        display: flex;
+        align-items: center;
+        padding: 14px 20px;
+        margin-bottom: 15px;
+        border-radius: 12px;
+        border: 1px solid #d1d8e0;
+        background: #fff;
+        cursor: pointer;
+        transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+        .form-check:hover {
+            box-shadow: 0 8px 20px rgba(41, 128, 185, 0.15);
+            border-color: #2980b9;
+        }
+
+    .form-check-input {
+        margin-right: 18px;
+        margin-left: 0; /* For RTL */
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+        accent-color: #2980b9;
+    }
+
+    html[dir="rtl"] .form-check-input {
+        margin-right: 0;
+        margin-left: 18px;
+    }
+
+    .form-check-label {
+        font-weight: 700;
+        font-size: 1.15rem;
+        user-select: none;
+    }
+
+    .form-check-input:checked + .form-check-label {
+        color: #2980b9;
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 15px;
+        padding: 20px 30px;
+        background: #f7f9fc;
+        border-radius: 0 0 16px 16px;
+    }
+
+        .modal-footer .btn {
+            min-width: 140px;
+            font-weight: 700;
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+    .btn-outline-secondary {
+        border: 2px solid #7f8c8d;
+        color: #7f8c8d;
+    }
+
+        .btn-outline-secondary:hover {
+            background: #7f8c8d;
+            color: #fff;
+        }
+
+    .modal-footer .btn-primary {
+        background: #2980b9;
+        border: none;
+        color: #fff;
+        box-shadow: 0 6px 18px rgba(41, 128, 185, 0.5);
+    }
+
+        .modal-footer .btn-primary:hover {
+            background: #1c598a;
+            box-shadow: 0 8px 25px rgba(28, 89, 138, 0.6);
+        }
+
+    .btn-danger {
+        padding: 5px 30px;
+    }
+
+        .btn-danger:hover {
+            color: #fff !important;
+            border-radius: 25px;
+        }
+        .btn-outline-danger:hover{
+            background-color:transparent !important;
+        }
+
+    @@media (max-width: 768px) {
+        .cart-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        table.cart-table {
+            min-width: auto;
+        }
+
+        tbody.cart-tbody tr td {
+            font-size: 0.9rem;
+            padding: 12px 10px;
+        }
+
+        .cart-total-wrapper {
+            font-size: 1.4rem;
+            padding: 15px 20px;
+            justify-content: space-between;
+            text-align: left;
+            gap: 10px;
+        }
+
+        html[dir="rtl"] .cart-total-wrapper {
+            text-align: right;
+        }
+
+        .cart-checkout-wrapper {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .cart-checkout-btn {
+            width: 100%;
+            padding: 16px 0;
+            font-size: 1.2rem;
+            border-radius: 35px;
+        }
+
+        .modal-body {
+            padding: 25px 20px;
+        }
+    }
+</style>
+
+
+<section class="cart-section" aria-label="Shopping Cart Section">
+    <div class="cart-container">
+        <h2 class="cart-title" data-ar="سلة المشتريات" data-en="Shopping Cart">سلة المشتريات</h2>
+
+        <div class="cart-table-wrapper" role="region" aria-labelledby="cart-table-label">
+            <table class="cart-table" id="cart-table-element" aria-describedby="cart-description">
+                <thead class="cart-thead">
+                    <tr>
+                        <th class="cart-th" data-ar="الصورة" data-en="Image" scope="col">الصورة</th>
+                        <th class="cart-th" data-ar="الاسم" data-en="Title" scope="col">الاسم</th>
+                        <th class="cart-th" data-ar="السعر" data-en="Price" scope="col">السعر</th>
+                        <th class="cart-th" data-ar="الكمية" data-en="Quantity" scope="col">الكمية</th>
+                        <th class="cart-th" data-ar="الإجمالي" data-en="Subtotal" scope="col">الإجمالي</th>
+                        <th class="cart-th" data-ar="إزالة" data-en="Remove" scope="col">إزالة</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items" class="cart-tbody" aria-live="polite" aria-relevant="all">
+                </tbody>
+            </table>
+            <div id="empty-cart-message" class="text-center p-5" style="display: none;">
+                <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+                <p class="fs-5 text-muted" data-ar="سلة مشترياتك فارغة حاليًا." data-en="Your shopping cart is currently empty.">سلة مشترياتك فارغة حاليًا.</p>
+                <a href="@Url.Action("Index", "Home")#products" class="btn btn-primary mt-3" data-ar="ابدأ التسوق" data-en="Start Shopping">ابدأ التسوق</a>
+            </div>
+        </div>
+
+        <div id="cart-summary-block" class="cart-total-wrapper" role="contentinfo" style="display: none;">
+            <span class="cart-total-label" data-ar="الإجمالي الكلي:" data-en="Total:">الإجمالي الكلي:</span>
+            <span id="total-price" class="cart-total-amount" aria-live="polite" aria-atomic="true">0.00</span>
+            <span class="cart-currency" data-ar="جنيه" data-en="EGP">جنيه</span>
+        </div>
+
+        <div id="cart-checkout-button-wrapper" class="cart-checkout-wrapper" style="display: none;">
+            <button class="cart-checkout-btn" id="checkout-btn" data-ar="الدفع الآن" data-en="Checkout Now" aria-haspopup="dialog" aria-controls="paymentModal">الدفع الآن</button>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg rounded-4 border-0" style="background: #f8f9fa;">
+            <div class="modal-header border-bottom-0 bg-primary text-white rounded-top-4 px-4 py-3">
+                <h5 class="modal-title fw-bold" id="paymentModalLabel" data-ar="اختر طريقة الدفع" data-en="Choose Payment Method">اختر طريقة الدفع</h5>
+                <button type="button" style="margin:inherit" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-4 py-4">
+                <form id="payment-form">
+                    <div class="form-check p-3 mb-3 border rounded-3 bg-white shadow-sm">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="cash" value="cash" checked>
+                        <label class="form-check-label fw-semibold ms-2" for="cash" data-ar="🏠 الدفع عند الاستلام" data-en="🏠 Cash on Delivery">الدفع عند الاستلام</label>
+                    </div>
+                    <div class="form-check p-3 mb-3 border rounded-3 bg-white shadow-sm">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="ewallet" value="ewallet"> <label class="form-check-label fw-semibold ms-2" for="ewallet" data-ar="📱 محفظة إلكترونية (فودافون كاش، إلخ)" data-en="📱 E-Wallet (Vodafone Cash, etc.)">محفظة إلكترونية (فودافون كاش، إلخ)</label>
+                    </div>
+                    <div class="form-check p-3 mb-3 border rounded-3 bg-white shadow-sm">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="instapay" value="instapay">
+                        <label class="form-check-label fw-semibold ms-2" for="instapay" data-ar="💳 انستاباي (تحويل بنكي)" data-en="💳 Instapay (Bank Transfer)">انستاباي (تحويل بنكي)</label>
+                    </div>
+                    <div class="form-check p-3 mb-2 border rounded-3 bg-white shadow-sm">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="visa" value="visa">
+                        <label class="form-check-label fw-semibold ms-2" for="visa" data-ar="💳 بطاقة ائتمان/خصم (فيزا/ماستركارد)" data-en="💳 Credit/Debit Card (Visa/Mastercard)">بطاقة ائتمان/خصم (فيزا/ماستركارد)</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer border-top-0 px-4 pb-4">
+                <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal" data-ar="إغلاق" data-en="Close">إغلاق</button>
+                <button type="button" class="btn btn-primary rounded-pill px-4" id="confirm-payment" data-ar="متابعة إلى التسجيل" data-en="Proceed to Registration">متابعة إلى التسجيل</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentLangDirection = document.documentElement.dir || "rtl";
+            const cartItemsContainer = document.getElementById("cart-items");
+            const totalPriceElement = document.getElementById("total-price");
+            const checkoutBtn = document.getElementById("checkout-btn");
+            const confirmPaymentButton = document.getElementById("confirm-payment");
+            const emptyCartMessageDiv = document.getElementById("empty-cart-message");
+            const cartTableElement = document.getElementById("cart-table-element");
+            const cartSummaryBlock = document.getElementById("cart-summary-block");
+            const cartCheckoutButtonWrapper = document.getElementById("cart-checkout-button-wrapper");
+        function showSubmissionError(title, text) {
+                        if (typeof Swal !== 'undefined') {
+                            Swal.fire({
+                                icon: 'error',
+                                title: title || (currentLangDirection === 'rtl' ? 'خطأ' : 'Error'),
+                                text: text || (currentLangDirection === 'rtl' ? 'حدث خطأ ما.' : 'An error occurred.'),
+                                confirmButtonText: currentLangDirection === 'rtl' ? 'موافق' : 'OK'
+                            });
+                        } else {
+                            alert(text);
+                        }
+                    }
+
+                    function updateTextContentByLanguage() {
+                        const lang = document.documentElement.lang || 'ar';
+                        document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+                            const textAr = el.getAttribute('data-ar');
+                            const textEn = el.getAttribute('data-en');
+                            if (el.tagName === 'LABEL' || el.tagName === 'BUTTON' || el.tagName === 'H2' || el.tagName === 'H5' || el.tagName === 'P' || el.tagName === 'SPAN' || el.tagName === 'TH' || el.classList.contains('cart-th') || el.classList.contains('cart-total-label') || el.classList.contains('cart-currency')) {
+                                el.textContent = lang === 'ar' ? textAr : textEn;
+                            }
+                        });
+                    }
+
+            function getCartFromLocalStorage() {
+                let cart;
+                try {
+                    const cartString = localStorage.getItem('cart');
+                    cart = cartString ? JSON.parse(cartString) : [];
+                    if (!Array.isArray(cart)) {
+                        console.warn("Cart data from localStorage was not an array. Resetting cart.");
+                        cart = [];
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                    }
+                } catch (e) {
+                    console.error("Error parsing cart from localStorage:", e);
+                    cart = [];
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                }
+                return cart;
+            }
+
+            function saveCartToLocalStorage(cart) {
+                try {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    console.log("Cart saved to localStorage:", JSON.parse(JSON.stringify(cart)));
+                } catch (e) {
+                    console.error("Error saving cart to localStorage:", e);
+                }
+            }
+
+            function loadCart() {
+                console.log("loadCart: Starting.");
+                const cart = getCartFromLocalStorage();
+                cartItemsContainer.innerHTML = "";
+                let total = 0;
+
+                if (cart.length === 0) {
+                    if(emptyCartMessageDiv) emptyCartMessageDiv.style.display = 'block';
+                    if(cartTableElement) cartTableElement.style.display = 'none';
+                    if(cartSummaryBlock) cartSummaryBlock.style.display = 'none';
+                    if(cartCheckoutButtonWrapper) cartCheckoutButtonWrapper.style.display = 'none';
+                } else {
+                    if(emptyCartMessageDiv) emptyCartMessageDiv.style.display = 'none';
+                    if(cartTableElement) cartTableElement.style.display = 'table';
+                    if(cartSummaryBlock) cartSummaryBlock.style.display = 'flex';
+                    if(cartCheckoutButtonWrapper) cartCheckoutButtonWrapper.style.display = 'block';
+
+                    cart.forEach((item, index) => {
+                        if (!item || typeof item.price !== 'number' || typeof item.quantity !== 'number' || !item.title || !item.productId || item.productId <= 0) {
+                            console.warn('loadCart: Invalid item, skipping:', item); return;
+                        }
+                        const subtotal = item.price * item.quantity;
+                        total += subtotal;
+                        const row = cartItemsContainer.insertRow();
+                        const lang = document.documentElement.lang || 'ar';
+                        const removeButtonText = lang === 'ar' ? '' : '';
+                        row.innerHTML = `
+                            <td><img src="${item.imageUrl || '/images/products/default.png'}" alt="${item.title}" width="60" height="60" style="border-radius: 8px; object-fit: cover;" onerror="this.onerror=null;this.src='/images/products/default.png';"/></td>
+                            <td>${item.title}</td>
+                            <td>${item.price.toFixed(2)}</td>
+                            <td><input type="number" min="1" value="${item.quantity}" data-index="${index}" data-product-id="${item.productId}" class="form-control qty-input" style="width:70px; margin:auto; padding: .375rem .5rem; font-size: .9rem;" /></td>
+                            <td>${subtotal.toFixed(2)}</td>
+                            <td><button class="btn btn-sm btn-outline-danger remove-btn" data-index="${index}" title="${lang === 'rtl' ? 'إزالة العنصر' : 'Remove item'}"><i class="fas fa-trash-alt me-1"></i><span class="remove-btn-text">${removeButtonText}</span></button></td>
+                        `;
+                    });
+                }
+                if(totalPriceElement) totalPriceElement.textContent = total.toFixed(2);
+                attachQuantityListeners();
+                attachRemoveListeners();
+                updateTextContentByLanguage();
+                if (typeof updateCartBadge === 'function') updateCartBadge();
+                console.log("loadCart: Finished.");
+            }
+
+            function attachQuantityListeners() {
+                const qtyInputs = document.querySelectorAll(".qty-input");
+                qtyInputs.forEach(input => {
+                    // No need to cloneNode if loadCart rebuilds the table, which re-creates inputs
+                    input.addEventListener("input", function () {
+                        const currentProductId = parseInt(this.getAttribute("data-product-id"), 10);
+                        let newQuantity = parseInt(this.value, 10);
+                        console.log(`QTY INPUT Event: ProductID=${currentProductId}, NewValue='${this.value}', ParsedNewQty=${newQuantity}`);
+
+                        let cart = getCartFromLocalStorage();
+                        const itemIndexInCart = cart.findIndex(p => p.productId === currentProductId);
+
+                        if (isNaN(newQuantity) || newQuantity < 0) {
+                            const itemInCart = cart[itemIndexInCart];
+                            this.value = itemInCart ? itemInCart.quantity : 1;
+                            console.warn(`QTY INPUT: Invalid quantity '${this.value}' for ProductID ${currentProductId}. Reverted.`);
+                            return;
+                        }
+
+                        if (itemIndexInCart !== -1) {
+                            if (newQuantity === 0) {
+                                console.log(`QTY INPUT: Quantity 0 for ProductID ${currentProductId}. Removing item.`);
+                                cart.splice(itemIndexInCart, 1);
+                            } else {
+                                console.log(`QTY INPUT: Updating ProductID ${currentProductId}. Old qty: ${cart[itemIndexInCart].quantity}, New qty: ${newQuantity}`);
+                                cart[itemIndexInCart].quantity = newQuantity;
+                            }
+                            saveCartToLocalStorage(cart);
+                            loadCart(); // Reload UI to reflect change and recalculate total
+                        } else {
+                            console.error(`QTY INPUT: ProductID ${currentProductId} not found in cart for update.`);
+                            loadCart(); // Sync UI if cart was modified elsewhere
+                        }
+                    });
+                });
+            }
+
+            function attachRemoveListeners() {
+                const removeButtons = document.querySelectorAll(".remove-btn");
+                removeButtons.forEach(button => {
+                    // No need to cloneNode if loadCart rebuilds the table
+                    button.addEventListener("click", function () {
+                        const indexFromAttribute = parseInt(this.getAttribute("data-index"), 10); // Keep for now, but productId is safer
+                        let cart = getCartFromLocalStorage();
+
+                        // It's safer to find the product by ID to remove, in case index is stale.
+                        // However, if loadCart always rebuilds with correct indices, this is okay.
+                        // For robustness, one might pass productId to the remove button as well.
+                        if (cart[indexFromAttribute]) {
+                            console.log(`REMOVE BTN: Removing item at index ${indexFromAttribute}:`, cart[indexFromAttribute]);
+                            cart.splice(indexFromAttribute, 1);
+                            saveCartToLocalStorage(cart);
+                            loadCart();
+                        } else {
+                            console.warn(`REMOVE BTN: Item at index ${indexFromAttribute} not found. Reloading cart.`);
+                            loadCart();
+                        }
+                    });
+                });
+            }
+
+            if (checkoutBtn) {
+                checkoutBtn.addEventListener("click", function () {
+                    console.log("Checkout button clicked. Syncing quantities before proceeding...");
+                    // <<<--- بداية التعديل: تحديث السلة قبل الدفع ---<<<
+                    let cart = getCartFromLocalStorage();
+                    let cartUpdated = false;
+
+                    document.querySelectorAll(".qty-input").forEach(input => {
+                        const currentProductId = parseInt(input.getAttribute("data-product-id"), 10);
+                        const displayedQuantity = parseInt(input.value, 10);
+                        const itemIndexInCart = cart.findIndex(p => p.productId === currentProductId);
+
+                        if (itemIndexInCart !== -1 && !isNaN(displayedQuantity) && displayedQuantity >= 0) {
+                            if (cart[itemIndexInCart].quantity !== displayedQuantity) {
+                                if (displayedQuantity === 0) {
+                                    console.log(`Checkout Sync: Removing ProductID ${currentProductId} due to quantity 0.`);
+                                    cart.splice(itemIndexInCart, 1);
+                                } else {
+                                    console.log(`Checkout Sync: Updating ProductID ${currentProductId} from ${cart[itemIndexInCart].quantity} to ${displayedQuantity}.`);
+                                    cart[itemIndexInCart].quantity = displayedQuantity;
+                                }
+                                cartUpdated = true;
+                            }
+                        }
+                    });
+
+                    if (cartUpdated) {
+                        console.log("Checkout Sync: Cart was updated. Saving to localStorage.");
+                        saveCartToLocalStorage(cart);
+                        loadCart(); // Reload cart to reflect final state before modal
+                    }
+                    // <<<--- نهاية التعديل ---<<<
+
+                    // Re-fetch cart after potential updates
+                    const finalCart = getCartFromLocalStorage();
+                    if (finalCart.length === 0) {
+                        showSubmissionError(
+                            currentLangDirection === 'rtl' ? 'سلة فارغة' : 'Empty Cart',
+                            currentLangDirection === 'rtl' ? 'سلة مشترياتك فارغة! لا يمكن إتمام الطلب.' : 'Your cart is empty! Cannot proceed.'
+                        );
+                        return;
+                    }
+
+                    let total = 0;
+                    finalCart.forEach(item => { total += (item.price || 0) * (item.quantity || 0); });
+                    localStorage.setItem('totalPrice', total.toFixed(2));
+                    console.log("Checkout: Final total price set to localStorage:", total.toFixed(2));
+
+                    const paymentModalElement = document.getElementById('paymentModal');
+                    if (paymentModalElement && typeof bootstrap !== 'undefined') {
+                        const paymentModal = new bootstrap.Modal(paymentModalElement);
+                        paymentModal.show();
+                    } else { console.error("Payment modal or Bootstrap not found."); }
+                });
+            }
+
+            if (confirmPaymentButton) {
+                confirmPaymentButton.addEventListener("click", function () {
+                    const selectedPaymentInput = document.querySelector('input[name="paymentMethod"]:checked');
+                    if (selectedPaymentInput) {
+                        const selectedPayment = selectedPaymentInput.value;
+                        localStorage.setItem('selectedPaymentMethod', selectedPayment);
+                        window.location.href = "@Url.Action("Register", "Cart")";
+                    } else {
+                        showSubmissionError(
+                            currentLangDirection === 'rtl' ? 'تنبيه' : 'Attention',
+                            currentLangDirection === 'rtl' ? 'يرجى اختيار طريقة الدفع أولاً.' : 'Please select a payment method first.'
+                        );
+                    }
+                });
+            }
+
+            // Function to update cart badge (ensure it's defined, possibly in a global scope like index.js)
+            if (typeof updateCartBadge !== 'function') {
+                window.updateCartBadge = function () { // Make it global if not already
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const totalQuantity = cart.reduce((sum, p) => sum + (p.quantity || 0), 0);
+                    const badge = document.querySelector(".fixed-cart-button .badge");
+                    if (badge) {
+                        badge.textContent = totalQuantity;
+                        badge.style.display = totalQuantity > 0 ? 'inline-block' : 'none';
+                    }
+                }
+            }
+
+            loadCart();
+        });
+    </script>
+}
+

@@ -1,0 +1,245 @@
+﻿@model Product
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // Determine initial direction based on cookie or default to RTL
+    var initialDirection = Context.Request.Cookies["Language"] == "en" ? "ltr" : "rtl";
+    var productTitleLocalized = initialDirection == "rtl" ? Model.TitleAr : Model.TitleEn;
+    if (string.IsNullOrEmpty(productTitleLocalized)) productTitleLocalized = Model.TitleAr ?? Model.TitleEn;
+
+    var productDescriptionLocalized = initialDirection == "rtl" ? Model.DescriptionAr : Model.DescriptionEn;
+    if (string.IsNullOrEmpty(productDescriptionLocalized)) productDescriptionLocalized = Model.DescriptionAr ?? Model.DescriptionEn;
+
+    var brandLocalized = initialDirection == "rtl" ? Model.BrandAr : Model.BrandEn;
+    var typeLocalized = initialDirection == "rtl" ? Model.TypeAr : Model.TypeEn;
+    var colorLocalized = initialDirection == "rtl" ? Model.ColorAr : Model.ColorEn;
+    var capacityLocalized = initialDirection == "rtl" ? Model.CapacityAr : Model.CapacityEn;
+    var manufacturerLocalized = initialDirection == "rtl" ? Model.ManufacturerAr : Model.ManufacturerEn;
+    var dimensionsLocalized = initialDirection == "rtl" ? Model.DimensionsAr : Model.DimensionsEn;
+    var weightLocalized = initialDirection == "rtl" ? Model.WeightAr : Model.WeightEn;
+    var viscosityLocalized = initialDirection == "rtl" ? Model.ViscosityAr : Model.ViscosityEn;
+
+    var productImage = Url.Content(string.IsNullOrEmpty(Model.ImageUrl) ? "/images/products/default.png" : Model.ImageUrl);
+}
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+
+<section class="padding product-detail bg-light" dir="@initialDirection">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+        <div class="card p-3 p-md-5 mb-5 shadow-sm">
+            <div class="row g-4">
+                <div class="col-md-6 order-1 order-md-0">
+                    <div class="inner">
+                        <div class="content d-flex flex-column gap-3 p-md-4">
+                            <h3 data-en="@Model.TitleEn" data-ar="@Model.TitleAr" class="fw-bold h2">@productTitleLocalized</h3>
+                            <span class="fs-5 text-primary fw-semibold" data-en="Product Description:" data-ar="وصف المنتج:">@(initialDirection == "rtl" ? "وصف المنتج:" : "Product Description:")</span>
+                            <p class="text-muted" data-ar="@Model.DescriptionAr" data-en="@Model.DescriptionEn">@productDescriptionLocalized</p>
+
+                            <span data-ar="العلامة التجارية: @Model.BrandAr" data-en="Brand: @Model.BrandEn"><strong>@(initialDirection == "rtl" ? "العلامة التجارية:" : "Brand:")</strong> @brandLocalized</span>
+                            <span data-ar="النوع: @Model.TypeAr" data-en="Type: @Model.TypeEn"><strong>@(initialDirection == "rtl" ? "النوع:" : "Type:")</strong> @typeLocalized</span>
+                            <span data-ar="اللون: @Model.ColorAr" data-en="Color: @Model.ColorEn"><strong>@(initialDirection == "rtl" ? "اللون:" : "Color:")</strong> @colorLocalized</span>
+                            <span data-ar="السعة: @Model.CapacityAr" data-en="Capacity: @Model.CapacityEn"><strong>@(initialDirection == "rtl" ? "السعة:" : "Capacity:")</strong> @capacityLocalized</span>
+
+                            <div class="d-flex align-items-center justify-content-between mt-3">
+                                <span class="text-danger fs-4 fw-bold" data-en="@Model.Price EGP" data-ar="@Model.Price جنيه">@Model.Price @(initialDirection == "rtl" ? "جنيه" : "EGP")</span>
+
+                                <div class="add-to-cart-controls d-flex flex-column align-items-end"
+                                     data-product-id="@Model.Id"
+                                     data-title-ar="@Model.TitleAr"
+                                     data-title-en="@Model.TitleEn"
+                                     data-price="@Model.Price"
+                                     data-image="@productImage">
+                                    <button class="btn btn-lg btn-danger add-to-cart-detail" data-ar="اضافه للسلة" data-en="Add To Cart">
+                                        <i class="fas fa-cart-plus me-2"></i> <span class="btn-text">@(initialDirection == "rtl" ? "اضافه للسلة" : "Add To Cart")</span>
+                                    </button>
+                                    <div class="quantity-section-detail d-none mt-2" style="display: flex; gap: 10px;">
+                                        <input type="number" class="form-control quantity-input-detail" min="1" value="1" style="width: 70px;" aria-label="Quantity" />
+                                        <button class="btn btn-success confirm-add-detail" style="width:200px !important" data-ar="تأكيد" data-en="Confirm">
+                                            <span class="btn-text">@(initialDirection == "rtl" ? "تأكيد" : "Confirm")</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 order-0 order-md-1">
+                    <div class="inner img d-flex justify-content-center align-items-center p-3">
+                        <img class="product-detail-image img-fluid rounded shadow-sm"
+                             src="@productImage"
+                             alt="@productTitleLocalized"
+                             style="max-height: 450px; object-fit: contain;"
+                             onerror="this.onerror=null;this.src='/images/products/default.png';" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10">
+                <div class="details-card">
+                    <div class="details-title text-center" data-en="Technical Details" data-ar="التفاصيل التقنية">
+                        <i class="fas fa-cogs me-2"></i> @(initialDirection == "rtl" ? "التفاصيل التقنية" : "Technical Details")
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table details-table table-striped table-hover">
+                            <tbody>
+                                <tr>
+                                    <td class="icon-col"><i class="fas fa-industry"></i></td>
+                                    <td class="lang-text fw-medium" data-en="Manufacturer" data-ar="الشركة المصنعة">@(initialDirection == "rtl" ? "الشركة المصنعة" : "Manufacturer")</td>
+                                    <td class="lang-text" data-en="@Model.ManufacturerEn" data-ar="@Model.ManufacturerAr">@manufacturerLocalized</td>
+                                </tr>
+                                <tr>
+                                    <td class="icon-col"><i class="fas fa-tags"></i></td>
+                                    <td class="lang-text fw-medium" data-en="Brand" data-ar="العلامة التجارية">@(initialDirection == "rtl" ? "العلامة التجارية" : "Brand")</td>
+                                    <td class="lang-text" data-en="@Model.BrandEn" data-ar="@Model.BrandAr">@brandLocalized</td>
+                                </tr>
+                                <tr>
+                                    <td class="icon-col"><i class="fas fa-box-open"></i></td>
+                                    <td class="lang-text fw-medium" data-en="Type" data-ar="النوع">@(initialDirection == "rtl" ? "النوع" : "Type")</td>
+                                    <td class="lang-text" data-en="@Model.TypeEn" data-ar="@Model.TypeAr">@typeLocalized</td>
+                                </tr>
+                                <tr>
+                                    <td class="icon-col"><i class="fas fa-palette"></i></td>
+                                    <td class="lang-text fw-medium" data-en="Color" data-ar="اللون">@(initialDirection == "rtl" ? "اللون" : "Color")</td>
+                                    <td class="lang-text" data-en="@Model.ColorEn" data-ar="@Model.ColorAr">@colorLocalized</td>
+                                </tr>
+                                <tr>
+                                    <td class="icon-col"><i class="fas fa-fill-drip"></i></td>
+                                    <td class="lang-text fw-medium" data-en="Capacity" data-ar="السعة">@(initialDirection == "rtl" ? "السعة" : "Capacity")</td>
+                                    <td class="lang-text" data-en="@Model.CapacityEn" data-ar="@Model.CapacityAr">@capacityLocalized</td>
+                                </tr>
+                                <tr>
+                                    <td class="icon-col"><i class="fas fa-ruler-combined"></i></td>
+                                    <td class="lang-text fw-medium" data-en="Package Dimensions" data-ar="أبعاد الشحنة">@(initialDirection == "rtl" ? "أبعاد الشحنة" : "Package Dimensions")</td>
+                                    <td class="lang-text" data-en="@Model.DimensionsEn" data-ar="@Model.DimensionsAr">@dimensionsLocalized</td>
+                                </tr>
+                                <tr>
+                                    <td class="icon-col"><i class="fas fa-weight-hanging"></i></td>
+                                    <td class="lang-text fw-medium" data-en="Item Weight" data-ar="وزن السلعة">@(initialDirection == "rtl" ? "وزن السلعة" : "Item Weight")</td>
+                                    <td class="lang-text" data-en="@Model.WeightEn" data-ar="@Model.WeightAr">@weightLocalized</td>
+                                </tr>
+                                <tr>
+                                    <td class="icon-col"><i class="fas fa-oil-can"></i></td>
+                                    <td class="lang-text fw-medium" data-en="Viscosity" data-ar="اللزوجة">@(initialDirection == "rtl" ? "اللزوجة" : "Viscosity")</td>
+                                    <td class="lang-text" data-en="@Model.ViscosityEn" data-ar="@Model.ViscosityAr">@viscosityLocalized</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        // Ensure updateCartBadge is available (e.g., from index.js or define it here if this page is standalone)
+        if (typeof updateCartBadge !== 'function') {
+            function updateCartBadge() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const totalQuantity = cart.reduce((sum, p) => sum + (p.quantity || 0), 0);
+                const badge = document.querySelector(".fixed-cart-button .badge");
+                if (badge) {
+                    badge.textContent = totalQuantity;
+                    badge.style.display = totalQuantity > 0 ? 'inline-block' : 'none';
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const controlsContainer = document.querySelector(".add-to-cart-controls");
+            if (!controlsContainer) return;
+
+            const addToCartBtnDetail = controlsContainer.querySelector(".add-to-cart-detail");
+            const quantitySectionDetail = controlsContainer.querySelector(".quantity-section-detail");
+            const confirmAddBtnDetail = controlsContainer.querySelector(".confirm-add-detail");
+            const quantityInputDetail = controlsContainer.querySelector(".quantity-input-detail");
+
+            // Get current language from HTML dir attribute for messages
+            const currentLangDirection = document.documentElement.dir || "rtl";
+
+            addToCartBtnDetail?.addEventListener("click", () => {
+                if(quantitySectionDetail) quantitySectionDetail.classList.remove("d-none");
+                if(addToCartBtnDetail) addToCartBtnDetail.classList.add("d-none");
+            });
+
+            confirmAddBtnDetail?.addEventListener("click", () => {
+                const productIdString = controlsContainer.getAttribute("data-product-id");
+                const productId = parseInt(productIdString);
+
+                const titleAr = controlsContainer.getAttribute("data-title-ar") || "";
+                const titleEn = controlsContainer.getAttribute("data-title-en") || "";
+                let productTitleForCart = (currentLangDirection === 'rtl' ? titleAr : titleEn).trim();
+                if (!productTitleForCart) { productTitleForCart = (titleAr || titleEn || (currentLangDirection === 'rtl' ? "منتج" : "Product")).trim(); }
+
+                const priceString = controlsContainer.getAttribute("data-price");
+                const productPrice = parseFloat(priceString);
+
+                const productImage = controlsContainer.getAttribute("data-image") || "/images/products/default.png";
+                const quantity = parseInt(quantityInputDetail.value);
+
+                // Enhanced Validation
+                if (isNaN(productId) || productId <= 0) {
+                    console.error("Invalid productId on detail page:", productIdString);
+                    Swal.fire({ icon: 'error', title: (currentLangDirection === 'rtl' ? 'خطأ بالمنتج' : 'Product Error'), text: (currentLangDirection === 'rtl' ? 'معرف المنتج غير صالح.' : 'Invalid product ID.')});
+                    return;
+                }
+                if (isNaN(quantity) || quantity < 1) {
+                    Swal.fire({ icon: 'error', title: (currentLangDirection === 'rtl' ? 'خطأ بالكمية' : 'Quantity Error'), text: (currentLangDirection === 'rtl' ? 'يرجى إدخال كمية صحيحة (1 على الأقل).' : 'Please enter a valid quantity (at least 1).')});
+                    return;
+                }
+                if (isNaN(productPrice) || productPrice < 0) {
+                     console.error("Invalid productPrice on detail page:", priceString);
+                    Swal.fire({ icon: 'error', title: (currentLangDirection === 'rtl' ? 'خطأ بالسعر' : 'Price Error'), text: (currentLangDirection === 'rtl' ? 'سعر المنتج غير صالح.' : 'Invalid product price.')});
+                    return;
+                }
+
+                const productForCart = {
+                    productId: productId, // Corrected from 'id' to 'productId'
+                    title: productTitleForCart,
+                    price: productPrice,
+                    imageUrl: productImage,
+                    quantity: quantity
+                };
+
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                const existingProductIndex = cart.findIndex(p => p.productId === productForCart.productId);
+
+                if (existingProductIndex > -1) {
+                    cart[existingProductIndex].quantity += productForCart.quantity;
+                } else {
+                    cart.push(productForCart);
+                }
+                localStorage.setItem("cart", JSON.stringify(cart));
+
+                if(quantitySectionDetail) quantitySectionDetail.classList.add("d-none");
+                if(addToCartBtnDetail) addToCartBtnDetail.classList.remove("d-none");
+                if(quantityInputDetail) quantityInputDetail.value = 1;
+
+                updateCartBadge();
+
+                Swal.fire({
+                    icon: 'success',
+                    title: (currentLangDirection === 'rtl' ? 'أُضيف للسلة' : 'Added to Cart'),
+                    // text: productTitleForCart + (currentLangDirection === 'rtl' ? ' أضيف إلى سلتك.' : ' has been added to your cart.'), // Optional: add product title to message
+                    toast: true, // Make it a toast
+                    position: 'top-end', // Position toast at top-right (or top-left for RTL)
+                    showConfirmButton: false,
+                    timer: 2500, // Auto-close after 2.5 seconds
+                    timerProgressBar: true,
+                    customClass: { // Use custom classes if defined in main.css for swal2-toast
+                        popup: 'swal2-toast', // Ensure this class matches your CSS for toasts
+                    },
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                });
+            });
+            updateCartBadge(); // Initial call on page load
+        });
+    </script>
+}

@@ -1,0 +1,359 @@
+﻿@model Oil.Models.Product
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    body {
+        background: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .card-custom {
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 40px;
+        margin: 40px auto;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s ease;
+        max-width: 1100px;
+    }
+
+        .card-custom:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+    .form-title {
+        font-size: 32px;
+        font-weight: bold;
+        color: #2c3e50;
+        text-align: center;
+        position: relative;
+        margin-bottom: 40px;
+    }
+
+        .form-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #3498db;
+            border-radius: 2px;
+        }
+
+    .form-label {
+        font-weight: 600;
+        color: #34495e;
+        margin-bottom: 5px;
+        font-size: 15px;
+    }
+
+    input.form-control,
+    select.form-control,
+    textarea.form-control {
+        border-radius: 12px;
+        border: 1px solid #ccc;
+        padding: 10px 14px;
+        font-size: 15px;
+        transition: 0.3s;
+        background-color: #fdfdfd;
+    }
+
+        input.form-control:focus,
+        select.form-control:focus,
+        textarea.form-control:focus {
+            border-color: #2980b9;
+            box-shadow: 0 0 6px rgba(41, 128, 185, 0.3);
+        }
+
+    .form-check-label {
+        font-weight: 500;
+        margin-left: 8px; /* Should be margin-right for RTL, or use logical properties */
+        margin-right: 8px; /* Added for RTL consistency */
+        font-size: 15px;
+    }
+
+    .btn-custom {
+        padding: 10px 25px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-success {
+        background-color: #3498db;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        color: white; /* Ensure text color is white */
+    }
+
+        .btn-success:hover {
+            background: #2980b9; /* Darker shade of blue for hover */
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+
+    .btn-secondary {
+        background-color: #7f8c8d;
+        border: none;
+        color: #fff;
+    }
+
+        .btn-secondary:hover {
+            background-color: #616a6b;
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+        }
+
+    .btn-container {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    img#imagePreview {
+        border-radius: 12px;
+        border: 1px solid #ccc;
+        padding: 6px;
+        max-width: 100%;
+        height: auto;
+        transition: 0.3s ease;
+        max-height: 160px;
+        display: block; /* Make it block to center with margin auto if needed */
+        margin-top: 10px;
+    }
+        /* Ensure preview is shown if Model.ImageUrl exists */
+        img#imagePreview[src=""], img#imagePreview[src="#"] {
+            display: none;
+        }
+
+
+    select.form-control {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg fill='gray' viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: left 1rem center; /* Adjusted for RTL */
+        background-size: 1rem;
+        padding-right: 1rem; /* Ensure space for arrow */
+        padding-left: 2.5rem; /* Ensure space for arrow on the other side */
+    }
+
+    @@media (max-width: 768px) {
+        .btn-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card-custom {
+            padding: 25px;
+        }
+
+        .form-title {
+            font-size: 24px;
+        }
+    }
+</style>
+
+<h2 class="form-title">تعديل المنتج</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data" class="card-custom">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="TitleAr" class="form-label"></label>
+            <input asp-for="TitleAr" class="form-control" />
+            <span asp-validation-for="TitleAr" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="TitleEn" class="form-label"></label>
+            <input asp-for="TitleEn" class="form-control" />
+            <span asp-validation-for="TitleEn" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="DescriptionAr" class="form-label"></label>
+            <textarea asp-for="DescriptionAr" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="DescriptionAr" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="DescriptionEn" class="form-label"></label>
+            <textarea asp-for="DescriptionEn" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="DescriptionEn" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="TypeAr" class="form-label"></label>
+            <input asp-for="TypeAr" class="form-control" />
+            <span asp-validation-for="TypeAr" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="TypeEn" class="form-label"></label>
+            <input asp-for="TypeEn" class="form-control" />
+            <span asp-validation-for="TypeEn" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="ColorAr" class="form-label"></label>
+            <input asp-for="ColorAr" class="form-control" />
+            <span asp-validation-for="ColorAr" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="ColorEn" class="form-label"></label>
+            <input asp-for="ColorEn" class="form-control" />
+            <span asp-validation-for="ColorEn" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="CapacityAr" class="form-label"></label>
+            <input asp-for="CapacityAr" class="form-control" />
+            <span asp-validation-for="CapacityAr" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="CapacityEn" class="form-label"></label>
+            <input asp-for="CapacityEn" class="form-control" />
+            <span asp-validation-for="CapacityEn" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="ViscosityAr" class="form-label"></label>
+            <input asp-for="ViscosityAr" class="form-control" />
+            <span asp-validation-for="ViscosityAr" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="ViscosityEn" class="form-label"></label>
+            <input asp-for="ViscosityEn" class="form-control" />
+            <span asp-validation-for="ViscosityEn" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Price" class="form-label"></label>
+            <input asp-for="Price" type="number" step="0.01" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="WeightAr" class="form-label"></label>
+            <input asp-for="WeightAr" class="form-control" />
+            <span asp-validation-for="WeightAr" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="WeightEn" class="form-label"></label>
+            <input asp-for="WeightEn" class="form-control" />
+            <span asp-validation-for="WeightEn" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="DimensionsAr" class="form-label"></label>
+            <input asp-for="DimensionsAr" class="form-control" />
+            <span asp-validation-for="DimensionsAr" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="DimensionsEn" class="form-label"></label>
+            <input asp-for="DimensionsEn" class="form-control" />
+            <span asp-validation-for="DimensionsEn" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="BrandAr" class="form-label"></label>
+            <input asp-for="BrandAr" class="form-control" />
+            <span asp-validation-for="BrandAr" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="BrandEn" class="form-label"></label>
+            <input asp-for="BrandEn" class="form-control" />
+            <span asp-validation-for="BrandEn" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="ManufacturerAr" class="form-label"></label>
+            <input asp-for="ManufacturerAr" class="form-control" />
+            <span asp-validation-for="ManufacturerAr" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="ManufacturerEn" class="form-label"></label>
+            <input asp-for="ManufacturerEn" class="form-control" />
+            <span asp-validation-for="ManufacturerEn" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="ProductTypeId" class="form-label">النوع</label>
+            <select asp-for="ProductTypeId" class="form-control" asp-items="ViewBag.ProductTypes">
+                <option value="">-- اختر النوع --</option>
+            </select>
+            <span asp-validation-for="ProductTypeId" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="CategoryId" class="form-label">القسم</label>
+            <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories">
+                <option value="">-- اختر القسم --</option>
+            </select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6 d-flex align-items-center">
+            <div class="form-check mt-3">
+                <input asp-for="IsVisible" class="form-check-input" />
+                <label asp-for="IsVisible" class="form-check-label">إضافه للعروض</label>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="ImageUrl" class="form-label">الصوره</label>
+            <input type="file" name="imageFile" class="form-control" onchange="previewImage(event)" />
+            <div class="mt-2">
+                <img id="imagePreview" src="@(string.IsNullOrEmpty(Model.ImageUrl) ? "" : Url.Content(Model.ImageUrl))" alt="Product Image" style="@(string.IsNullOrEmpty(Model.ImageUrl) ? "display:none;" : "display:block; max-height: 150px;")" />
+            </div>
+        </div>
+
+        <div class="col-12 btn-container">
+            <button type="submit" class="btn btn-success btn-custom"> حفظ</button>
+            <a asp-action="Index" class="btn btn-secondary btn-custom"> العوده</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                const output = document.getElementById('imagePreview');
+                output.src = reader.result;
+                output.style.display = "block"; // Make sure it's visible when a new image is selected
+            };
+            if (event.target.files[0]) {
+                reader.readAsDataURL(event.target.files[0]);
+            } else {
+               
+                const currentImageUrl = "@(string.IsNullOrEmpty(Model.ImageUrl) ? "" : Url.Content(Model.ImageUrl))";
+                if (!currentImageUrl) {
+                     output.src = "#"; // Clear if no current image
+                     output.style.display = "none";
+                }
+            }
+        }
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

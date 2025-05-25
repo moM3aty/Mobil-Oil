@@ -1,0 +1,548 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function showPaymentSection(sectionId) {
+            const sections = ['cash-section', 'ewallet-section', 'instapay-section', 'visa-section']; // Updated
+            const currentLangDirection = document.documentElement.dir || "rtl";
+
+            sections.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    // The sectionId from localStorage might be 'ewallet', 'instapay', etc.
+                    // We need to match it with element IDs like 'ewallet-section'.
+                    if (id === sectionId || id === sectionId + '-section') {
+                        element.classList.remove('d-none');
+                        const header = element.closest('.form-container')?.querySelector('h3');
+                        if(header) {
+                            const titleAr = header.getAttribute('data-ar-title');
+                            const titleEn = header.getAttribute('data-en-title');
+                            if (titleAr && titleEn) {
+                                header.textContent = currentLangDirection === 'rtl' ? titleAr : titleEn;
+                            }
+                        }
+                    } else {
+                        element.classList.add('d-none');
+                    }
+                }
+            });
+            const mainHeader = document.querySelector('.section-header');
+            if(mainHeader) {
+                const titleAr = mainHeader.getAttribute('data-ar');
+                const titleEn = mainHeader.getAttribute('data-en');
+                 if (titleAr && titleEn) {
+                    mainHeader.textContent = currentLangDirection === 'rtl' ? titleAr : titleEn;
+                }
+            }
+        }
+
+        function getAntiForgeryToken() {
+            const tokenField = document.querySelector('input[name="__RequestVerificationToken"]');
+            return tokenField ? tokenField.value : '';
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentLangDirection = document.documentElement.dir || "rtl";
+
+            function showSubmissionError(title, text) {
+                Swal.fire({
+                    icon: 'error',
+                    title: title || (currentLangDirection === 'rtl' ? 'خطأ' : 'Error'),
+                    text: text || (currentLangDirection === 'rtl' ? 'حدث خطأ ما.' : 'An error occurred.'),
+                    confirmButtonText: currentLangDirection === 'rtl' ? 'موافق' : 'OK'
+                });
+            }
+            function showSuccessMessage(title, text) {
+                 Swal.fire({
+                    icon: 'success',
+                    title: title || (currentLangDirection === 'rtl' ? 'نجاح' : 'Success'),
+                    text: text || (currentLangDirection === 'rtl' ? 'تمت العملية بنجاح.' : 'Operation successful.'),
+                    timer: 2000,
+                    showConfirmButton: false,
+                    toast: true,
+                    position: currentLangDirection === 'rtl' ? 'top-start' : 'top-end', // Adjusted position
+                    customClass: { popup: 'swal2-toast' }
+                });
+            }
+
+            async function handleFormSubmit(formElement, url) {
+                const formData = new FormData(formElement);
+                const cartItemsRaw = JSON.parse(localStorage.getItem("cart")) || [];
+
+                if (cartItemsRaw.length === 0) {
+                    showSubmissionError(currentLangDirection === 'rtl' ? 'سلة فارغة' : 'Empty Cart', currentLangDirection === 'rtl' ? 'سلة مشترياتك فارغة! لا يمكن إتمام الطلب.' : 'Your cart is empty! Cannot proceed.');
+                    return;
+                }
+
+                const validCartItems = cartItemsRaw.filter(item =>
+                    item.productId && Number.isInteger(item.productId) && item.productId > 0 &&
+                    item.quantity && Number.isInteger(item.quantity) && item.quantity > 0 &&
+                    item.price && typeof item.price === 'number' && item.price >= 0
+                );
+
+                if (validCartItems.length !== cartItemsRaw.length) {
+                     showSubmissionError(
+                        currentLangDirection === 'rtl' ? 'خطأ في بيانات السلة' : 'Cart Data Error',
+                        currentLangDirection === 'rtl' ? 'بعض المنتجات في سلتك تحتوي على بيانات غير صالحة أو قديمة. قد يتم تجاهلها أو يرجى تحديث السلة.' : 'Some products in your cart have invalid or outdated data. They might be ignored or please update your cart.'
+                    );
+                    if (validCartItems.length === 0) { return; }
+                }
+
+                const processedCartItems = validCartItems.map(item => ({
+                    productId: item.productId,
+                    title: item.title ? item.title.trim() : 'Unnamed Item',
+                    price: item.price,
+                    quantity: item.quantity,
+                    imageUrl: item.imageUrl
+                }));
+                formData.append('cartItemsJson', JSON.stringify(processedCartItems));
+
+                try {
+                    const response = await fetch(url, {
+                        method: "POST",
+                        body: formData,
+                        headers: { 'RequestVerificationToken': getAntiForgeryToken() }
+                    });
+                    const data = await response.json();
+                    if (data.success && data.redirectUrl) {
+                        localStorage.removeItem('cart');
+                        localStorage.removeItem('totalPrice');
+                        window.location.href = data.redirectUrl;
+                    } else {
+                        showSubmissionError(currentLangDirection === 'rtl' ? 'خطأ في الطلب' : 'Order Error', data.message || (currentLangDirection === 'rtl' ? 'حدث خطأ أثناء تأكيد الطلب.' : 'Error confirming order.'));
+                        console.error("Order Submission Error:", data.errors || data.message);
+                    }
+                } catch (error) {
+                    console.error("Error submitting order:", error);
+                    showSubmissionError(currentLangDirection === 'rtl' ? 'خطأ بالاتصال' : 'Connection Error', currentLangDirection === 'rtl' ? 'حدث خطأ أثناء الاتصال بالخادم.' : 'Error connecting to the server.');
+                }
+            }
+
+            const ewalletForm = document.getElementById("ewalletForm");
+            if(ewalletForm) {
+                ewalletForm.addEventListener("submit", async function (e) {
+                    e.preventDefault();
+                    const name = document.getElementById("ewallet-name").value.trim();
+                    const phone = document.getElementById("ewallet-phone").value.trim();
+                    const address = document.getElementById("ewallet-address").value.trim();
+                    const receiptInput = document.getElementById("ewallet-receipt");
+                    const receiptFile = receiptInput.files ? receiptInput.files[0] : null;
+
+                    if (!name || !phone || !address || !receiptFile) {
+                        showSubmissionError(currentLangDirection === 'rtl' ? 'بيانات ناقصة' : 'Missing Data', currentLangDirection === 'rtl' ? 'يرجى ملء جميع الحقول ورفع إيصال الدفع للمحفظة.' : 'Please fill all fields and upload the E-Wallet payment receipt.');
+                        return;
+                    }
+                    await handleFormSubmit(this, "@Url.Action("SubmitWalletOrder", "Cart")");
+                });
+            }
+
+            const instapayForm = document.getElementById("instapayForm");
+            if(instapayForm) {
+                instapayForm.addEventListener("submit", async function (e) {
+                    e.preventDefault();
+                    const name = document.getElementById("instapay-name").value.trim();
+                    const phone = document.getElementById("instapay-phone").value.trim();
+                    const address = document.getElementById("instapay-address").value.trim();
+                    const receiptInput = document.getElementById("instapay-receipt");
+                    const receiptFile = receiptInput.files ? receiptInput.files[0] : null;
+
+                    if (!name || !phone || !address || !receiptFile) {
+                        showSubmissionError(currentLangDirection === 'rtl' ? 'بيانات ناقصة' : 'Missing Data', currentLangDirection === 'rtl' ? 'يرجى ملء جميع الحقول ورفع إيصال انستاباي.' : 'Please fill all fields and upload the Instapay receipt.');
+                        return;
+                    }
+                    await handleFormSubmit(this, "@Url.Action("SubmitInstapayOrder", "Cart")");
+                });
+            }
+
+            const payForm = document.getElementById("payForm");
+            if(payForm) {
+                payForm.addEventListener("submit", async function (e) {
+                    e.preventDefault();
+                    const name = document.getElementById("visa-name").value.trim();
+                    const phone = document.getElementById("visa-phone").value.trim();
+                    const address = document.getElementById("visa-address").value.trim();
+                    const email = document.getElementById("visa-email")?.value.trim() || 'customer@example.com';
+                    const city = document.getElementById("visa-city")?.value.trim() || 'Cairo';
+                    const postalCode = document.getElementById("visa-postalcode")?.value.trim() || 'NA';
+
+                    const amount = parseFloat(localStorage.getItem("totalPrice")) || 0;
+                    const cartItemsRaw = JSON.parse(localStorage.getItem("cart")) || [];
+
+                    if (amount <= 0) { showSubmissionError(currentLangDirection === 'rtl' ? 'خطأ' : 'Error', currentLangDirection === 'rtl' ? 'المبلغ الإجمالي للسلة غير صالح.' : 'Cart total amount is invalid.'); return; }
+                    if (!name || !phone || !address) { showSubmissionError(currentLangDirection === 'rtl' ? 'بيانات ناقصة' : 'Missing Data', currentLangDirection === 'rtl' ? 'يرجى ملء جميع الحقول الإلزامية.' : 'Please fill all required fields.'); return; }
+                    if (cartItemsRaw.length === 0) { showSubmissionError(currentLangDirection === 'rtl' ? 'سلة فارغة' : 'Empty Cart', currentLangDirection === 'rtl' ? 'سلة مشترياتك فارغة!' : 'Your cart is empty!'); return; }
+
+                    const validCartItems = cartItemsRaw.filter(item => item.productId && Number.isInteger(item.productId) && item.productId > 0 && item.quantity && Number.isInteger(item.quantity) && item.quantity > 0 && item.price && typeof item.price === 'number' && item.price >= 0);
+                    if (validCartItems.length !== cartItemsRaw.length) { showSubmissionError(currentLangDirection === 'rtl' ? 'خطأ في بيانات السلة' : 'Cart Data Error', currentLangDirection === 'rtl' ? 'بعض المنتجات في سلتك تحتوي على بيانات غير صالحة أو قديمة.' : 'Some products in your cart have invalid or outdated data.'); if (validCartItems.length === 0) return; }
+
+                    const processedCartItems = validCartItems.map(item => ({ productId: item.productId, title: item.title ? item.title.trim() : 'Unnamed Item', price: item.price, quantity: item.quantity, imageUrl: item.imageUrl }));
+                    const payRequest = { name: name, phone: phone, address: address, amount: amount, items: processedCartItems, email: email, city: city, postalCode: postalCode, state: city };
+
+                    try {
+                        const response = await fetch("/Paymob/Pay", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json", 'RequestVerificationToken': getAntiForgeryToken() },
+                            body: JSON.stringify(payRequest)
+                        });
+                        const data = await response.json();
+                        if (data.success && data.url) {
+                            showSuccessMessage(currentLangDirection === 'rtl' ? 'جارٍ التوجيه...' : 'Redirecting...', currentLangDirection === 'rtl' ? 'سيتم توجيهك لصفحة الدفع الآمن.' : 'You will be redirected to the secure payment page.');
+                            localStorage.removeItem('cart');
+                            localStorage.removeItem('totalPrice');
+                            setTimeout(() => { window.location.href = data.url; }, 1500);
+                        } else {
+                            showSubmissionError(currentLangDirection === 'rtl' ? 'خطأ في الدفع' : 'Payment Error', data.message || (currentLangDirection === 'rtl' ? 'حدث خطأ أثناء محاولة الدفع.' : 'Error processing payment.'));
+                            console.error("Paymob Error:", data.errors || data.message);
+                        }
+                    } catch (error) {
+                        console.error("Error calling Paymob:", error);
+                        showSubmissionError(currentLangDirection === 'rtl' ? 'خطأ بالاتصال' : 'Connection Error', currentLangDirection === 'rtl' ? 'حدث خطأ أثناء الاتصال بالخادم.' : 'Error connecting to the server.');
+                    }
+                });
+            }
+
+            const cashForm = document.getElementById("cashForm");
+            if(cashForm) {
+                cashForm.addEventListener("submit", async function (e) {
+                    e.preventDefault();
+                    const name = document.getElementById("cash-name").value.trim();
+                    const phone = document.getElementById("cash-phone").value.trim();
+                    const address = document.getElementById("cash-address").value.trim();
+                    const idImageInput = document.getElementById("cash-idImage");
+                    const idImageFile = idImageInput.files ? idImageInput.files[0] : null;
+
+                     if (!name || !phone || !address || !idImageFile) {
+                        showSubmissionError(currentLangDirection === 'rtl' ? 'بيانات ناقصة' : 'Missing Data', currentLangDirection === 'rtl' ? 'يرجى ملء جميع الحقول ورفع صورة الهوية.' : 'Please fill all fields and upload the ID image.');
+                        return;
+                    }
+                    await handleFormSubmit(this, "@Url.Action("SubmitCashOrder", "Cart")");
+                });
+            }
+
+            // window.onload logic should be outside DOMContentLoaded or called carefully
+            const selectedPaymentMethod = localStorage.getItem('selectedPaymentMethod');
+            if (selectedPaymentMethod) {
+                showPaymentSection(selectedPaymentMethod);
+            } else {
+                console.warn(currentLangDirection === 'rtl' ? "لم يتم العثور على طريقة دفع. عرض قسم الدفع النقدي افتراضياً." : "No payment method found. Defaulting to cash section.");
+                showPaymentSection('cash'); // Default to cash or a relevant default
+            }
+            // Update text content based on language for all relevant elements
+            document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+                const textAr = el.getAttribute('data-ar');
+                const textEn = el.getAttribute('data-en');
+                if (el.tagName === 'LABEL' || el.tagName === 'BUTTON' || el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'P' || el.tagName === 'SMALL' || (el.tagName === 'DIV' && el.classList.contains('alert'))) {
+                    el.textContent = currentLangDirection === 'rtl' ? textAr : textEn;
+                }
+            });
+            document.querySelectorAll('input[data-ar-placeholder][data-en-placeholder]').forEach(el => {
+                el.placeholder = currentLangDirection === 'rtl' ? el.getAttribute('data-ar-placeholder') : el.getAttribute('data-en-placeholder');
+            });
+        });
+    </script>
+}
+<style>
+    /* Styles remain the same as previously provided */
+    .form-container {
+        max-width: 550px;
+        margin: 50px auto;
+        padding: 40px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+        .form-container h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: #007bff;
+            font-size: 1.6rem;
+        }
+
+    .form-group {
+        position: relative;
+        margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+        font-weight: 500;
+        margin-bottom: .5rem;
+        display: block;
+        color: #495057;
+    }
+
+    .input-wrapper {
+        position: relative;
+    }
+
+        .input-wrapper .icon2 {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #adb5bd;
+            font-size: 1rem;
+            z-index: 2;
+        }
+
+    [dir="ltr"] .input-wrapper .icon2 {
+        left: 15px;
+    }
+
+    [dir="rtl"] .input-wrapper .icon2 {
+        right: 15px;
+    }
+
+    [dir="ltr"] .input-wrapper input.form-control {
+        padding-left: 45px;
+    }
+
+    [dir="rtl"] .input-wrapper input.form-control {
+        padding-right: 45px;
+        padding-left: 15px;
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        padding: .75rem 1rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        appearance: none;
+        border-radius: .5rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+        .form-control:focus {
+            color: #495057;
+            background-color: #fff;
+            border-color: #86b7fe;
+            outline: 0;
+            box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
+        }
+
+    input[type="file"].form-control {
+        padding: .5rem .75rem;
+    }
+
+    .btn-custom {
+        display: block;
+        width: 100%;
+        padding: .75rem 1.25rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+        border-radius: .5rem;
+        text-align: center;
+        text-decoration: none;
+        vertical-align: middle;
+        cursor: pointer;
+        user-select: none;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,123,255,.25);
+        }
+
+    .section-header {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #343a40;
+        margin-bottom: 40px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #007bff;
+        display: inline-block;
+    }
+
+    .alert-info {
+        background-color: #e9f5ff;
+        border-color: #b8d Bff;
+        color: #004085;
+    }
+
+        .alert-info strong {
+            color: #004085;
+        }
+
+    .alert-warning {
+        background-color: #fff3cd;
+        border-color: #ffeeba;
+        color: #856404;
+    }
+</style>
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h2 class="section-header" data-ar="تأكيد الطلب وإدخال البيانات" data-en="Confirm Order & Enter Details">تأكيد الطلب وإدخال البيانات</h2>
+    </div>
+
+    <div id="cash-section" class="d-none">
+        <div class="form-container">
+            <h3 data-ar-title="الدفع عند الاستلام" data-en-title="Cash on Delivery">الدفع عند الاستلام</h3>
+            <form id="cashForm" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <div class="form-group mb-3">
+                    <label class="form-label" data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label>
+                    <div class="input-wrapper"><i class="fas fa-user icon2"></i><input type="text" name="name" id="cash-name" class="form-control" required data-ar-placeholder="ادخل اسمك الكامل" data-en-placeholder="Enter your full name"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label" data-en="Phone Number" data-ar="رقم الهاتف">رقم الهاتف</label>
+                    <div class="input-wrapper"><i class="fas fa-phone icon2"></i><input type="tel" name="phone" id="cash-phone" class="form-control" required data-ar-placeholder="ادخل رقم هاتفك" data-en-placeholder="Enter your phone number"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label" data-en="Full Address" data-ar="العنوان بالتفصيل">العنوان بالتفصيل</label>
+                    <div class="input-wrapper"><i class="fas fa-map-marker-alt icon2"></i><input type="text" name="address" id="cash-address" class="form-control" required data-ar-placeholder="ادخل عنوانك كاملاً" data-en-placeholder="Enter your full address"></div>
+                </div>
+                <div class="form-group mb-4">
+                    <label class="form-label" data-en="National ID Image" data-ar="صورة الهوية الوطنية">صورة الهوية الوطنية</label>
+                    <input type="file" name="idImage" id="cash-idImage" class="form-control" accept="image/*" required />
+                    <small class="form-text text-muted" data-ar="مطلوبة لتأكيد الطلب عند الاستلام." data-en="Required to confirm your order upon delivery."></small>
+                </div>
+                <button type="submit" class="btn btn-custom" data-en="Confirm Cash Order" data-ar="تأكيد الطلب النقدي">تأكيد الطلب النقدي</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="ewallet-section" class="d-none">
+        <div class="form-container">
+            <h3 data-ar-title="الدفع بالمحفظة الإلكترونية" data-en-title="E-Wallet Payment">الدفع بالمحفظة الإلكترونية</h3>
+            <div class="alert alert-info" role="alert">
+                <p data-en="Transfer to Vodafone Cash: 01000004079" data-ar="رقم التحويل إلى محفظة فودافون كاش: 01000004079">
+                    رقم التحويل إلى محفظة فودافون كاش: <a href="tel:01000004079"><strong>01000004079</strong></a>
+                </p>
+                <hr>
+                <p class="mb-0" data-ar="يرجى تحويل المبلغ الإجمالي ثم رفع صورة الإيصال." data-en="Please transfer the total amount then upload the receipt image."></p>
+            </div>
+            <form id="ewalletForm" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <div class="form-group mb-3">
+                    <label class="form-label" data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label>
+                    <div class="input-wrapper"><i class="fas fa-user icon2"></i><input type="text" name="name" id="ewallet-name" class="form-control" required data-ar-placeholder="ادخل اسمك الكامل" data-en-placeholder="Enter your full name"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label" data-en="Phone Number" data-ar="رقم الهاتف">رقم الهاتف</label>
+                    <div class="input-wrapper"><i class="fas fa-phone icon2"></i><input type="tel" name="phone" id="ewallet-phone" class="form-control" required data-ar-placeholder="ادخل رقم هاتفك" data-en-placeholder="Enter your phone number"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label" data-en="Full Address" data-ar="العنوان بالتفصيل">العنوان بالتفصيل</label>
+                    <div class="input-wrapper"><i class="fas fa-map-marker-alt icon2"></i><input type="text" name="address" id="ewallet-address" class="form-control" required data-ar-placeholder="ادخل عنوانك كاملاً" data-en-placeholder="Enter your full address"></div>
+                </div>
+                <div class="form-group mb-4">
+                    <label class="form-label" data-en="Payment Receipt Image" data-ar="صورة إيصال الدفع">صورة إيصال الدفع</label>
+                    <input type="file" name="receipt" id="ewallet-receipt" class="form-control" accept="image/*" required />
+                </div>
+                <button type="submit" class="btn btn-custom" data-en="Confirm E-Wallet Order" data-ar="تأكيد طلب المحفظة">تأكيد طلب المحفظة</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="instapay-section" class="d-none">
+        <div class="form-container">
+            <h3 data-ar-title="الدفع عبر انستاباي" data-en-title="Instapay Payment">الدفع عبر انستاباي</h3>
+            <div class="alert alert-info" role="alert">
+                <p data-ar="رقم التحويل إلى انستاباي : 01111161663" data-en="Transfer to Instapay Number: 01111161663">
+                    رقم التحويل إلى انستاباي: <a href="tel:01111161663"><strong>01111161663</strong></a>
+                </p>
+                <hr>
+                <p class="mb-0" data-ar="يرجى تحويل المبلغ الإجمالي ثم رفع صورة الإيصال." data-en="Please transfer the total amount then upload the receipt image."></p>
+            </div>
+            <form id="instapayForm" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <div class="form-group mb-3">
+                    <label class="form-label" data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label>
+                    <div class="input-wrapper"><i class="fas fa-user icon2"></i><input type="text" name="name" id="instapay-name" class="form-control" required data-ar-placeholder="ادخل اسمك الكامل" data-en-placeholder="Enter your full name"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label" data-en="Phone Number" data-ar="رقم الهاتف">رقم الهاتف</label>
+                    <div class="input-wrapper"><i class="fas fa-phone icon2"></i><input type="tel" name="phone" id="instapay-phone" class="form-control" required data-ar-placeholder="ادخل رقم هاتفك" data-en-placeholder="Enter your phone number"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label" data-en="Full Address" data-ar="العنوان بالتفصيل">العنوان بالتفصيل</label>
+                    <div class="input-wrapper"><i class="fas fa-map-marker-alt icon2"></i><input type="text" name="address" id="instapay-address" class="form-control" required data-ar-placeholder="ادخل عنوانك كاملاً" data-en-placeholder="Enter your full address"></div>
+                </div>
+                <div class="form-group mb-4">
+                    <label class="form-label" data-en="Payment Receipt Image" data-ar="صورة إيصال الدفع">صورة إيصال الدفع</label>
+                    <input type="file" name="receipt" id="instapay-receipt" class="form-control" accept="image/*" required />
+                </div>
+                <button type="submit" class="btn btn-custom" data-en="Confirm Instapay Order" data-ar="تأكيد طلب انستاباي">تأكيد طلب انستاباي</button>
+            </form>
+        </div>
+    </div>  
+
+    <div id="visa-section" class="d-none">
+        <div class="form-container">
+            <h3 data-ar-title="الدفع بالبطاقة الائتمانية (فيزا/ماستركارد)" data-en-title="Credit Card Payment (Visa/Mastercard)">الدفع بالبطاقة الائتمانية (فيزا/ماستركارد)</h3>
+            <div class="alert alert-warning" role="alert" data-ar="سيتم توجيهك إلى صفحة دفع آمنة لإتمام العملية." data-en="You will be redirected to a secure payment page to complete the transaction.">
+                سيتم توجيهك إلى صفحة دفع آمنة لإتمام العملية.
+            </div>
+            <form id="payForm" novalidate>
+                @Html.AntiForgeryToken()
+                <div class="form-group mb-3">
+                    <label class="form-label" data-ar="الاسم على البطاقة" data-en="Name on Card">الاسم على البطاقة</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-user-shield icon2"></i>
+                        <input type="text" id="visa-name" class="form-control" required
+                               data-ar-placeholder="الاسم كما هو مطبوع على البطاقة" data-en-placeholder="Name as it appears on card">
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label" data-en="Phone Number (for contact)" data-ar="رقم الهاتف (للتواصل)">رقم الهاتف (للتواصل)</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-phone icon2"></i>
+                        <input type="tel" id="visa-phone" class="form-control" required
+                               data-ar-placeholder="رقم هاتف للتواصل بشأن الطلب" data-en-placeholder="Contact phone for the order">
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label" data-en="Shipping Address" data-ar="عنوان الشحن">عنوان الشحن</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-shipping-fast icon2"></i>
+                        <input type="text" id="visa-address" class="form-control" required
+                               data-ar-placeholder="عنوان استلام الطلب" data-en-placeholder="Where to ship the order">
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label" data-ar="البريد الإلكتروني (لإيصال الدفع)" data-en="Email (for payment receipt)">البريد الإلكتروني (لإيصال الدفع)</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope icon2"></i>
+                        <input type="email" id="visa-email" class="form-control"
+                               data-ar-placeholder="اختياري: بريدك لاستلام الإيصال" data-en-placeholder="Optional: Your email for the receipt">
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label" data-ar="المدينة" data-en="City">المدينة</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-city icon2"></i>
+                        <input type="text" id="visa-city" class="form-control"
+                               data-ar-placeholder="اختياري: مدينتك" data-en-placeholder="Optional: Your city">
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label" data-ar="الرمز البريدي" data-en="Postal Code">الرمز البريدي</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-mail-bulk icon2"></i>
+                        <input type="text" id="visa-postalcode" class="form-control"
+                               data-ar-placeholder="اختياري: الرمز البريدي" data-en-placeholder="Optional: Your postal code">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-custom" data-en="Proceed to Secure Payment" data-ar="المتابعة إلى الدفع الآمن">المتابعة إلى الدفع الآمن</button>
+            </form>
+        </div>
+    </div>
+</div>

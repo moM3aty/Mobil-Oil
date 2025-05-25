@@ -1,0 +1,64 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<style>
+    .dashboard-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 80vh;
+        text-align: center;
+    }
+
+    .dashboard-title {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 40px;
+        color: #333;
+    }
+
+    .dashboard-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .dashboard-button {
+        padding: 15px 30px;
+        background-color: #3498db;
+        color: #fff;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+        .dashboard-button:hover {
+            background-color: #2980b9;
+        }
+
+    @@media (max-width: 600px) {
+        .dashboard-button
+
+    {
+        width: 100%;
+        text-align: center;
+    }
+
+    }
+</style>
+
+<div class="dashboard-container">
+    <div class="dashboard-title">وحدة التحكم</div>
+
+    <div class="dashboard-buttons">
+        <a href="@Url.Action("Index", "Products")" class="dashboard-button">ادارة المنتجات</a>
+        <a href="@Url.Action("Index", "ProductCategories")" class="dashboard-button">ادارة الأقسام</a>
+        <a href="@Url.Action("Orders", "Login")" class="dashboard-button">الأوردرات</a>
+    </div>
+</div>

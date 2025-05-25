@@ -1,0 +1,343 @@
+﻿@model Oil.Models.Product
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    // var productTypes = ViewBag.ProductTypes as List<Oil.Models.ProductType> ?? new List<Oil.Models.ProductType>(); // لا حاجة لهذا السطر الآن
+    var categories = ViewBag.Categories as List<Oil.Models.ProductCategory> ?? new List<Oil.Models.ProductCategory>();
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card-custom {
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        background-color: #fff;
+        margin-top: 30px;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    input.form-control,
+    select.form-control,
+    textarea.form-control {
+        border-radius: 12px;
+        border: 1px solid #ccc;
+        padding: 10px 14px;
+        font-size: 15px;
+        transition: 0.3s;
+        background-color: #fdfdfd;
+    }
+
+        input.form-control:focus,
+        select.form-control:focus,
+        textarea.form-control:focus {
+            border-color: #2980b9;
+            box-shadow: 0 0 6px rgba(41, 128, 185, 0.3);
+        }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .form-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 15px;
+        margin: auto;
+        width: fit-content;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-weight: 600;
+            color: #212529;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+    .form-control,
+    .form-control-file,
+    select.form-control {
+        border-radius: 8px;
+        border: 1px solid #ced4da;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+        .form-control:focus {
+            border-color: #28a745; /* Original focus color, consider unifying */
+            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+        }
+
+    .btn-custom {
+        padding: 12px 32px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 30px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn-success {
+        background-color: #3498db;
+        border: none;
+        color: white;
+    }
+
+        .btn-success:hover {
+            background-color: #2980b9; /* Adjusted hover to be darker shade of blue */
+            box-shadow: 0 8px 16px rgba(52, 152, 219, 0.3);
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            box-shadow: 0 8px 16px rgba(108, 117, 125, 0.3);
+        }
+
+    .text-danger {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    #imagePreview {
+        display: none;
+        max-width: 100%;
+        height: auto;
+        margin-top: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+        #imagePreview:hover {
+            transform: scale(1.03);
+        }
+
+    @@media (max-width: 768px) {
+        .form-title {
+            font-size: 24px;
+        }
+
+        .btn-custom {
+            width: 100%;
+            margin-top: 10px;
+        }
+    }
+</style>
+
+<div class="form-title">إضافة منتج جديد</div>
+<div class="container">
+    <div class="card-custom">
+        <form asp-action="Create" method="post" enctype="multipart/form-data" class="p-4 rounded">
+            @Html.AntiForgeryToken() <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="TitleAr"></label>
+                    <input asp-for="TitleAr" class="form-control" />
+                    <span asp-validation-for="TitleAr" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="TitleEn"></label>
+                    <input asp-for="TitleEn" class="form-control" />
+                    <span asp-validation-for="TitleEn" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="DescriptionAr"></label>
+                    <textarea asp-for="DescriptionAr" class="form-control"></textarea>
+                    <span asp-validation-for="DescriptionAr" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="DescriptionEn"></label>
+                    <textarea asp-for="DescriptionEn" class="form-control"></textarea>
+                    <span asp-validation-for="DescriptionEn" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="TypeAr"></label>
+                    <input asp-for="TypeAr" class="form-control" />
+                    <span asp-validation-for="TypeAr" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="TypeEn"></label>
+                    <input asp-for="TypeEn" class="form-control" />
+                    <span asp-validation-for="TypeEn" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="ColorAr"></label>
+                    <input asp-for="ColorAr" class="form-control" />
+                    <span asp-validation-for="ColorAr" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="ColorEn"></label>
+                    <input asp-for="ColorEn" class="form-control" />
+                    <span asp-validation-for="ColorEn" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="CapacityAr"></label>
+                    <input asp-for="CapacityAr" class="form-control" />
+                    <span asp-validation-for="CapacityAr" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="CapacityEn"></label>
+                    <input asp-for="CapacityEn" class="form-control" />
+                    <span asp-validation-for="CapacityEn" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="ViscosityAr"></label>
+                    <input asp-for="ViscosityAr" class="form-control" />
+                    <span asp-validation-for="ViscosityAr" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="ViscosityEn"></label>
+                    <input asp-for="ViscosityEn" class="form-control" />
+                    <span asp-validation-for="ViscosityEn" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="Price"></label>
+                    <input asp-for="Price" type="number" step="0.01" class="form-control" /> <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="WeightAr"></label>
+                    <input asp-for="WeightAr" class="form-control" />
+                    <span asp-validation-for="WeightAr" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="WeightEn"></label>
+                    <input asp-for="WeightEn" class="form-control" />
+                    <span asp-validation-for="WeightEn" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="DimensionsAr"></label>
+                    <input asp-for="DimensionsAr" class="form-control" />
+                    <span asp-validation-for="DimensionsAr" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="DimensionsEn"></label>
+                    <input asp-for="DimensionsEn" class="form-control" />
+                    <span asp-validation-for="DimensionsEn" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label asp-for="BrandAr"></label>
+                    <input asp-for="BrandAr" class="form-control" />
+                    <span asp-validation-for="BrandAr" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="BrandEn"></label>
+                    <input asp-for="BrandEn" class="form-control" />
+                    <span asp-validation-for="BrandEn" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="ManufacturerAr"></label>
+                    <input asp-for="ManufacturerAr" class="form-control" />
+                    <span asp-validation-for="ManufacturerAr" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="ManufacturerEn"></label>
+                    <input asp-for="ManufacturerEn" class="form-control" />
+                    <span asp-validation-for="ManufacturerEn" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label asp-for="ProductTypeId" class="control-label">نوع المنتج</label>
+                    <select asp-for="ProductTypeId" class="form-control" asp-items="ViewBag.ProductTypes">
+                        <option value="">-- اختر نوع المنتج --</option>
+                    </select>
+                    <span asp-validation-for="ProductTypeId" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="CategoryId"></label>
+                    <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories">
+                        <option value="">-- اختر الفئة --</option>
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <div class="form-check mt-3">
+                        <input asp-for="IsVisible" class="form-check-input" type="checkbox" id="addToOffers" />
+                        <label class="form-check-label" for="addToOffers">
+                            إضافه الى العروض
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label>صورة المنتج</label>
+                    <br />
+                    <input type="file" name="imageFile" class="form-control-file" id="imageFileInput" accept="image/*" />
+                    <img id="imagePreview" src="#" alt="Preview" style="display:none; max-width: 50%; margin-top: 10px; border: 1px solid #ccc; border-radius: 8px;" />
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success btn-custom">إضافة</button>
+                <a asp-action="Index" class="btn btn-secondary btn-custom">العوده</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script>
+        document.getElementById("imageFileInput").addEventListener("change", function (event) {
+            const input = event.target;
+            const preview = document.getElementById("imagePreview");
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.style.display = "block";
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                preview.src = "#";
+                preview.style.display = "none";
+            }
+        });
+    </script>
+}

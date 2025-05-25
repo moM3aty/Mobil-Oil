@@ -1,0 +1,225 @@
+﻿@model List<Oil.Models.Product>
+@{
+    ViewData["Title"] = "Home Page"; // Or set in controller
+}
+<section class="offers-section text-center padding">
+    <div class="container" style="position: relative;
+                                  z-index: 0;">
+        <h2 class="section-title mb-5 fw-bold" data-en="Featured Offers 💥" data-ar=" 💥 العروض المميزة">💥 العروض المميزة</h2>
+        <div class="swiper mySwiper mt-5" id="slider">
+            <div class="swiper-wrapper">
+                @if (Model != null)
+                {
+                    foreach (var offer in Model.Where(p => p.IsVisible))
+                    {
+                        // Logic to determine localized title and image path
+                        var currentDirectionForLoop = ViewData["Direction"]?.ToString() ??
+                        (Context.Request.Cookies["Language"] == "en" ? "ltr" : "rtl");
+                        var offerTitleLocalized = currentDirectionForLoop == "rtl" ? offer.TitleAr : offer.TitleEn;
+                        if (string.IsNullOrEmpty(offerTitleLocalized)) offerTitleLocalized = offer.TitleAr ?? offer.TitleEn; // Fallback
+
+                        var offerImage = Url.Content(string.IsNullOrEmpty(offer.ImageUrl) ? "/images/products/default.png" : offer.ImageUrl);
+                        var btnTextAddToCart = currentDirectionForLoop == "rtl" ? "اضافه للسلة" : "Add To Cart";
+                        var btnTextConfirm = currentDirectionForLoop == "rtl" ? "اضافه" : "Add";
+                        var btnTextDetails = currentDirectionForLoop == "rtl" ? "تفاصيل المنتج" : "Products Details";
+
+                        <div class="swiper-slide text-decoration-none position-relative product-card-offer"
+                             data-product-id="@offer.Id"
+                             data-title-ar="@offer.TitleAr"
+                             data-title-en="@offer.TitleEn"
+                             data-price="@offer.Price"
+                             data-image="@offerImage">
+                            <div class="slide-card" style="min-height:420px;">
+                                <div class="img m-0" style="height: 250px; overflow: hidden;">
+                                    <img src="@offerImage" alt="@offerTitleLocalized" />
+                                </div>
+                                <div class="offer-card-content d-flex flex-column p-2 p-md-3">
+                                    <div class="content d-flex flex-column gap-1">
+                                        <h3 class="fs-6" data-en="@offer.TitleEn" data-ar="@offer.TitleAr" style="min-height: 3em;">@offerTitleLocalized</h3>
+                                        <span class="text-danger fs-5 fw-bold" data-ar="@offer.Price جنيه" data-en="EGP @offer.Price">@offer.Price @(currentDirectionForLoop == "rtl" ? "جنيه" : "EGP")</span>
+                                        <a href="@Url.Action("productDetail", "Home", new { id = offer.Id })" class="btn btn-sm btn-outline-info show-details mt-1" data-ar="تفاصيل المنتج" data-en="Products Details">@btnTextDetails</a>
+                                        <button class="btn btn-sm btn-danger add-to-cart mt-1" data-ar="اضافه للسلة" data-en="Add To Cart">@btnTextAddToCart</button>
+                                    </div>
+                                    <div class="quantity-section d-none mt-2 p-1" style="display: flex; justify-content: space-between; gap: 5px;">
+                                        <input type="number" class="form-control form-control-sm quantity-input" min="1" value="1" style="width: 60px;" />
+                                        <button class="btn btn-sm btn-success confirm-add flex-grow-1" data-ar="اضافه" data-en="Add">@btnTextConfirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            <div class="swiper-button-next" style="color:#dc3545;"></div>
+            <div class="swiper-button-prev" style="color:#dc3545;"></div>
+        </div>
+    </div>
+</section>
+
+<section id="about-us" class="about-us padding">
+    <div class="container">
+        <div class="row g-4 align-items-center">
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="inner">
+                    <h2 class="section-title" data-en=" who are we ?" data-ar="من نحن ؟">من نحن ؟</h2>
+                    <h3 data-en="Mobil Oil " data-ar="موبيل اويل للزيوت">موبيل اويل  للزيوت</h3>
+                    <p data-ar="شركة موبيل اويل لزيوت السيارات، نضع الجودة على رأس أولوياتنا، ونؤمن بأن تقديم منتج مميز يبدأ بفهم احتياجات عملائنا والسوق. نعمل باستمرار على توفير زيوت عالية الأداء تتماشى مع أحدث التقنيات في عالم المحركات، ونلتزم بأعلى المعايير الأوروبية والدولية. رؤيتنا لا تقتصر على بيع منتج، بل نسعى لبناء علاقة شراكة طويلة الأمد مع عملائنا مبنية على الثقة، الالتزام، والاستمرارية. نحن نعلم أن كل نقطة زيت نقدمها يجب أن تعكس قيمنا وسمعتنا، ولهذا نختار مكوناتنا بعناية ونراقب عمليات الإنتاج بأعلى درجات الدقة." data-en="At Mobil Motor Oil Company, we prioritize quality and believe that delivering a superior product begins with understanding the needs of our customers and the market. We continually work to provide high-performance oils that align with the latest engine technologies, adhering to the highest European and international standards. Our vision goes beyond selling a product; we strive to build long-term partnerships with our customers based on trust, commitment, and sustainability. We know that every drop of oil we offer must reflect our values ​​and reputation, which is why we carefully select our ingredients and meticulously monitor our production processes." class="text-muted fs-6 mt-4">
+                        شركة موبيل اويل لزيوت السيارات، نضع الجودة على رأس أولوياتنا، ونؤمن بأن تقديم منتج مميز يبدأ بفهم احتياجات عملائنا والسوق.
+                        نعمل باستمرار على توفير زيوت عالية الأداء تتماشى مع أحدث التقنيات في عالم المحركات، ونلتزم بأعلى المعايير الأوروبية والدولية. رؤيتنا لا تقتصر على بيع منتج، بل نسعى لبناء علاقة شراكة طويلة الأمد مع عملائنا مبنية على الثقة، الالتزام، والاستمرارية. نحن نعلم أن كل نقطة زيت نقدمها يجب أن تعكس قيمنا وسمعتنا، ولهذا نختار مكوناتنا بعناية ونراقب عمليات الإنتاج بأعلى درجات الدقة.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="media-grid">
+                    <div class="media-item">
+                        <video autoplay loop muted playsinline class="video1" src="~/imgs/video.mp4"></video>
+                    </div>
+                    <div class="media-item">
+                        <img class="img1" src="~/imgs/image1.jpg" alt="Image 1">
+                    </div>
+                    <div class="media-item">
+                        <img class="img2" src="~/imgs/image2.jpg" alt="Image 2">
+                    </div>
+                    <div class="media-item">
+                        <video autoplay loop muted playsinline class="video2" src="~/imgs/video2.mp4"></video>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services text-center bg-darkGray padding" id="services">
+    <div class="container">
+        <h2 class="text-center mb-5 section-title" data-en="Our Services" data-ar="خدماتنا">خدماتنا</h2>
+        <div class="row g-4">
+            <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="400">
+                <div class="card p-5 h-100 d-flex flex-column justify-content-center align-items-center gap-3">
+                    <div class="icon mb-2"><i class="fa-solid fa-repeat"></i></div>
+                    <h3 class="fs-5" data-ar="تغيير زيت المحرك" data-en="Change the engine oil">تغيير زيت المحرك</h3>
+                    <p data-ar="نقدم خدمة تغيير الزيت عالية الجودة باستخدام أفضل أنواع الزيوت لضمان أداء قوي للمحرك وعمر أطول"
+                       data-en="We provide high-quality oil change service using the best oils for better engine performance and life.">
+                        نقدم خدمة تغيير الزيت عالية الجودة باستخدام أفضل أنواع الزيوت لضمان أداء قوي للمحرك وعمر أطول
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="400">
+                <div class="card p-5 h-100 d-flex flex-column justify-content-center align-items-center gap-3">
+                    <div class="icon mb-2"><i class="fa-solid fa-eye"></i></div>
+                    <h3 class="fs-5" data-ar="تحليل وفحص جودة الزيت" data-en="Oil quality analysis">تحليل وفحص جودة الزيت</h3>
+                    <p data-ar="نُجري تحليلاً دقيقًا لزيت المحرك للكشف المبكر عن الأعطال وضمان الحماية القصوى لمحركك."
+                       data-en="We analyze engine oil to detect early faults and ensure maximum protection.">
+                        نُجري تحليلاً دقيقًا لزيت المحرك للكشف المبكر عن الأعطال وضمان الحماية القصوى لمحركك.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="400">
+                <div class="card p-5 h-100 d-flex flex-column justify-content-center align-items-center gap-3">
+                    <div class="icon mb-2"><i class="fa-solid fa-industry"></i></div>
+                    <h3 class="fs-5" data-ar="توريد الزيوت للمؤسسات والمصانع" data-en="Supplying oils">توريد الزيوت للمؤسسات والمصانع</h3>
+                    <p data-ar="نوفّر حلول تزويد احترافية لزيوت المحركات للمصانع، والشركات، ومراكز الصيانة، مع خيارات تعبئة متنوعة."
+                       data-en="We supply professional motor oil solutions to factories, companies, and service centers.">
+                        نوفّر حلول تزويد احترافية لزيوت المحركات للمصانع، والشركات، ومراكز الصيانة، مع خيارات تعبئة متنوعة.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="products padding text-center border-top border-bottom" id="products">
+    <div class="container">
+        <h2 class="section-title" data-ar="المنتجات" data-en="Products">المنتجات</h2>
+
+        <div class="row g-4 mt-5 justify-content-center align-items-center" data-aos="fade-bottom" data-aos-delay="50">
+            @foreach (var category in ViewBag.Categories)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <a asp-action="CategoryProducts" asp-route-id="@category.Id" class="card">
+                        <div class="img w-100">
+                            <img src="@category.ImagePath" class="w-100" style="height:350px !important" alt="@category.NameAr" />
+                            <div class="content">
+                                <h3 data-ar="@category.NameAr" data-en="@category.NameEn">@category.NameAr</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<section class="padding bg-darkGray text-center">
+    <div class="container">
+        <h2 class="section-title mb-5 " data-ar="شركائنا" data-en="Our Partners">شركائنا</h2>
+        <div class="slider-container d-flex flex-wrap gap-4 justify-content-center align-items-center ">
+            <img src="~/imgs/logo.svg" class="img-fluid " alt="Logo 1">
+            <img src="~/imgs/elf-logo.svg" class="img-fluid " alt="Logo 2">
+            <img src="~/imgs/MobilTMLogo.png" class="img-fluid " alt="Logo 3">
+            <img src="~/imgs/totalenergies.png" class="img-fluid " alt="Logo 5">
+            <img src="~/imgs/logo1.svg" class="img-fluid " alt="Logo 4">
+            <img src="~/imgs/mannol.png" class="img-fluid " alt="Logo 6">
+            <img src="~/imgs/shell.png" class="img-fluid " alt="Logo 7">
+            <img src="~/imgs/motul.png" class="img-fluid " alt="Logo 5">
+        </div>
+    </div>
+</section>
+<section class="contact py-5 my-5 bg-white" id="contact">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+        <div class="text-center">
+            <h2 class="h2-style fw-semibold my-5 section-title" data-en="Contact Us Now" data-ar=" تواصل معنا الان">تواصل معنا الان</h2>
+        </div>
+        <div class="row g-4 box d-flex pb-4 my-4 justify-content-center align-items-center ">
+            <div class="col-lg-4">
+                <div class="inner d-flex gap-3 justify-content-lg-center align-items-center">
+                    <div class="icon d-flex justify-content-center align-items-center flex-shrink-0"><i class="fa-solid fa-location-dot"></i></div>
+                    <a href="https://maps.app.goo.gl/bVb1ZJVdvxMJ33qS9?g_st=atm" target="_blank" class="content text-decoration-none d-flex flex-column  justify-content-center">
+                        <h3 class="fs-5 fw-semibold mt-5" data-en="Address" data-ar="العنوان">العنوان</h3>
+                        <p data-ar="حدائق  الاهرام 236  و. شارع  الضغط العالى بجوار كافية الكرنك البوابة الثانية القديمة" data-en="Pyramids Gardens 236 W. High Pressure Street, next to Karnak Cafe Old Second Gate" class="">
+                            حدائق  الاهرام
+                            236  و. شارع  الضغط العالى بجوار كافية الكرنك
+                            البوابة الثانية القديمة
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="inner d-flex justify-content-lg-center align-items-center  gap-3">
+                    <div class="icon d-flex justify-content-center align-items-center flex-shrink-0"><i class="fa-brands fa-facebook"></i></div>
+                    <a href="https://www.facebook.com/share/1AJpSLbrq2/?mibextid=wwXIfr" target="_blank" class="content text-decoration-none d-flex flex-column align-items-center justify-content-center">
+                        <h3 class="fs-5 fw-semibold" data-ar="فيسبوك" data-en="Facebook">فيسبوك</h3>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="inner d-flex gap-3 justify-content-lg-center align-items-center">
+                    <div class="icon d-flex justify-content-center align-items-center flex-shrink-0"><i class="fa-brands fa-instagram"></i></div>
+                    <a href="https://www.instagram.com/mobiloil.alahram?igsh=eXMwaDJob3BlMGlx&utm_source=qr" target="_blank" class="content text-decoration-none d-flex flex-column align-items-center justify-content-center">
+                        <h3 class="fs-5 fw-semibold" data-ar="انستغرام" data-en="Instagram">انستغرام</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="box p-5">
+            <form action="" class="row g-4" id="contactForm">
+                <div class="col-md-6">
+                    <input class="w-100 input-name" type="text" name="UserName" placeholder="الاسم" id="UserName">
+                    <p class="text-danger small m-0" id="nameError"></p>
+                </div>
+                <div class="col-md-6">
+                    <input class="w-100" type="email" name="UserEmail" placeholder="البريد الالكتروني" id="UserEmail">
+                    <p class="text-danger small m-0" id="emailError"></p>
+                </div>
+                <div class="col-12">
+                    <textarea class="w-100" name="message" placeholder="رسالتك" id="message"></textarea>
+                    <p class="text-danger small m-0" id="messageError"></p>
+                </div>
+                <div class="col-12 d-flex justify-content-center">
+                    <button type="submit" class="text-white px-4 py-2 btn btn-primary  rounded-pill text-capitalize">ارسل الان</button>
+                </div>
+                <p id="formSuccess" class="text-success text-center d-none mt-3">تم ارسال الرسالة</p>
+            </form>
+
+        </div>
+    </div>
+</section>

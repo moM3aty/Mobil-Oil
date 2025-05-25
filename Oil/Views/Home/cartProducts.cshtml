@@ -1,0 +1,128 @@
+﻿@{
+    var products = ViewBag.Products as List<Oil.Models.Product>;
+    var direction = ViewData["Direction"]?.ToString() ?? "ltr";
+}
+
+<section class="ships-products padding">
+    <div class="container text-center" data-aos="fade" data-aos-delay="100">
+        <h2 class="mb-5 section-title" data-ar="منتجاتك" data-en="Diesel Oil">
+            @(direction == "rtl" ? ViewBag.Category.NameAr : ViewBag.Category.NameEn)
+        </h2>
+        <div class="row g-4">
+            @foreach (var product in products)
+            {
+                var productId = $"product_{product.Id}";
+                <div class="col-6 col-lg-4 col-xl-3">
+                    <div class="card">
+                        <div class="img">
+                            <img src="@product.ImageUrl" alt="product image" />
+                        </div>
+                        <div class="content d-flex flex-column gap-2 gap-md-3 g p-2 p-md-4">
+                            <h3 data-en="@product.TitleEn" data-ar="@product.TitleAr">
+                                @(direction == "rtl" ? product.TitleAr : product.TitleEn)
+                            </h3>
+                            <p class="text-muted" data-ar="@product.DescriptionAr" data-en="@product.DescriptionEn">
+                                @(direction == "rtl" ? product.DescriptionAr : product.DescriptionEn)
+                            </p>
+                            <span class="text-danger fs-5">
+                                @(direction == "rtl" ? "السعر" : "Price") : @product.Price.ToString("C")
+                            </span>
+
+                            <!-- Add to Cart Button -->
+                            <button class="btn btn-outline-primary mt-2" onclick="showQuantity('@productId')"
+                                    data-ar="اضافة الى السلة" data-en="Add to Cart">
+                                @(direction == "rtl" ? "اضافة الى السلة" : "Add to Cart")
+                            </button>
+
+                            <!-- Quantity Input + Confirm Button -->
+                            <div id="@productId" class="quantity-container mt-2 d-none">
+                                <input type="number" class="form-control mb-2 quantity-input" id="qty_@product.Id" value="1" min="1" />
+                                <button class="btn btn-success w-100"
+                                        onclick="addToCart(@product.Id, '@(product.TitleAr)', '@(product.TitleEn)', '@product.ImageUrl', @product.Price)">
+                                    @(direction == "rtl" ? "تأكيد الإضافة" : "Confirm Add")
+                                </button>
+                            </div>
+
+                            <!-- Details Button -->
+                            <a href="/Product/Details/@product.Id" class="btn btn-secondary mt-2">
+                                @(direction == "rtl" ? "عرض التفاصيل" : "Show Details")
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<script>
+    function showQuantity(productId) {
+        const quantityDiv = document.getElementById(productId);
+        if (quantityDiv) {
+            quantityDiv.classList.remove("d-none");
+        }
+    }
+
+    function addToCart(id, titleAr, titleEn, imageUrl, price) {
+        const direction = '@direction';
+        const title = direction === 'rtl' ? titleAr : titleEn;
+
+        const quantityInput = document.getElementById("qty_" + id);
+        const quantity = parseInt(quantityInput.value);
+
+        if (isNaN(quantity) || quantity < 1) {
+            Swal.fire({
+                icon: 'error',
+                timer: 2000,
+                showConfirmButton: false,
+                toast: true,
+                position: 'top-end'
+            });
+            return;
+        }
+
+        const product = {
+            id: id,
+            title: title,
+            price: parseFloat(price),
+            imageUrl: imageUrl,
+            quantity: quantity
+        };
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        const existing = cart.find(p => p.id === id);
+        if (existing) {
+            existing.quantity += product.quantity;
+        } else {
+            cart.push(product);
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        // Hide quantity section
+        const quantityDiv = document.getElementById("product_" + id);
+        quantityDiv.classList.add("d-none");
+
+        updateCartBadge();
+
+          Swal.fire({ icon: 'success', title: (cardLangDir === 'rtl' ? 'أُضيف للسلة!' : 'Added to Cart!'),  timer: 2500, timerProgressBar: true, showConfirmButton: false, toast: true, position: 'top-end' });
+    }
+
+    function updateCartBadge() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+        const badge = document.querySelector('.fixed-cart-button .badge');
+        if (badge) {
+            if (totalQuantity > 0) {
+                badge.textContent = totalQuantity;
+                badge.style.display = 'inline-block';
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", updateCartBadge);
+</script>

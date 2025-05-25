@@ -1,0 +1,170 @@
+﻿@model Oil.Models.ProductCategory
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Assuming _Layout.cshtml includes necessary JS/CSS like SweetAlert2
+    var initialDirection = Context.Request.Cookies["Language"] == "en" ? "ltr" : "rtl";
+    var categoryName = initialDirection == "rtl" ? Model.NameAr : Model.NameEn;
+    if (string.IsNullOrEmpty(categoryName)) categoryName = Model.NameAr ?? Model.NameEn;
+}
+<section class="ships-products padding" dir="@initialDirection">
+    <div class="container text-center" data-aos="fade" data-aos-delay="100">
+        <h2 class="mb-5 section-title" data-ar="@Model.NameAr" data-en="@Model.NameEn">@categoryName</h2>
+        <div class="row g-4">
+            @if (Model.Products != null && Model.Products.Any())
+            {
+                foreach (var product in Model.Products.Where(p => p.IsVisible))
+                {
+                    var productTitleLocalized = initialDirection == "rtl" ? product.TitleAr : product.TitleEn;
+                    if (string.IsNullOrEmpty(productTitleLocalized)) productTitleLocalized = product.TitleAr ?? product.TitleEn;
+
+                    var productPrice = product.Price;
+                    var productImage = Url.Content(string.IsNullOrEmpty(product.ImageUrl) ? "/images/products/default.png" : product.ImageUrl);
+
+                    var btnTextAddToCartLocalized = initialDirection == "rtl" ? "اضافه للسلة" : "Add To Cart";
+                    var btnTextConfirmLocalized = initialDirection == "rtl" ? "تأكيد" : "Confirm";
+                    var btnTextDetailsLocalized = initialDirection == "rtl" ? "عرض التفاصيل" : "Show Details";
+
+
+                    <div class="col-6 col-lg-4 col-xl-3 d-flex">
+                        <div class="card product-card w-100" data-product-id="@product.Id"
+                             data-title-ar="@product.TitleAr"
+                             data-title-en="@product.TitleEn"
+                             data-price="@productPrice"
+                             data-image="@productImage"
+                             style="min-height: 420px;">
+                            <div class="img m-0" style="height: 220px; overflow:hidden;">
+                                <img style="width:100%; height:100%; object-fit: contain;" src="@productImage" alt="@productTitleLocalized" onerror="this.onerror=null;this.src='/images/products/default.png';">
+                            </div>
+                            <div class="content d-flex flex-column gap-1 p-2 p-md-3 flex-grow-1">
+                                <h3 class="fs-6 fw-semibold" data-en="@product.TitleEn" data-ar="@product.TitleAr" style="min-height: 3em; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">@productTitleLocalized</h3>
+                                <span class="text-danger fs-5 fw-bold mt-auto" data-ar="@product.Price جنيه" data-en="EGP @product.Price">@product.Price @(initialDirection == "rtl" ? "جنيه" : "EGP")</span>
+
+                                <div class="mt-2">
+                                    <a href="@Url.Action("productDetail", "Home", new { id = product.Id })" class="btn btn-sm btn-outline-secondary show-details w-100 mb-1" data-ar="تفاصيل المنتج" data-en="Products Details">@btnTextDetailsLocalized</a>
+                                    <button class="btn btn-sm btn-danger add-to-cart w-100" data-ar="اضافه للسلة" data-en="Add To Cart">@btnTextAddToCartLocalized</button>
+                                </div>
+
+                                <div class="quantity-section d-none mt-2 p-1" style="display: flex; justify-content: space-between; gap: 5px;">
+                                    <input type="number" class="form-control form-control-sm quantity-input" min="1" value="1" style="width: 60px;" aria-label="Quantity" />
+                                    <button class="btn btn-sm btn-success confirm-add flex-grow-1" data-ar="تأكيد" data-en="Confirm">@btnTextConfirmLocalized</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12"><p class="text-muted fs-5" data-ar="لا توجد منتجات في هذه الفئة حاليًا." data-en="No products currently in this category.">@(initialDirection == "rtl" ? "لا توجد منتجات في هذه الفئة حاليًا." : "No products currently in this category.")</p></div>
+            }
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        // Ensure updateCartBadge is available (e.g., from index.js or define it here if this page is standalone)
+        if (typeof updateCartBadge !== 'function') {
+            function updateCartBadge() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const totalQuantity = cart.reduce((sum, p) => sum + (p.quantity || 0), 0);
+                const badge = document.querySelector(".fixed-cart-button .badge");
+                if (badge) {
+                    badge.textContent = totalQuantity;
+                    badge.style.display = totalQuantity > 0 ? 'inline-block' : 'none';
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const cards = document.querySelectorAll(".product-card");
+            const currentLangDirection = document.documentElement.dir || "rtl"; // Get current language direction
+
+            cards.forEach(card => {
+                const addToCartBtn = card.querySelector(".add-to-cart");
+                const quantitySection = card.querySelector(".quantity-section");
+                const confirmAddBtn = card.querySelector(".confirm-add");
+                const quantityInput = card.querySelector(".quantity-input");
+
+                addToCartBtn?.addEventListener("click", () => {
+                    if(quantitySection) quantitySection.classList.remove("d-none");
+                    if(addToCartBtn) addToCartBtn.classList.add("d-none");
+                });
+
+                confirmAddBtn?.addEventListener("click", () => {
+                    const productIdString = card.getAttribute("data-product-id");
+                    const productId = parseInt(productIdString);
+
+                    const titleAr = card.getAttribute("data-title-ar") || "";
+                    const titleEn = card.getAttribute("data-title-en") || "";
+                    let productTitleForCart = (currentLangDirection === 'rtl' ? titleAr : titleEn).trim();
+                    if (!productTitleForCart) { productTitleForCart = (titleAr || titleEn || (currentLangDirection === 'rtl' ? "منتج" : "Product")).trim(); }
+
+                    const priceString = card.getAttribute("data-price");
+                    const productPrice = parseFloat(priceString);
+
+                    const productImage = card.getAttribute("data-image") || "/images/products/default.png";
+                    const quantity = parseInt(quantityInput.value);
+
+                    // Enhanced Validation
+                    if (isNaN(productId) || productId <= 0) {
+                        console.error("Invalid productId on category page:", productIdString, "for card:", card);
+                        Swal.fire({ icon: 'error', title: (currentLangDirection === 'rtl' ? 'خطأ بالمنتج' : 'Product Error'), text: (currentLangDirection === 'rtl' ? 'معرف المنتج غير صالح.' : 'Invalid product ID.')});
+                        return;
+                    }
+                    if (isNaN(quantity) || quantity < 1) {
+                        Swal.fire({ icon: 'error', title: (currentLangDirection === 'rtl' ? 'خطأ بالكمية' : 'Quantity Error'), text: (currentLangDirection === 'rtl' ? 'يرجى إدخال كمية صحيحة (1 على الأقل).' : 'Please enter a valid quantity (at least 1).')});
+                        return;
+                    }
+                    if (isNaN(productPrice) || productPrice < 0) {
+                         console.error("Invalid productPrice on category page:", priceString, "for card:", card);
+                        Swal.fire({ icon: 'error', title: (currentLangDirection === 'rtl' ? 'خطأ بالسعر' : 'Price Error'), text: (currentLangDirection === 'rtl' ? 'سعر المنتج غير صالح.' : 'Invalid product price.')});
+                        return;
+                    }
+
+                    const productForCart = {
+                        productId: productId, // Use 'productId' to match CartItemViewModel
+                        title: productTitleForCart,
+                        price: productPrice,
+                        imageUrl: productImage,
+                        quantity: quantity
+                    };
+
+                    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                    const existingProductIndex = cart.findIndex(p => p.productId === productForCart.productId);
+
+                    if (existingProductIndex > -1) {
+                        cart[existingProductIndex].quantity += productForCart.quantity;
+                    } else {
+                        cart.push(productForCart);
+                    }
+                    localStorage.setItem("cart", JSON.stringify(cart));
+
+                    if(quantitySection) quantitySection.classList.add("d-none");
+                    if(addToCartBtn) addToCartBtn.classList.remove("d-none");
+                    if(quantityInput) quantityInput.value = 1;
+
+                    updateCartBadge();
+
+                    Swal.fire({
+                        icon: 'success',
+                    title: (currentLangDirection === 'rtl' ? 'أُضيف للسلة' : 'Added to Cart'),
+                    // text: productTitleForCart + (currentLangDirection === 'rtl' ? ' أضيف إلى سلتك.' : ' has been added to your cart.'), // Optional: add product title to message
+                    toast: true, // Make it a toast
+                    position: 'top-end', // Position toast at top-right (or top-left for RTL)
+                    showConfirmButton: false,
+                    timer: 2500, // Auto-close after 2.5 seconds
+                    timerProgressBar: true,
+                    customClass: { // Use custom classes if defined in main.css for swal2-toast
+                        popup: 'swal2-toast', // Ensure this class matches your CSS for toasts
+                    },
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                    });
+                });
+            });
+            updateCartBadge(); // Initial call on page load
+        });
+    </script>
+}

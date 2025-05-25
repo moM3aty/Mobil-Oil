@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Oil.Models.Order>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="mb-4 text-primary fw-bold">🛒 الأوردرات</h2>
+<div class="card shadow-sm border-0">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover table-striped align-middle mb-0 text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>🧾 الاسم</th>
+                        <th>📞 التليفون</th>
+                        <th>📌 العنوان</th>
+                        <th>💳 طريقة الدفع</th> 
+                        <th>📅 تاريخ الطلب</th> 
+                        <th>📦 التفاصيل</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        @foreach (var order in Model.OrderByDescending(x=>x.CreatedAt))
+                        {
+                            <tr>
+                                <td>@order.Name</td>
+                                <td>@order.Phone</td>
+                                <td>@order.Address</td>
+                                <td>@order.PaymentMethod</td> 
+                                <td>@order.CreatedAt.ToShortDateString() @order.CreatedAt.ToShortTimeString()</td> 
+                                <td>
+                                    <a class="btn btn-sm btn-outline-primary"
+                                       href="@Url.Action("OrderItems", "Login", new { orderId = order.Id })">
+                                        عرض العناصر
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="7" class="text-danger">لا توجد أوردرات لعرضها.</td> 
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
