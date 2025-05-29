@@ -64,8 +64,8 @@ namespace Oil.Models
         [Display(Name = "رابط الصورة")]
         public string? ImageUrl { get; set; }
 
-        [Required(ErrorMessage = "يجب تحديد الفئة")]
-        [Display(Name = "القسم")]
+        [Required(ErrorMessage = "يجب تحديد الشركه")]
+        [Display(Name = "الشركه")]
         public int CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]
@@ -82,6 +82,10 @@ namespace Oil.Models
 
         [Display(Name = "الشركه المصنعه (انجليزي)")]
         public string? ManufacturerEn { get; set; }
+
+        [Display(Name = "السعر قبل الخصم")]
+        [Column(TypeName = "decimal(18,2)")] 
+        public decimal? PriceBeforeDiscount { get; set; }
 
         [Display(Name = "عرض المنتج")]
         public bool IsVisible { get; set; } = true;

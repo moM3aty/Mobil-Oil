@@ -154,6 +154,9 @@ namespace Oil.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<decimal?>("PriceBeforeDiscount")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int>("ProductTypeId")
                         .HasColumnType("int");
 

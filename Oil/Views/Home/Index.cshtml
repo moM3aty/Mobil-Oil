@@ -36,7 +36,10 @@
                                 <div class="offer-card-content d-flex flex-column p-2 p-md-3">
                                     <div class="content d-flex flex-column gap-1">
                                         <h3 class="fs-6" data-en="@offer.TitleEn" data-ar="@offer.TitleAr" style="min-height: 3em;">@offerTitleLocalized</h3>
-                                        <span class="text-danger fs-5 fw-bold" data-ar="@offer.Price جنيه" data-en="EGP @offer.Price">@offer.Price @(currentDirectionForLoop == "rtl" ? "جنيه" : "EGP")</span>
+                                        <div class="d-flex justify-content-evenly" >
+                                        <span class="text-danger fs-5 fw-bold" style="text-decoration:line-through" data-ar="@offer.PriceBeforeDiscount جنيه" data-en="EGP @offer.PriceBeforeDiscount">@offer.PriceBeforeDiscount @(currentDirectionForLoop == "rtl" ? "جنيه" : "EGP")</span>
+                                        <span class="text-success fs-5 fw-bold" data-ar="@offer.Price جنيه" data-en="EGP @offer.Price">@offer.Price @(currentDirectionForLoop == "rtl" ? "جنيه" : "EGP")</span>
+                                        </div>
                                         <a href="@Url.Action("productDetail", "Home", new { id = offer.Id })" class="btn btn-sm btn-outline-info show-details mt-1" data-ar="تفاصيل المنتج" data-en="Products Details">@btnTextDetails</a>
                                         <button class="btn btn-sm btn-danger add-to-cart mt-1" data-ar="اضافه للسلة" data-en="Add To Cart">@btnTextAddToCart</button>
                                     </div>

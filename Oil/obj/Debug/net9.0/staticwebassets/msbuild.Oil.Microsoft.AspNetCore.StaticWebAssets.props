@@ -138,8 +138,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>bzz8d0p92e</Fingerprint>
-      <Integrity>J2XG5mn7UscAJfJxtydp/EevmB5KRJESL6fjxP7/kao=</Integrity>
+      <Fingerprint>e764haqh4w</Fingerprint>
+      <Integrity>lg5xjRayrbWq/ar+SGk4FeMtD+JO8/ZCtMNLkepR6ls=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imgs\Accessories.jpg'))</OriginalItemSpec>
@@ -156,8 +156,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>q96t8slvfr</Fingerprint>
-      <Integrity>/sxs0jsRn6k9GwK7VT9MBFz6ITBCK+v++nUD8nNaQNQ=</Integrity>
+      <Fingerprint>z287bjmh73</Fingerprint>
+      <Integrity>VSSWLLfnMu/oWjhmbi6O+k6HUvYPK1qXTBQ0PBQ+XEQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imgs\car-care.jpg'))</OriginalItemSpec>
@@ -174,8 +174,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>2c0arcv6va</Fingerprint>
-      <Integrity>zsR1DCugj4S7AODh9i5FHD1JAcibi/9/HGofzjUTCGk=</Integrity>
+      <Fingerprint>p5h5702vfc</Fingerprint>
+      <Integrity>HS1+HBPE/29NJ2hW2AwD1+tXL5kpAVuVdtdoIKZ2Q7M=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imgs\Car-oils.jpg'))</OriginalItemSpec>
@@ -1890,311 +1890,131 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Oil.2kbxtq24av.bundle.scp.css'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\categories\6aa45253-b2cc-4bec-9239-967183905220.png'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\categories\478ecb66-c54c-4c65-9942-80d64ac6465d.png'))">
       <SourceType>Package</SourceType>
       <SourceId>Oil</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Oil</BasePath>
-      <RelativePath>uploads/categories/6aa45253-b2cc-4bec-9239-967183905220.png</RelativePath>
+      <RelativePath>uploads/categories/478ecb66-c54c-4c65-9942-80d64ac6465d.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>lq8gmugoqh</Fingerprint>
-      <Integrity>PZ5zqI/ZqcZVacLNVXg642uOwdMjjjeP0MfvifK2uFc=</Integrity>
+      <Fingerprint>n5t81ntq8r</Fingerprint>
+      <Integrity>ZQ2wzND7AfvVhj/vBZnYr9skEaZGadVgm/Rl4MOufaw=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\categories\6aa45253-b2cc-4bec-9239-967183905220.png'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\categories\478ecb66-c54c-4c65-9942-80d64ac6465d.png'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\categories\ffe823cd-0c31-45c2-9fe8-155c355ab3fe.png'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\categories\fcdb76c0-40ff-4ed3-b2b9-bf8f96785bcc.png'))">
       <SourceType>Package</SourceType>
       <SourceId>Oil</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Oil</BasePath>
-      <RelativePath>uploads/categories/ffe823cd-0c31-45c2-9fe8-155c355ab3fe.png</RelativePath>
+      <RelativePath>uploads/categories/fcdb76c0-40ff-4ed3-b2b9-bf8f96785bcc.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>gg8zqarcnw</Fingerprint>
-      <Integrity>kIdGIHN7dch5CkRBoAMwA8gKlLo4fQw1V+WJGwHqw3o=</Integrity>
+      <Fingerprint>9wexg0nhnz</Fingerprint>
+      <Integrity>V3YeWvKilxLblip529ze8ES2okcY/DOQF0q7AHP+Ues=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\categories\ffe823cd-0c31-45c2-9fe8-155c355ab3fe.png'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\categories\fcdb76c0-40ff-4ed3-b2b9-bf8f96785bcc.png'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\0fdbab60-7d05-4d3f-ad13-da405c952b60.png'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\72168b7e-1ca2-487b-a96b-c822965b0217.png'))">
       <SourceType>Package</SourceType>
       <SourceId>Oil</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Oil</BasePath>
-      <RelativePath>uploads/id_images/0fdbab60-7d05-4d3f-ad13-da405c952b60.png</RelativePath>
+      <RelativePath>uploads/id_images/72168b7e-1ca2-487b-a96b-c822965b0217.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>gg8zqarcnw</Fingerprint>
-      <Integrity>kIdGIHN7dch5CkRBoAMwA8gKlLo4fQw1V+WJGwHqw3o=</Integrity>
+      <Fingerprint>9wexg0nhnz</Fingerprint>
+      <Integrity>V3YeWvKilxLblip529ze8ES2okcY/DOQF0q7AHP+Ues=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\0fdbab60-7d05-4d3f-ad13-da405c952b60.png'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\72168b7e-1ca2-487b-a96b-c822965b0217.png'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\2bb24418-5246-4c47-9aeb-c681b65453bb.png'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\9f790d2b-3998-45ce-b3c4-6f458b104bad.png'))">
       <SourceType>Package</SourceType>
       <SourceId>Oil</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Oil</BasePath>
-      <RelativePath>uploads/id_images/2bb24418-5246-4c47-9aeb-c681b65453bb.png</RelativePath>
+      <RelativePath>uploads/id_images/9f790d2b-3998-45ce-b3c4-6f458b104bad.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>gg8zqarcnw</Fingerprint>
-      <Integrity>kIdGIHN7dch5CkRBoAMwA8gKlLo4fQw1V+WJGwHqw3o=</Integrity>
+      <Fingerprint>n5t81ntq8r</Fingerprint>
+      <Integrity>ZQ2wzND7AfvVhj/vBZnYr9skEaZGadVgm/Rl4MOufaw=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\2bb24418-5246-4c47-9aeb-c681b65453bb.png'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\9f790d2b-3998-45ce-b3c4-6f458b104bad.png'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\3917c5dd-ff35-480e-ac6b-f9b5b5c9e547.png'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\bc59e003-6337-4090-9aec-a09b4fc2f2e5.png'))">
       <SourceType>Package</SourceType>
       <SourceId>Oil</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Oil</BasePath>
-      <RelativePath>uploads/id_images/3917c5dd-ff35-480e-ac6b-f9b5b5c9e547.png</RelativePath>
+      <RelativePath>uploads/id_images/bc59e003-6337-4090-9aec-a09b4fc2f2e5.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>gg8zqarcnw</Fingerprint>
-      <Integrity>kIdGIHN7dch5CkRBoAMwA8gKlLo4fQw1V+WJGwHqw3o=</Integrity>
+      <Fingerprint>n5t81ntq8r</Fingerprint>
+      <Integrity>ZQ2wzND7AfvVhj/vBZnYr9skEaZGadVgm/Rl4MOufaw=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\3917c5dd-ff35-480e-ac6b-f9b5b5c9e547.png'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\bc59e003-6337-4090-9aec-a09b4fc2f2e5.png'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\584fec26-4159-4910-9717-b4530a9ab913.png'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\products\0d6f5f1b-9d64-446e-9652-9607d009e7e3.png'))">
       <SourceType>Package</SourceType>
       <SourceId>Oil</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Oil</BasePath>
-      <RelativePath>uploads/id_images/584fec26-4159-4910-9717-b4530a9ab913.png</RelativePath>
+      <RelativePath>uploads/products/0d6f5f1b-9d64-446e-9652-9607d009e7e3.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>lq8gmugoqh</Fingerprint>
-      <Integrity>PZ5zqI/ZqcZVacLNVXg642uOwdMjjjeP0MfvifK2uFc=</Integrity>
+      <Fingerprint>qwrw30y92c</Fingerprint>
+      <Integrity>SpiW4aL7x8AKox61uET8DSxyQOgOd291mHcKCA5UmS0=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\584fec26-4159-4910-9717-b4530a9ab913.png'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\products\0d6f5f1b-9d64-446e-9652-9607d009e7e3.png'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\63a6d3c2-8076-4782-add5-d5c24fab75fc.png'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\products\b488f3d1-7257-4b7f-a85f-fab9dc6c0376.png'))">
       <SourceType>Package</SourceType>
       <SourceId>Oil</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Oil</BasePath>
-      <RelativePath>uploads/id_images/63a6d3c2-8076-4782-add5-d5c24fab75fc.png</RelativePath>
+      <RelativePath>uploads/products/b488f3d1-7257-4b7f-a85f-fab9dc6c0376.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>lq8gmugoqh</Fingerprint>
-      <Integrity>PZ5zqI/ZqcZVacLNVXg642uOwdMjjjeP0MfvifK2uFc=</Integrity>
+      <Fingerprint>n5t81ntq8r</Fingerprint>
+      <Integrity>ZQ2wzND7AfvVhj/vBZnYr9skEaZGadVgm/Rl4MOufaw=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\63a6d3c2-8076-4782-add5-d5c24fab75fc.png'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\72fe91ca-e472-4839-9c60-8b0dfc316f5c.png'))">
-      <SourceType>Package</SourceType>
-      <SourceId>Oil</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Oil</BasePath>
-      <RelativePath>uploads/id_images/72fe91ca-e472-4839-9c60-8b0dfc316f5c.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>gg8zqarcnw</Fingerprint>
-      <Integrity>kIdGIHN7dch5CkRBoAMwA8gKlLo4fQw1V+WJGwHqw3o=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\72fe91ca-e472-4839-9c60-8b0dfc316f5c.png'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\b8f142c8-cb0a-4be1-92ef-8122915cd16f.png'))">
-      <SourceType>Package</SourceType>
-      <SourceId>Oil</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Oil</BasePath>
-      <RelativePath>uploads/id_images/b8f142c8-cb0a-4be1-92ef-8122915cd16f.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>gg8zqarcnw</Fingerprint>
-      <Integrity>kIdGIHN7dch5CkRBoAMwA8gKlLo4fQw1V+WJGwHqw3o=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\b8f142c8-cb0a-4be1-92ef-8122915cd16f.png'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\ba86cd76-4c46-4543-a655-bd050125855b.png'))">
-      <SourceType>Package</SourceType>
-      <SourceId>Oil</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Oil</BasePath>
-      <RelativePath>uploads/id_images/ba86cd76-4c46-4543-a655-bd050125855b.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>gg8zqarcnw</Fingerprint>
-      <Integrity>kIdGIHN7dch5CkRBoAMwA8gKlLo4fQw1V+WJGwHqw3o=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\ba86cd76-4c46-4543-a655-bd050125855b.png'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\caac03f2-10bf-4f76-b397-3ccd9ce68bfb.png'))">
-      <SourceType>Package</SourceType>
-      <SourceId>Oil</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Oil</BasePath>
-      <RelativePath>uploads/id_images/caac03f2-10bf-4f76-b397-3ccd9ce68bfb.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>lq8gmugoqh</Fingerprint>
-      <Integrity>PZ5zqI/ZqcZVacLNVXg642uOwdMjjjeP0MfvifK2uFc=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\caac03f2-10bf-4f76-b397-3ccd9ce68bfb.png'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\d04a7bc9-6be4-4d79-a59a-9a822d7c4861.png'))">
-      <SourceType>Package</SourceType>
-      <SourceId>Oil</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Oil</BasePath>
-      <RelativePath>uploads/id_images/d04a7bc9-6be4-4d79-a59a-9a822d7c4861.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>5200nl7l2v</Fingerprint>
-      <Integrity>s2RgRDUd7qzzyy5XvcvgVkRtJQO5Kos3n1jdC3IvfiY=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\id_images\d04a7bc9-6be4-4d79-a59a-9a822d7c4861.png'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\products\ab244602-a37f-4846-b54b-1dc9e7b2c7c5.png'))">
-      <SourceType>Package</SourceType>
-      <SourceId>Oil</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Oil</BasePath>
-      <RelativePath>uploads/products/ab244602-a37f-4846-b54b-1dc9e7b2c7c5.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>gg8zqarcnw</Fingerprint>
-      <Integrity>kIdGIHN7dch5CkRBoAMwA8gKlLo4fQw1V+WJGwHqw3o=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\products\ab244602-a37f-4846-b54b-1dc9e7b2c7c5.png'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\receipts\b28cf7ee-694b-453b-b6de-d9a0e5631795.png'))">
-      <SourceType>Package</SourceType>
-      <SourceId>Oil</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Oil</BasePath>
-      <RelativePath>uploads/receipts/b28cf7ee-694b-453b-b6de-d9a0e5631795.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>gg8zqarcnw</Fingerprint>
-      <Integrity>kIdGIHN7dch5CkRBoAMwA8gKlLo4fQw1V+WJGwHqw3o=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\receipts\b28cf7ee-694b-453b-b6de-d9a0e5631795.png'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\receipts\ewallet\44145a13-b210-4ee1-b207-9f3c98359362.png'))">
-      <SourceType>Package</SourceType>
-      <SourceId>Oil</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Oil</BasePath>
-      <RelativePath>uploads/receipts/ewallet/44145a13-b210-4ee1-b207-9f3c98359362.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>lq8gmugoqh</Fingerprint>
-      <Integrity>PZ5zqI/ZqcZVacLNVXg642uOwdMjjjeP0MfvifK2uFc=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\receipts\ewallet\44145a13-b210-4ee1-b207-9f3c98359362.png'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\receipts\ewallet\64db583a-4251-4070-8aac-be81b6719e67.png'))">
-      <SourceType>Package</SourceType>
-      <SourceId>Oil</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Oil</BasePath>
-      <RelativePath>uploads/receipts/ewallet/64db583a-4251-4070-8aac-be81b6719e67.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>lq8gmugoqh</Fingerprint>
-      <Integrity>PZ5zqI/ZqcZVacLNVXg642uOwdMjjjeP0MfvifK2uFc=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\receipts\ewallet\64db583a-4251-4070-8aac-be81b6719e67.png'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\receipts\instapay\5f58f51f-ba02-4171-9423-7efcdd53d0a6.png'))">
-      <SourceType>Package</SourceType>
-      <SourceId>Oil</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Oil</BasePath>
-      <RelativePath>uploads/receipts/instapay/5f58f51f-ba02-4171-9423-7efcdd53d0a6.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>lq8gmugoqh</Fingerprint>
-      <Integrity>PZ5zqI/ZqcZVacLNVXg642uOwdMjjjeP0MfvifK2uFc=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\receipts\instapay\5f58f51f-ba02-4171-9423-7efcdd53d0a6.png'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\products\b488f3d1-7257-4b7f-a85f-fab9dc6c0376.png'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\webfonts\fa-brands-400.ttf'))">
       <SourceType>Package</SourceType>

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Oil.Data;
 using Oil.Models;
-using Oil.Services; // For IFileService
+using Oil.Services;
 using BCryptAuth = BCrypt.Net.BCrypt; // Alias for hashing
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,18 +27,22 @@ builder.Services.AddSession(options =>
 
 var app = builder.Build();
 
-// Seed data after the app is built and services are available
+// SEED DATA
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     try
     {
         var context = services.GetRequiredService<ApplicationDbContext>();
-        // Ensure database is created.
-        // context.Database.EnsureCreated(); // Or use migrations: context.Database.Migrate();
 
+        // Apply any pending migrations (recommended over EnsureCreated)
+        context.Database.Migrate();
+
+        Console.WriteLine("Seeding started...");
         SeedProductTypes(context);
-        SeedUsers(context); // Call the new seeding method for users
+        Console.WriteLine("Product types seeded.");
+        SeedUsers(context);
+        Console.WriteLine("Users seeded.");
     }
     catch (Exception ex)
     {
@@ -47,44 +51,42 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
+// Seed methods
 void SeedProductTypes(ApplicationDbContext context)
 {
     if (!context.ProductTypes.Any())
     {
         context.ProductTypes.AddRange(new List<ProductType>
         {
-             new ProductType {ProductTypeAr = "زيوت السيارات", ProductTypeEn = "Car oils" },
-             new ProductType {ProductTypeAr = "زيوت الدراجات النارية", ProductTypeEn = "Motorcycle oils" },
-             new ProductType {ProductTypeAr = "زيوت الديزل", ProductTypeEn = "Diesel oils" },
-             new ProductType {ProductTypeAr = "زيوت ناقل الحركة", ProductTypeEn = "Transmission oils" },
-             new ProductType {ProductTypeAr = "اضافات الزيوت", ProductTypeEn = "Oil additives" },
-             new ProductType {ProductTypeAr = "اضافات الوقود", ProductTypeEn = "Fuel additives" },
-             new ProductType {ProductTypeAr = "مياة التبريد والاضافات", ProductTypeEn = "Cooling water and additives" },
-             new ProductType {ProductTypeAr = "العناية بالسيارة", ProductTypeEn = "Car care" },
-             new ProductType {ProductTypeAr = "العناية بالدرجات النارية", ProductTypeEn = "Motorcycle care" },
-             new ProductType { ProductTypeAr = "اكسسوارات", ProductTypeEn = "Accessories" },
-             new ProductType { ProductTypeAr = "صيانة وإصلاح", ProductTypeEn = "Maintenance and repair" },
-             new ProductType { ProductTypeAr = "سكوتر", ProductTypeEn = "Scooter" },
-             new ProductType { ProductTypeAr = "قطع غيار", ProductTypeEn = "Spare parts" }
+            new() { ProductTypeAr = "زيوت السيارات", ProductTypeEn = "Car oils" },
+            new() { ProductTypeAr = "زيوت الدراجات النارية", ProductTypeEn = "Motorcycle oils" },
+            new() { ProductTypeAr = "زيوت الديزل", ProductTypeEn = "Diesel oils" },
+            new() { ProductTypeAr = "زيوت ناقل الحركة", ProductTypeEn = "Transmission oils" },
+            new() { ProductTypeAr = "اضافات الزيوت", ProductTypeEn = "Oil additives" },
+            new() { ProductTypeAr = "اضافات الوقود", ProductTypeEn = "Fuel additives" },
+            new() { ProductTypeAr = "مياة التبريد والاضافات", ProductTypeEn = "Cooling water and additives" },
+            new() { ProductTypeAr = "العناية بالسيارة", ProductTypeEn = "Car care" },
+            new() { ProductTypeAr = "العناية بالدرجات النارية", ProductTypeEn = "Motorcycle care" },
+            new() { ProductTypeAr = "اكسسوارات", ProductTypeEn = "Accessories" },
+            new() { ProductTypeAr = "صيانة وإصلاح", ProductTypeEn = "Maintenance and repair" },
+            new() { ProductTypeAr = "سكوتر", ProductTypeEn = "Scooter" },
+            new() { ProductTypeAr = "قطع غيار", ProductTypeEn = "Spare parts" }
         });
         context.SaveChanges();
     }
 }
 
-// New method to seed a test user
 void SeedUsers(ApplicationDbContext context)
 {
-    if (!context.Users.Any(u => u.Username == "Info@mobiloil-eg.com")) // Check if admin user already exists
+    if (!context.Users.Any(u => u.Username == "admin"))
     {
         context.Users.Add(new User
         {
             Username = "admin",
-           
             PasswordHash = BCryptAuth.HashPassword("1i]AXkrz5")
         });
-        context.SaveChanges();
     }
-    // You can add more test users here if needed
+
     if (!context.Users.Any(u => u.Username == "testuser"))
     {
         context.Users.Add(new User
@@ -92,12 +94,12 @@ void SeedUsers(ApplicationDbContext context)
             Username = "testuser",
             PasswordHash = BCryptAuth.HashPassword("TestUserPass123")
         });
-        context.SaveChanges();
     }
+
+    context.SaveChanges();
 }
 
-
-// Configure the HTTP request pipeline
+// Middleware
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -105,19 +107,16 @@ if (!app.Environment.IsDevelopment())
 }
 else
 {
-    app.UseDeveloperExceptionPage(); // Useful for seeing detailed errors in development
+    app.UseDeveloperExceptionPage(); // Shows detailed error info in development
 }
-
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseSession(); // Ensure UseSession is called before UseAuthorization and MapControllerRoute
-
+app.UseSession(); // Add before UseAuthorization
 app.UseAuthorization();
-
 
 app.MapControllerRoute(
     name: "default",

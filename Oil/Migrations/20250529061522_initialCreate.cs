@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Oil.Migrations
 {
     /// <inheritdoc />
-    public partial class upgrade : Migration
+    public partial class initialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -127,6 +127,7 @@ namespace Oil.Migrations
                     BrandEn = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ManufacturerAr = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ManufacturerEn = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PriceBeforeDiscount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     IsVisible = table.Column<bool>(type: "bit", nullable: false),
                     ProductTypeId = table.Column<int>(type: "int", nullable: false)
                 },

@@ -6,12 +6,12 @@ namespace Oil.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "اسم الفئة باللغة العربية مطلوب")]
-        [Display(Name = "اسم القسم عربي")]
+        [Required(ErrorMessage = "اسم الشركه باللغة العربية مطلوب")]
+        [Display(Name = "اسم الشركه عربي")]
         public string NameAr { get; set; }
 
-        [Required(ErrorMessage = "اسم الفئة باللغة الانجليزيه مطلوب")]
-        [Display(Name = "اسم القسم انجليزي")]
+        [Required(ErrorMessage = "اسم الشركه باللغة الانجليزيه مطلوب")]
+        [Display(Name = "اسم الشركه انجليزي")]
         public string NameEn { get; set; }
 
         [Display(Name = "مسار الصورة")]

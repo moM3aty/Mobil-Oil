@@ -12,8 +12,8 @@ using Oil.Data;
 namespace Oil.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250525173732_upgrade")]
-    partial class upgrade
+    [Migration("20250529061522_initialCreate")]
+    partial class initialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -155,6 +155,9 @@ namespace Oil.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("PriceBeforeDiscount")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("ProductTypeId")

@@ -145,13 +145,25 @@
             margin-top: 10px;
         }
     }
-</style>
 
+    #priceBeforeDiscountGroupCreate {
+        transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+    }
+
+        #priceBeforeDiscountGroupCreate.visible {
+            opacity: 1;
+            max-height: 200px; /* Adjust as needed to fit content */
+        }
+</style>
 <div class="form-title">إضافة منتج جديد</div>
 <div class="container">
     <div class="card-custom">
         <form asp-action="Create" method="post" enctype="multipart/form-data" class="p-4 rounded">
-            @Html.AntiForgeryToken() <div class="row">
+            @Html.AntiForgeryToken()
+            <div class="row">
                 <div class="col-md-6 form-group">
                     <label asp-for="TitleAr"></label>
                     <input asp-for="TitleAr" class="form-control" />
@@ -225,11 +237,6 @@
                 </div>
 
                 <div class="col-md-6 form-group">
-                    <label asp-for="Price"></label>
-                    <input asp-for="Price" type="number" step="0.01" class="form-control" /> <span asp-validation-for="Price" class="text-danger"></span>
-                </div>
-
-                <div class="col-md-6 form-group">
                     <label asp-for="WeightAr"></label>
                     <input asp-for="WeightAr" class="form-control" />
                     <span asp-validation-for="WeightAr" class="text-danger"></span>
@@ -252,6 +259,7 @@
                     <input asp-for="DimensionsEn" class="form-control" />
                     <span asp-validation-for="DimensionsEn" class="text-danger"></span>
                 </div>
+
                 <div class="col-md-6 form-group">
                     <label asp-for="BrandAr"></label>
                     <input asp-for="BrandAr" class="form-control" />
@@ -294,11 +302,26 @@
 
                 <div class="col-md-6 form-group">
                     <div class="form-check mt-3">
+                        @* The ID for IsVisible checkbox is "IsVisible" by default due to asp-for,
+                           but your script used "addToOffers", so I'm keeping your explicit ID. *@
                         <input asp-for="IsVisible" class="form-check-input" type="checkbox" id="addToOffers" />
                         <label class="form-check-label" for="addToOffers">
                             إضافه الى العروض
                         </label>
                     </div>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label asp-for="Price"></label>
+                    <input asp-for="Price" type="number" step="0.01" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 form-group" id="priceBeforeDiscountGroupCreate">
+                    <label asp-for="PriceBeforeDiscount"></label>
+                    @* The ID for this input will be "PriceBeforeDiscount" by default due to asp-for *@
+                    <input asp-for="PriceBeforeDiscount" type="number" step="0.01" class="form-control" disabled />
+                    <span asp-validation-for="PriceBeforeDiscount" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-6 form-group">
@@ -321,22 +344,56 @@
     @await Html.PartialAsync("_ValidationScriptsPartial")
 
     <script>
-        document.getElementById("imageFileInput").addEventListener("change", function (event) {
-            const input = event.target;
-            const preview = document.getElementById("imagePreview");
+        document.addEventListener('DOMContentLoaded', function () {
+            // Image Preview Script
+            const imageFileInput = document.getElementById("imageFileInput");
+            const imagePreview = document.getElementById("imagePreview");
 
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
+            if (imageFileInput && imagePreview) {
+                imageFileInput.addEventListener("change", function (event) {
+                    const input = event.target;
+                    if (input.files && input.files[0]) {
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                            imagePreview.src = e.target.result;
+                            imagePreview.style.display = "block";
+                        };
+                        reader.readAsDataURL(input.files[0]);
+                    } else {
+                        imagePreview.src = "#";
+                        imagePreview.style.display = "none";
+                    }
+                });
+            }
 
-                reader.onload = function (e) {
-                    preview.src = e.target.result;
-                    preview.style.display = "block";
-                };
+            // PriceBeforeDiscount Toggle Script
+            const addToOffersCheckbox = document.getElementById("addToOffers"); // Checkbox for IsVisible
+            const priceBeforeDiscountGroup = document.getElementById("priceBeforeDiscountGroupCreate");
+            const priceBeforeDiscountInput = document.getElementById("PriceBeforeDiscount"); // Input for PriceBeforeDiscount
 
-                reader.readAsDataURL(input.files[0]);
-            } else {
-                preview.src = "#";
-                preview.style.display = "none";
+            function togglePriceBeforeDiscount() {
+                if (!addToOffersCheckbox || !priceBeforeDiscountGroup || !priceBeforeDiscountInput) {
+                    // console.warn("Elements for PriceBeforeDiscount toggle not found.");
+                    return;
+                }
+
+                if (addToOffersCheckbox.checked) {
+                    priceBeforeDiscountGroup.classList.add('visible');
+                    priceBeforeDiscountGroup.style.maxHeight = priceBeforeDiscountGroup.scrollHeight + "px";
+                    priceBeforeDiscountGroup.style.opacity = "1";
+                    priceBeforeDiscountInput.disabled = false; // Enable input
+                } else {
+                    priceBeforeDiscountGroup.classList.remove('visible');
+                    priceBeforeDiscountGroup.style.opacity = "0";
+                    priceBeforeDiscountGroup.style.maxHeight = "0";
+                    priceBeforeDiscountInput.value = '';      // Clear the value
+                    priceBeforeDiscountInput.disabled = true; // Disable input
+                }
+            }
+
+            if (addToOffersCheckbox && priceBeforeDiscountGroup && priceBeforeDiscountInput) {
+                addToOffersCheckbox.addEventListener("change", togglePriceBeforeDiscount);
+                togglePriceBeforeDiscount();
             }
         });
     </script>

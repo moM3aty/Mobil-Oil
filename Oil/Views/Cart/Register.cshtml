@@ -52,20 +52,19 @@
             function showSubmissionError(title, text) {
                 Swal.fire({
                     icon: 'error',
-                    title: title || (currentLangDirection === 'rtl' ? 'خطأ' : 'Error'),
-                    text: text || (currentLangDirection === 'rtl' ? 'حدث خطأ ما.' : 'An error occurred.'),
+                    title:  (currentLangDirection === 'rtl' ? 'خطأ' : 'Error'),
+                    text:  (currentLangDirection === 'rtl' ? 'حدث خطأ ما.' : 'An error occurred.'),
                     confirmButtonText: currentLangDirection === 'rtl' ? 'موافق' : 'OK'
                 });
             }
             function showSuccessMessage(title, text) {
                  Swal.fire({
                     icon: 'success',
-                    title: title || (currentLangDirection === 'rtl' ? 'نجاح' : 'Success'),
-                    text: text || (currentLangDirection === 'rtl' ? 'تمت العملية بنجاح.' : 'Operation successful.'),
+                    text:  (currentLangDirection === 'rtl' ? 'تمت العملية بنجاح.' : 'Operation successful.'),
                     timer: 2000,
                     showConfirmButton: false,
                     toast: true,
-                    position: currentLangDirection === 'rtl' ? 'top-start' : 'top-end', // Adjusted position
+                    position: 'top-end', 
                     customClass: { popup: 'swal2-toast' }
                 });
             }
@@ -299,12 +298,14 @@
     }
 
     [dir="ltr"] .input-wrapper input.form-control {
-        padding-left: 45px;
+        padding-left: 45px; /* Space for icon */
+        text-align: left; /* Align text and placeholder to the left */
     }
 
     [dir="rtl"] .input-wrapper input.form-control {
-        padding-right: 45px;
-        padding-left: 15px;
+        padding-right: 45px; /* Space for icon */
+        padding-left: 15px; /* Maintain some padding on the other side */
+        text-align: right; /* Align text and placeholder to the right */
     }
 
     .form-control {
@@ -386,6 +387,12 @@
         border-color: #ffeeba;
         color: #856404;
     }
+
+    .swal2-toast {
+        max-width: 420px !important;
+        left: 0px !important;
+        position: absolute;
+    }
 </style>
 <div class="container py-5">
     <div class="text-center mb-5">
@@ -455,13 +462,18 @@
     <div id="instapay-section" class="d-none">
         <div class="form-container">
             <h3 data-ar-title="الدفع عبر انستاباي" data-en-title="Instapay Payment">الدفع عبر انستاباي</h3>
+
             <div class="alert alert-info" role="alert">
                 <p data-ar="رقم التحويل إلى انستاباي : 01111161663" data-en="Transfer to Instapay Number: 01111161663">
                     رقم التحويل إلى انستاباي: <a href="tel:01111161663"><strong>01111161663</strong></a>
                 </p>
+                <p data-ar="يمكنك التحويل مباشره عن طريق الرابط التالي:" data-en="You can transfer directly via the following link:">
+                    يمكنك التحويل مباشره عن طريق الرابط التالي <a href="https://ipn.eg/S/mohamed.elmansi/instapay/9q33GP" target="_blank" rel="noopener noreferrer">https://ipn.eg/S/mohamed.elmansi/instapay/9q33GP</a>
+                </p>
                 <hr>
                 <p class="mb-0" data-ar="يرجى تحويل المبلغ الإجمالي ثم رفع صورة الإيصال." data-en="Please transfer the total amount then upload the receipt image."></p>
             </div>
+
             <form id="instapayForm" method="post" enctype="multipart/form-data">
                 @Html.AntiForgeryToken()
                 <div class="form-group mb-3">
@@ -483,7 +495,7 @@
                 <button type="submit" class="btn btn-custom" data-en="Confirm Instapay Order" data-ar="تأكيد طلب انستاباي">تأكيد طلب انستاباي</button>
             </form>
         </div>
-    </div>  
+    </div>
 
     <div id="visa-section" class="d-none">
         <div class="form-container">

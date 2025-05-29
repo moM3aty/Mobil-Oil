@@ -57,15 +57,42 @@ namespace Oil.Controllers
             return View(types);
         }
 
-        public IActionResult CompanyPartsByType(int id)
+        public IActionResult CompanyPartsByType(int id) // 'id' هنا هو ProductTypeId
         {
-            var type = _context.ProductTypes.FirstOrDefault(t => t.Id == id);
-            if (type == null) return NotFound();
-            ViewBag.ProductTypes = _context.ProductTypes.ToList();
-            ViewBag.Products = _context.Products.ToList();
+            // 1. الحصول على نوع المنتج (القسم) المحدد
+            var selectedProductType = _context.ProductTypes.FirstOrDefault(t => t.Id == id);
+            if (selectedProductType == null)
+            {
+                return NotFound();
+            }
+
+            // 2. الحصول على المنتجات التي تنتمي إلى هذا القسم (ProductType) وتكون مرئية
+            var productsOfType = _context.Products
+                                        .Where(p => p.ProductTypeId == id && p.IsVisible)
+                                        .Include(p => p.Category) // لتحميل معلومات الشركة (ProductCategory) مع المنتج
+                                        .ToList();
+
+            ViewBag.ProductsToDisplay = productsOfType;
+
+            // 3. الحصول على جميع الشركات (ProductCategory) لاستخدامها في الفلتر العلوي
+            var filterCategories = _context.ProductCategories.ToList();
+            ViewBag.FilterCategories = filterCategories;
+
+            // 4. تعيين عنوان الصفحة بناءً على اسم القسم (ProductType) المحدد
+            ViewData["SelectedCategoryNameAr"] = selectedProductType.ProductTypeAr;
+            ViewData["SelectedCategoryNameEn"] = selectedProductType.ProductTypeEn;
+
+            // 5. تعيين الفلتر النشط مبدئيًا لـ "الكل" (بالنسبة لفلتر الشركات)
+            ViewData["SelectedCategoryId"] = "all"; // هذا خاص بفلتر الشركات في الصفحة
+
+            // 6. تعيين اتجاه اللغة
             ViewData["Direction"] = Request.Cookies["Language"] == "en" ? "ltr" : "rtl";
-            return View("CompanyParts", type);
+
+            // استخدام نفس العرض "CompanyParts.cshtml" لعرض المنتجات
+            // لا يتم تمرير selectedProductType كـ model أساسي إذا كان العرض يعتمد على ViewBag/ViewData
+            return View("CompanyParts");
         }
+
 
         public IActionResult CompanyParts()
         {           

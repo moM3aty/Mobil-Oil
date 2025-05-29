@@ -8,7 +8,7 @@
 
 <div class="d-flex justify-content-end mb-3">
     <a asp-action="Create" class="btn btn-outline-primary shadow-sm fw-semibold">
-        ➕ إضافة قسم جديد
+        ➕ إضافة شركه جديده
     </a>
 </div>
 
@@ -18,7 +18,7 @@
             <table class="table table-hover table-striped align-middle mb-0">
                 <thead class="table-primary text-center">
                     <tr>
-                        <th>📁 اسم القسم</th>
+                        <th>📁 اسم الشركه</th>
                         <th>🖼️ الصورة</th>
                         <th style="width: 180px;">⚙️ التحكم</th>
                     </tr>
@@ -46,7 +46,7 @@
                                 </a>
                                 <a asp-action="Delete" asp-route-id="@category.Id"
                                    class="btn btn-sm btn-outline-danger"
-                                   onclick="return confirm('هل أنت متأكد من أنك تريد حذف القسم؟');">
+                                   onclick="return confirm('هل أنت متأكد من أنك تريد حذف الشركه؟');">
                                     🗑️ حذف
                                 </a>
                             </td>
