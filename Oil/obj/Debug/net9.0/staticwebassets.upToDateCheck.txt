@@ -102,6 +102,10 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\uploads\categories\56c3ddb7-e75d-4aa2-929e-dbb2ae28b15e.png
+wwwroot\uploads\categories\e93a3364-09fd-43eb-b56b-7f815d2a6f51.png
+wwwroot\uploads\products\b488f3d1-7257-4b7f-a85f-fab9dc6c0376.png
+wwwroot\uploads\products\fcb319ca-e626-4711-bf4f-8275a48d4f59.png
 wwwroot\webfonts\fa-brands-400.ttf
 wwwroot\webfonts\fa-brands-400.woff2
 wwwroot\webfonts\fa-regular-400.ttf

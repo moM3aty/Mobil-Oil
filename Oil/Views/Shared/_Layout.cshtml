@@ -23,8 +23,19 @@
 
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="100" tabindex="0">
-    <header class="hero-section text-white">
-        <nav class="navbar navbar-expand-lg hero-navbar navbar-dark position-fixed fixed-top">
+    @{
+        bool isHomePage = ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" &&
+        ViewContext.RouteData.Values["Action"]?.ToString() == "Index";
+    }
+    @if (!isHomePage)
+    {
+     <style>
+         .navbar{
+               background-color : rgba(0, 0, 0, 0.9);
+         }
+     </style>   
+    }
+    <nav class="navbar navbar-expand-lg hero-navbar navbar-dark position-fixed fixed-top">
             <div class="container align-items-center">
                 <a class="navbar-brand nav-logo" asp-action="index" asp-controller="Home">
                     <img src="~/imgs/logo.png" alt="Logo" class="logo text-center">
@@ -36,10 +47,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0 align-items-center gap-lg-4 gap-2 text-center">
                         <li class="nav-item">
-                            @{
-                                bool isHomePage = ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" &&
-                                ViewContext.RouteData.Values["Action"]?.ToString() == "Index";
-                            }
+                            
                             <a class="nav-link @(isHomePage ? "active" : "")"
                                href="@(isHomePage ? "#home" : Url.Action("Index", "Home") + "#home")"
                                data-ar="الرئيسية"
@@ -72,8 +80,11 @@
                 </div>
             </div>
         </nav>
-            <div class="container text-center mt-5 mt-lg-0" id="home">
-                <div class="row g-2 align-items-center">
+
+        @if (isHomePage)
+        {
+        <div class="hero-section text-white  text-center mt-5 mt-lg-0" id="home">
+                <div class="row g-2 align-items-center container">
                     <div class="col-lg-6">
                         <div class="inner shadow-sm mt-5" data-aos="zoom-in" data-aos-delay="100">
                             <h1 class="display-5 w-100 fw-bold lh-base mb-3" data-en="To give your engine longer life and stronger performance because every drop makes a difference" data-ar="لأن كل قطرة تصنع الفرق لكى تمنح محركك حياة أطول وأداءً أقوى">لكى تمنح محركك حياة أطول وأداءً أقوى لأن كل قطرة تصنع الفرق</h1>
@@ -91,8 +102,9 @@
                     </div>
                 </div>
                 <div class="smoke"></div>
-            </div>    
-    </header>
+            </div>
+        }
+
 
     <main role="main" class="pb-3">
         @RenderBody()
