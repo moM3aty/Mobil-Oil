@@ -38,16 +38,20 @@
                 data-en="All" data-ar="الكل" data-filter-id="all" style="cursor:pointer; transition: all 0.3s ease;">
                 @(initialDirection == "rtl" ? "الكل" : "All")
             </li>
+          
 
-            @foreach (var categoryFilterItem in filterCategories) @* categoryFilterItem هو ProductCategory (شركة) *@
-            {
-                <li class="border border-primary py-2 px-4 px-md-5 rounded-pill @(categoryFilterItem.Id.ToString() == selectedCategoryId ? "active-filter" : "") filter-item"
-                    data-en="@categoryFilterItem.NameEn"
-                    data-ar="@categoryFilterItem.NameAr"
-                    data-filter-id="@categoryFilterItem.Id" @* data-filter-id هو ID الشركة *@
-                    style="cursor:pointer; transition: all 0.3s ease;">
-                    @(initialDirection == "rtl" ? categoryFilterItem.NameAr : categoryFilterItem.NameEn)
-                </li>
+                @foreach (var categoryFilterItem in filterCategories) 
+                {
+                if (categoryFilterItem.Products != null && categoryFilterItem.Products.Any())
+                {
+                    <li class="border border-primary py-2 px-4 px-md-5 rounded-pill @(categoryFilterItem.Id.ToString() == selectedCategoryId ? "active-filter" : "") filter-item"
+                        data-en="@categoryFilterItem.NameEn"
+                        data-ar="@categoryFilterItem.NameAr"
+                        data-filter-id="@categoryFilterItem.Id" 
+                        style="cursor:pointer; transition: all 0.3s ease;">
+                        @(initialDirection == "rtl" ? categoryFilterItem.NameAr : categoryFilterItem.NameEn)
+                    </li>
+                }
             }
         </ul>
     </div>
@@ -319,7 +323,7 @@
 <style>
     .company-tabs .active-filter {
         background-color: #0d6efd; /* Bootstrap primary color */
-        color: white !important;
+        color: #dc3545 !important;
         border-color: #0d6efd !important;
         font-weight: 600;
     }

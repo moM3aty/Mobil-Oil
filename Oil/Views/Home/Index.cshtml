@@ -3,7 +3,20 @@
     ViewData["Title"] = "Home Page"; // Or set in controller
 }
 
+<style>
+    .btn-more{
+        font-size: 20px !important;
+        background: transparent !important;
+        color: #0d6efd !important;
+        border: 1px solid #0d6efd !important;
+    }
 
+    .btn-more:hover {
+    background:#0d6efd !important;
+    color:#fff !important;
+    }
+
+</style>
 
 <section class="offers-section text-center padding">
     <div class="container" style="position: relative;
@@ -59,6 +72,12 @@
             <div class="swiper-button-next" style="color:#dc3545;"></div>
             <div class="swiper-button-prev" style="color:#dc3545;"></div>
         </div>
+
+            <div class="col-12 text-center">
+            <a class="btn my-3 btn-more" asp-action="CategoryProducts" asp-controller="Home" id="showMoreBtn" data-ar="عرض المزيد" data-en="See More">عرض المزيد</a>
+            </div>
+        
+
     </div>
 </section>
 
@@ -136,22 +155,35 @@
 
 <section class="products padding text-center border-top border-bottom" id="products">
     <div class="container">
-        <h2 class="section-title" data-ar="المنتجات" data-en="Products">المنتجات</h2>
+        <h2 class="section-title" data-ar="الأقسام" data-en="Parts">الأقسام</h2>
 
         <div class="row g-4 mt-5 justify-content-center align-items-center" data-aos="fade-bottom" data-aos-delay="50">
+            @{
+                var index = 0;
+            }
             @foreach (var category in ViewBag.Categories)
             {
-                <div class="col-md-6 col-lg-4">
-                    <a asp-action="CategoryProducts" asp-route-id="@category.Id" class="card">
+                var isHidden = index >= 6 ? "d-none" : "";
+                <div class="col-md-6 col-lg-4 category-card @isHidden">
+                    <a asp-action="CompanyPartsByType" asp-route-id="@category.Id" class="card">
                         <div class="img w-100">
-                            <img src="@category.ImagePath" class="w-100" style="height:350px !important" alt="@category.NameAr" />
+                            <img src="~/imgs/@(category.ProductTypeEn.ToLower().Replace(" ", "-")).jpg" class="w-100" style="height:350px !important" alt="@category.ProductTypeAr" />
                             <div class="content">
-                                <h3 data-ar="@category.NameAr" data-en="@category.NameEn">@category.NameAr</h3>
+                                <h3 data-ar="@category.ProductTypeAr" data-en="@category.ProductTypeEn">@category.ProductTypeAr</h3>
                             </div>
                         </div>
                     </a>
                 </div>
+                index++;
             }
+
+            @if (ViewBag.Categories.Count > 6)
+            {
+                <div class="col-12 text-center">
+                    <a asp-action="Parts" asp-controller="Home" id="showMoreBtn" style="font-size:20px" class="btn btn-outline-primary" data-ar="عرض المزيد" data-en="See More">عرض المزيد</a>
+                </div>
+            }
+
         </div>
     </div>
 </section>

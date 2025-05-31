@@ -20,7 +20,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
     <link href="~/imgs/logo.png" rel="icon" />
+    <style>
+    .swal2-container {
+    z-index: 100000000 !important;
+    }
 
+    </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="100" tabindex="0">
     @{
@@ -83,6 +88,13 @@
 
         @if (isHomePage)
         {
+            <style>
+                @@media (max-width:992px){
+                    .hero-section{
+                        margin-top:0 !important;
+                    }
+                }
+            </style>
         <div class="hero-section text-white  text-center mt-5 mt-lg-0" id="home">
                 <div class="row g-2 align-items-center container">
                     <div class="col-lg-6">

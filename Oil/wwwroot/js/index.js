@@ -263,7 +263,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (quantityInput) quantityInput.value = 1;
                 updateCartBadge();
                 Swal.fire({
-                    icon: 'success', title: (cardLangDir === 'rtl' ? 'أُضيف للسلة!' : 'Added to Cart!'), timer: 2500, 
+                    icon: 'success', title: (cardLangDir === 'rtl' ? 'أُضيف للسلة!' : 'Added to Cart!'),
+                    timer: 2500, 
                     timerProgressBar: true,  showConfirmButton: false, toast: true, position: 'top-end' });
             });
         });

@@ -39,10 +39,9 @@
                             <span data-ar="النوع: @Model.TypeAr" data-en="Type: @Model.TypeEn"><strong>@(initialDirection == "rtl" ? "النوع:" : "Type:")</strong> @typeLocalized</span>
                             <span data-ar="اللون: @Model.ColorAr" data-en="Color: @Model.ColorEn"><strong>@(initialDirection == "rtl" ? "اللون:" : "Color:")</strong> @colorLocalized</span>
                             <span data-ar="السعة: @Model.CapacityAr" data-en="Capacity: @Model.CapacityEn"><strong>@(initialDirection == "rtl" ? "السعة:" : "Capacity:")</strong> @capacityLocalized</span>
+                            <span class="text-danger fs-4 fw-bold" data-en="@Model.Price EGP" data-ar="@Model.Price جنيه">@Model.Price @(initialDirection == "rtl" ? "جنيه" : "EGP")</span>
 
-                            <div class="d-flex align-items-center justify-content-between mt-3">
-                                <span class="text-danger fs-4 fw-bold" data-en="@Model.Price EGP" data-ar="@Model.Price جنيه">@Model.Price @(initialDirection == "rtl" ? "جنيه" : "EGP")</span>
-
+                            <div class="d-flex align-items-center justify-content-between m-auto">
                                 <div class="add-to-cart-controls d-flex flex-column align-items-end"
                                      data-product-id="@Model.Id"
                                      data-title-ar="@Model.TitleAr"

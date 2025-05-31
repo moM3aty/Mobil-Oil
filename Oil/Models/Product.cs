@@ -7,12 +7,12 @@ namespace Oil.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "العنوان باللغة العربية مطلوب")]
-        [Display(Name = "العنوان (عربي)")]
+        [Required(ErrorMessage = "اسم المنتج باللغة العربية مطلوب")]
+        [Display(Name = "اسم المنتج (عربي)")]
         public string TitleAr { get; set; }
 
-        [Required(ErrorMessage = "العنوان باللغه الانجليزيه مطلوب")]
-        [Display(Name = "العنوان (انجليزي)")]
+        [Required(ErrorMessage = "اسم المنتج باللغه الانجليزيه مطلوب")]
+        [Display(Name = "اسم المنتج (انجليزي)")]
         public string TitleEn { get; set; }
 
         [Display(Name = "الوصف (عربي)")]

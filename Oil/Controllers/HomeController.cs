@@ -35,7 +35,7 @@ namespace Oil.Controllers
         {
 
             // Get all categories from the database, including related products if needed
-            var categories = _context.ProductCategories.ToList();
+            var categories = _context.ProductTypes.ToList();
             var products = _context.Products.ToList();
             // Pass to the view via ViewBag or ViewData
             ViewBag.Categories = categories;
@@ -111,17 +111,8 @@ namespace Oil.Controllers
 
         public IActionResult CategoryProducts(int id)
         {
-            var category = _context.ProductCategories
-                .Where(c => c.Id == id)
-                .Select(c => new ProductCategory
-                {
-                    Id = c.Id,
-                    NameAr = c.NameAr,
-                    NameEn = c.NameEn,
-                    ImagePath = c.ImagePath,
-                    Products = c.Products.ToList()
-                })
-                .FirstOrDefault();
+            var category = _context.Products.ToList();
+                
 
             if (category == null)
                 return NotFound();
