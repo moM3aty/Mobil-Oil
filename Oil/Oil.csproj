@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\images\products\" />
     <Folder Include="wwwroot\uploads\" />
     <Folder Include="wwwroot\uploads\categories\" />
     <Folder Include="wwwroot\uploads\id_images\" />

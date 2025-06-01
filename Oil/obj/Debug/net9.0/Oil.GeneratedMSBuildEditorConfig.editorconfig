@@ -17,117 +17,117 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Oil
 build_property.RootNamespace = Oil
-build_property.ProjectDir = F:\GMT Web\Oil\Oil\
+build_property.ProjectDir = G:\Github\Mobil-Oil\Oil\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = F:\GMT Web\Oil\Oil
+build_property.MSBuildProjectDirectory = G:\Github\Mobil-Oil\Oil
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[F:/GMT Web/Oil/Oil/Views/Cart/Index.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Cart/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Cart/OrderConfirmation.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Cart/OrderConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxPcmRlckNvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Cart/Register.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Cart/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Home/cartProducts.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Home/cartProducts.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxjYXJ0UHJvZHVjdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Home/CategoryProducts.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Home/CategoryProducts.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDYXRlZ29yeVByb2R1Y3RzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Home/CompanyParts.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Home/CompanyParts.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb21wYW55UGFydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Home/Index.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Home/Parts.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Home/Parts.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYXJ0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Home/Privacy.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Home/productDetail.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Home/productDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxwcm9kdWN0RGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Login/Dashboard.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Login/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Login/index.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Login/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5caW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Login/OrderItems.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Login/OrderItems.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cT3JkZXJJdGVtcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Login/Orders.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Login/Orders.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cT3JkZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/ProductCategories/Create.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/ProductCategories/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdENhdGVnb3JpZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/ProductCategories/Edit.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/ProductCategories/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdENhdGVnb3JpZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/ProductCategories/Index.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/ProductCategories/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdENhdGVnb3JpZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Products/Create.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Products/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Products/Edit.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Products/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Products/Index.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Products/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Shared/Error.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Shared/_AdminLayout.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Shared/_ValidationScriptsPartial.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/_ViewImports.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/_ViewStart.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/GMT Web/Oil/Oil/Views/Shared/_Layout.cshtml]
+[G:/Github/Mobil-Oil/Oil/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-23g66zmrw1

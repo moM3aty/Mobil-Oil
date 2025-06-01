@@ -1,13 +1,82 @@
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\jquery\dist\jquery.js
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+G:\Github\Mobil-Oil\Oil\wwwroot\manifest.json
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\jquery\LICENSE.txt
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+G:\Github\Mobil-Oil\Oil\wwwroot\imgs\logo1.svg
+G:\Github\Mobil-Oil\Oil\wwwroot\css\bootstrap.min.css
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
+G:\Github\Mobil-Oil\Oil\wwwroot\favicon.ico
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap.css
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+G:\Github\Mobil-Oil\Oil\wwwroot\js\index.js
+G:\Github\Mobil-Oil\Oil\wwwroot\imgs\logo.svg
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+G:\Github\Mobil-Oil\Oil\wwwroot\css\main.css
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+G:\Github\Mobil-Oil\Oil\wwwroot\imgs\elf-logo.svg
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\jquery\dist\jquery.slim.min.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\jquery-validation\dist\jquery.validate.js
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\jquery\dist\jquery.slim.min.js
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+G:\Github\Mobil-Oil\Oil\wwwroot\js\bootstrap.bundle.min.js
+G:\Github\Mobil-Oil\Oil\wwwroot\css\all.min.css
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\jquery\dist\jquery.slim.js
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\jquery\dist\jquery.min.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.js
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\jquery-validation\dist\additional-methods.js
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\jquery\dist\jquery.min.js
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+G:\Github\Mobil-Oil\Oil\wwwroot\lib\jquery-validation\LICENSE.md
 wwwroot\css\all.min.css
 wwwroot\css\bootstrap.min.css
+wwwroot\css\main.css
 wwwroot\favicon.ico
-wwwroot\images\1651493115983.jpg
 wwwroot\imgs\about.png
 wwwroot\imgs\about1.png
 wwwroot\imgs\Accessories.jpg
+wwwroot\imgs\car1.jpg
 wwwroot\imgs\car-care.jpg
 wwwroot\imgs\Car-oils.jpg
-wwwroot\imgs\car1.jpg
 wwwroot\imgs\Cooling-water-and-additives.jpg
 wwwroot\imgs\Diesel-oils.jpg
 wwwroot\imgs\elf-logo.svg
@@ -18,8 +87,9 @@ wwwroot\imgs\image1.jpg
 wwwroot\imgs\image2.jpg
 wwwroot\imgs\logo.png
 wwwroot\imgs\logo.svg
-wwwroot\imgs\logo1.svg
 wwwroot\imgs\logo_totalenergies_mobile.webp
+wwwroot\imgs\logo1.svg
+wwwroot\imgs\logohead.jpg
 wwwroot\imgs\Maintenance-and-repair.jpg
 wwwroot\imgs\mannol.png
 wwwroot\imgs\MobilTMLogo.png
@@ -41,6 +111,14 @@ wwwroot\imgs\video.mp4
 wwwroot\imgs\video2.mp4
 wwwroot\js\bootstrap.bundle.min.js
 wwwroot\js\index.js
+wwwroot\lib\bootstrap\dist\css\bootstrap.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
@@ -65,14 +143,6 @@ wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
-wwwroot\lib\bootstrap\dist\css\bootstrap.css
-wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
-wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
-wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
-wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
-wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
-wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
-wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
 wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
 wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
 wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
@@ -86,14 +156,6 @@ wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
 wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
 wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
 wwwroot\lib\bootstrap\LICENSE
-wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
-wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
-wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
-wwwroot\lib\jquery-validation\dist\additional-methods.js
-wwwroot\lib\jquery-validation\dist\additional-methods.min.js
-wwwroot\lib\jquery-validation\dist\jquery.validate.js
-wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
-wwwroot\lib\jquery-validation\LICENSE.md
 wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
@@ -101,11 +163,17 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
-wwwroot\uploads\categories\56c3ddb7-e75d-4aa2-929e-dbb2ae28b15e.png
-wwwroot\uploads\categories\e93a3364-09fd-43eb-b56b-7f815d2a6f51.png
-wwwroot\uploads\products\a2fcb17f-74ad-4678-846d-92dac49c6273.png
-wwwroot\uploads\products\b488f3d1-7257-4b7f-a85f-fab9dc6c0376.png
-wwwroot\uploads\products\fcb319ca-e626-4711-bf4f-8275a48d4f59.png
+wwwroot\lib\jquery-validation\dist\additional-methods.js
+wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+wwwroot\lib\jquery-validation\dist\jquery.validate.js
+wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+wwwroot\lib\jquery-validation\LICENSE.md
+wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
+wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
+wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+wwwroot\manifest.json
+wwwroot\uploads\products\1b6686a2-95d1-4dfd-92b8-3ae7b23112dd.jpeg
+wwwroot\uploads\products\b6d06b5e-8cbb-4dfb-9253-87b94b2f586e.png
 wwwroot\webfonts\fa-brands-400.ttf
 wwwroot\webfonts\fa-brands-400.woff2
 wwwroot\webfonts\fa-regular-400.ttf
@@ -114,72 +182,3 @@ wwwroot\webfonts\fa-solid-900.ttf
 wwwroot\webfonts\fa-solid-900.woff2
 wwwroot\webfonts\fa-v4compatibility.ttf
 wwwroot\webfonts\fa-v4compatibility.woff2
-wwwroot\css\main.css
-F:\GMT Web\Oil\Oil\wwwroot\css\all.min.css
-F:\GMT Web\Oil\Oil\wwwroot\css\bootstrap.min.css
-F:\GMT Web\Oil\Oil\wwwroot\favicon.ico
-F:\GMT Web\Oil\Oil\wwwroot\imgs\elf-logo.svg
-F:\GMT Web\Oil\Oil\wwwroot\imgs\logo.svg
-F:\GMT Web\Oil\Oil\wwwroot\imgs\logo1.svg
-F:\GMT Web\Oil\Oil\wwwroot\js\bootstrap.bundle.min.js
-F:\GMT Web\Oil\Oil\wwwroot\js\index.js
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap.css
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.js
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
-F:\GMT Web\Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
-F:\GMT Web\Oil\Oil\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
-F:\GMT Web\Oil\Oil\wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
-F:\GMT Web\Oil\Oil\wwwroot\lib\jquery-validation\dist\additional-methods.js
-F:\GMT Web\Oil\Oil\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
-F:\GMT Web\Oil\Oil\wwwroot\lib\jquery-validation\dist\jquery.validate.js
-F:\GMT Web\Oil\Oil\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
-F:\GMT Web\Oil\Oil\wwwroot\lib\jquery-validation\LICENSE.md
-F:\GMT Web\Oil\Oil\wwwroot\lib\jquery\dist\jquery.js
-F:\GMT Web\Oil\Oil\wwwroot\lib\jquery\dist\jquery.min.js
-F:\GMT Web\Oil\Oil\wwwroot\lib\jquery\dist\jquery.min.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\jquery\dist\jquery.slim.js
-F:\GMT Web\Oil\Oil\wwwroot\lib\jquery\dist\jquery.slim.min.js
-F:\GMT Web\Oil\Oil\wwwroot\lib\jquery\dist\jquery.slim.min.map
-F:\GMT Web\Oil\Oil\wwwroot\lib\jquery\LICENSE.txt
-F:\GMT Web\Oil\Oil\wwwroot\css\main.css

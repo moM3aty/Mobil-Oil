@@ -1,483 +1,467 @@
 {
   "Files": [
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\Oil.bundle.scp.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\Oil.bundle.scp.css",
       "PackagePath": "staticwebassets\\Oil.2kbxtq24av.bundle.scp.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\css\\all.min.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\css\\all.min.css",
       "PackagePath": "staticwebassets\\css\\all.min.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\css\\bootstrap.min.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\css\\main.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\css\\main.css",
       "PackagePath": "staticwebassets\\css\\main.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\favicon.ico",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\images\\1651493115983.jpg",
-      "PackagePath": "staticwebassets\\images\\1651493115983.jpg"
-    },
-    {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\Accessories.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Accessories.jpg",
       "PackagePath": "staticwebassets\\imgs\\Accessories.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\Car-oils.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Car-oils.jpg",
       "PackagePath": "staticwebassets\\imgs\\Car-oils.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\Cooling-water-and-additives.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Cooling-water-and-additives.jpg",
       "PackagePath": "staticwebassets\\imgs\\Cooling-water-and-additives.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\Diesel-oils.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Diesel-oils.jpg",
       "PackagePath": "staticwebassets\\imgs\\Diesel-oils.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\Fuel-additives.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Fuel-additives.jpg",
       "PackagePath": "staticwebassets\\imgs\\Fuel-additives.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\GMT.png",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\GMT.png",
       "PackagePath": "staticwebassets\\imgs\\GMT.png"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\Maintenance-and-repair.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Maintenance-and-repair.jpg",
       "PackagePath": "staticwebassets\\imgs\\Maintenance-and-repair.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\MobilTMLogo.png",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\MobilTMLogo.png",
       "PackagePath": "staticwebassets\\imgs\\MobilTMLogo.png"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\Motorcycle-care.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Motorcycle-care.jpg",
       "PackagePath": "staticwebassets\\imgs\\Motorcycle-care.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\Motorcycle-oils.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Motorcycle-oils.jpg",
       "PackagePath": "staticwebassets\\imgs\\Motorcycle-oils.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\Oil-additives.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Oil-additives.jpg",
       "PackagePath": "staticwebassets\\imgs\\Oil-additives.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\Product1.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Product1.jpg",
       "PackagePath": "staticwebassets\\imgs\\Product1.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\Transmission-oils.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Transmission-oils.jpg",
       "PackagePath": "staticwebassets\\imgs\\Transmission-oils.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\about.png",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\about.png",
       "PackagePath": "staticwebassets\\imgs\\about.png"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\about1.png",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\about1.png",
       "PackagePath": "staticwebassets\\imgs\\about1.png"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\car-care.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\car-care.jpg",
       "PackagePath": "staticwebassets\\imgs\\car-care.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\car1.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\car1.jpg",
       "PackagePath": "staticwebassets\\imgs\\car1.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\elf-logo.svg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\elf-logo.svg",
       "PackagePath": "staticwebassets\\imgs\\elf-logo.svg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\header2.png",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\header2.png",
       "PackagePath": "staticwebassets\\imgs\\header2.png"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\image1.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\image1.jpg",
       "PackagePath": "staticwebassets\\imgs\\image1.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\image2.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\image2.jpg",
       "PackagePath": "staticwebassets\\imgs\\image2.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\logo.png",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logo.png",
       "PackagePath": "staticwebassets\\imgs\\logo.png"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\logo.svg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logo.svg",
       "PackagePath": "staticwebassets\\imgs\\logo.svg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\logo1.svg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logo1.svg",
       "PackagePath": "staticwebassets\\imgs\\logo1.svg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\logo_totalenergies_mobile.webp",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logo_totalenergies_mobile.webp",
       "PackagePath": "staticwebassets\\imgs\\logo_totalenergies_mobile.webp"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\mannol.png",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logohead.jpg",
+      "PackagePath": "staticwebassets\\imgs\\logohead.jpg"
+    },
+    {
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\mannol.png",
       "PackagePath": "staticwebassets\\imgs\\mannol.png"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\motor2.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\motor2.jpg",
       "PackagePath": "staticwebassets\\imgs\\motor2.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\motul.png",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\motul.png",
       "PackagePath": "staticwebassets\\imgs\\motul.png"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\opa.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\opa.jpg",
       "PackagePath": "staticwebassets\\imgs\\opa.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\product1.png",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\product1.png",
       "PackagePath": "staticwebassets\\imgs\\product1.png"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\scooter.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\scooter.jpg",
       "PackagePath": "staticwebassets\\imgs\\scooter.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\shell.png",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\shell.png",
       "PackagePath": "staticwebassets\\imgs\\shell.png"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\spare-parts.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\spare-parts.jpg",
       "PackagePath": "staticwebassets\\imgs\\spare-parts.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\totalenergies.png",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\totalenergies.png",
       "PackagePath": "staticwebassets\\imgs\\totalenergies.png"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\trucks.jpg",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\trucks.jpg",
       "PackagePath": "staticwebassets\\imgs\\trucks.jpg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\video.mp4",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\video.mp4",
       "PackagePath": "staticwebassets\\imgs\\video.mp4"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\imgs\\video2.mp4",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\video2.mp4",
       "PackagePath": "staticwebassets\\imgs\\video2.mp4"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\js\\bootstrap.bundle.min.js",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\js\\index.js",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\js\\index.js",
       "PackagePath": "staticwebassets\\js\\index.js"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.js"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.js"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.map"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\uploads\\categories\\478ecb66-c54c-4c65-9942-80d64ac6465d.png",
-      "PackagePath": "staticwebassets\\uploads\\categories\\478ecb66-c54c-4c65-9942-80d64ac6465d.png"
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\manifest.json",
+      "PackagePath": "staticwebassets\\manifest.json"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\uploads\\categories\\fcdb76c0-40ff-4ed3-b2b9-bf8f96785bcc.png",
-      "PackagePath": "staticwebassets\\uploads\\categories\\fcdb76c0-40ff-4ed3-b2b9-bf8f96785bcc.png"
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\uploads\\products\\1b6686a2-95d1-4dfd-92b8-3ae7b23112dd.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\products\\1b6686a2-95d1-4dfd-92b8-3ae7b23112dd.jpeg"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\uploads\\id_images\\72168b7e-1ca2-487b-a96b-c822965b0217.png",
-      "PackagePath": "staticwebassets\\uploads\\id_images\\72168b7e-1ca2-487b-a96b-c822965b0217.png"
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\uploads\\products\\b6d06b5e-8cbb-4dfb-9253-87b94b2f586e.png",
+      "PackagePath": "staticwebassets\\uploads\\products\\b6d06b5e-8cbb-4dfb-9253-87b94b2f586e.png"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\uploads\\id_images\\9f790d2b-3998-45ce-b3c4-6f458b104bad.png",
-      "PackagePath": "staticwebassets\\uploads\\id_images\\9f790d2b-3998-45ce-b3c4-6f458b104bad.png"
-    },
-    {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\uploads\\id_images\\bc59e003-6337-4090-9aec-a09b4fc2f2e5.png",
-      "PackagePath": "staticwebassets\\uploads\\id_images\\bc59e003-6337-4090-9aec-a09b4fc2f2e5.png"
-    },
-    {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\uploads\\products\\0d6f5f1b-9d64-446e-9652-9607d009e7e3.png",
-      "PackagePath": "staticwebassets\\uploads\\products\\0d6f5f1b-9d64-446e-9652-9607d009e7e3.png"
-    },
-    {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\uploads\\products\\b488f3d1-7257-4b7f-a85f-fab9dc6c0376.png",
-      "PackagePath": "staticwebassets\\uploads\\products\\b488f3d1-7257-4b7f-a85f-fab9dc6c0376.png"
-    },
-    {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\webfonts\\fa-brands-400.ttf",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\webfonts\\fa-brands-400.ttf",
       "PackagePath": "staticwebassets\\webfonts\\fa-brands-400.ttf"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\webfonts\\fa-brands-400.woff2",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\webfonts\\fa-brands-400.woff2",
       "PackagePath": "staticwebassets\\webfonts\\fa-brands-400.woff2"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\webfonts\\fa-regular-400.ttf",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\webfonts\\fa-regular-400.ttf",
       "PackagePath": "staticwebassets\\webfonts\\fa-regular-400.ttf"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\webfonts\\fa-regular-400.woff2",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\webfonts\\fa-regular-400.woff2",
       "PackagePath": "staticwebassets\\webfonts\\fa-regular-400.woff2"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\webfonts\\fa-solid-900.ttf",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\webfonts\\fa-solid-900.ttf",
       "PackagePath": "staticwebassets\\webfonts\\fa-solid-900.ttf"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\webfonts\\fa-solid-900.woff2",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\webfonts\\fa-solid-900.woff2",
       "PackagePath": "staticwebassets\\webfonts\\fa-solid-900.woff2"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\webfonts\\fa-v4compatibility.ttf",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\webfonts\\fa-v4compatibility.ttf",
       "PackagePath": "staticwebassets\\webfonts\\fa-v4compatibility.ttf"
     },
     {
-      "Id": "G:\\GMT Web\\Oil\\Oil\\wwwroot\\webfonts\\fa-v4compatibility.woff2",
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\webfonts\\fa-v4compatibility.woff2",
       "PackagePath": "staticwebassets\\webfonts\\fa-v4compatibility.woff2"
     },
     {

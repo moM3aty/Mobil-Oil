@@ -68,7 +68,7 @@ namespace Oil.Controllers
 
             // 2. الحصول على المنتجات التي تنتمي إلى هذا القسم (ProductType) وتكون مرئية
             var productsOfType = _context.Products
-                                        .Where(p => p.ProductTypeId == id && p.IsVisible)
+                                        .Where(p => p.ProductTypeId == id )
                                         .Include(p => p.Category) // لتحميل معلومات الشركة (ProductCategory) مع المنتج
                                         .ToList();
 

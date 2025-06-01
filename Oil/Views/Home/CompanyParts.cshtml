@@ -1,10 +1,8 @@
-﻿@* Предполагается, что это файл Views/Home/CompanyParts.cshtml *@
-@* Также предполагается, что модели Product и ProductCategory находятся в Oil.Models *@
+﻿
 @using Oil.Models
 @{
     Layout = "~/Views/Shared/_Layout.cshtml"; // تأكد أن هذا المسار صحيح
 
-    // الحصول على اتجاه اللغة الحالي من الكوكيز أو الافتراضي إلى العربية
     var currentLanguageCookie = Context.Request.Cookies["Language"];
     var initialDirection = (currentLanguageCookie == "en") ? "ltr" : "rtl";
     var currentLang = initialDirection == "rtl" ? "ar" : "en";

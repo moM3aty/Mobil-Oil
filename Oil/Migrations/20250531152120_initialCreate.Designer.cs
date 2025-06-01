@@ -12,7 +12,7 @@ using Oil.Data;
 namespace Oil.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250529061522_initialCreate")]
+    [Migration("20250531152120_initialCreate")]
     partial class initialCreate
     {
         /// <inheritdoc />
