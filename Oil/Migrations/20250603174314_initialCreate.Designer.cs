@@ -12,7 +12,7 @@ using Oil.Data;
 namespace Oil.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250531152120_initialCreate")]
+    [Migration("20250603174314_initialCreate")]
     partial class initialCreate
     {
         /// <inheritdoc />
@@ -64,7 +64,15 @@ namespace Oil.Migrations
                     b.Property<string>("ReceiptFileName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("ShippingFee")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<int?>("ShippingZoneId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ShippingZoneId");
 
                     b.ToTable("Orders");
                 });
@@ -243,6 +251,49 @@ namespace Oil.Migrations
                     b.ToTable("ProductTypes");
                 });
 
+            modelBuilder.Entity("Oil.Models.ShippingCost", b =>
+                {
+                    b.Property<int>("ShippingZoneId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Cost")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.HasKey("ShippingZoneId");
+
+                    b.ToTable("ShippingCosts");
+                });
+
+            modelBuilder.Entity("Oil.Models.ShippingZone", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("NameAr")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("NameEn")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NameAr")
+                        .IsUnique();
+
+                    b.HasIndex("NameEn")
+                        .IsUnique();
+
+                    b.ToTable("ShippingZones");
+                });
+
             modelBuilder.Entity("Oil.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -262,6 +313,15 @@ namespace Oil.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Oil.Models.Order", b =>
+                {
+                    b.HasOne("Oil.Models.ShippingZone", "SelectedShippingZone")
+                        .WithMany()
+                        .HasForeignKey("ShippingZoneId");
+
+                    b.Navigation("SelectedShippingZone");
                 });
 
             modelBuilder.Entity("Oil.Models.OrderItem", b =>
@@ -294,6 +354,17 @@ namespace Oil.Migrations
                     b.Navigation("ProductType");
                 });
 
+            modelBuilder.Entity("Oil.Models.ShippingCost", b =>
+                {
+                    b.HasOne("Oil.Models.ShippingZone", "ShippingZone")
+                        .WithOne("ShippingCost")
+                        .HasForeignKey("Oil.Models.ShippingCost", "ShippingZoneId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ShippingZone");
+                });
+
             modelBuilder.Entity("Oil.Models.Order", b =>
                 {
                     b.Navigation("OrderItems");
@@ -302,6 +373,12 @@ namespace Oil.Migrations
             modelBuilder.Entity("Oil.Models.ProductCategory", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Oil.Models.ShippingZone", b =>
+                {
+                    b.Navigation("ShippingCost")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

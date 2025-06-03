@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3csVHa6YehPYoPAmnwHBIGWn6TGkpnLyRfS1TffiAi8=",
+  "Hash": "c1R68XRlVWOrcWkuEWpdXz6MoAh20XZEm2ssdmhEEM0=",
   "Source": "Oil",
   "BasePath": "_content/Oil",
   "Mode": "Default",
@@ -164,12 +164,12 @@
       "OriginalItemSpec": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\compressed\\3k45i6q4ce-b847hxm70k.gz",
+      "Identity": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\compressed\\3k45i6q4ce-q36s2momq3.gz",
       "SourceId": "Oil",
       "SourceType": "Discovered",
       "ContentRoot": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/Oil",
-      "RelativePath": "manifest#[.{fingerprint=b847hxm70k}]?.json.gz",
+      "RelativePath": "manifest#[.{fingerprint=q36s2momq3}]?.json.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -178,8 +178,8 @@
       "RelatedAsset": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\manifest.json",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "b3s675e41b",
-      "Integrity": "t06mcuY1vIIwg7McNMH2LF9V3j7fQsWx/NjKgUlicck=",
+      "Fingerprint": "62f4ds01v3",
+      "Integrity": "PoKDCp9dpShx9yHuM7k6UWmBscGS5ZYpGQXAMkW9GHM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\manifest.json"
@@ -456,6 +456,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Identity": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\compressed\\btqf25o22v-xczb4dy2vx.gz",
+      "SourceId": "Oil",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/Oil",
+      "RelativePath": "Manifest-Admin#[.{fingerprint=xczb4dy2vx}]?.json.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\Manifest-Admin.json",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "yj31w8tpc2",
+      "Integrity": "wucYiy4QCcOFSX0pC5qGmeZApwe1o7apW/1lix7AERk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\Manifest-Admin.json"
     },
     {
       "Identity": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\compressed\\c1lb0w5jxz-w68uoe3y3f.gz",
@@ -2012,6 +2033,27 @@
       "OriginalItemSpec": "wwwroot\\imgs\\logo1.svg"
     },
     {
+      "Identity": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logoAdmin.jpg",
+      "SourceId": "Oil",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\",
+      "BasePath": "_content/Oil",
+      "RelativePath": "imgs/logoAdmin#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "z6mj3ms81l",
+      "Integrity": "G7KBKlbRU6gxVC1QXwtX0fK4dBe8cqHSPhMAnlpZqiA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imgs\\logoAdmin.jpg"
+    },
+    {
       "Identity": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logohead.jpg",
       "SourceId": "Oil",
       "SourceType": "Discovered",
@@ -2026,8 +2068,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "p5ibnpp7xg",
-      "Integrity": "UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY=",
+      "Fingerprint": "l1ttubvmik",
+      "Integrity": "t202aYnVM7SCg7lAqZUr5mpEl0AI3nD0ga/pAEFTGNo=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\imgs\\logohead.jpg"
@@ -2220,48 +2262,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\imgs\\opa.jpg"
-    },
-    {
-      "Identity": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Product1.jpg",
-      "SourceId": "Oil",
-      "SourceType": "Discovered",
-      "ContentRoot": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\",
-      "BasePath": "_content/Oil",
-      "RelativePath": "imgs/Product1#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "r38u79wvcn",
-      "Integrity": "h2+8BY8J/nBULJ4Xy871nA1A8YOouf1KYSVbiXGOH9U=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imgs\\Product1.jpg"
-    },
-    {
-      "Identity": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\product1.png",
-      "SourceId": "Oil",
-      "SourceType": "Discovered",
-      "ContentRoot": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\",
-      "BasePath": "_content/Oil",
-      "RelativePath": "imgs/product1#[.{fingerprint}]?.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "2ssluvorme",
-      "Integrity": "DoENg/BxdvH1o6NnXQy0ECuaybKm+hk/a/kCi5GJEvA=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imgs\\product1.png"
     },
     {
       "Identity": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\scooter.jpg",
@@ -3748,11 +3748,32 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "b847hxm70k",
-      "Integrity": "KwYHXwElXYNR6i13ynOSW9tzW9Ct8JVyKejVIFXab+Y=",
+      "Fingerprint": "q36s2momq3",
+      "Integrity": "5mfa5E5Icx80Da2vv0oHW1Gj8NPMbPuqdxMZLExu8A4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\manifest.json"
+    },
+    {
+      "Identity": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\Manifest-Admin.json",
+      "SourceId": "Oil",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\",
+      "BasePath": "_content/Oil",
+      "RelativePath": "Manifest-Admin#[.{fingerprint}]?.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "xczb4dy2vx",
+      "Integrity": "wf/4bqy29z5AwR4gcsdbW1Pb1TOhfD4uT8GH+oEaBfA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Manifest-Admin.json"
     },
     {
       "Identity": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\uploads\\products\\1b6686a2-95d1-4dfd-92b8-3ae7b23112dd.jpeg",
@@ -3776,6 +3797,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\products\\1b6686a2-95d1-4dfd-92b8-3ae7b23112dd.jpeg"
     },
     {
+      "Identity": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\uploads\\products\\493ca673-3d75-4ead-8073-89887aa25beb.jpg",
+      "SourceId": "Oil",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\",
+      "BasePath": "_content/Oil",
+      "RelativePath": "uploads/products/493ca673-3d75-4ead-8073-89887aa25beb#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "p5ibnpp7xg",
+      "Integrity": "UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\products\\493ca673-3d75-4ead-8073-89887aa25beb.jpg"
+    },
+    {
       "Identity": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\uploads\\products\\b6d06b5e-8cbb-4dfb-9253-87b94b2f586e.png",
       "SourceId": "Oil",
       "SourceType": "Discovered",
@@ -3795,6 +3837,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\products\\b6d06b5e-8cbb-4dfb-9253-87b94b2f586e.png"
+    },
+    {
+      "Identity": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\uploads\\receipts\\ewallet\\41144513-df96-40b4-87f8-9dbf618dc937.jpg",
+      "SourceId": "Oil",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\",
+      "BasePath": "_content/Oil",
+      "RelativePath": "uploads/receipts/ewallet/41144513-df96-40b4-87f8-9dbf618dc937#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "p5ibnpp7xg",
+      "Integrity": "UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\receipts\\ewallet\\41144513-df96-40b4-87f8-9dbf618dc937.jpg"
+    },
+    {
+      "Identity": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\uploads\\receipts\\instapay\\b90c3c79-db54-49e4-9f58-3d98b53c9ed4.jpg",
+      "SourceId": "Oil",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\",
+      "BasePath": "_content/Oil",
+      "RelativePath": "uploads/receipts/instapay/b90c3c79-db54-49e4-9f58-3d98b53c9ed4#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "p5ibnpp7xg",
+      "Integrity": "UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\receipts\\instapay\\b90c3c79-db54-49e4-9f58-3d98b53c9ed4.jpg"
     },
     {
       "Identity": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\webfonts\\fa-brands-400.ttf",
@@ -7283,6 +7367,88 @@
       ]
     },
     {
+      "Route": "imgs/logoAdmin.jpg",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logoAdmin.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "39329"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"G7KBKlbRU6gxVC1QXwtX0fK4dBe8cqHSPhMAnlpZqiA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 01 Jun 2025 20:56:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-G7KBKlbRU6gxVC1QXwtX0fK4dBe8cqHSPhMAnlpZqiA="
+        }
+      ]
+    },
+    {
+      "Route": "imgs/logoAdmin.z6mj3ms81l.jpg",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logoAdmin.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "39329"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"G7KBKlbRU6gxVC1QXwtX0fK4dBe8cqHSPhMAnlpZqiA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 01 Jun 2025 20:56:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "z6mj3ms81l"
+        },
+        {
+          "Name": "label",
+          "Value": "imgs/logoAdmin.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-G7KBKlbRU6gxVC1QXwtX0fK4dBe8cqHSPhMAnlpZqiA="
+        }
+      ]
+    },
+    {
       "Route": "imgs/logohead.jpg",
       "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logohead.jpg",
       "Selectors": [],
@@ -7293,7 +7459,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "48591"
+          "Value": "46200"
         },
         {
           "Name": "Content-Type",
@@ -7301,11 +7467,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY=\""
+          "Value": "\"t202aYnVM7SCg7lAqZUr5mpEl0AI3nD0ga/pAEFTGNo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 01 Jun 2025 18:24:06 GMT"
+          "Value": "Sun, 01 Jun 2025 20:30:58 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7315,12 +7481,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY="
+          "Value": "sha256-t202aYnVM7SCg7lAqZUr5mpEl0AI3nD0ga/pAEFTGNo="
         }
       ]
     },
     {
-      "Route": "imgs/logohead.p5ibnpp7xg.jpg",
+      "Route": "imgs/logohead.l1ttubvmik.jpg",
       "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logohead.jpg",
       "Selectors": [],
       "ResponseHeaders": [
@@ -7330,7 +7496,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "48591"
+          "Value": "46200"
         },
         {
           "Name": "Content-Type",
@@ -7338,11 +7504,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY=\""
+          "Value": "\"t202aYnVM7SCg7lAqZUr5mpEl0AI3nD0ga/pAEFTGNo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 01 Jun 2025 18:24:06 GMT"
+          "Value": "Sun, 01 Jun 2025 20:30:58 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7352,7 +7518,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "p5ibnpp7xg"
+          "Value": "l1ttubvmik"
         },
         {
           "Name": "label",
@@ -7360,7 +7526,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY="
+          "Value": "sha256-t202aYnVM7SCg7lAqZUr5mpEl0AI3nD0ga/pAEFTGNo="
         }
       ]
     },
@@ -8099,170 +8265,6 @@
         {
           "Name": "integrity",
           "Value": "sha256-9kIEJv1Hf5PBbFHk9vgWOkMwTFJ0IsVTF6yOa+fwokM="
-        }
-      ]
-    },
-    {
-      "Route": "imgs/product1.2ssluvorme.png",
-      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\product1.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "287315"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"DoENg/BxdvH1o6NnXQy0ECuaybKm+hk/a/kCi5GJEvA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 18 May 2025 15:44:42 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "2ssluvorme"
-        },
-        {
-          "Name": "label",
-          "Value": "imgs/product1.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-DoENg/BxdvH1o6NnXQy0ECuaybKm+hk/a/kCi5GJEvA="
-        }
-      ]
-    },
-    {
-      "Route": "imgs/Product1.jpg",
-      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Product1.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "38624"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"h2+8BY8J/nBULJ4Xy871nA1A8YOouf1KYSVbiXGOH9U=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 18 May 2025 15:44:42 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-h2+8BY8J/nBULJ4Xy871nA1A8YOouf1KYSVbiXGOH9U="
-        }
-      ]
-    },
-    {
-      "Route": "imgs/product1.png",
-      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\product1.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "287315"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"DoENg/BxdvH1o6NnXQy0ECuaybKm+hk/a/kCi5GJEvA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 18 May 2025 15:44:42 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-DoENg/BxdvH1o6NnXQy0ECuaybKm+hk/a/kCi5GJEvA="
-        }
-      ]
-    },
-    {
-      "Route": "imgs/Product1.r38u79wvcn.jpg",
-      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Product1.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "38624"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"h2+8BY8J/nBULJ4Xy871nA1A8YOouf1KYSVbiXGOH9U=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 18 May 2025 15:44:42 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "r38u79wvcn"
-        },
-        {
-          "Name": "label",
-          "Value": "imgs/Product1.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-h2+8BY8J/nBULJ4Xy871nA1A8YOouf1KYSVbiXGOH9U="
         }
       ]
     },
@@ -27183,13 +27185,13 @@
       ]
     },
     {
-      "Route": "manifest.b847hxm70k.json",
-      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\compressed\\3k45i6q4ce-b847hxm70k.gz",
+      "Route": "manifest.json",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\compressed\\3k45i6q4ce-q36s2momq3.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.004854368932"
+          "Quality": "0.004878048780"
         }
       ],
       "ResponseHeaders": [
@@ -27199,19 +27201,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "205"
+          "Value": "204"
         },
         {
           "Name": "ETag",
-          "Value": "\"t06mcuY1vIIwg7McNMH2LF9V3j7fQsWx/NjKgUlicck=\""
+          "Value": "\"PoKDCp9dpShx9yHuM7k6UWmBscGS5ZYpGQXAMkW9GHM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 01 Jun 2025 19:50:56 GMT"
+          "Value": "Sun, 01 Jun 2025 20:07:21 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -27227,26 +27229,18 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"KwYHXwElXYNR6i13ynOSW9tzW9Ct8JVyKejVIFXab+Y=\""
+          "Value": "W/\"5mfa5E5Icx80Da2vv0oHW1Gj8NPMbPuqdxMZLExu8A4=\""
         }
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "b847hxm70k"
-        },
-        {
-          "Name": "label",
-          "Value": "manifest.json"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-KwYHXwElXYNR6i13ynOSW9tzW9Ct8JVyKejVIFXab+Y="
+          "Value": "sha256-5mfa5E5Icx80Da2vv0oHW1Gj8NPMbPuqdxMZLExu8A4="
         }
       ]
     },
     {
-      "Route": "manifest.b847hxm70k.json",
+      "Route": "manifest.json",
       "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\manifest.json",
       "Selectors": [],
       "ResponseHeaders": [
@@ -27264,11 +27258,156 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"KwYHXwElXYNR6i13ynOSW9tzW9Ct8JVyKejVIFXab+Y=\""
+          "Value": "\"5mfa5E5Icx80Da2vv0oHW1Gj8NPMbPuqdxMZLExu8A4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 01 Jun 2025 19:50:56 GMT"
+          "Value": "Sun, 01 Jun 2025 20:07:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5mfa5E5Icx80Da2vv0oHW1Gj8NPMbPuqdxMZLExu8A4="
+        }
+      ]
+    },
+    {
+      "Route": "manifest.json.gz",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\compressed\\3k45i6q4ce-q36s2momq3.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "204"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PoKDCp9dpShx9yHuM7k6UWmBscGS5ZYpGQXAMkW9GHM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 01 Jun 2025 20:07:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-PoKDCp9dpShx9yHuM7k6UWmBscGS5ZYpGQXAMkW9GHM="
+        }
+      ]
+    },
+    {
+      "Route": "manifest.q36s2momq3.json",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\compressed\\3k45i6q4ce-q36s2momq3.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.004878048780"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "204"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PoKDCp9dpShx9yHuM7k6UWmBscGS5ZYpGQXAMkW9GHM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 01 Jun 2025 20:07:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"5mfa5E5Icx80Da2vv0oHW1Gj8NPMbPuqdxMZLExu8A4=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "q36s2momq3"
+        },
+        {
+          "Name": "label",
+          "Value": "manifest.json"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5mfa5E5Icx80Da2vv0oHW1Gj8NPMbPuqdxMZLExu8A4="
+        }
+      ]
+    },
+    {
+      "Route": "manifest.q36s2momq3.json",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\manifest.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "400"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5mfa5E5Icx80Da2vv0oHW1Gj8NPMbPuqdxMZLExu8A4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 01 Jun 2025 20:07:21 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -27278,7 +27417,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "b847hxm70k"
+          "Value": "q36s2momq3"
         },
         {
           "Name": "label",
@@ -27286,13 +27425,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-KwYHXwElXYNR6i13ynOSW9tzW9Ct8JVyKejVIFXab+Y="
+          "Value": "sha256-5mfa5E5Icx80Da2vv0oHW1Gj8NPMbPuqdxMZLExu8A4="
         }
       ]
     },
     {
-      "Route": "manifest.b847hxm70k.json.gz",
-      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\compressed\\3k45i6q4ce-b847hxm70k.gz",
+      "Route": "manifest.q36s2momq3.json.gz",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\compressed\\3k45i6q4ce-q36s2momq3.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -27301,7 +27440,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "205"
+          "Value": "204"
         },
         {
           "Name": "Content-Type",
@@ -27309,11 +27448,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"t06mcuY1vIIwg7McNMH2LF9V3j7fQsWx/NjKgUlicck=\""
+          "Value": "\"PoKDCp9dpShx9yHuM7k6UWmBscGS5ZYpGQXAMkW9GHM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 01 Jun 2025 19:50:56 GMT"
+          "Value": "Sun, 01 Jun 2025 20:07:21 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -27331,7 +27470,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "b847hxm70k"
+          "Value": "q36s2momq3"
         },
         {
           "Name": "label",
@@ -27339,18 +27478,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-t06mcuY1vIIwg7McNMH2LF9V3j7fQsWx/NjKgUlicck="
+          "Value": "sha256-PoKDCp9dpShx9yHuM7k6UWmBscGS5ZYpGQXAMkW9GHM="
         }
       ]
     },
     {
-      "Route": "manifest.json",
-      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\compressed\\3k45i6q4ce-b847hxm70k.gz",
+      "Route": "Manifest-Admin.json",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\compressed\\btqf25o22v-xczb4dy2vx.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.004854368932"
+          "Quality": "0.004784688995"
         }
       ],
       "ResponseHeaders": [
@@ -27360,15 +27499,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "205"
+          "Value": "208"
         },
         {
           "Name": "ETag",
-          "Value": "\"t06mcuY1vIIwg7McNMH2LF9V3j7fQsWx/NjKgUlicck=\""
+          "Value": "\"wucYiy4QCcOFSX0pC5qGmeZApwe1o7apW/1lix7AERk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 01 Jun 2025 19:50:56 GMT"
+          "Value": "Mon, 02 Jun 2025 12:59:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -27388,19 +27527,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"KwYHXwElXYNR6i13ynOSW9tzW9Ct8JVyKejVIFXab+Y=\""
+          "Value": "W/\"wf/4bqy29z5AwR4gcsdbW1Pb1TOhfD4uT8GH+oEaBfA=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-KwYHXwElXYNR6i13ynOSW9tzW9Ct8JVyKejVIFXab+Y="
+          "Value": "sha256-wf/4bqy29z5AwR4gcsdbW1Pb1TOhfD4uT8GH+oEaBfA="
         }
       ]
     },
     {
-      "Route": "manifest.json",
-      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\manifest.json",
+      "Route": "Manifest-Admin.json",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\Manifest-Admin.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -27409,7 +27548,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "400"
+          "Value": "411"
         },
         {
           "Name": "Content-Type",
@@ -27417,11 +27556,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"KwYHXwElXYNR6i13ynOSW9tzW9Ct8JVyKejVIFXab+Y=\""
+          "Value": "\"wf/4bqy29z5AwR4gcsdbW1Pb1TOhfD4uT8GH+oEaBfA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 01 Jun 2025 19:50:56 GMT"
+          "Value": "Mon, 02 Jun 2025 12:59:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -27431,13 +27570,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-KwYHXwElXYNR6i13ynOSW9tzW9Ct8JVyKejVIFXab+Y="
+          "Value": "sha256-wf/4bqy29z5AwR4gcsdbW1Pb1TOhfD4uT8GH+oEaBfA="
         }
       ]
     },
     {
-      "Route": "manifest.json.gz",
-      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\compressed\\3k45i6q4ce-b847hxm70k.gz",
+      "Route": "Manifest-Admin.json.gz",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\compressed\\btqf25o22v-xczb4dy2vx.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -27446,7 +27585,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "205"
+          "Value": "208"
         },
         {
           "Name": "Content-Type",
@@ -27454,11 +27593,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"t06mcuY1vIIwg7McNMH2LF9V3j7fQsWx/NjKgUlicck=\""
+          "Value": "\"wucYiy4QCcOFSX0pC5qGmeZApwe1o7apW/1lix7AERk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 01 Jun 2025 19:50:56 GMT"
+          "Value": "Mon, 02 Jun 2025 12:59:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -27476,7 +27615,168 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-t06mcuY1vIIwg7McNMH2LF9V3j7fQsWx/NjKgUlicck="
+          "Value": "sha256-wucYiy4QCcOFSX0pC5qGmeZApwe1o7apW/1lix7AERk="
+        }
+      ]
+    },
+    {
+      "Route": "Manifest-Admin.xczb4dy2vx.json",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\compressed\\btqf25o22v-xczb4dy2vx.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.004784688995"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "208"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wucYiy4QCcOFSX0pC5qGmeZApwe1o7apW/1lix7AERk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 02 Jun 2025 12:59:18 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"wf/4bqy29z5AwR4gcsdbW1Pb1TOhfD4uT8GH+oEaBfA=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xczb4dy2vx"
+        },
+        {
+          "Name": "label",
+          "Value": "Manifest-Admin.json"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wf/4bqy29z5AwR4gcsdbW1Pb1TOhfD4uT8GH+oEaBfA="
+        }
+      ]
+    },
+    {
+      "Route": "Manifest-Admin.xczb4dy2vx.json",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\Manifest-Admin.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "411"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wf/4bqy29z5AwR4gcsdbW1Pb1TOhfD4uT8GH+oEaBfA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 02 Jun 2025 12:59:18 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xczb4dy2vx"
+        },
+        {
+          "Name": "label",
+          "Value": "Manifest-Admin.json"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wf/4bqy29z5AwR4gcsdbW1Pb1TOhfD4uT8GH+oEaBfA="
+        }
+      ]
+    },
+    {
+      "Route": "Manifest-Admin.xczb4dy2vx.json.gz",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\obj\\Debug\\net9.0\\compressed\\btqf25o22v-xczb4dy2vx.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "208"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wucYiy4QCcOFSX0pC5qGmeZApwe1o7apW/1lix7AERk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 02 Jun 2025 12:59:18 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xczb4dy2vx"
+        },
+        {
+          "Name": "label",
+          "Value": "Manifest-Admin.json.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wucYiy4QCcOFSX0pC5qGmeZApwe1o7apW/1lix7AERk="
         }
       ]
     },
@@ -28159,6 +28459,88 @@
       ]
     },
     {
+      "Route": "uploads/products/493ca673-3d75-4ead-8073-89887aa25beb.jpg",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\uploads\\products\\493ca673-3d75-4ead-8073-89887aa25beb.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "48591"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 03 Jun 2025 18:02:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/products/493ca673-3d75-4ead-8073-89887aa25beb.p5ibnpp7xg.jpg",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\uploads\\products\\493ca673-3d75-4ead-8073-89887aa25beb.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "48591"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 03 Jun 2025 18:02:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "p5ibnpp7xg"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/products/493ca673-3d75-4ead-8073-89887aa25beb.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY="
+        }
+      ]
+    },
+    {
       "Route": "uploads/products/b6d06b5e-8cbb-4dfb-9253-87b94b2f586e.png",
       "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\uploads\\products\\b6d06b5e-8cbb-4dfb-9253-87b94b2f586e.png",
       "Selectors": [],
@@ -28237,6 +28619,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-SpiW4aL7x8AKox61uET8DSxyQOgOd291mHcKCA5UmS0="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/receipts/ewallet/41144513-df96-40b4-87f8-9dbf618dc937.jpg",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\uploads\\receipts\\ewallet\\41144513-df96-40b4-87f8-9dbf618dc937.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "48591"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 03 Jun 2025 18:23:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/receipts/ewallet/41144513-df96-40b4-87f8-9dbf618dc937.p5ibnpp7xg.jpg",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\uploads\\receipts\\ewallet\\41144513-df96-40b4-87f8-9dbf618dc937.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "48591"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 03 Jun 2025 18:23:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "p5ibnpp7xg"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/receipts/ewallet/41144513-df96-40b4-87f8-9dbf618dc937.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/receipts/instapay/b90c3c79-db54-49e4-9f58-3d98b53c9ed4.jpg",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\uploads\\receipts\\instapay\\b90c3c79-db54-49e4-9f58-3d98b53c9ed4.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "48591"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 03 Jun 2025 19:13:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/receipts/instapay/b90c3c79-db54-49e4-9f58-3d98b53c9ed4.p5ibnpp7xg.jpg",
+      "AssetFile": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\uploads\\receipts\\instapay\\b90c3c79-db54-49e4-9f58-3d98b53c9ed4.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "48591"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 03 Jun 2025 19:13:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "p5ibnpp7xg"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/receipts/instapay/b90c3c79-db54-49e4-9f58-3d98b53c9ed4.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UwTT1PrlonSMqNbemXTAl8S6gnhLzlGPIr+4XWH6DVY="
         }
       ]
     },

@@ -19,6 +19,7 @@ G:\Github\Mobil-Oil\Oil\wwwroot\js\index.js
 G:\Github\Mobil-Oil\Oil\wwwroot\imgs\logo.svg
 G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
 G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+G:\Github\Mobil-Oil\Oil\wwwroot\Manifest-Admin.json
 G:\Github\Mobil-Oil\Oil\wwwroot\css\main.css
 G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
 G:\Github\Mobil-Oil\Oil\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
@@ -89,6 +90,7 @@ wwwroot\imgs\logo.png
 wwwroot\imgs\logo.svg
 wwwroot\imgs\logo_totalenergies_mobile.webp
 wwwroot\imgs\logo1.svg
+wwwroot\imgs\logoAdmin.jpg
 wwwroot\imgs\logohead.jpg
 wwwroot\imgs\Maintenance-and-repair.jpg
 wwwroot\imgs\mannol.png
@@ -99,8 +101,6 @@ wwwroot\imgs\Motorcycle-oils.jpg
 wwwroot\imgs\motul.png
 wwwroot\imgs\Oil-additives.jpg
 wwwroot\imgs\opa.jpg
-wwwroot\imgs\Product1.jpg
-wwwroot\imgs\product1.png
 wwwroot\imgs\scooter.jpg
 wwwroot\imgs\shell.png
 wwwroot\imgs\spare-parts.jpg
@@ -172,8 +172,12 @@ wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
 wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
 wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
 wwwroot\manifest.json
+wwwroot\Manifest-Admin.json
 wwwroot\uploads\products\1b6686a2-95d1-4dfd-92b8-3ae7b23112dd.jpeg
+wwwroot\uploads\products\493ca673-3d75-4ead-8073-89887aa25beb.jpg
 wwwroot\uploads\products\b6d06b5e-8cbb-4dfb-9253-87b94b2f586e.png
+wwwroot\uploads\receipts\ewallet\41144513-df96-40b4-87f8-9dbf618dc937.jpg
+wwwroot\uploads\receipts\instapay\b90c3c79-db54-49e4-9f58-3d98b53c9ed4.jpg
 wwwroot\webfonts\fa-brands-400.ttf
 wwwroot\webfonts\fa-brands-400.woff2
 wwwroot\webfonts\fa-regular-400.ttf

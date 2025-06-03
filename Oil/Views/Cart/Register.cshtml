@@ -1,283 +1,117 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var shippingZones = ViewBag.ShippingZones as List<Oil.Controllers.ShippingZoneViewModel> ?? new List<Oil.Controllers.ShippingZoneViewModel>();
+    var currentLang = Context.Request.Cookies["Language"] == "en" ? "en" : "ar";
 }
+
 <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
 <style>
-    body{
-        margin-top:150px;
+    :root {
+        --primary-color: #007bff; /* Bootstrap Primary */
+        --primary-darker: #0056b3;
+        --secondary-color: #6c757d; /* Bootstrap Secondary */
+        --light-bg: #f8f9fa; /* Page background */
+        --white-bg: #ffffff; /* Card background */
+        --text-dark: #212529;
+        --text-light: #495057;
+        --border-color: #dee2e6; /* Light border */
+        --border-color-input: #ced4da; /* Input border */
+        --success-color: #28a745;
+        --danger-color: #dc3545;
+        --warning-color: #ffc107;
+        --info-color: #17a2b8;
+        --font-family-main: 'Tajawal', sans-serif; /* Main font */
+        --border-radius-md: .5rem; /* Medium border radius */
+        --border-radius-lg: .8rem; /* Large border radius */
+        --shadow-sm: 0 .125rem .25rem rgba(0,0,0,.075);
+        --shadow-md: 0 .5rem 1rem rgba(0,0,0,.1);
     }
-</style>
-@section Scripts {
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        function showPaymentSection(sectionId) {
-            const sections = ['cash-section', 'ewallet-section', 'instapay-section', 'visa-section']; // Updated
-            const currentLangDirection = document.documentElement.dir || "rtl";
 
-            sections.forEach(id => {
-                const element = document.getElementById(id);
-                if (element) {
-                    // The sectionId from localStorage might be 'ewallet', 'instapay', etc.
-                    // We need to match it with element IDs like 'ewallet-section'.
-                    if (id === sectionId || id === sectionId + '-section') {
-                        element.classList.remove('d-none');
-                        const header = element.closest('.form-container')?.querySelector('h3');
-                        if(header) {
-                            const titleAr = header.getAttribute('data-ar-title');
-                            const titleEn = header.getAttribute('data-en-title');
-                            if (titleAr && titleEn) {
-                                header.textContent = currentLangDirection === 'rtl' ? titleAr : titleEn;
-                            }
-                        }
-                    } else {
-                        element.classList.add('d-none');
-                    }
-                }
-            });
-            const mainHeader = document.querySelector('.section-header');
-            if(mainHeader) {
-                const titleAr = mainHeader.getAttribute('data-ar');
-                const titleEn = mainHeader.getAttribute('data-en');
-                 if (titleAr && titleEn) {
-                    mainHeader.textContent = currentLangDirection === 'rtl' ? titleAr : titleEn;
-                }
-            }
-        }
+    body {
+        margin-top: 100px; /* Adjust based on navbar height */
+        background-color: var(--light-bg);
+        font-family: var(--font-family-main);
+        color: var(--text-dark);
+    }
 
-        function getAntiForgeryToken() {
-            const tokenField = document.querySelector('input[name="__RequestVerificationToken"]');
-            return tokenField ? tokenField.value : '';
-        }
+    .page-header-container {
+        text-align: center;
+        margin-bottom: 40px;
+    }
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const currentLangDirection = document.documentElement.dir || "rtl";
+    .section-header {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--primary-darker);
+        padding-bottom: 10px;
+        border-bottom: 3px solid var(--primary-color);
+        display: inline-block;
+    }
 
-            function showSubmissionError(title, text) {
-                Swal.fire({
-                    icon: 'error',
-                    title:  (currentLangDirection === 'rtl' ? 'خطأ' : 'Error'),
-                    text:  (currentLangDirection === 'rtl' ? 'حدث خطأ ما.' : 'An error occurred.'),
-                    confirmButtonText: currentLangDirection === 'rtl' ? 'موافق' : 'OK'
-                });
-            }
-            function showSuccessMessage(title, text) {
-                 Swal.fire({
-                    icon: 'success',
-                    text:  (currentLangDirection === 'rtl' ? 'تمت العملية بنجاح.' : 'Operation successful.'),
-                    timer: 2000,
-                    showConfirmButton: false,
-                    toast: true,
-                    position: 'top-end', 
-                    customClass: { popup: 'swal2-toast' }
-                });
-            }
+    .payment-method-selector-container {
+        max-width: 680px;
+        margin: 0 auto 30px auto;
+        background-color: var(--white-bg);
+        padding: 25px 30px;
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-md);
+    }
 
-            async function handleFormSubmit(formElement, url) {
-                const formData = new FormData(formElement);
-                const cartItemsRaw = JSON.parse(localStorage.getItem("cart")) || [];
+    #paymentMethodSelector {
+        padding: .75rem 1rem;
+        font-size: 1.05rem;
+        border-radius: var(--border-radius-md);
+    }
 
-                if (cartItemsRaw.length === 0) {
-                    showSubmissionError(currentLangDirection === 'rtl' ? 'سلة فارغة' : 'Empty Cart', currentLangDirection === 'rtl' ? 'سلة مشترياتك فارغة! لا يمكن إتمام الطلب.' : 'Your cart is empty! Cannot proceed.');
-                    return;
-                }
+    .input-wrapper select.form-select { /* Ensure icon padding for select */
+        padding-right: 45px; /* RTL default */
+    }
 
-                const validCartItems = cartItemsRaw.filter(item =>
-                    item.productId && Number.isInteger(item.productId) && item.productId > 0 &&
-                    item.quantity && Number.isInteger(item.quantity) && item.quantity > 0 &&
-                    item.price && typeof item.price === 'number' && item.price >= 0
-                );
+    html[dir="ltr"] .input-wrapper select.form-select {
+        padding-left: 45px;
+        padding-right: 1rem;
+    }
 
-                if (validCartItems.length !== cartItemsRaw.length) {
-                     showSubmissionError(
-                        currentLangDirection === 'rtl' ? 'خطأ في بيانات السلة' : 'Cart Data Error',
-                        currentLangDirection === 'rtl' ? 'بعض المنتجات في سلتك تحتوي على بيانات غير صالحة أو قديمة. قد يتم تجاهلها أو يرجى تحديث السلة.' : 'Some products in your cart have invalid or outdated data. They might be ignored or please update your cart.'
-                    );
-                    if (validCartItems.length === 0) { return; }
-                }
 
-                const processedCartItems = validCartItems.map(item => ({
-                    productId: item.productId,
-                    title: item.title ? item.title.trim() : 'Unnamed Item',
-                    price: item.price,
-                    quantity: item.quantity,
-                    imageUrl: item.imageUrl
-                }));
-                formData.append('cartItemsJson', JSON.stringify(processedCartItems));
-
-                try {
-                    const response = await fetch(url, {
-                        method: "POST",
-                        body: formData,
-                        headers: { 'RequestVerificationToken': getAntiForgeryToken() }
-                    });
-                    const data = await response.json();
-                    if (data.success && data.redirectUrl) {
-                        localStorage.removeItem('cart');
-                        localStorage.removeItem('totalPrice');
-                        window.location.href = data.redirectUrl;
-                    } else {
-                        showSubmissionError(currentLangDirection === 'rtl' ? 'خطأ في الطلب' : 'Order Error', data.message || (currentLangDirection === 'rtl' ? 'حدث خطأ أثناء تأكيد الطلب.' : 'Error confirming order.'));
-                        console.error("Order Submission Error:", data.errors || data.message);
-                    }
-                } catch (error) {
-                    console.error("Error submitting order:", error);
-                    showSubmissionError(currentLangDirection === 'rtl' ? 'خطأ بالاتصال' : 'Connection Error', currentLangDirection === 'rtl' ? 'حدث خطأ أثناء الاتصال بالخادم.' : 'Error connecting to the server.');
-                }
-            }
-
-            const ewalletForm = document.getElementById("ewalletForm");
-            if(ewalletForm) {
-                ewalletForm.addEventListener("submit", async function (e) {
-                    e.preventDefault();
-                    const name = document.getElementById("ewallet-name").value.trim();
-                    const phone = document.getElementById("ewallet-phone").value.trim();
-                    const address = document.getElementById("ewallet-address").value.trim();
-                    const receiptInput = document.getElementById("ewallet-receipt");
-                    const receiptFile = receiptInput.files ? receiptInput.files[0] : null;
-
-                    if (!name || !phone || !address || !receiptFile) {
-                        showSubmissionError(currentLangDirection === 'rtl' ? 'بيانات ناقصة' : 'Missing Data', currentLangDirection === 'rtl' ? 'يرجى ملء جميع الحقول ورفع إيصال الدفع للمحفظة.' : 'Please fill all fields and upload the E-Wallet payment receipt.');
-                        return;
-                    }
-                    await handleFormSubmit(this, "@Url.Action("SubmitWalletOrder", "Cart")");
-                });
-            }
-
-            const instapayForm = document.getElementById("instapayForm");
-            if(instapayForm) {
-                instapayForm.addEventListener("submit", async function (e) {
-                    e.preventDefault();
-                    const name = document.getElementById("instapay-name").value.trim();
-                    const phone = document.getElementById("instapay-phone").value.trim();
-                    const address = document.getElementById("instapay-address").value.trim();
-                    const receiptInput = document.getElementById("instapay-receipt");
-                    const receiptFile = receiptInput.files ? receiptInput.files[0] : null;
-
-                    if (!name || !phone || !address || !receiptFile) {
-                        showSubmissionError(currentLangDirection === 'rtl' ? 'بيانات ناقصة' : 'Missing Data', currentLangDirection === 'rtl' ? 'يرجى ملء جميع الحقول ورفع إيصال انستاباي.' : 'Please fill all fields and upload the Instapay receipt.');
-                        return;
-                    }
-                    await handleFormSubmit(this, "@Url.Action("SubmitInstapayOrder", "Cart")");
-                });
-            }
-
-            const payForm = document.getElementById("payForm");
-            if(payForm) {
-                payForm.addEventListener("submit", async function (e) {
-                    e.preventDefault();
-                    const name = document.getElementById("visa-name").value.trim();
-                    const phone = document.getElementById("visa-phone").value.trim();
-                    const address = document.getElementById("visa-address").value.trim();
-                    const email = document.getElementById("visa-email")?.value.trim() || 'customer@example.com';
-                    const city = document.getElementById("visa-city")?.value.trim() || 'Cairo';
-                    const postalCode = document.getElementById("visa-postalcode")?.value.trim() || 'NA';
-
-                    const amount = parseFloat(localStorage.getItem("totalPrice")) || 0;
-                    const cartItemsRaw = JSON.parse(localStorage.getItem("cart")) || [];
-
-                    if (amount <= 0) { showSubmissionError(currentLangDirection === 'rtl' ? 'خطأ' : 'Error', currentLangDirection === 'rtl' ? 'المبلغ الإجمالي للسلة غير صالح.' : 'Cart total amount is invalid.'); return; }
-                    if (!name || !phone || !address) { showSubmissionError(currentLangDirection === 'rtl' ? 'بيانات ناقصة' : 'Missing Data', currentLangDirection === 'rtl' ? 'يرجى ملء جميع الحقول الإلزامية.' : 'Please fill all required fields.'); return; }
-                    if (cartItemsRaw.length === 0) { showSubmissionError(currentLangDirection === 'rtl' ? 'سلة فارغة' : 'Empty Cart', currentLangDirection === 'rtl' ? 'سلة مشترياتك فارغة!' : 'Your cart is empty!'); return; }
-
-                    const validCartItems = cartItemsRaw.filter(item => item.productId && Number.isInteger(item.productId) && item.productId > 0 && item.quantity && Number.isInteger(item.quantity) && item.quantity > 0 && item.price && typeof item.price === 'number' && item.price >= 0);
-                    if (validCartItems.length !== cartItemsRaw.length) { showSubmissionError(currentLangDirection === 'rtl' ? 'خطأ في بيانات السلة' : 'Cart Data Error', currentLangDirection === 'rtl' ? 'بعض المنتجات في سلتك تحتوي على بيانات غير صالحة أو قديمة.' : 'Some products in your cart have invalid or outdated data.'); if (validCartItems.length === 0) return; }
-
-                    const processedCartItems = validCartItems.map(item => ({ productId: item.productId, title: item.title ? item.title.trim() : 'Unnamed Item', price: item.price, quantity: item.quantity, imageUrl: item.imageUrl }));
-                    const payRequest = { name: name, phone: phone, address: address, amount: amount, items: processedCartItems, email: email, city: city, postalCode: postalCode, state: city };
-
-                    try {
-                        const response = await fetch("/Paymob/Pay", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json", 'RequestVerificationToken': getAntiForgeryToken() },
-                            body: JSON.stringify(payRequest)
-                        });
-                        const data = await response.json();
-                        if (data.success && data.url) {
-                            showSuccessMessage(currentLangDirection === 'rtl' ? 'جارٍ التوجيه...' : 'Redirecting...', currentLangDirection === 'rtl' ? 'سيتم توجيهك لصفحة الدفع الآمن.' : 'You will be redirected to the secure payment page.');
-                            localStorage.removeItem('cart');
-                            localStorage.removeItem('totalPrice');
-                            setTimeout(() => { window.location.href = data.url; }, 1500);
-                        } else {
-                            showSubmissionError(currentLangDirection === 'rtl' ? 'خطأ في الدفع' : 'Payment Error', data.message || (currentLangDirection === 'rtl' ? 'حدث خطأ أثناء محاولة الدفع.' : 'Error processing payment.'));
-                            console.error("Paymob Error:", data.errors || data.message);
-                        }
-                    } catch (error) {
-                        console.error("Error calling Paymob:", error);
-                        showSubmissionError(currentLangDirection === 'rtl' ? 'خطأ بالاتصال' : 'Connection Error', currentLangDirection === 'rtl' ? 'حدث خطأ أثناء الاتصال بالخادم.' : 'Error connecting to the server.');
-                    }
-                });
-            }
-
-            const cashForm = document.getElementById("cashForm");
-            if(cashForm) {
-                cashForm.addEventListener("submit", async function (e) {
-                    e.preventDefault();
-                    const name = document.getElementById("cash-name").value.trim();
-                    const phone = document.getElementById("cash-phone").value.trim();
-                    const address = document.getElementById("cash-address").value.trim();
-                    const idImageInput = document.getElementById("cash-idImage");
-                    const idImageFile = idImageInput.files ? idImageInput.files[0] : null;
-
-                     if (!name || !phone || !address || !idImageFile) {
-                        showSubmissionError(currentLangDirection === 'rtl' ? 'بيانات ناقصة' : 'Missing Data', currentLangDirection === 'rtl' ? 'يرجى ملء جميع الحقول ورفع صورة الهوية.' : 'Please fill all fields and upload the ID image.');
-                        return;
-                    }
-                    await handleFormSubmit(this, "@Url.Action("SubmitCashOrder", "Cart")");
-                });
-            }
-
-            // window.onload logic should be outside DOMContentLoaded or called carefully
-            const selectedPaymentMethod = localStorage.getItem('selectedPaymentMethod');
-            if (selectedPaymentMethod) {
-                showPaymentSection(selectedPaymentMethod);
-            } else {
-                console.warn(currentLangDirection === 'rtl' ? "لم يتم العثور على طريقة دفع. عرض قسم الدفع النقدي افتراضياً." : "No payment method found. Defaulting to cash section.");
-                showPaymentSection('cash'); // Default to cash or a relevant default
-            }
-            // Update text content based on language for all relevant elements
-            document.querySelectorAll('[data-ar][data-en]').forEach(el => {
-                const textAr = el.getAttribute('data-ar');
-                const textEn = el.getAttribute('data-en');
-                if (el.tagName === 'LABEL' || el.tagName === 'BUTTON' || el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'P' || el.tagName === 'SMALL' || (el.tagName === 'DIV' && el.classList.contains('alert'))) {
-                    el.textContent = currentLangDirection === 'rtl' ? textAr : textEn;
-                }
-            });
-            document.querySelectorAll('input[data-ar-placeholder][data-en-placeholder]').forEach(el => {
-                el.placeholder = currentLangDirection === 'rtl' ? el.getAttribute('data-ar-placeholder') : el.getAttribute('data-en-placeholder');
-            });
-        });
-    </script>
-}
-<style>
-    /* Styles remain the same as previously provided */
     .form-container {
-        max-width: 550px;
-        margin: 50px auto;
-        padding: 40px;
-        background: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        max-width: 680px; /* Consistent width */
+        margin: 20px auto;
+        padding: 30px 35px;
+        background: var(--white-bg);
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-md);
+        animation: fadeIn 0.5s ease-out;
     }
 
-        .form-container h3 {
+        .form-container h3 { /* Section titles like "Cash on Delivery" */
             text-align: center;
             margin-bottom: 25px;
             font-weight: 600;
-            color: #007bff;
-            font-size: 1.6rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
         }
+
+        .form-container .text-center h3 {
+            display: block;
+        }
+
 
     .form-group {
         position: relative;
-        margin-bottom: 1.25rem;
+        margin-bottom: 1.2rem;
     }
 
     .form-label {
-        font-weight: 500;
+        font-weight: 500; /* Slightly less bold */
         margin-bottom: .5rem;
         display: block;
-        color: #495057;
+        color: var(--text-light);
+        font-size: 0.9rem;
     }
 
     .input-wrapper {
@@ -301,215 +135,355 @@
         right: 15px;
     }
 
-    [dir="ltr"] .input-wrapper input.form-control {
-        padding-left: 45px; /* Space for icon */
-        text-align: left; /* Align text and placeholder to the left */
-    }
-
-    [dir="rtl"] .input-wrapper input.form-control {
-        padding-right: 45px; /* Space for icon */
-        padding-left: 15px; /* Maintain some padding on the other side */
-        text-align: right; /* Align text and placeholder to the right */
-    }
-
-    .form-control {
+    .form-control, .form-select {
         display: block;
         width: 100%;
-        padding: .75rem 1rem;
-        font-size: 1rem;
+        font-size: 0.95rem;
         font-weight: 400;
         line-height: 1.5;
-        color: #495057;
-        background-color: #fff;
+        color: var(--text-dark);
+        background-color: var(--white-bg); /* White background for inputs */
         background-clip: padding-box;
-        border: 1px solid #ced4da;
+        border: 1px solid var(--border-color-input);
         appearance: none;
-        border-radius: .5rem;
-        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        border-radius: var(--border-radius-md);
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     }
 
-        .form-control:focus {
-            color: #495057;
-            background-color: #fff;
-            border-color: #86b7fe;
-            outline: 0;
-            box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
-        }
+    [dir="ltr"] .input-wrapper input.form-control, [dir="ltr"] .input-wrapper select.form-select {
+        padding-left: 40px;
+    }
+
+    [dir="rtl"] .input-wrapper input.form-control, [dir="rtl"] .input-wrapper select.form-select {
+        padding-right: 40px;
+    }
+
+
+    .form-control:focus, .form-select:focus {
+        color: var(--text-dark);
+        background-color: var(--white-bg);
+        border-color: var(--primary-color);
+        outline: 0;
+        box-shadow: 0 0 0 .2rem rgba(0,123,255,.2);
+    }
 
     input[type="file"].form-control {
         padding: .5rem .75rem;
     }
 
+        input[type="file"].form-control::file-selector-button {
+            padding: .5rem .75rem;
+            margin: -.5rem -.75rem;
+            margin-inline-end: .75rem;
+            background-color: #e9ecef;
+            border: 0;
+            border-inline-end: 1px solid var(--border-color-input);
+            border-radius: var(--border-radius-md) 0 0 var(--border-radius-md);
+        }
+
+    [dir="rtl"] input[type="file"].form-control::file-selector-button {
+        border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+        margin-inline-start: .75rem;
+        margin-inline-end: 0;
+        border-inline-start: 1px solid var(--border-color-input);
+        border-inline-end: 0;
+    }
+
     .btn-custom {
         display: block;
         width: 100%;
-        padding: .75rem 1.25rem;
-        font-size: 1.1rem;
-        font-weight: 500;
+        padding: .8rem 1.25rem;
+        font-size: 1rem;
+        font-weight: 600;
         color: #fff;
-        background-color: #007bff;
-        border-color: #007bff;
-        border-radius: .5rem;
+        background-color: var(--primary-color);
+        border: none;
+        border-radius: 50px; /* Pill shape */
         text-align: center;
-        text-decoration: none;
-        vertical-align: middle;
         cursor: pointer;
-        user-select: none;
-        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
+        box-shadow: var(--shadow-sm);
     }
 
         .btn-custom:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0,123,255,.25);
+            background-color: var(--primary-darker);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
-    .section-header {
-        text-align: center;
-        font-size: 2rem;
-        font-weight: 700;
-        color: #343a40;
-        margin-bottom: 40px;
-        padding-bottom: 10px;
-        border-bottom: 3px solid #007bff;
-        display: inline-block;
+    .alert { /* General alert styling */
+        border-radius: var(--border-radius-md);
+        padding: 1rem 1.25rem;
+        font-size: 0.95rem;
     }
 
     .alert-info {
-        background-color: #e9f5ff;
-        border-color: #b8d Bff;
+        background-color: #e2f3ff;
+        border-color: #b6d4fe;
         color: #004085;
+        border-left: 4px solid var(--info-color);
     }
 
-        .alert-info strong {
-            color: #004085;
-        }
+    [dir="rtl"] .alert-info {
+        border-left: none;
+        border-right: 4px solid var(--info-color);
+    }
 
     .alert-warning {
-        background-color: #fff3cd;
-        border-color: #ffeeba;
-        color: #856404;
+        background-color: #fff8e1;
+        border-color: #ffecb3;
+        color: #665120;
+        border-left: 4px solid var(--warning-color);
     }
 
-    .swal2-toast {
-        max-width: 420px !important;
-        left: 0px !important;
-        position: absolute;
+    [dir="rtl"] .alert-warning {
+        border-left: none;
+        border-right: 4px solid var(--warning-color);
+    }
+
+    .total-summary {
+        background-color: #f1f3f5; /* Light gray for summary */
+        padding: 15px;
+        border-radius: var(--border-radius-md);
+        margin-top: 20px;
+        font-size: 1rem;
+    }
+
+        .total-summary p {
+            margin-bottom: 0.4rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .total-summary strong {
+            color: var(--primary-darker);
+            font-weight: 600;
+        }
+
+        .total-summary hr {
+            margin: 0.6rem 0;
+            border-color: #cdd3d8;
+        }
+
+        .total-summary .grand-total-label strong {
+            font-size: 1.1em;
+        }
+
+        .total-summary .grand-total-value strong {
+            font-size: 1.2em;
+        }
+
+
+    .swal2-container.swal2-high-z-index-debug {
+        z-index: 10060 !important; /* Ensure modals are above other elements */
+    }
+
+    .swal2-toast.swal2-popup {
+        font-size: .875em !important;
+        padding: .75em !important;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 </style>
+
 <div class="container py-5">
-    <div class="text-center mb-5">
+    <div class="page-header-container">
         <h2 class="section-header" data-ar="تأكيد الطلب وإدخال البيانات" data-en="Confirm Order & Enter Details">تأكيد الطلب وإدخال البيانات</h2>
     </div>
 
+
+    <!-- Cash Payment Section -->
     <div id="cash-section" class="d-none">
         <div class="form-container">
-            <h3 data-ar-title="الدفع عند الاستلام" data-en-title="Cash on Delivery">الدفع عند الاستلام</h3>
+            <div class="text-center">
+                <h3 data-ar="الدفع عند الاستلام" data-en="Cash on Delivery">الدفع عند الاستلام</h3>
+            </div>
             <form id="cashForm" method="post" enctype="multipart/form-data">
                 @Html.AntiForgeryToken()
-                <div class="form-group mb-3">
+                <div class="form-group">
                     <label class="form-label" data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label>
                     <div class="input-wrapper"><i class="fas fa-user icon2"></i><input type="text" name="name" id="cash-name" class="form-control" required data-ar-placeholder="ادخل اسمك الكامل" data-en-placeholder="Enter your full name"></div>
                 </div>
-                <div class="form-group mb-3">
+                <div class="form-group">
                     <label class="form-label" data-en="Phone Number" data-ar="رقم الهاتف">رقم الهاتف</label>
                     <div class="input-wrapper"><i class="fas fa-phone icon2"></i><input type="tel" name="phone" id="cash-phone" class="form-control" required data-ar-placeholder="ادخل رقم هاتفك" data-en-placeholder="Enter your phone number"></div>
                 </div>
-                <div class="form-group mb-3">
+                <div class="form-group">
+                    <label for="cash-shippingZone" class="form-label" data-ar="منطقة الشحن" data-en="Shipping Zone">منطقة الشحن</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-map-signs icon2"></i>
+                        <select name="ShippingZoneId" id="cash-shippingZone" class="form-select shipping-zone-select" required>
+                            <option value="" data-ar="اختر منطقة الشحن" data-en="Select shipping zone">@(currentLang == "ar" ? "اختر منطقة الشحن" : "Select shipping zone")</option>
+                            @foreach (var zone in shippingZones)
+                            {
+                                <option value="@zone.Id" data-cost="@zone.Cost" data-ar="@zone.NameAr @zone.Cost جم" data-en="@zone.NameEn @zone.Cost EGP">@zone.NameAr @zone.Cost جم</option>
+                            }
+                        </select>
+                    </div>
+                    <span id="cash-shipping-cost-error" class="text-danger d-none mt-1"></span>
+                </div>
+                <div class="form-group">
                     <label class="form-label" data-en="Full Address" data-ar="العنوان بالتفصيل">العنوان بالتفصيل</label>
-                    <div class="input-wrapper"><i class="fas fa-map-marker-alt icon2"></i><input type="text" name="address" id="cash-address" class="form-control" required data-ar-placeholder="ادخل عنوانك كاملاً" data-en-placeholder="Enter your full address"></div>
+                    <div class="input-wrapper"><i class="fas fa-map-marker-alt icon2"></i><input type="text" name="address" id="cash-address" class="form-control" required data-ar-placeholder="ادخل عنوانك كاملاً (المحافظة - المدينة - الشارع - رقم العقار)" data-en-placeholder="Enter your full address (Governorate - City - Street - Building No.)"></div>
                 </div>
-                <div class="form-group mb-4">
+                <div class="form-group">
                     <label class="form-label" data-en="National ID Image" data-ar="صورة الهوية الوطنية">صورة الهوية الوطنية</label>
-                    <input type="file" name="idImage" id="cash-idImage" class="form-control" accept="image/*" required />
-                    <small class="form-text text-muted" data-ar="مطلوبة لتأكيد الطلب عند الاستلام." data-en="Required to confirm your order upon delivery."></small>
+                    <input type="file" name="IdImage" id="cash-idImage" class="form-control" accept="image/*,application/pdf" required />
+                    <small class="form-text text-muted mt-1" data-ar="مطلوبة لتأكيد الطلب عند الاستلام. (صورة أو PDF)" data-en="Required to confirm your order upon delivery. (Image or PDF)"></small>
                 </div>
-                <button type="submit" class="btn btn-custom" data-en="Confirm Cash Order" data-ar="تأكيد الطلب النقدي">تأكيد الطلب النقدي</button>
+                <div class="total-summary" id="cash-total-summary" style="display: none;">
+                    <p><span data-ar="إجمالي المنتجات:" data-en="Products Total:"></span> <span><strong id="cash-products-total">0.00</strong> <span class="currency-symbol" data-ar="جم" data-en="EGP"></span></span></p>
+                    <p><span data-ar="تكلفة الشحن:" data-en="Shipping Cost:"></span> <span><strong id="cash-shipping-fee">0.00</strong> <span class="currency-symbol" data-ar="جم" data-en="EGP"></span></span></p>
+                    <hr>
+                    <p><strong class="grand-total-label" data-ar="الإجمالي الكلي:" data-en="Grand Total:"></strong> <strong class="grand-total-value"><strong id="cash-grand-total">0.00</strong> <span class="currency-symbol" data-ar="جم" data-en="EGP"></span></strong></p>
+                </div>
+                <button type="submit" class="btn btn-custom mt-4" data-en="Confirm Cash Order" data-ar="تأكيد الطلب النقدي">تأكيد الطلب النقدي</button>
             </form>
         </div>
     </div>
 
+    <!-- E-Wallet Payment Section -->
     <div id="ewallet-section" class="d-none">
         <div class="form-container">
-            <h3 data-ar-title="الدفع بالمحفظة الإلكترونية" data-en-title="E-Wallet Payment">الدفع بالمحفظة الإلكترونية</h3>
+            <div class="text-center">
+                <h3 data-ar="الدفع بالمحفظة الإلكترونية" data-en="E-Wallet Payment">الدفع بالمحفظة الإلكترونية</h3>
+            </div>
             <div class="alert alert-info" role="alert">
                 <p data-en="Transfer to Vodafone Cash: 01000004079" data-ar="رقم التحويل إلى محفظة فودافون كاش: 01000004079">
                     رقم التحويل إلى محفظة فودافون كاش: <a href="tel:01000004079"><strong>01000004079</strong></a>
                 </p>
                 <hr>
-                <p class="mb-0" data-ar="يرجى تحويل المبلغ الإجمالي ثم رفع صورة الإيصال." data-en="Please transfer the total amount then upload the receipt image."></p>
+                <p class="mb-0" data-ar="يرجى تحويل المبلغ الإجمالي (شاملاً الشحن) ثم رفع صورة الإيصال." data-en="Please transfer the total amount (including shipping) then upload the receipt image."></p>
             </div>
             <form id="ewalletForm" method="post" enctype="multipart/form-data">
                 @Html.AntiForgeryToken()
-                <div class="form-group mb-3">
+                <div class="form-group">
                     <label class="form-label" data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label>
                     <div class="input-wrapper"><i class="fas fa-user icon2"></i><input type="text" name="name" id="ewallet-name" class="form-control" required data-ar-placeholder="ادخل اسمك الكامل" data-en-placeholder="Enter your full name"></div>
                 </div>
-                <div class="form-group mb-3">
+                <div class="form-group">
                     <label class="form-label" data-en="Phone Number" data-ar="رقم الهاتف">رقم الهاتف</label>
                     <div class="input-wrapper"><i class="fas fa-phone icon2"></i><input type="tel" name="phone" id="ewallet-phone" class="form-control" required data-ar-placeholder="ادخل رقم هاتفك" data-en-placeholder="Enter your phone number"></div>
                 </div>
-                <div class="form-group mb-3">
+                <div class="form-group">
+                    <label for="ewallet-shippingZone" class="form-label" data-ar="منطقة الشحن" data-en="Shipping Zone">منطقة الشحن</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-map-signs icon2"></i>
+                        <select name="ShippingZoneId" id="ewallet-shippingZone" class="form-select shipping-zone-select" required>
+                            <option value="" data-ar="اختر منطقة الشحن" data-en="Select shipping zone">@(currentLang == "ar" ? "اختر منطقة الشحن" : "Select shipping zone")</option>
+                            @foreach (var zone in shippingZones)
+                            {
+                                <option value="@zone.Id" data-cost="@zone.Cost" data-ar="@zone.NameAr @zone.Cost جم" data-en="@zone.NameEn @zone.Cost EGP">@zone.NameAr @zone.Cost جم</option>
+                            }
+                        </select>
+                    </div>
+                    <span id="ewallet-shipping-cost-error" class="text-danger d-none mt-1"></span>
+                </div>
+                <div class="form-group">
                     <label class="form-label" data-en="Full Address" data-ar="العنوان بالتفصيل">العنوان بالتفصيل</label>
                     <div class="input-wrapper"><i class="fas fa-map-marker-alt icon2"></i><input type="text" name="address" id="ewallet-address" class="form-control" required data-ar-placeholder="ادخل عنوانك كاملاً" data-en-placeholder="Enter your full address"></div>
                 </div>
-                <div class="form-group mb-4">
+                <div class="form-group">
                     <label class="form-label" data-en="Payment Receipt Image" data-ar="صورة إيصال الدفع">صورة إيصال الدفع</label>
-                    <input type="file" name="receipt" id="ewallet-receipt" class="form-control" accept="image/*" required />
+                    <input type="file" name="receipt" id="ewallet-receipt" class="form-control" accept="image/*,application/pdf" required />
+                    <small class="form-text text-muted mt-1" data-ar="صورة أو PDF" data-en="Image or PDF"></small>
                 </div>
-                <button type="submit" class="btn btn-custom" data-en="Confirm E-Wallet Order" data-ar="تأكيد طلب المحفظة">تأكيد طلب المحفظة</button>
+                <div class="total-summary" id="ewallet-total-summary" style="display: none;">
+                    <p><span data-ar="إجمالي المنتجات:" data-en="Products Total:"></span> <span><strong id="ewallet-products-total">0.00</strong> <span class="currency-symbol" data-ar="جم" data-en="EGP"></span></span></p>
+                    <p><span data-ar="تكلفة الشحن:" data-en="Shipping Cost:"></span> <span><strong id="ewallet-shipping-fee">0.00</strong> <span class="currency-symbol" data-ar="جم" data-en="EGP"></span></span></p>
+                    <hr>
+                    <p><strong class="grand-total-label" data-ar="الإجمالي الكلي للدفع:" data-en="Grand Total to Pay:"></strong> <strong class="grand-total-value"><strong id="ewallet-grand-total">0.00</strong> <span class="currency-symbol" data-ar="جم" data-en="EGP"></span></strong></p>
+                </div>
+                <button type="submit" class="btn btn-custom mt-4" data-en="Confirm E-Wallet Order" data-ar="تأكيد طلب المحفظة">تأكيد طلب المحفظة</button>
             </form>
         </div>
     </div>
 
+    <!-- Instapay Payment Section -->
     <div id="instapay-section" class="d-none">
         <div class="form-container">
-            <h3 data-ar-title="الدفع عبر انستاباي" data-en-title="Instapay Payment">الدفع عبر انستاباي</h3>
-
+            <div class="text-center">
+                <h3 data-ar="الدفع عبر انستاباي" data-en="Instapay Payment">الدفع عبر انستاباي</h3>
+            </div>
             <div class="alert alert-info" role="alert">
                 <p data-ar="رقم التحويل إلى انستاباي : 01111161663" data-en="Transfer to Instapay Number: 01111161663">
                     رقم التحويل إلى انستاباي: <a href="tel:01111161663"><strong>01111161663</strong></a>
                 </p>
                 <p data-ar="يمكنك التحويل مباشره عن طريق الرابط التالي:" data-en="You can transfer directly via the following link:">
-                    يمكنك التحويل مباشره عن طريق الرابط التالي <a href="https://ipn.eg/S/mohamed.elmansi/instapay/9q33GP" target="_blank" rel="noopener noreferrer">https://ipn.eg/S/mohamed.elmansi/instapay/9q33GP</a>
+                    يمكنك التحويل مباشره عن طريق الرابط التالي
                 </p>
+                <a href="https://ipn.eg/S/mohamed.elmansi/instapay/9q33GP" target="_blank" rel="noopener noreferrer">https://ipn.eg/S/mohamed.elmansi/instapay/9q33GP</a>
                 <hr>
-                <p class="mb-0" data-ar="يرجى تحويل المبلغ الإجمالي ثم رفع صورة الإيصال." data-en="Please transfer the total amount then upload the receipt image."></p>
+                <p class="mb-0" data-ar="يرجى تحويل المبلغ الإجمالي (شاملاً الشحن) ثم رفع صورة الإيصال." data-en="Please transfer the total amount (including shipping) then upload the receipt image."></p>
             </div>
-
             <form id="instapayForm" method="post" enctype="multipart/form-data">
                 @Html.AntiForgeryToken()
-                <div class="form-group mb-3">
+                <div class="form-group">
                     <label class="form-label" data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label>
                     <div class="input-wrapper"><i class="fas fa-user icon2"></i><input type="text" name="name" id="instapay-name" class="form-control" required data-ar-placeholder="ادخل اسمك الكامل" data-en-placeholder="Enter your full name"></div>
                 </div>
-                <div class="form-group mb-3">
+                <div class="form-group">
                     <label class="form-label" data-en="Phone Number" data-ar="رقم الهاتف">رقم الهاتف</label>
                     <div class="input-wrapper"><i class="fas fa-phone icon2"></i><input type="tel" name="phone" id="instapay-phone" class="form-control" required data-ar-placeholder="ادخل رقم هاتفك" data-en-placeholder="Enter your phone number"></div>
                 </div>
-                <div class="form-group mb-3">
+                <div class="form-group">
+                    <label for="instapay-shippingZone" class="form-label" data-ar="منطقة الشحن" data-en="Shipping Zone">منطقة الشحن</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-map-signs icon2"></i>
+                        <select name="ShippingZoneId" id="instapay-shippingZone" class="form-select shipping-zone-select" required>
+                            <option value="" data-ar="اختر منطقة الشحن" data-en="Select shipping zone">@(currentLang == "ar" ? "اختر منطقة الشحن" : "Select shipping zone")</option>
+                            @foreach (var zone in shippingZones)
+                            {
+                                <option value="@zone.Id" data-cost="@zone.Cost" data-ar="@zone.NameAr @zone.Cost جم" data-en="@zone.NameEn @zone.Cost EGP">@zone.NameAr @zone.Cost جم</option>
+                            }
+                        </select>
+                      
+                    </div>
+                    <span id="instapay-shipping-cost-error" class="text-danger d-none mt-1"></span>
+                </div>
+                <div class="form-group">
                     <label class="form-label" data-en="Full Address" data-ar="العنوان بالتفصيل">العنوان بالتفصيل</label>
                     <div class="input-wrapper"><i class="fas fa-map-marker-alt icon2"></i><input type="text" name="address" id="instapay-address" class="form-control" required data-ar-placeholder="ادخل عنوانك كاملاً" data-en-placeholder="Enter your full address"></div>
                 </div>
-                <div class="form-group mb-4">
+                <div class="form-group">
                     <label class="form-label" data-en="Payment Receipt Image" data-ar="صورة إيصال الدفع">صورة إيصال الدفع</label>
-                    <input type="file" name="receipt" id="instapay-receipt" class="form-control" accept="image/*" required />
+                    <input type="file" name="receipt" id="instapay-receipt" class="form-control" accept="image/*,application/pdf" required />
+                    <small class="form-text text-muted mt-1" data-ar="صورة أو PDF" data-en="Image or PDF"></small>
                 </div>
-                <button type="submit" class="btn btn-custom" data-en="Confirm Instapay Order" data-ar="تأكيد طلب انستاباي">تأكيد طلب انستاباي</button>
+                <div class="total-summary" id="instapay-total-summary" style="display: none;">
+                    <p><span data-ar="إجمالي المنتجات:" data-en="Products Total:"></span> <span><strong id="instapay-products-total">0.00</strong> <span class="currency-symbol" data-ar="جم" data-en="EGP"></span></span></p>
+                    <p><span data-ar="تكلفة الشحن:" data-en="Shipping Cost:"></span> <span><strong id="instapay-shipping-fee">0.00</strong> <span class="currency-symbol" data-ar="جم" data-en="EGP"></span></span></p>
+                    <hr>
+                    <p><strong class="grand-total-label" data-ar="الإجمالي الكلي للدفع:" data-en="Grand Total to Pay:"></strong> <strong class="grand-total-value"><strong id="instapay-grand-total">0.00</strong> <span class="currency-symbol" data-ar="جم" data-en="EGP"></span></strong></p>
+                </div>
+                <button type="submit" class="btn btn-custom mt-4" data-en="Confirm Instapay Order" data-ar="تأكيد طلب انستاباي">تأكيد طلب انستاباي</button>
             </form>
         </div>
     </div>
 
+    <!-- Visa/Mastercard (Paymob) Payment Section -->
     <div id="visa-section" class="d-none">
         <div class="form-container">
-            <h3 data-ar-title="الدفع بالبطاقة الائتمانية (فيزا/ماستركارد)" data-en-title="Credit Card Payment (Visa/Mastercard)">الدفع بالبطاقة الائتمانية (فيزا/ماستركارد)</h3>
+            <div class="text-center">
+                <h3 data-ar="الدفع بالبطاقة (فيزا/ماستركارد)" data-en="Card Payment (Visa/Mastercard)">الدفع بالبطاقة (فيزا/ماستركارد)</h3>
+            </div>
             <div class="alert alert-warning" role="alert" data-ar="سيتم توجيهك إلى صفحة دفع آمنة لإتمام العملية." data-en="You will be redirected to a secure payment page to complete the transaction.">
                 سيتم توجيهك إلى صفحة دفع آمنة لإتمام العملية.
             </div>
             <form id="payForm" novalidate>
+                <!-- No method/action, handled by JS -->
                 @Html.AntiForgeryToken()
-                <div class="form-group mb-3">
+                <div class="form-group">
                     <label class="form-label" data-ar="الاسم على البطاقة" data-en="Name on Card">الاسم على البطاقة</label>
                     <div class="input-wrapper">
                         <i class="fas fa-user-shield icon2"></i>
@@ -517,7 +491,7 @@
                                data-ar-placeholder="الاسم كما هو مطبوع على البطاقة" data-en-placeholder="Name as it appears on card">
                     </div>
                 </div>
-                <div class="form-group mb-3">
+                <div class="form-group">
                     <label class="form-label" data-en="Phone Number (for contact)" data-ar="رقم الهاتف (للتواصل)">رقم الهاتف (للتواصل)</label>
                     <div class="input-wrapper">
                         <i class="fas fa-phone icon2"></i>
@@ -525,7 +499,23 @@
                                data-ar-placeholder="رقم هاتف للتواصل بشأن الطلب" data-en-placeholder="Contact phone for the order">
                     </div>
                 </div>
-                <div class="form-group mb-3">
+                <div class="form-group">
+                    <label for="visa-shippingZone" class="form-label" data-ar="منطقة الشحن" data-en="Shipping Zone">منطقة الشحن</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-map-signs icon2"></i>
+                            <!-- Added name attribute -->
+                            <select id="visa-shippingZone" name="ShippingZoneId" class="form-select shipping-zone-select" required>
+                                <option value="" data-ar="اختر منطقة الشحن" data-en="Select shipping zone">@(currentLang == "ar" ? "اختر منطقة الشحن" : "Select shipping zone")</option>
+                                @foreach (var zone in shippingZones)
+                                {
+                                <option value="@zone.Id" data-cost="@zone.Cost" data-ar="@zone.NameAr @zone.Cost جم" data-en="@zone.NameEn @zone.Cost EGP">@zone.NameAr @zone.Cost جم</option>
+                                }
+                            </select>
+                           
+                    </div>
+                    <span id="visa-shipping-cost-error" class="text-danger d-none mt-1"></span>
+                </div>
+                <div class="form-group">
                     <label class="form-label" data-en="Shipping Address" data-ar="عنوان الشحن">عنوان الشحن</label>
                     <div class="input-wrapper">
                         <i class="fas fa-shipping-fast icon2"></i>
@@ -533,7 +523,7 @@
                                data-ar-placeholder="عنوان استلام الطلب" data-en-placeholder="Where to ship the order">
                     </div>
                 </div>
-                <div class="form-group mb-3">
+                <div class="form-group">
                     <label class="form-label" data-ar="البريد الإلكتروني (لإيصال الدفع)" data-en="Email (for payment receipt)">البريد الإلكتروني (لإيصال الدفع)</label>
                     <div class="input-wrapper">
                         <i class="fas fa-envelope icon2"></i>
@@ -541,7 +531,7 @@
                                data-ar-placeholder="اختياري: بريدك لاستلام الإيصال" data-en-placeholder="Optional: Your email for the receipt">
                     </div>
                 </div>
-                <div class="form-group mb-3">
+                <div class="form-group">
                     <label class="form-label" data-ar="المدينة" data-en="City">المدينة</label>
                     <div class="input-wrapper">
                         <i class="fas fa-city icon2"></i>
@@ -549,7 +539,7 @@
                                data-ar-placeholder="اختياري: مدينتك" data-en-placeholder="Optional: Your city">
                     </div>
                 </div>
-                <div class="form-group mb-3">
+                <div class="form-group">
                     <label class="form-label" data-ar="الرمز البريدي" data-en="Postal Code">الرمز البريدي</label>
                     <div class="input-wrapper">
                         <i class="fas fa-mail-bulk icon2"></i>
@@ -557,8 +547,471 @@
                                data-ar-placeholder="اختياري: الرمز البريدي" data-en-placeholder="Optional: Your postal code">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-custom" data-en="Proceed to Secure Payment" data-ar="المتابعة إلى الدفع الآمن">المتابعة إلى الدفع الآمن</button>
+                @{
+                    var selectedPaymentMethodForVisa = Context.Request.Cookies["selectedPaymentMethod"];
+                    if (selectedPaymentMethodForVisa == "visa_manual")
+                    {
+                        <div class="form-group">
+                            <label for="visa-confirmationFile" class="form-label" data-ar="ملف تأكيد الدفع (اختياري)" data-en="Payment Confirmation File (Optional)">ملف تأكيد الدفع (اختياري)</label>
+                            <input type="file" name="ConfirmationFile" id="visa-confirmationFile" class="form-control" accept="image/*,application/pdf" />
+                            <small class="form-text text-muted mt-1" data-ar="إذا كان لديك إيصال أو تأكيد دفع يدوي. (صورة أو PDF)" data-en="If you have a manual payment receipt or confirmation. (Image or PDF)"></small>
+                        </div>
+                    }
+                }
+                <div class="total-summary" id="visa-total-summary" style="display: none;">
+                    <p><span data-ar="إجمالي المنتجات:" data-en="Products Total:"></span> <span><strong id="visa-products-total">0.00</strong> <span class="currency-symbol" data-ar="جم" data-en="EGP"></span></span></p>
+                    <p><span data-ar="تكلفة الشحن:" data-en="Shipping Cost:"></span> <span><strong id="visa-shipping-fee">0.00</strong> <span class="currency-symbol" data-ar="جم" data-en="EGP"></span></span></p>
+                    <hr>
+                    <p><strong class="grand-total-label" data-ar="الإجمالي الكلي للدفع:" data-en="Grand Total to Pay:"></strong> <strong class="grand-total-value"><strong id="visa-grand-total">0.00</strong> <span class="currency-symbol" data-ar="جم" data-en="EGP"></span></strong></p>
+                </div>
+                <button type="submit" class="btn btn-custom mt-4" data-en="Proceed to Secure Payment" data-ar="المتابعة إلى الدفع الآمن">المتابعة إلى الدفع الآمن</button>
             </form>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function getAntiForgeryToken() {
+            const tokenField = document.querySelector('input[name="__RequestVerificationToken"]');
+            return tokenField ? tokenField.value : '';
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentLang = document.documentElement.lang || 'ar';
+
+            function getSafeCart() {
+                try {
+                    const cartString = localStorage.getItem('cart');
+                    if (!cartString || cartString === "null") {
+                        return [];
+                    }
+                    const parsedCart = JSON.parse(cartString);
+                    if (!Array.isArray(parsedCart)) {
+                        localStorage.setItem('cart', JSON.stringify([]));
+                        return [];
+                    }
+                    const validCart = parsedCart.filter(item =>
+                        item && typeof item.price === 'number' && typeof item.quantity === 'number' &&
+                        item.productId && item.price >= 0 && item.quantity > 0
+                    );
+                    return validCart;
+                } catch (e) {
+                    console.error("Error parsing cart from localStorage:", e);
+                    localStorage.setItem('cart', JSON.stringify([]));
+                    return [];
+                }
+            }
+
+            function showSubmissionError(title, text) {
+                Swal.fire({
+                    icon: 'error',
+                    title: title || (currentLang === 'ar' ? 'خطأ' : 'Error'),
+                    text: text || (currentLang === 'ar' ? 'حدث خطأ ما.' : 'An error occurred.'),
+                    confirmButtonText: currentLang === 'ar' ? 'موافق' : 'OK',
+                    customClass: { container: 'swal2-high-z-index-debug' }
+                });
+            }
+            function showSuccessMessage(title, text) {
+                 Swal.fire({
+                    icon: 'success',
+                    title: title || (currentLang === 'ar' ? 'نجاح' : 'Success'),
+                    text: text || (currentLang === 'ar' ? 'تمت العملية بنجاح.' : 'Operation successful.'),
+                    timer: 2000,
+                    showConfirmButton: false,
+                    toast: true,
+                    position: 'top-end',
+                    customClass: { popup: 'swal2-toast',  container: 'swal2-high-z-index-debug' }
+                });
+            }
+
+            function updateTextForElements(parentElement, lang) {
+                if (!parentElement) return;
+                parentElement.querySelectorAll('[data-ar][data-en]').forEach(el => {
+                    const textAr = el.getAttribute('data-ar');
+                    const textEn = el.getAttribute('data-en');
+                    if (textAr && textEn) {
+                        // Update only if it's not one of the number-holding strong tags
+                        if (!el.id || (!el.id.endsWith('-products-total') && !el.id.endsWith('-shipping-fee') && !el.id.endsWith('-grand-total'))) {
+                           if (el.classList.contains('currency-symbol') || el.classList.contains('form-label') || el.tagName === 'P' || el.tagName === 'STRONG' && el.classList.contains('grand-total-label')) { // Target labels and currency spans
+                                el.textContent = lang === 'ar' ? textAr : textEn;
+                           }
+                        }
+                    }
+                });
+            }
+
+
+            function updateCartTotals(paymentMethodPrefix) {
+                const cart = getSafeCart();
+                let productsTotal = 0;
+                cart.forEach(item => {
+                    const price = parseFloat(item.price);
+                    const quantity = parseInt(item.quantity);
+                    if (!isNaN(price) && !isNaN(quantity) && price >= 0 && quantity > 0) {
+                        productsTotal += price * quantity;
+                    }
+                });
+
+                const shippingZoneSelect = document.getElementById(`${paymentMethodPrefix}-shippingZone`);
+                let shippingFee = 0;
+
+                if (shippingZoneSelect && shippingZoneSelect.value) {
+                    const selectedOption = shippingZoneSelect.options[shippingZoneSelect.selectedIndex];
+                    if (selectedOption && selectedOption.dataset.cost) {
+                        shippingFee = parseFloat(selectedOption.dataset.cost);
+                        if(isNaN(shippingFee)) shippingFee = 0;
+                    }
+                }
+                const grandTotal = productsTotal + shippingFee;
+
+                const productsTotalEl = document.getElementById(`${paymentMethodPrefix}-products-total`);
+                const shippingFeeEl = document.getElementById(`${paymentMethodPrefix}-shipping-fee`);
+                const grandTotalEl = document.getElementById(`${paymentMethodPrefix}-grand-total`);
+                const totalSummaryEl = document.getElementById(`${paymentMethodPrefix}-total-summary`);
+
+                if(productsTotalEl) productsTotalEl.textContent = productsTotal.toFixed(2);
+                if(shippingFeeEl) shippingFeeEl.textContent = shippingFee.toFixed(2);
+                if(grandTotalEl) grandTotalEl.textContent = grandTotal.toFixed(2);
+
+                if(totalSummaryEl) {
+                    totalSummaryEl.style.display = 'block';
+                    updateTextForElements(totalSummaryEl, currentLang); // Update text within the summary block
+                }
+
+                if (paymentMethodPrefix === 'visa') {
+                     localStorage.setItem('totalPriceWithShipping', grandTotal.toFixed(2));
+                }
+            }
+
+
+            function showPaymentSection(sectionIdPrefix) {
+                const sections = ['cash', 'ewallet', 'instapay', 'visa'];
+                let activeSectionFound = false;
+
+                sections.forEach(prefix => {
+                    const element = document.getElementById(`${prefix}-section`);
+                    if (element) {
+                        if (prefix === sectionIdPrefix) {
+                            element.classList.remove('d-none');
+                            activeSectionFound = true;
+                            const header = element.querySelector('h3');
+                            if (header) {
+                                const titleAr = header.getAttribute('data-ar-title');
+                                const titleEn = header.getAttribute('data-en-title');
+                                if (titleAr && titleEn) {
+                                    header.textContent = currentLang === 'ar' ? titleAr : titleEn;
+                                }
+                            }
+                            updateCartTotals(prefix);
+                        } else {
+                            element.classList.add('d-none');
+                        }
+                    }
+                });
+                 if (!activeSectionFound && sectionIdPrefix !== 'cash') {
+                    showPaymentSection('cash');
+                    return;
+                 } else if (!activeSectionFound && sectionIdPrefix === 'cash') {
+                    // console.error("Default 'cash' section not found.");
+                 }
+
+                const mainHeader = document.querySelector('.section-header'); // General page header
+                if (mainHeader) {
+                    const titleAr = mainHeader.getAttribute('data-ar');
+                    const titleEn = mainHeader.getAttribute('data-en');
+                    if (titleAr && titleEn) {
+                        mainHeader.textContent = currentLang === 'ar' ? titleAr : titleEn;
+                    }
+                }
+                 // Update general labels and placeholders on the page
+                document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+                    if (!el.closest('.total-summary')) { // Avoid re-translating summary block labels here
+                        const textAr = el.getAttribute('data-ar');
+                        const textEn = el.getAttribute('data-en');
+                        if (el.tagName === 'LABEL' || el.tagName === 'BUTTON' || el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'P' || el.tagName === 'SMALL' || (el.tagName === 'DIV' && el.classList.contains('alert'))) {
+                             if(el.id !== `${sectionIdPrefix}-products-total` && el.id !== `${sectionIdPrefix}-shipping-fee` && el.id !== `${sectionIdPrefix}-grand-total` && !el.classList.contains('currency-symbol')) {
+                                el.textContent = currentLang === 'ar' ? textAr : textEn;
+                            }
+                        }
+                    }
+                });
+                document.querySelectorAll('input[data-ar-placeholder][data-en-placeholder], select[data-ar-placeholder][data-en-placeholder]').forEach(el => {
+                    if (el.tagName === 'SELECT' && el.value === "") {
+                        const placeholderOption = el.querySelector('option[value=""]');
+                        if(placeholderOption){
+                            const arPlaceholder = placeholderOption.getAttribute('data-ar-placeholder') || el.getAttribute('data-ar-placeholder');
+                            const enPlaceholder = placeholderOption.getAttribute('data-en-placeholder') || el.getAttribute('data-en-placeholder');
+                            if(arPlaceholder && enPlaceholder) {
+                                 placeholderOption.textContent = currentLang === 'ar' ? arPlaceholder : enPlaceholder;
+                            }
+                        }
+                    } else if (el.tagName === 'INPUT') {
+                        el.placeholder = currentLang === 'ar' ? el.getAttribute('data-ar-placeholder') : el.getAttribute('data-en-placeholder');
+                    }
+                });
+            }
+
+
+            document.querySelectorAll('.shipping-zone-select').forEach(select => {
+                select.addEventListener('change', function() {
+                    const formId = this.closest('form').id;
+                    let paymentMethodPrefix = '';
+                    if (formId.startsWith('cash')) paymentMethodPrefix = 'cash';
+                    else if (formId.startsWith('ewallet')) paymentMethodPrefix = 'ewallet';
+                    else if (formId.startsWith('instapay')) paymentMethodPrefix = 'instapay';
+                    else if (formId.startsWith('payForm')) paymentMethodPrefix = 'visa';
+
+                    if(paymentMethodPrefix) {
+                        updateCartTotals(paymentMethodPrefix);
+                         const errorSpan = document.getElementById(`${paymentMethodPrefix}-shipping-cost-error`);
+                         if(errorSpan && this.value) errorSpan.classList.add('d-none');
+                    }
+                });
+            });
+
+
+            async function handleFormSubmit(formElement, url) {
+                const formData = new FormData(formElement);
+                const cart = getSafeCart();
+
+                if (cart.length === 0) {
+                    showSubmissionError(currentLang === 'ar' ? 'سلة فارغة' : 'Empty Cart', currentLang === 'ar' ? 'سلة مشترياتك فارغة! لا يمكن إتمام الطلب.' : 'Your cart is empty! Cannot proceed.');
+                    return;
+                }
+
+                const shippingZoneId = formData.get('ShippingZoneId');
+                const paymentMethodPrefix = formElement.id.replace('Form','').replace('pay','visa');
+                const errorSpan = document.getElementById(`${paymentMethodPrefix}-shipping-cost-error`);
+
+                if (!shippingZoneId || shippingZoneId === "") {
+                     if(errorSpan){
+                        errorSpan.textContent = currentLang === 'ar' ? 'يرجى اختيار منطقة الشحن.' : 'Please select a shipping zone.';
+                        errorSpan.classList.remove('d-none');
+                     }
+                    return;
+                } else {
+                    if(errorSpan) errorSpan.classList.add('d-none');
+                }
+
+                const validCartItems = cart;
+
+                const processedCartItems = validCartItems.map(item => ({
+                    productId: item.productId,
+                    title: item.title ? item.title.trim() : 'Unnamed Item',
+                    price: item.price,
+                    quantity: item.quantity,
+                    imageUrl: item.imageUrl
+                }));
+                formData.append('cartItemsJson', JSON.stringify(processedCartItems));
+
+                try {
+                    const response = await fetch(url, {
+                        method: "POST",
+                        body: formData,
+                        headers: { 'RequestVerificationToken': getAntiForgeryToken() }
+                    });
+                    const data = await response.json();
+                    if (data.success && data.redirectUrl) {
+                        localStorage.removeItem('cart');
+                        localStorage.removeItem('totalPrice');
+                        localStorage.removeItem('totalPriceWithShipping');
+                        localStorage.removeItem('selectedPaymentMethod');
+                        window.location.href = data.redirectUrl;
+                    } else {
+                        let errorMessage = data.message || (currentLang === 'ar' ? 'حدث خطأ أثناء تأكيد الطلب.' : 'Error confirming order.');
+                        if(data.errors && Array.isArray(data.errors) && data.errors.length > 0){
+                            errorMessage += "\n" + data.errors.join("\n");
+                        }
+                        showSubmissionError(currentLang === 'ar' ? 'خطأ في الطلب' : 'Order Error', errorMessage);
+                    }
+                } catch (error) {
+                    showSubmissionError(currentLang === 'ar' ? 'خطأ بالاتصال' : 'Connection Error', currentLang === 'ar' ? 'حدث خطأ أثناء الاتصال بالخادم.' : 'Error connecting to the server.');
+                }
+            }
+
+            // --- Attaching form submit listeners ---
+            const ewalletForm = document.getElementById("ewalletForm");
+            if (ewalletForm) {
+                ewalletForm.addEventListener("submit", async function (e) {
+                    e.preventDefault();
+                    const name = document.getElementById("ewallet-name").value.trim();
+                    const phone = document.getElementById("ewallet-phone").value.trim();
+                    const address = document.getElementById("ewallet-address").value.trim();
+                    const receiptInput = document.getElementById("ewallet-receipt");
+                    const shippingZoneSelect = document.getElementById("ewallet-shippingZone");
+                    const receiptFile = receiptInput.files ? receiptInput.files[0] : null;
+
+                    if (!name || !phone || !address || !receiptFile || !shippingZoneSelect.value) {
+                         const errorSpan = document.getElementById('ewallet-shipping-cost-error');
+                         if (!shippingZoneSelect.value && errorSpan) {
+                            errorSpan.textContent = currentLang === 'ar' ? 'يرجى اختيار منطقة الشحن.' : 'Please select a shipping zone.';
+                            errorSpan.classList.remove('d-none');
+                         } else if (errorSpan) { errorSpan.classList.add('d-none'); }
+                        showSubmissionError(currentLang === 'ar' ? 'بيانات ناقصة' : 'Missing Data', currentLang === 'ar' ? 'يرجى ملء جميع الحقول المطلوبة ورفع إيصال الدفع واختيار منطقة الشحن.' : 'Please fill all required fields, upload the E-Wallet payment receipt, and select a shipping zone.');
+                        return;
+                    }
+                    await handleFormSubmit(this, "@Url.Action("SubmitWalletOrder", "Cart")");
+                });
+            }
+
+            const instapayForm = document.getElementById("instapayForm");
+            if (instapayForm) {
+                instapayForm.addEventListener("submit", async function (e) {
+                    e.preventDefault();
+                     const name = document.getElementById("instapay-name").value.trim();
+                    const phone = document.getElementById("instapay-phone").value.trim();
+                    const address = document.getElementById("instapay-address").value.trim();
+                    const receiptInput = document.getElementById("instapay-receipt");
+                    const shippingZoneSelect = document.getElementById("instapay-shippingZone");
+                    const receiptFile = receiptInput.files ? receiptInput.files[0] : null;
+
+                    if (!name || !phone || !address || !receiptFile || !shippingZoneSelect.value) {
+                        const errorSpan = document.getElementById('instapay-shipping-cost-error');
+                         if (!shippingZoneSelect.value && errorSpan) {
+                            errorSpan.textContent = currentLang === 'ar' ? 'يرجى اختيار منطقة الشحن.' : 'Please select a shipping zone.';
+                            errorSpan.classList.remove('d-none');
+                         } else if (errorSpan) { errorSpan.classList.add('d-none'); }
+                        showSubmissionError(currentLang === 'ar' ? 'بيانات ناقصة' : 'Missing Data', currentLang === 'ar' ? 'يرجى ملء جميع الحقول المطلوبة ورفع إيصال انستاباي واختيار منطقة الشحن.' : 'Please fill all required fields, upload the Instapay receipt, and select a shipping zone.');
+                        return;
+                    }
+                    await handleFormSubmit(this, "@Url.Action("SubmitInstapayOrder", "Cart")");
+                });
+            }
+
+            const payForm = document.getElementById("payForm");
+            if (payForm) {
+                payForm.addEventListener("submit", async function (e) {
+                    e.preventDefault();
+                    const name = document.getElementById("visa-name").value.trim();
+                    const phone = document.getElementById("visa-phone").value.trim();
+                    const address = document.getElementById("visa-address").value.trim();
+                    const email = document.getElementById("visa-email")?.value.trim() || 'customer@example.com';
+                    const city = document.getElementById("visa-city")?.value.trim() || 'Cairo';
+                    const postalCode = document.getElementById("visa-postalcode")?.value.trim() || 'NA';
+                    const shippingZoneSelect = document.getElementById("visa-shippingZone");
+
+                    const cart = getSafeCart();
+                    const amountWithShipping = parseFloat(localStorage.getItem("totalPriceWithShipping")) || 0;
+
+                    if (amountWithShipping <= 0) { showSubmissionError(currentLang === 'ar' ? 'خطأ' : 'Error', currentLang === 'ar' ? 'المبلغ الإجمالي للسلة (مع الشحن) غير صالح.' : 'Cart total amount (with shipping) is invalid.'); return; }
+                    if (!name || !phone || !address || !shippingZoneSelect.value) {
+                        const errorSpan = document.getElementById('visa-shipping-cost-error');
+                         if (!shippingZoneSelect.value && errorSpan) {
+                            errorSpan.textContent = currentLang === 'ar' ? 'يرجى اختيار منطقة الشحن.' : 'Please select a shipping zone.';
+                            errorSpan.classList.remove('d-none');
+                         } else if (errorSpan) { errorSpan.classList.add('d-none');}
+                        showSubmissionError(currentLang === 'ar' ? 'بيانات ناقصة' : 'Missing Data', currentLang === 'ar' ? 'يرجى ملء جميع الحقول الإلزامية واختيار منطقة الشحن.' : 'Please fill all required fields and select a shipping zone.'); return;
+                    }
+                    if (cart.length === 0) { showSubmissionError(currentLang === 'ar' ? 'سلة فارغة' : 'Empty Cart', currentLang === 'ar' ? 'سلة مشترياتك فارغة!' : 'Your cart is empty!'); return; }
+
+                    const processedCartItems = cart.map(item => ({
+                        productId: item.productId,
+                        title: item.title ? item.title.trim() : 'Unnamed Item',
+                        price: item.price,
+                        quantity: item.quantity,
+                        imageUrl: item.imageUrl
+                    }));
+
+                    const payRequest = {
+                        name: name, phone: phone, address: address,
+                        amount: amountWithShipping,
+                        items: processedCartItems,
+                        email: email, city: city, postalCode: postalCode, state: city,
+                        shippingZoneId: parseInt(shippingZoneSelect.value)
+                    };
+
+                    try {
+                        const response = await fetch("/Paymob/Pay", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json", 'RequestVerificationToken': getAntiForgeryToken() },
+                            body: JSON.stringify(payRequest)
+                        });
+                        const data = await response.json();
+                        if (data.success && data.url) {
+                            showSuccessMessage(currentLang === 'ar' ? 'جارٍ التوجيه...' : 'Redirecting...', currentLang === 'ar' ? 'سيتم توجيهك لصفحة الدفع الآمن.' : 'You will be redirected to the secure payment page.');
+                            localStorage.removeItem('cart');
+                            localStorage.removeItem('totalPrice');
+                            localStorage.removeItem('totalPriceWithShipping');
+                            localStorage.removeItem('selectedPaymentMethod');
+                            setTimeout(() => { window.location.href = data.url; }, 1500);
+                        } else {
+                            showSubmissionError(currentLang === 'ar' ? 'خطأ في الدفع' : 'Payment Error', data.message || (currentLang === 'ar' ? 'حدث خطأ أثناء محاولة الدفع.' : 'Error processing payment.'));
+                        }
+                    } catch (error) {
+                        showSubmissionError(currentLang === 'ar' ? 'خطأ بالاتصال' : 'Connection Error', currentLang === 'ar' ? 'حدث خطأ أثناء الاتصال بالخادم.' : 'Error connecting to the server.');
+                    }
+                });
+            }
+
+
+            const cashForm = document.getElementById("cashForm");
+            if (cashForm) {
+                cashForm.addEventListener("submit", async function (e) {
+                    e.preventDefault();
+                    const name = document.getElementById("cash-name").value.trim();
+                    const phone = document.getElementById("cash-phone").value.trim();
+                    const address = document.getElementById("cash-address").value.trim();
+                    const idImageInput = document.getElementById("cash-idImage");
+                    const shippingZoneSelect = document.getElementById("cash-shippingZone");
+                    const idImageFile = idImageInput.files ? idImageInput.files[0] : null;
+
+                    if (!name || !phone || !address || !idImageFile || !shippingZoneSelect.value) {
+                        const errorSpan = document.getElementById('cash-shipping-cost-error');
+                         if (!shippingZoneSelect.value && errorSpan) {
+                            errorSpan.textContent = currentLang === 'ar' ? 'يرجى اختيار منطقة الشحن.' : 'Please select a shipping zone.';
+                            errorSpan.classList.remove('d-none');
+                         } else if (errorSpan) { errorSpan.classList.add('d-none');}
+                        showSubmissionError(currentLang === 'ar' ? 'بيانات ناقصة' : 'Missing Data', currentLang === 'ar' ? 'يرجى ملء جميع الحقول المطلوبة ورفع صورة الهوية واختيار منطقة الشحن.' : 'Please fill all required fields, upload the ID image, and select a shipping zone.');
+                        return;
+                    }
+                    await handleFormSubmit(this, "@Url.Action("SubmitCashOrder", "Cart")");
+                });
+            }
+
+            const paymentMethodSelector = document.getElementById('paymentMethodSelector');
+            if(paymentMethodSelector) {
+                paymentMethodSelector.addEventListener('change', function() {
+                    const selectedMethod = this.value;
+                    localStorage.setItem('selectedPaymentMethod', selectedMethod);
+                    showPaymentSection(selectedMethod);
+                });
+            }
+
+            // Initial setup on page load
+            const initialPaymentMethod = localStorage.getItem('selectedPaymentMethod') || 'cash';
+            if (paymentMethodSelector) {
+                paymentMethodSelector.value = initialPaymentMethod;
+            }
+            showPaymentSection(initialPaymentMethod);
+
+            // General language update for elements not covered by updateCartTotals' specific block update
+             document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+                const textAr = el.getAttribute('data-ar');
+                const textEn = el.getAttribute('data-en');
+                if (!el.closest('.total-summary')) { // Avoid re-translating summary block labels here
+                    if (el.tagName === 'LABEL' || el.tagName === 'BUTTON' || el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'P' || el.tagName === 'SMALL' || (el.tagName === 'DIV' && el.classList.contains('alert')) || (el.tagName === 'SPAN' && (el.classList.contains('text-muted') || el.hasAttribute('data-ar-placeholder')))) {
+                         if(el.id !== `${initialPaymentMethod}-products-total` && el.id !== `${initialPaymentMethod}-shipping-fee` && el.id !== `${initialPaymentMethod}-grand-total` && !el.classList.contains('currency-symbol')) { // Check against the initial payment method prefix
+                            el.textContent = currentLang === 'ar' ? textAr : textEn;
+                        }
+                    }
+                }
+            });
+            document.querySelectorAll('input[data-ar-placeholder][data-en-placeholder], select[data-ar-placeholder][data-en-placeholder]').forEach(el => {
+                 if (el.tagName === 'SELECT' && el.value === "") {
+                    const placeholderOption = el.querySelector('option[value=""]');
+                    if(placeholderOption){
+                        const arPlaceholder = placeholderOption.getAttribute('data-ar-placeholder') || el.getAttribute('data-ar-placeholder');
+                        const enPlaceholder = placeholderOption.getAttribute('data-en-placeholder') || el.getAttribute('data-en-placeholder');
+                        if(arPlaceholder && enPlaceholder) {
+                             placeholderOption.textContent = currentLang === 'ar' ? arPlaceholder : enPlaceholder;
+                        }
+                    }
+                } else if (el.tagName === 'INPUT') {
+                    el.placeholder = currentLang === 'ar' ? el.getAttribute('data-ar-placeholder') : el.getAttribute('data-en-placeholder');
+                }
+            });
+        });
+    </script>
+}

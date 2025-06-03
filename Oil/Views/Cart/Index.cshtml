@@ -1,355 +1,769 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    // Cast ViewBag.ShippingZones to the correct ViewModel type
+    // var shippingZones = ViewBag.ShippingZones as List<Oil.Controllers.ShippingZoneViewModel> ?? new List<Oil.Controllers.ShippingZoneViewModel>();
+    var currentLang = Context.Request.Cookies["Language"] == "en" ? "en" : "ar";
 }
+
 <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
-    /* Styles for cart page as provided by user */
-    * {
-        box-sizing: border-box;
+
+    /* --- WOW STYLES START --- */
+
+    /* General Body and Font Styles */
+        body {
+
+        /* Upgraded font stack for a modern feel */
+                font-family: 'Inter', 'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        /* Subtle gradient background for depth */
+                background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+                color: #343a40;
+                margin: 0;
+                padding-top: 120px; /* Adjust based on actual navbar height */
+               -webkit-font-smoothing: antialiased;
+               -moz-osx-font-smoothing: grayscale;
+
     }
 
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: #f9fafb;
-        color: #2c3e50;
-        margin: 150px 0 0 0 ;
-        padding: 0;
-    
 
-    .cart-section {
-        padding: 60px 15px;
-        background: #ffffff;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
+    /* Cart Section Styling */
+        .cart-section {
+                padding: 60px 15px; /* Increased padding */
+                min-height: calc(100vh - 120px);
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+
     }
 
-    .cart-container {
-        width: 100%;
-        max-width: 1100px;
+        .cart-container {
+                width: 100%;
+                max-width: 1200px; /* Slightly wider for more space */
+
     }
 
-    .cart-title {
-        font-size: 2.8rem;
-        font-weight: 900;
-        color: #34495e;
-        text-align: center;
-        margin-bottom: 45px;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
+        .cart-title-container {
+                text-align: center;
+                margin-bottom: 50px; /* Increased margin */
+
     }
 
-    .cart-table-wrapper {
-        overflow-x: auto;
-        background: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.07);
-        transition: box-shadow 0.3s ease;
-    }
-
-        .cart-table-wrapper:hover {
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        }
-
-    table.cart-table {
-        width: 100%;
-        border-collapse: separate;
-        border-spacing: 0 15px;
-        min-width: 850px;
-    }
-
-    thead.cart-thead tr th {
-        background: #2c3e50;
-        color: #ecf0f1;
-        font-weight: 700;
-        padding: 18px 25px;
-        text-align: center;
-        font-size: 1.1rem;
-        border-top-left-radius: 12px;
-        border-top-right-radius: 12px;
-        user-select: none;
-    }
-
-    tbody.cart-tbody tr {
-        background: #f7f9fc;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-        border-radius: 12px;
-        transition: background 0.25s ease;
-    }
-
-        tbody.cart-tbody tr:hover {
-            background: #e3f0ff;
-        }
-
-        tbody.cart-tbody tr td {
-            padding: 15px 20px;
-            vertical-align: middle;
-            text-align: center;
-            font-size: 1rem;
-            color: #34495e;
-        }
-
-            tbody.cart-tbody tr td img {
-                max-width: 70px;
-                border-radius: 10px;
-                object-fit: cover;
-                box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-            }
-
-    .qty-input {
-        width: 60px;
-        padding: 6px 10px;
-        border: 1.5px solid #ccc;
-        border-radius: 8px;
-        text-align: center;
-        font-weight: 600;
-        font-size: 1rem;
-        color: #2c3e50;
-        transition: border-color 0.25s ease;
-    }
-
-        .qty-input:focus {
-            outline: none;
-            border-color: #2980b9;
-            box-shadow: 0 0 8px #2980b9aa;
-        }
-
-    .remove-btn {
-        background: transparent;
-        border: none;
-        color: #e74c3c;
-        font-size: 1.3rem;
-        cursor: pointer;
-        transition: color 0.3s ease;
-    }
-
-        .remove-btn:hover {
-            color: #c0392b;
-        }
-
-    .cart-total-wrapper {
-        margin-top: 35px;
-        padding: 18px 30px;
-        background: #ecf0f1;
-        border-radius: 14px;
-        box-shadow: inset 0 0 15px #bdc3c7aa;
-        font-size: 1.6rem;
-        font-weight: 700;
-        color: #2c3e50;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .cart-total-label {
-        text-transform: uppercase;
-        color: #34495e;
-    }
-
-    .cart-total-amount {
-        color: #2980b9;
-        font-weight: 900;
-        font-size: 2rem;
-    }
-
-    .cart-currency {
-        font-weight: 700;
-        color: #2980b9;
-        font-size: 1.5rem;
-    }
-
-    .cart-checkout-wrapper {
-        margin-top: 45px;
-        text-align: right;
-    }
-
-    .cart-checkout-btn {
-        padding: 15px 45px;
-        background: linear-gradient(90deg, #2980b9, #3498db);
-        border: none;
-        border-radius: 50px;
-        color: #fff;
-        font-size: 1.3rem;
-        font-weight: 700;
-        box-shadow: 0 6px 18px rgba(52, 152, 219, 0.4);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        letter-spacing: 1.1px;
-    }
-
-        .cart-checkout-btn:hover {
-            background: linear-gradient(90deg, #3498db, #2980b9);
-            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.6);
-        }
-
-    .modal-content {
-        border-radius: 16px !important;
-        background: #fff;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        border: none;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .modal-header {
-        background: #2980b9;
-        color: #fff;
-        border-radius: 16px 16px 0 0;
-        padding: 20px 25px;
-        font-weight: 700;
-        font-size: 1.5rem;
-    }
-
-    .modal-body {
-        padding: 30px 35px;
-        background: #fefefe;
-    }
-
-    .form-check {
-        display: flex;
-        align-items: center;
-        padding: 14px 20px;
-        margin-bottom: 15px;
-        border-radius: 12px;
-        border: 1px solid #d1d8e0;
-        background: #fff;
-        cursor: pointer;
-        transition: box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-
-        .form-check:hover {
-            box-shadow: 0 8px 20px rgba(41, 128, 185, 0.15);
-            border-color: #2980b9;
-        }
-
-    .form-check-input {
-        margin-right: 18px;
-        margin-left: 0; /* For RTL */
-        width: 22px;
-        height: 22px;
-        cursor: pointer;
-        accent-color: #2980b9;
-    }
-
-    html[dir="rtl"] .form-check-input {
-        margin-right: 0;
-        margin-left: 18px;
-    }
-
-    .form-check-label {
-        font-weight: 700;
-        font-size: 1.15rem;
-        user-select: none;
-    }
-
-    .form-check-input:checked + .form-check-label {
-        color: #2980b9;
-    }
-
-    .modal-footer {
-        display: flex;
-        justify-content: flex-end;
-        gap: 15px;
-        padding: 20px 30px;
-        background: #f7f9fc;
-        border-radius: 0 0 16px 16px;
-    }
-
-        .modal-footer .btn {
-            min-width: 140px;
-            font-weight: 700;
-            border-radius: 50px;
-            padding: 12px 25px;
-            font-size: 1.1rem;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-    .btn-outline-secondary {
-        border: 2px solid #7f8c8d;
-        color: #7f8c8d;
-    }
-
-        .btn-outline-secondary:hover {
-            background: #7f8c8d;
-            color: #fff;
-        }
-
-    .modal-footer .btn-primary {
-        background: #2980b9;
-        border: none;
-        color: #fff;
-        box-shadow: 0 6px 18px rgba(41, 128, 185, 0.5);
-    }
-
-        .modal-footer .btn-primary:hover {
-            background: #1c598a;
-            box-shadow: 0 8px 25px rgba(28, 89, 138, 0.6);
-        }
-
-    .btn-danger {
-        padding: 5px 30px;
-    }
-
-        .btn-danger:hover {
-            color: #fff !important;
-            border-radius: 25px;
-        }
-        .btn-outline-danger:hover{
-            background-color:transparent !important;
-        }
-
-    @@media (max-width: 768px) {
         .cart-title {
-            font-size: 2rem;
-            margin-bottom: 30px;
-        }
+                font-size: 2.75rem; /* Larger title */
+                font-weight: 700;
+
+        /* Gradient text for a "wow" effect */
+                background: linear-gradient(45deg, #007bff, #0056b3);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-transform: uppercase;
+                padding-bottom: 15px;
+                border-bottom: 4px solid; /* Thicker border */
+                border-image: linear-gradient(45deg, #007bff, #00bfff) 1; /* Gradient border */
+                display: inline-block;
+                letter-spacing: 1px; /* Increased letter spacing */
+
+    }
+
+        .cart-table-wrapper {
+                overflow-x: auto;
+                background: #ffffff;
+                border-radius: 16px; /* More pronounced radius */
+
+        /* Enhanced shadow for a lifted, modern look */
+                box-shadow: 0 12px 35px rgba(0, 86, 179, 0.1), 0 5px 15px rgba(0,0,0,0.07);
+                margin-bottom: 40px;
+
+    }
 
         table.cart-table {
-            min-width: auto;
+                width: 100%;
+                border-collapse: separate; /* Allows for spacing and rounded corners on cells */
+                border-spacing: 0;
+                min-width: 760px;
+
+    }
+
+        thead.cart-thead tr th {
+
+        /* Stylish gradient background for header */
+                background: linear-gradient(45deg, #007bff, #0056b3);
+                color: #ffffff;
+                font-weight: 600;
+                padding: 18px 22px; /* Increased padding */
+                text-align: center;
+                font-size: 1rem; /* Slightly larger font */
+                border-bottom: none; /* Removed bottom border, relying on row borders */
+                letter-spacing: 0.05em;
+
+    }
+
+            thead.cart-thead tr th:first-child {
+
         }
 
-        tbody.cart-tbody tr td {
-            font-size: 0.9rem;
-            padding: 12px 10px;
+            thead.cart-thead tr th:last-child {
+
+        }
+
+        tbody.cart-tbody tr {
+                background: #fff;
+                border-bottom: 1px solid #e9ecef; /* Lighter, cleaner border */
+                transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+
+    }
+
+            tbody.cart-tbody tr:last-child {
+                    border-bottom: none;
+
+        }
+
+                tbody.cart-tbody tr:last-child td:first-child {
+                        border-bottom-left-radius: 16px;
+
+            }
+
+                tbody.cart-tbody tr:last-child td:last-child {
+                        border-bottom-right-radius: 16px;
+
+            }
+
+
+            tbody.cart-tbody tr:hover {
+                    background-color: #f0f8ff; /* AliceBlue for a soft hover */
+                    transform: translateY(-2px); /* Subtle lift on hover */
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+        }
+
+            tbody.cart-tbody tr td {
+                    padding: 18px 20px; /* Adjusted padding */
+                    vertical-align: middle;
+                    text-align: center;
+                    font-size: 0.95rem; /* Slightly larger */
+                    color: #454f5b; /* Softer dark color */
+
+        }
+
+        html[dir="rtl"] tbody.cart-tbody tr td {
+                text-align: right;
+
+    }
+
+        tbody.cart-tbody tr td img {
+                max-width: 80px; /* Larger images */
+                height: 80px;
+                border-radius: 12px; /* Softer radius */
+                object-fit: cover;
+                border: 2px solid #e9ecef; /* Subtle border */
+                transition: transform 0.3s ease, box-shadow 0.3s ease; /* Image zoom effect */
+
+    }
+
+        tbody.cart-tbody tr:hover td img {
+                transform: scale(1.05);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+    }
+
+
+        .qty-input {
+                width: 70px; /* Slightly wider */
+                padding: 10px 12px; /* More padding */
+                border: 1px solid #ced4da;
+                border-radius: 8px; /* Softer radius */
+                text-align: center;
+                font-weight: 600; /* Bolder quantity */
+                font-size: 1rem;
+                color: #007bff; /* Primary color for quantity */
+                transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    }
+
+            .qty-input:focus {
+                    outline: none;
+                    border-color: #007bff;
+                    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.2); /* More pronounced focus */
+
+        }
+
+        .remove-btn {
+                background: transparent;
+                border: none;
+                color: #ff4d4f; /* Brighter red for remove */
+                font-size: 1.3rem; /* Larger icon */
+                cursor: pointer;
+                padding: 8px 10px;
+                border-radius: 50%;
+                line-height: 1;
+                transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+
+    }
+
+            .remove-btn:hover {
+                    color: #fff;
+                    background-color: #ff4d4f; /* Red background on hover */
+                    transform: scale(1.1); /* Slight scale effect */
+
+        }
+
+            .remove-btn i {
+                    pointer-events: none;
+
         }
 
         .cart-total-wrapper {
-            font-size: 1.4rem;
-            padding: 15px 20px;
-            justify-content: space-between;
-            text-align: left;
-            gap: 10px;
-        }
+                margin-top: 30px;
+                padding: 25px 30px; /* More padding */
+                background: linear-gradient(135deg, #007bff, #0056b3); /* Gradient background */
+                border-radius: 16px;
+                box-shadow: 0 8px 25px rgba(0, 86, 179, 0.15);
+                font-size: 1.35rem; /* Larger base size */
+                font-weight: 700; /* Bolder total */
+                color: #ffffff; /* White text on gradient */
+                text-align: right;
+                display: flex; /* Using flex for better alignment if needed */
+                justify-content: flex-end;
+                align-items: center;
+
+    }
 
         html[dir="rtl"] .cart-total-wrapper {
-            text-align: right;
-        }
+                text-align: left;
+                justify-content: flex-start;
+
+    }
+
+        .cart-total-label {
+                color: #e0e0e0; /* Lighter label color on dark background */
+                font-weight: 500;
+                margin-inline-end: 10px;
+
+    }
+
+        .cart-total-amount {
+                color: #ffffff; /* White amount */
+                font-weight: 700;
+                font-size: 1.6rem; /* Larger amount */
+
+    }
+
+        .cart-currency {
+                font-weight: 600;
+                color: #f0f0f0; /* Light currency symbol */
+                font-size: 1.2rem;
+                margin-inline-start: 8px;
+
+    }
 
         .cart-checkout-wrapper {
-            text-align: center;
-            margin-top: 25px;
-        }
+                margin-top: 40px; /* More space */
+                text-align: center;
+
+    }
 
         .cart-checkout-btn {
-            width: 100%;
-            padding: 16px 0;
-            font-size: 1.2rem;
-            border-radius: 35px;
+                padding: 15px 45px; /* Larger button */
+
+        /* Striking gradient for checkout button */
+                background-image: linear-gradient(45deg, #28a745 0%, #218838 100%);
+                border: none;
+                border-radius: 50px; /* Full pill shape */
+                color: #fff;
+                font-size: 1.2rem; /* Larger font */
+                font-weight: 700; /* Bolder text */
+                box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3), 0 2px 5px rgba(0,0,0,0.1);
+                cursor: pointer;
+                transition: all 0.3s ease;
+                letter-spacing: 0.8px;
+                text-transform: uppercase;
+                position: relative;
+                overflow: hidden;
+
+    }
+
+            .cart-checkout-btn::before { /* Shine effect on hover */
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+                    transition: left 0.5s ease;
+
         }
+
+            .cart-checkout-btn:hover, .cart-checkout-btn:focus {
+                    background-image: linear-gradient(45deg, #218838 0%, #1e7e34 100%); /* Darker gradient on hover */
+                    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4), 0 3px 7px rgba(0,0,0,0.15);
+                    transform: translateY(-3px); /* Lift effect */
+                    outline: none;
+
+        }
+
+                .cart-checkout-btn:hover::before {
+                        left: 100%;
+
+            }
+
+            .cart-checkout-btn:active {
+                    transform: translateY(-1px);
+                    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+
+        }
+
+
+
+    /* Modal Styling */
+        .modal-content {
+                border-radius: 16px !important; /* Consistent radius */
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+                border: none;
+                overflow: hidden; /* Ensure child elements respect border radius */
+
+    }
+
+        .modal-header {
+
+        /* Gradient header for modal */
+                background: linear-gradient(45deg, #007bff, #0056b3);
+                color: #fff;
+
+        /* Removed individual border-radius, handled by .modal-content overflow:hidden */
+                padding: 20px 30px; /* Increased padding */
+                border-bottom: none;
+
+    }
+
+        .modal-title {
+                font-weight: 600;
+                font-size: 1.4rem; /* Larger title */
+
+    }
+
+        .btn-close-white { /* Ensure close button is visible and styled */
+                filter: invert(1) grayscale(100%) brightness(200%) drop-shadow(0 0 2px rgba(0,0,0,0.3));
+                opacity: 0.8;
+                transition: opacity 0.2s ease;
+
+    }
+
+            .btn-close-white:hover {
+                    opacity: 1;
+
+        }
+
 
         .modal-body {
-            padding: 25px 20px;
-        }
+                padding: 30px 35px; /* Increased padding */
+                background: #f8f9fa; /* Light background for content */
+
     }
+
+        .form-check { /* Enhanced radio button styling */
+                display: flex;
+                align-items: center;
+                padding: 15px 20px; /* Increased padding */
+                margin-bottom: 15px;
+                border-radius: 12px; /* Softer radius */
+                border: 1.5px solid #e0e0e0;
+                background: #fff;
+                cursor: pointer;
+                transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+
+    }
+
+            .form-check:hover {
+                    box-shadow: 0 6px 18px rgba(0, 123, 255, 0.12);
+                    border-color: #007bff;
+                    transform: translateY(-2px);
+
+        }
+
+        .form-check-input {
+                margin-top: 0;
+                margin-inline-end: 15px; /* More space */
+                width: 22px; /* Larger radio */
+                height: 22px;
+                accent-color: #007bff;
+                transition: transform 0.2s ease;
+
+    }
+
+        html[dir="rtl"] .form-check-input {
+                margin-inline-start: 15px;
+                margin-inline-end: 0;
+
+    }
+
+        .form-check-input:checked {
+                transform: scale(1.1);
+
+    }
+
+        .form-check-label {
+                font-weight: 500;
+                font-size: 1.1rem; /* Larger label */
+                color: #343a40;
+
+    }
+
+        .form-check-input:checked + .form-check-label {
+                color: #0056b3;
+                font-weight: 600;
+
+    }
+
+        .form-check:has(.form-check-input:checked) {
+                border-color: #007bff;
+                background-color: #e7f3ff; /* Light blue for selected */
+                box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
+
+    }
+
+        .modal-footer {
+                display: flex;
+                justify-content: flex-end;
+                gap: 15px; /* Increased gap */
+                padding: 20px 30px; /* Increased padding */
+                background: #f1f3f5; /* Light gray footer */
+                border-top: 1px solid #dee2e6;
+
+    }
+
+            .modal-footer .btn {
+                    min-width: 130px; /* Slightly wider buttons */
+                    font-weight: 600;
+                    border-radius: 30px; /* Pill shape */
+                    padding: 12px 25px; /* More padding */
+                    font-size: 1.05rem; /* Slightly larger font */
+                    transition: all 0.25s ease;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+
+        }
+
+        .btn-outline-secondary {
+                border: 2px solid #6c757d; /* Thicker border */
+                color: #6c757d;
+
+    }
+
+            .btn-outline-secondary:hover {
+                    background: #5a6268;
+                    color: #fff;
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 10px rgba(108, 117, 125, 0.2);
+
+        }
+
+        .modal-footer .btn-primary {
+                background-color: #007bff;
+                border-color: #007bff;
+                color: #fff;
+
+    }
+
+            .modal-footer .btn-primary:hover {
+                    background-color: #0056b3;
+                    border-color: #0056b3;
+                    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.25);
+                    transform: translateY(-2px);
+
+        }
+
+
+    /* Empty Cart Message */
+        #empty-cart-message {
+                padding: 60px 20px; /* More padding */
+                text-align: center;
+                background-color: #fff;
+                border-radius: 16px;
+                margin-top: 20px;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07); /* Softer, larger shadow */
+
+    }
+
+        #empty-cart-message i {
+                font-size: 4.5rem; /* Larger icon */
+
+        /* Gradient color for icon */
+                background: linear-gradient(45deg, #adb5bd, #6c757d);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 20px;
+                display: inline-block; /* Needed for gradient text */
+
+    }
+
+        #empty-cart-message p {
+                font-size: 1.25rem; /* Larger text */
+                color: #495057;
+                margin-bottom: 25px;
+                font-weight: 500;
+
+    }
+
+        #empty-cart-message .btn-primary {
+                background-image: linear-gradient(45deg, #007bff 0%, #0056b3 100%); /* Gradient button */
+                border: none;
+                padding: 12px 30px;
+                font-size: 1.05rem;
+                font-weight: 600;
+                border-radius: 30px;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+
+    }
+
+            #empty-cart-message .btn-primary:hover {
+                    background-image: linear-gradient(45deg, #0056b3 0%, #004085 100%);
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
+
+        }
+
+
+    /* Responsive Adjustments */
+        @@media (max-width: 991px) {
+                  table.cart-table
+
+    {
+                    min-width: auto;
+
+    }
+
+            thead.cart-thead tr th {
+                    font-size: 0.95rem; /* Adjusted */
+                    padding: 15px 18px; /* Adjusted */
+
+    }
+
+            tbody.cart-tbody tr td {
+                    font-size: 0.9rem; /* Adjusted */
+                    padding: 15px 12px; /* Adjusted */
+
+    }
+
+                tbody.cart-tbody tr td img {
+                        max-width: 70px; /* Adjusted */
+                        height: 70px; /* Adjusted */
+
+        }
+
+            .qty-input {
+                    width: 60px; /* Adjusted */
+                    padding: 8px 10px; /* Adjusted */
+                    font-size: 0.95rem; /* Adjusted */
+
+    }
+
+            .cart-title {
+                    font-size: 2.25rem;
+
+    }
+
+
+    }
+
+        @@media (max-width: 768px) {
+                body
+
+    {
+                    padding-top: 100px;
+
+    }
+
+            .cart-title {
+                    font-size: 2rem; /* Adjusted */
+                    margin-bottom: 35px; /* Adjusted */
+
+    }
+
+            .cart-total-wrapper {
+                    font-size: 1.15rem; /* Adjusted */
+                    padding: 20px; /* Adjusted */
+
+    }
+
+            .cart-total-amount, .cart-currency {
+                    font-size: 1.3rem; /* Adjusted */
+
+    }
+
+            .cart-checkout-btn {
+                    width: 100%;
+                    padding: 14px 0; /* Adjusted */
+                    font-size: 1.1rem; /* Adjusted */
+
+    }
+
+            .modal-body {
+                    padding: 25px 28px;
+
+    }
+
+            .modal-footer .btn {
+                    padding: 10px 22px; /* Adjusted */
+                    font-size: 0.95rem; /* Adjusted */
+
+    }
+
+
+    }
+
+        @@media (max-width: 576px) {
+                .cart-section
+
+    {
+                    padding: 30px 10px; /* Adjusted */
+
+    }
+
+            .cart-title {
+                    font-size: 1.75rem; /* Adjusted */
+
+    }
+
+            thead.cart-thead {
+                    display: none;
+
+    }
+
+            tbody.cart-tbody tr { /* Card-like appearance for mobile */
+                    display: block;
+                    margin-bottom: 20px; /* Increased space between cards */
+                    border-radius: 12px; /* Consistent radius */
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Softer shadow for cards */
+                    border: 1px solid #e0e0e0;
+                    overflow: hidden; /* Clip content */
+                    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    }
+
+                tbody.cart-tbody tr:hover {
+                        transform: translateY(-3px);
+                        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+
+        }
+
+                tbody.cart-tbody tr td {
+                        display: flex;
+                          justify-content: space-between;
+                          align-items: center;
+                        text-align: right;
+                          padding: 12px 15px; /* Adjusted padding */
+                        border-bottom: 1px dashed #e9ecef; /* Softer dashed border */
+
+        }
+
+            html[dir="rtl"] tbody.cart-tbody tr td {
+                    text-align: right;
+
+    }
+
+            tbody.cart-tbody tr td:last-child {
+                    border-bottom: none;
+
+    }
+
+            tbody.cart-tbody tr td::before { /* Label styling for mobile cards */
+                    content: attr(data-label);
+                      font-weight: 700; /* Bolder label */
+                    color: #007bff; /* Primary color for label */
+                    margin-right: auto;
+                      padding-right: 10px;
+                      font-size: 0.85rem; /* Slightly smaller label */
+
+    }
+
+            html[dir="rtl"] tbody.cart-tbody tr td::before {
+                    text-align: right;
+                    margin-left: auto;
+                    margin-right: 0;
+                    padding-left: 10px;
+                    padding-right: 0;
+
+    }
+
+            tbody.cart-tbody tr td img {
+                    max-width: 60px; /* Adjusted for card layout */
+                    height: 60px;
+                    margin-inline-end: 10px;
+                    border-radius: 8px; /* Softer radius */
+
+    }
+
+            html[dir="rtl"] tbody.cart-tbody tr td img {
+                    margin-inline-start: 10px;
+                    margin-inline-end: 0;
+
+    }
+
+            .qty-input { /* Full width qty input in card view */
+                    width: auto; /* Allow flex to manage width */
+                    flex-grow: 1;
+                    max-width: 80px; /* Max width to prevent it from becoming too large */
+                    margin: 5px 0;
+
+    }
+
+            .remove-btn { /* More prominent remove button in card view */
+                    display: block;
+                      width: 100%;
+                      margin-top: 10px;
+                    text-align: center;
+                    padding: 8px 12px; /* More padding */
+                    background-color: #fff0f0; /* Lighter red background */
+                    color: #d9363e; /* Darker red text */
+                    border-radius: 8px;
+                    font-weight: 600;
+
+    }
+
+                .remove-btn:hover {
+                        background-color: #ffdddd; /* Slightly darker red on hover */
+                        color: #c82333;
+
+        }
+
+            .cart-total-wrapper {
+                    text-align: center;
+                    align-items: center;
+                    flex-direction: column; /* Stack total elements */
+                    gap: 5px;
+
+    }
+
+            html[dir="rtl"] .cart-total-wrapper {
+                    align-items: center;
+
+    }
+
+            .cart-total-wrapper div {
+                    width: auto;
+
+    }
+
+
+    }
+
+    /* --- WOW STYLES END --- */
 </style>
 
-
+<!-- The rest of your HTML remains the same -->
 <section class="cart-section" aria-label="Shopping Cart Section">
     <div class="cart-container">
-        <h2 class="cart-title" data-ar="سلة المشتريات" data-en="Shopping Cart">سلة المشتريات</h2>
+        <div class="cart-title-container">
+            <h2 class="cart-title" data-ar="سلة المشتريات" data-en="Shopping Cart">سلة المشتريات</h2>
+        </div>
 
         <div class="cart-table-wrapper" role="region" aria-labelledby="cart-table-label">
             <table class="cart-table" id="cart-table-element" aria-describedby="cart-description">
@@ -364,6 +778,7 @@
                     </tr>
                 </thead>
                 <tbody id="cart-items" class="cart-tbody" aria-live="polite" aria-relevant="all">
+                    <!-- Cart items will be injected here by JavaScript -->
                 </tbody>
             </table>
             <div id="empty-cart-message" class="text-center p-5" style="display: none;">
@@ -374,9 +789,10 @@
         </div>
 
         <div id="cart-summary-block" class="cart-total-wrapper" role="contentinfo" style="display: none;">
-            <span class="cart-total-label" data-ar="الإجمالي الكلي:" data-en="Total:">الإجمالي الكلي:</span>
-            <span id="total-price" class="cart-total-amount" aria-live="polite" aria-atomic="true">0.00</span>
-            <span class="cart-currency" data-ar="جنيه" data-en="EGP">جنيه</span>
+            <div>
+                <strong class="cart-total-label" data-ar="الإجمالي الكلي:" data-en="Total:"></strong>
+                <strong><span id="total-price" class="cart-total-amount">0.00</span> <span class="cart-currency" data-ar="جنيه" data-en="EGP"></span></strong>
+            </div>
         </div>
 
         <div id="cart-checkout-button-wrapper" class="cart-checkout-wrapper" style="display: none;">
@@ -387,33 +803,34 @@
 
 <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content shadow-lg rounded-4 border-0" style="background: #f8f9fa;">
-            <div class="modal-header border-bottom-0 bg-primary text-white rounded-top-4 px-4 py-3">
-                <h5 class="modal-title fw-bold" id="paymentModalLabel" data-ar="اختر طريقة الدفع" data-en="Choose Payment Method">اختر طريقة الدفع</h5>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="paymentModalLabel" data-ar="اختر طريقة الدفع" data-en="Choose Payment Method">اختر طريقة الدفع</h5>
                 <button type="button" style="margin:inherit" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body px-4 py-4">
+            <div class="modal-body">
                 <form id="payment-form">
-                    <div class="form-check p-3 mb-3 border rounded-3 bg-white shadow-sm">
+                    <div class="form-check">
                         <input class="form-check-input" type="radio" name="paymentMethod" id="cash" value="cash" checked>
-                        <label class="form-check-label fw-semibold ms-2" for="cash" data-ar="🏠 الدفع عند الاستلام" data-en="🏠 Cash on Delivery">الدفع عند الاستلام</label>
+                        <label class="form-check-label" for="cash" data-ar="🏠 الدفع عند الاستلام" data-en="🏠 Cash on Delivery">الدفع عند الاستلام</label>
                     </div>
-                    <div class="form-check p-3 mb-3 border rounded-3 bg-white shadow-sm">
-                        <input class="form-check-input" type="radio" name="paymentMethod" id="ewallet" value="ewallet"> <label class="form-check-label fw-semibold ms-2" for="ewallet" data-ar="📱 محفظة إلكترونية (فودافون كاش، إلخ)" data-en="📱 E-Wallet (Vodafone Cash, etc.)">محفظة إلكترونية (فودافون كاش، إلخ)</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="ewallet" value="ewallet">
+                        <label class="form-check-label" for="ewallet" data-ar="📱 محفظة إلكترونية (فودافون كاش، إلخ)" data-en="📱 E-Wallet (Vodafone Cash, etc.)">محفظة إلكترونية (فودافون كاش، إلخ)</label>
                     </div>
-                    <div class="form-check p-3 mb-3 border rounded-3 bg-white shadow-sm">
+                    <div class="form-check">
                         <input class="form-check-input" type="radio" name="paymentMethod" id="instapay" value="instapay">
-                        <label class="form-check-label fw-semibold ms-2" for="instapay" data-ar="💳 انستاباي (تحويل بنكي)" data-en="💳 Instapay (Bank Transfer)">انستاباي (تحويل بنكي)</label>
+                        <label class="form-check-label" for="instapay" data-ar="💳 انستاباي (تحويل بنكي)" data-en="💳 Instapay (Bank Transfer)">انستاباي (تحويل بنكي)</label>
                     </div>
-                    <div class="form-check p-3 mb-2 border rounded-3 bg-white shadow-sm">
+                    <div class="form-check">
                         <input class="form-check-input" type="radio" name="paymentMethod" id="visa" value="visa">
-                        <label class="form-check-label fw-semibold ms-2" for="visa" data-ar="💳 بطاقة ائتمان/خصم (فيزا/ماستركارد)" data-en="💳 Credit/Debit Card (Visa/Mastercard)">بطاقة ائتمان/خصم (فيزا/ماستركارد)</label>
+                        <label class="form-check-label" for="visa" data-ar="💳 بطاقة ائتمان/خصم (فيزا/ماستركارد)" data-en="💳 Credit/Debit Card (Visa/Mastercard)">بطاقة ائتمان/خصم (فيزا/ماستركارد)</label>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer border-top-0 px-4 pb-4">
-                <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal" data-ar="إغلاق" data-en="Close">إغلاق</button>
-                <button type="button" class="btn btn-primary rounded-pill px-4" id="confirm-payment" data-ar="متابعة إلى التسجيل" data-en="Proceed to Registration">متابعة إلى التسجيل</button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" data-ar="إغلاق" data-en="Close">إغلاق</button>
+                <button type="button" class="btn btn-primary" id="confirm-payment" data-ar="متابعة إلى التسجيل" data-en="Proceed to Registration">متابعة إلى التسجيل</button>
             </div>
         </div>
     </div>
@@ -421,72 +838,107 @@
 
 @section Scripts {
     <script>
+        // Your JavaScript remains the same
         document.addEventListener("DOMContentLoaded", function () {
-            const currentLangDirection = document.documentElement.dir || "rtl";
+            const currentLang = document.documentElement.lang || "ar";
             const cartItemsContainer = document.getElementById("cart-items");
-            const totalPriceElement = document.getElementById("total-price");
+            const totalPriceElement = document.getElementById("total-price"); 
+
             const checkoutBtn = document.getElementById("checkout-btn");
             const confirmPaymentButton = document.getElementById("confirm-payment");
             const emptyCartMessageDiv = document.getElementById("empty-cart-message");
             const cartTableElement = document.getElementById("cart-table-element");
             const cartSummaryBlock = document.getElementById("cart-summary-block");
             const cartCheckoutButtonWrapper = document.getElementById("cart-checkout-button-wrapper");
-        function showSubmissionError(title, text) {
-                        if (typeof Swal !== 'undefined') {
-                            Swal.fire({
-                                icon: 'error',
-                                title: title || (currentLangDirection === 'rtl' ? 'خطأ' : 'Error'),
-                                text: text || (currentLangDirection === 'rtl' ? 'حدث خطأ ما.' : 'An error occurred.'),
-                                confirmButtonText: currentLangDirection === 'rtl' ? 'موافق' : 'OK'
-                            });
-                        } else {
-                            alert(text);
-                        }
-                    }
 
-                    function updateTextContentByLanguage() {
-                        const lang = document.documentElement.lang || 'ar';
-                        document.querySelectorAll('[data-ar][data-en]').forEach(el => {
-                            const textAr = el.getAttribute('data-ar');
-                            const textEn = el.getAttribute('data-en');
-                            if (el.tagName === 'LABEL' || el.tagName === 'BUTTON' || el.tagName === 'H2' || el.tagName === 'H5' || el.tagName === 'P' || el.tagName === 'SPAN' || el.tagName === 'TH' || el.classList.contains('cart-th') || el.classList.contains('cart-total-label') || el.classList.contains('cart-currency')) {
-                                el.textContent = lang === 'ar' ? textAr : textEn;
-                            }
-                        });
+            function showSubmissionError(title, text) {
+                if (typeof Swal !== 'undefined') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: title || (currentLang === 'ar' ? 'خطأ' : 'Error'),
+                        text: text || (currentLang === 'ar' ? 'حدث خطأ ما.' : 'An error occurred.'),
+                        confirmButtonText: currentLang === 'ar' ? 'موافق' : 'OK',
+                        customClass: { container: 'swal2-high-z-index-debug' }
+                    });
+                } else {
+                    alert(text);
+                }
+            }
+
+            function updateTextContentByLanguage() {
+                const lang = document.documentElement.lang || 'ar';
+                document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+                    const textAr = el.getAttribute('data-ar');
+                    const textEn = el.getAttribute('data-en');
+
+                    const isNumericTotalDisplay = el.id === 'total-price';
+                    const isCurrencyForTotal = el.classList.contains('cart-currency') && el.previousElementSibling && el.previousElementSibling.id === 'total-price';
+
+                    if (!isNumericTotalDisplay && !isCurrencyForTotal) {
+                         if (el.tagName === 'LABEL' || el.tagName === 'BUTTON' || el.tagName === 'H2' || el.tagName === 'H5' || el.tagName === 'P' || el.tagName === 'TH' || el.classList.contains('cart-th') || el.classList.contains('cart-total-label') || el.classList.contains('cart-currency')) {
+                            el.textContent = lang === 'ar' ? textAr : textEn;
+                        }
+                    } else if (isCurrencyForTotal) { 
+                         el.textContent = lang === 'ar' ? textAr : textEn;
                     }
+                });
+            }
+
 
             function getCartFromLocalStorage() {
                 let cart;
                 try {
                     const cartString = localStorage.getItem('cart');
-                    cart = cartString ? JSON.parse(cartString) : [];
+                    if (!cartString || cartString === "null") {
+                        return [];
+                    }
+                    cart = JSON.parse(cartString);
                     if (!Array.isArray(cart)) {
                         console.warn("Cart data from localStorage was not an array. Resetting cart.");
                         cart = [];
                         localStorage.setItem('cart', JSON.stringify(cart));
                     }
+                    return cart.filter(item =>
+                        item && typeof item.price === 'number' && typeof item.quantity === 'number' &&
+                        item.productId && item.price >= 0 && item.quantity > 0
+                    );
                 } catch (e) {
                     console.error("Error parsing cart from localStorage:", e);
                     cart = [];
                     localStorage.setItem('cart', JSON.stringify(cart));
+                    return cart;
                 }
-                return cart;
             }
 
             function saveCartToLocalStorage(cart) {
                 try {
                     localStorage.setItem('cart', JSON.stringify(cart));
-                    console.log("Cart saved to localStorage:", JSON.parse(JSON.stringify(cart)));
                 } catch (e) {
                     console.error("Error saving cart to localStorage:", e);
                 }
             }
 
+            function updateCartSummary(productsTotal) { 
+                if (totalPriceElement) totalPriceElement.textContent = productsTotal.toFixed(2);
+
+                const lang = document.documentElement.lang || 'ar';
+                const currencySpan = totalPriceElement ? totalPriceElement.nextElementSibling : null;
+                if (currencySpan && currencySpan.classList.contains('cart-currency')) {
+                     currencySpan.textContent = lang === 'ar' ? currencySpan.getAttribute('data-ar') : currencySpan.getAttribute('data-en');
+                }
+                const totalLabelSpan = totalPriceElement ? totalPriceElement.parentElement.previousElementSibling : null; // This gets the <strong> wrapping the label
+                 if (totalLabelSpan && totalLabelSpan.classList.contains('cart-total-label')) { // Check the strong tag
+                     totalLabelSpan.textContent = lang === 'ar' ? totalLabelSpan.getAttribute('data-ar') : totalLabelSpan.getAttribute('data-en');
+                 }
+
+                if (cartSummaryBlock) cartSummaryBlock.style.display = 'flex'; 
+            }
+
+
             function loadCart() {
-                console.log("loadCart: Starting.");
                 const cart = getCartFromLocalStorage();
                 cartItemsContainer.innerHTML = "";
-                let total = 0;
+                let productsTotal = 0;
 
                 if (cart.length === 0) {
                     if(emptyCartMessageDiv) emptyCartMessageDiv.style.display = 'block';
@@ -496,68 +948,56 @@
                 } else {
                     if(emptyCartMessageDiv) emptyCartMessageDiv.style.display = 'none';
                     if(cartTableElement) cartTableElement.style.display = 'table';
-                    if(cartSummaryBlock) cartSummaryBlock.style.display = 'flex';
                     if(cartCheckoutButtonWrapper) cartCheckoutButtonWrapper.style.display = 'block';
 
                     cart.forEach((item, index) => {
                         if (!item || typeof item.price !== 'number' || typeof item.quantity !== 'number' || !item.title || !item.productId || item.productId <= 0) {
-                            console.warn('loadCart: Invalid item, skipping:', item); return;
+                            return; 
                         }
                         const subtotal = item.price * item.quantity;
-                        total += subtotal;
+                        productsTotal += subtotal;
                         const row = cartItemsContainer.insertRow();
-                        const lang = document.documentElement.lang || 'ar';
-                        const removeButtonText = lang === 'ar' ? '' : '';
+                        const currentItemLang = document.documentElement.lang || 'ar'; 
+
                         row.innerHTML = `
-                            <td><img src="${item.imageUrl || '/images/products/default.png'}" alt="${item.title}" width="60" height="60" style="border-radius: 8px; object-fit: cover;" onerror="this.onerror=null;this.src='/images/products/default.png';"/></td>
-                            <td>${item.title}</td>
-                            <td>${item.price.toFixed(2)}</td>
-                            <td><input type="number" min="1" value="${item.quantity}" data-index="${index}" data-product-id="${item.productId}" class="form-control qty-input" style="width:70px; margin:auto; padding: .375rem .5rem; font-size: .9rem;" /></td>
-                            <td>${subtotal.toFixed(2)}</td>
-                            <td><button class="btn btn-sm btn-outline-danger remove-btn" data-index="${index}" title="${lang === 'rtl' ? 'إزالة العنصر' : 'Remove item'}"><i class="fas fa-trash-alt me-1"></i><span class="remove-btn-text">${removeButtonText}</span></button></td>
+                            <td data-label="${currentItemLang === 'ar' ? 'الصورة' : 'Image'}"><img src="${item.imageUrl || '/images/products/default.png'}" alt="${item.title}" onerror="this.onerror=null;this.src='/images/products/default.png';"/></td>
+                            <td data-label="${currentItemLang === 'ar' ? 'الاسم' : 'Title'}">${item.title}</td>
+                            <td data-label="${currentItemLang === 'ar' ? 'السعر' : 'Price'}">${item.price.toFixed(2)}</td>
+                            <td data-label="${currentItemLang === 'ar' ? 'الكمية' : 'Quantity'}"><input type="number" min="1" value="${item.quantity}" data-index="${index}" data-product-id="${item.productId}" class="form-control qty-input" /></td>
+                            <td data-label="${currentItemLang === 'ar' ? 'الإجمالي' : 'Subtotal'}">${subtotal.toFixed(2)}</td>
+                            <td data-label="${currentItemLang === 'ar' ? 'إزالة' : 'Remove'}"><button class="btn btn-sm remove-btn" data-index="${index}" title="${currentItemLang === 'ar' ? 'إزالة العنصر' : 'Remove item'}"><i class="fas fa-trash-alt"></i></button></td>
                         `;
                     });
+                     updateCartSummary(productsTotal); 
                 }
-                if(totalPriceElement) totalPriceElement.textContent = total.toFixed(2);
+
                 attachQuantityListeners();
                 attachRemoveListeners();
-                updateTextContentByLanguage();
+                updateTextContentByLanguage(); 
                 if (typeof updateCartBadge === 'function') updateCartBadge();
-                console.log("loadCart: Finished.");
             }
 
             function attachQuantityListeners() {
                 const qtyInputs = document.querySelectorAll(".qty-input");
                 qtyInputs.forEach(input => {
-                    // No need to cloneNode if loadCart rebuilds the table, which re-creates inputs
                     input.addEventListener("input", function () {
                         const currentProductId = parseInt(this.getAttribute("data-product-id"), 10);
                         let newQuantity = parseInt(this.value, 10);
-                        console.log(`QTY INPUT Event: ProductID=${currentProductId}, NewValue='${this.value}', ParsedNewQty=${newQuantity}`);
-
                         let cart = getCartFromLocalStorage();
                         const itemIndexInCart = cart.findIndex(p => p.productId === currentProductId);
 
                         if (isNaN(newQuantity) || newQuantity < 0) {
-                            const itemInCart = cart[itemIndexInCart];
-                            this.value = itemInCart ? itemInCart.quantity : 1;
-                            console.warn(`QTY INPUT: Invalid quantity '${this.value}' for ProductID ${currentProductId}. Reverted.`);
+                            this.value = (itemIndexInCart !== -1 && cart[itemIndexInCart]) ? cart[itemIndexInCart].quantity : 1;
                             return;
                         }
-
                         if (itemIndexInCart !== -1) {
                             if (newQuantity === 0) {
-                                console.log(`QTY INPUT: Quantity 0 for ProductID ${currentProductId}. Removing item.`);
                                 cart.splice(itemIndexInCart, 1);
                             } else {
-                                console.log(`QTY INPUT: Updating ProductID ${currentProductId}. Old qty: ${cart[itemIndexInCart].quantity}, New qty: ${newQuantity}`);
                                 cart[itemIndexInCart].quantity = newQuantity;
                             }
                             saveCartToLocalStorage(cart);
-                            loadCart(); // Reload UI to reflect change and recalculate total
-                        } else {
-                            console.error(`QTY INPUT: ProductID ${currentProductId} not found in cart for update.`);
-                            loadCart(); // Sync UI if cart was modified elsewhere
+                            loadCart(); 
                         }
                     });
                 });
@@ -566,21 +1006,12 @@
             function attachRemoveListeners() {
                 const removeButtons = document.querySelectorAll(".remove-btn");
                 removeButtons.forEach(button => {
-                    // No need to cloneNode if loadCart rebuilds the table
                     button.addEventListener("click", function () {
-                        const indexFromAttribute = parseInt(this.getAttribute("data-index"), 10); // Keep for now, but productId is safer
+                        const indexFromAttribute = parseInt(this.getAttribute("data-index"), 10);
                         let cart = getCartFromLocalStorage();
-
-                        // It's safer to find the product by ID to remove, in case index is stale.
-                        // However, if loadCart always rebuilds with correct indices, this is okay.
-                        // For robustness, one might pass productId to the remove button as well.
                         if (cart[indexFromAttribute]) {
-                            console.log(`REMOVE BTN: Removing item at index ${indexFromAttribute}:`, cart[indexFromAttribute]);
                             cart.splice(indexFromAttribute, 1);
                             saveCartToLocalStorage(cart);
-                            loadCart();
-                        } else {
-                            console.warn(`REMOVE BTN: Item at index ${indexFromAttribute} not found. Reloading cart.`);
                             loadCart();
                         }
                     });
@@ -589,10 +1020,9 @@
 
             if (checkoutBtn) {
                 checkoutBtn.addEventListener("click", function () {
-                    console.log("Checkout button clicked. Syncing quantities before proceeding...");
-                    // <<<--- بداية التعديل: تحديث السلة قبل الدفع ---<<<
                     let cart = getCartFromLocalStorage();
                     let cartUpdated = false;
+                    let currentProductsTotal = 0;
 
                     document.querySelectorAll(".qty-input").forEach(input => {
                         const currentProductId = parseInt(input.getAttribute("data-product-id"), 10);
@@ -602,10 +1032,8 @@
                         if (itemIndexInCart !== -1 && !isNaN(displayedQuantity) && displayedQuantity >= 0) {
                             if (cart[itemIndexInCart].quantity !== displayedQuantity) {
                                 if (displayedQuantity === 0) {
-                                    console.log(`Checkout Sync: Removing ProductID ${currentProductId} due to quantity 0.`);
                                     cart.splice(itemIndexInCart, 1);
                                 } else {
-                                    console.log(`Checkout Sync: Updating ProductID ${currentProductId} from ${cart[itemIndexInCart].quantity} to ${displayedQuantity}.`);
                                     cart[itemIndexInCart].quantity = displayedQuantity;
                                 }
                                 cartUpdated = true;
@@ -614,26 +1042,23 @@
                     });
 
                     if (cartUpdated) {
-                        console.log("Checkout Sync: Cart was updated. Saving to localStorage.");
                         saveCartToLocalStorage(cart);
-                        loadCart(); // Reload cart to reflect final state before modal
+                        cart.forEach(item => { currentProductsTotal += (item.price || 0) * (item.quantity || 0);});
+                        updateCartSummary(currentProductsTotal); 
+                    } else {
+                        cart.forEach(item => { currentProductsTotal += (item.price || 0) * (item.quantity || 0);});
                     }
-                    // <<<--- نهاية التعديل ---<<<
 
-                    // Re-fetch cart after potential updates
-                    const finalCart = getCartFromLocalStorage();
+                    const finalCart = getCartFromLocalStorage(); 
                     if (finalCart.length === 0) {
                         showSubmissionError(
-                            currentLangDirection === 'rtl' ? 'سلة فارغة' : 'Empty Cart',
-                            currentLangDirection === 'rtl' ? 'سلة مشترياتك فارغة! لا يمكن إتمام الطلب.' : 'Your cart is empty! Cannot proceed.'
+                            currentLang === 'ar' ? 'سلة فارغة' : 'Empty Cart',
+                            currentLang === 'ar' ? 'سلة مشترياتك فارغة! لا يمكن إتمام الطلب.' : 'Your cart is empty! Cannot proceed.'
                         );
                         return;
                     }
 
-                    let total = 0;
-                    finalCart.forEach(item => { total += (item.price || 0) * (item.quantity || 0); });
-                    localStorage.setItem('totalPrice', total.toFixed(2));
-                    console.log("Checkout: Final total price set to localStorage:", total.toFixed(2));
+                    localStorage.setItem('totalPrice', currentProductsTotal.toFixed(2)); 
 
                     const paymentModalElement = document.getElementById('paymentModal');
                     if (paymentModalElement && typeof bootstrap !== 'undefined') {
@@ -652,17 +1077,16 @@
                         window.location.href = "@Url.Action("Register", "Cart")";
                     } else {
                         showSubmissionError(
-                            currentLangDirection === 'rtl' ? 'تنبيه' : 'Attention',
-                            currentLangDirection === 'rtl' ? 'يرجى اختيار طريقة الدفع أولاً.' : 'Please select a payment method first.'
+                            currentLang === 'ar' ? 'تنبيه' : 'Attention',
+                            currentLang === 'ar' ? 'يرجى اختيار طريقة الدفع أولاً.' : 'Please select a payment method first.'
                         );
                     }
                 });
             }
 
-            // Function to update cart badge (ensure it's defined, possibly in a global scope like index.js)
             if (typeof updateCartBadge !== 'function') {
-                window.updateCartBadge = function () { // Make it global if not already
-                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                window.updateCartBadge = function () { 
+                    const cart = getCartFromLocalStorage(); 
                     const totalQuantity = cart.reduce((sum, p) => sum + (p.quantity || 0), 0);
                     const badge = document.querySelector(".fixed-cart-button .badge");
                     if (badge) {
@@ -672,8 +1096,7 @@
                 }
             }
 
-            loadCart();
+            loadCart(); // Initial load
         });
     </script>
 }
-

@@ -1,0 +1,192 @@
+﻿@model IEnumerable<Oil.Models.ShippingZone>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml"; // Or your admin layout path
+    ViewData["Title"] = "إدارة مناطق الشحن";
+}
+
+<style>
+    .table-container {
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .table thead th {
+        background-color: #007bff; /* Primary blue */
+        color: #fff;
+        font-weight: 600;
+        border-bottom: none;
+    }
+
+    .btn-action {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.85rem;
+        margin: 0 2px;
+        min-width: 70px; /* Ensure buttons have some width */
+    }
+
+    .btn-success-custom {
+        background-color: #28a745;
+        border-color: #28a745;
+        color: white;
+    }
+
+        .btn-success-custom:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+
+    .btn-warning-custom {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: #212529;
+    }
+
+        .btn-warning-custom:hover {
+            background-color: #e0a800;
+            border-color: #d39e00;
+        }
+
+    .btn-danger-custom {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: white;
+    }
+
+        .btn-danger-custom:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+    .status-active {
+        color: #28a745; /* Green for active */
+        font-weight: bold;
+    }
+
+    .status-inactive {
+        color: #dc3545; /* Red for inactive */
+        font-weight: bold;
+    }
+
+    .page-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #343a40;
+        margin-bottom: 25px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #007bff;
+        display: inline-block;
+    }
+
+    .action-header {
+        min-width: 150px; /* To fit buttons */
+    }
+</style>
+
+<div class="container-fluid mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="page-title">@ViewData["Title"]</h2>
+        <a asp-action="Create" class="btn btn-success-custom btn-lg shadow-sm">
+            <i class="fas fa-plus-circle me-2"></i> إضافة منطقة شحن جديدة
+        </a>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="table-container">
+        @if (Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover table-striped align-middle">
+                    <thead>
+                        <tr>
+                            <th>الرقم التعريفي</th>
+                            <th>الاسم (عربي)</th>
+                            <th>الاسم (إنجليزي)</th>
+                            <th>تكلفة الشحن</th>
+                            <th>الحالة</th>
+                            <th class="action-header">الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@Html.DisplayFor(modelItem => item.NameAr)</td>
+                                <td>@Html.DisplayFor(modelItem => item.NameEn)</td>
+                                <td>
+                                    @if (item.ShippingCost != null)
+                                    {
+                                        <span>@item.ShippingCost.Cost.ToString("N2") جنيه</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">غير محدد</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.IsActive)
+                                    {
+                                        <span class="badge bg-success status-active">نشط</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger status-inactive">غير نشط</span>
+                                    }
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning-custom btn-action">
+                                        <i class="fas fa-edit"></i> تعديل
+                                    </a>
+                                    <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline" onsubmit="return confirm('هل أنت متأكد أنك تريد حذف منطقة الشحن هذه؟ لا يمكن التراجع عن هذا الإجراء.');">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-sm btn-danger-custom btn-action">
+                                            <i class="fas fa-trash-alt"></i> حذف
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info text-center">
+                <i class="fas fa-info-circle me-2"></i> لا توجد مناطق شحن مضافة حاليًا. يمكنك إضافة منطقة جديدة من الزر أعلاه.
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Optional: Auto-dismiss alerts after a few seconds
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove();
+            });
+        }, 5000); // 5 seconds
+    </script>
+}

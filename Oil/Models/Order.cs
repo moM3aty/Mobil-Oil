@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Oil.Models
 {
@@ -23,5 +24,12 @@ namespace Oil.Models
         public string? ReceiptFileName { get; set; }
         public int? PaymobOrderId { get; set; }
         public virtual List<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+        public int? ShippingZoneId { get; set; } 
+        public virtual ShippingZone SelectedShippingZone { get; set; }
+
+        [DataType(DataType.Currency)]
+        [Column(TypeName = "decimal(18, 2)")]
+        public decimal ShippingFee { get; set; } 
+
     }
 }

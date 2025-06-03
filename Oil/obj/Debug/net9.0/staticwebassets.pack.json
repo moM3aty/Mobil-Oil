@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Oil.2kbxtq24av.bundle.scp.css"
     },
     {
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\Manifest-Admin.json",
+      "PackagePath": "staticwebassets\\Manifest-Admin.json"
+    },
+    {
       "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\css\\all.min.css",
       "PackagePath": "staticwebassets\\css\\all.min.css"
     },
@@ -65,10 +69,6 @@
       "PackagePath": "staticwebassets\\imgs\\Oil-additives.jpg"
     },
     {
-      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Product1.jpg",
-      "PackagePath": "staticwebassets\\imgs\\Product1.jpg"
-    },
-    {
       "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Transmission-oils.jpg",
       "PackagePath": "staticwebassets\\imgs\\Transmission-oils.jpg"
     },
@@ -117,6 +117,10 @@
       "PackagePath": "staticwebassets\\imgs\\logo1.svg"
     },
     {
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logoAdmin.jpg",
+      "PackagePath": "staticwebassets\\imgs\\logoAdmin.jpg"
+    },
+    {
       "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logo_totalenergies_mobile.webp",
       "PackagePath": "staticwebassets\\imgs\\logo_totalenergies_mobile.webp"
     },
@@ -139,10 +143,6 @@
     {
       "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\opa.jpg",
       "PackagePath": "staticwebassets\\imgs\\opa.jpg"
-    },
-    {
-      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\product1.png",
-      "PackagePath": "staticwebassets\\imgs\\product1.png"
     },
     {
       "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\imgs\\scooter.jpg",
@@ -429,8 +429,20 @@
       "PackagePath": "staticwebassets\\uploads\\products\\1b6686a2-95d1-4dfd-92b8-3ae7b23112dd.jpeg"
     },
     {
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\uploads\\products\\493ca673-3d75-4ead-8073-89887aa25beb.jpg",
+      "PackagePath": "staticwebassets\\uploads\\products\\493ca673-3d75-4ead-8073-89887aa25beb.jpg"
+    },
+    {
       "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\uploads\\products\\b6d06b5e-8cbb-4dfb-9253-87b94b2f586e.png",
       "PackagePath": "staticwebassets\\uploads\\products\\b6d06b5e-8cbb-4dfb-9253-87b94b2f586e.png"
+    },
+    {
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\uploads\\receipts\\ewallet\\41144513-df96-40b4-87f8-9dbf618dc937.jpg",
+      "PackagePath": "staticwebassets\\uploads\\receipts\\ewallet\\41144513-df96-40b4-87f8-9dbf618dc937.jpg"
+    },
+    {
+      "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\uploads\\receipts\\instapay\\b90c3c79-db54-49e4-9f58-3d98b53c9ed4.jpg",
+      "PackagePath": "staticwebassets\\uploads\\receipts\\instapay\\b90c3c79-db54-49e4-9f58-3d98b53c9ed4.jpg"
     },
     {
       "Id": "G:\\Github\\Mobil-Oil\\Oil\\wwwroot\\webfonts\\fa-brands-400.ttf",
