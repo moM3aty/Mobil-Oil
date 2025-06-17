@@ -83,7 +83,7 @@ namespace Oil.Controllers
                 return RedirectToAction("Index", "Login");
 
             var order = await _context.Orders
-                                      .Include(o => o.OrderItems)
+                                      .Include(o => o.OrderItems).Include(o => o.SelectedShippingZone)
                                       .FirstOrDefaultAsync(o => o.Id == orderId);
 
             if (order == null)

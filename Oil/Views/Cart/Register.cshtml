@@ -9,14 +9,14 @@
 
 <style>
     :root {
-        --primary-color: #007bff; /* Bootstrap Primary */
+        --primary-color: #007bff; 
         --primary-darker: #0056b3;
-        --secondary-color: #6c757d; /* Bootstrap Secondary */
-        --light-bg: #f8f9fa; /* Page background */
-        --white-bg: #ffffff; /* Card background */
+        --secondary-color: #6c757d; 
+        --light-bg: #f8f9fa; 
+        --white-bg: #ffffff; 
         --text-dark: #212529;
         --text-light: #495057;
-        --border-color: #dee2e6; /* Light border */
+        --border-color: #dee2e6; 
         --border-color-input: #ced4da; /* Input border */
         --success-color: #28a745;
         --danger-color: #dc3545;
@@ -336,11 +336,11 @@
                     <label class="form-label" data-en="Full Address" data-ar="العنوان بالتفصيل">العنوان بالتفصيل</label>
                     <div class="input-wrapper"><i class="fas fa-map-marker-alt icon2"></i><input type="text" name="address" id="cash-address" class="form-control" required data-ar-placeholder="ادخل عنوانك كاملاً (المحافظة - المدينة - الشارع - رقم العقار)" data-en-placeholder="Enter your full address (Governorate - City - Street - Building No.)"></div>
                 </div>
-                <div class="form-group">
+                @* <div class="form-group">
                     <label class="form-label" data-en="National ID Image" data-ar="صورة الهوية الوطنية">صورة الهوية الوطنية</label>
                     <input type="file" name="IdImage" id="cash-idImage" class="form-control" accept="image/*,application/pdf" required />
                     <small class="form-text text-muted mt-1" data-ar="مطلوبة لتأكيد الطلب عند الاستلام. (صورة أو PDF)" data-en="Required to confirm your order upon delivery. (Image or PDF)"></small>
-                </div>
+                </div> *@
                 <div class="total-summary" id="cash-total-summary" style="display: none;">
                     <p><span data-ar="إجمالي المنتجات:" data-en="Products Total:"></span> <span><strong id="cash-products-total">0.00</strong> <span class="currency-symbol" data-ar="جم" data-en="EGP"></span></span></p>
                     <p><span data-ar="تكلفة الشحن:" data-en="Shipping Cost:"></span> <span><strong id="cash-shipping-fee">0.00</strong> <span class="currency-symbol" data-ar="جم" data-en="EGP"></span></span></p>
@@ -955,9 +955,8 @@
                     const address = document.getElementById("cash-address").value.trim();
                     const idImageInput = document.getElementById("cash-idImage");
                     const shippingZoneSelect = document.getElementById("cash-shippingZone");
-                    const idImageFile = idImageInput.files ? idImageInput.files[0] : null;
 
-                    if (!name || !phone || !address || !idImageFile || !shippingZoneSelect.value) {
+                    if (!name || !phone || !address  || !shippingZoneSelect.value) {
                         const errorSpan = document.getElementById('cash-shipping-cost-error');
                          if (!shippingZoneSelect.value && errorSpan) {
                             errorSpan.textContent = currentLang === 'ar' ? 'يرجى اختيار منطقة الشحن.' : 'Please select a shipping zone.';

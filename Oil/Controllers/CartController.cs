@@ -33,7 +33,69 @@ namespace Oil.Controllers
             // This view reads from localStorage client-side
             return View();
         }
+        public IActionResult PickupRegistration()
+        {
+            return View();
+        }
 
+        // POST: /Cart/SubmitPickupOrder
+        // هذا الأكشن سيستقبل البيانات من فورم الاستلام من الفرع
+        [HttpPost]
+        public async Task<IActionResult> SubmitPickupOrder([FromBody] PickupOrderViewModel model)
+        {
+            if (model == null || !ModelState.IsValid || model.CartItems == null || !model.CartItems.Any())
+            {
+                return Json(new { success = false, message = "البيانات غير صالحة أو السلة فارغة." });
+            }
+
+            var order = new Order
+            {
+                PaymentMethod = "Pickup",
+                Name = model.FullName,
+                Phone = model.PhoneNumber,
+                Address = "استلام من الفرع: حدائق الأهرام - 236 و شارع الضغط العالي بجوار كافية الكرنك",
+                CreatedAt = DateTime.UtcNow,
+                ShippingFee = 0,
+                ShippingZoneId = null,
+                SelectedShippingZone = null,
+                ReceiptFileName = null,
+                IdImageFileName = null,
+                ConfirmationFileName = null
+            };
+
+            foreach (var itemVM in model.CartItems)
+            {
+                var productFromDb = await _context.Products.FindAsync(itemVM.ProductId);
+                if (productFromDb == null)
+                {
+                    _logger.LogWarning("Product with ID {ProductId} not found for pickup order.", itemVM.ProductId);
+                    return Json(new { success = false, message = $"للأسف، المنتج '{itemVM.Title}' لم يعد متوفرًا." });
+                }
+
+                order.OrderItems.Add(new OrderItem
+                {
+                    ProductId = productFromDb.Id,
+                    Title = productFromDb.TitleAr,
+                    Price = productFromDb.Price,
+                    Quantity = itemVM.Quantity,
+                    ImageUrl = productFromDb.ImageUrl
+                });
+            }
+
+            try
+            {
+                _context.Orders.Add(order);
+                await _context.SaveChangesAsync();
+
+                var confirmationUrl = Url.Action("OrderConfirmation", "Cart", new { id = order.Id });
+                return Json(new { success = true, redirectUrl = confirmationUrl });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error saving pickup order to DB for user {UserName}", model.FullName);
+                return StatusCode(500, new { success = false, message = "حدث خطأ فني أثناء تأكيد الطلب. يرجى المحاولة مرة أخرى." });
+            }
+        }
         public async Task<IActionResult> Register()
         {
             var activeShippingZones = await _context.ShippingZones
@@ -241,18 +303,8 @@ namespace Oil.Controllers
 
             if (!cartItemsVM.Any()) return Json(new { success = false, message = "السلة فارغة." });
 
-            string? idImageFilePath = null;
-            if (request.IdImage != null && request.IdImage.Length > 0)
-            {
-                try { idImageFilePath = await _fileService.SaveFileAsync(request.IdImage, "id_images", new[] { ".jpg", ".jpeg", ".png" }); }
-                catch (ArgumentException ex) { _logger.LogWarning(ex, "File validation error (ID image) during cash order."); return Json(new { success = false, message = ex.Message }); }
-                catch (Exception ex) { _logger.LogError(ex, "Error saving ID image file during cash order."); return Json(new { success = false, message = "حدث خطأ أثناء حفظ صورة الهوية." }); }
-                if (string.IsNullOrEmpty(idImageFilePath)) { return Json(new { success = false, message = "لم يتم حفظ صورة الهوية بنجاح." }); }
-            }
-            else if (request.IdImage == null || request.IdImage.Length == 0)
-            {
-                return Json(new { success = false, message = "صورة الهوية مطلوبة." });
-            }
+            string idImageFilePath = null;
+           
 
             var order = new Order
             {
@@ -419,124 +471,137 @@ namespace Oil.Controllers
             return View(order);
         }
     }
-
     // --- DTOs (Data Transfer Objects) / ViewModels for CartController ---
 
     // ViewModel for ShippingZone to pass to the View (includes cost)
     public class ShippingZoneViewModel
-    {
-        public int Id { get; set; }
-        public string? NameAr { get; set; }
-        public string? NameEn { get; set; }
-        public decimal Cost { get; set; }
-    }
+        {
+            public int Id { get; set; }
+            public string? NameAr { get; set; }
+            public string? NameEn { get; set; }
+            public decimal Cost { get; set; }
+        }
 
 
-    public class WalletOrderRequest
-    {
-        [Required(ErrorMessage = "الاسم مطلوب")]
-        public string? Name { get; set; }
+        public class WalletOrderRequest
+        {
+            [Required(ErrorMessage = "الاسم مطلوب")]
+            public string? Name { get; set; }
 
-        [Required(ErrorMessage = "رقم الهاتف مطلوب")]
-        [Phone(ErrorMessage = "رقم هاتف غير صالح")]
-        public string? Phone { get; set; }
+            [Required(ErrorMessage = "رقم الهاتف مطلوب")]
+            [Phone(ErrorMessage = "رقم هاتف غير صالح")]
+            public string? Phone { get; set; }
 
-        [Required(ErrorMessage = "العنوان مطلوب")]
-        public string? Address { get; set; }
+            [Required(ErrorMessage = "العنوان مطلوب")]
+            public string? Address { get; set; }
 
-        [Required(ErrorMessage = "إيصال الدفع مطلوب")]
-        public IFormFile? Receipt { get; set; }
+            [Required(ErrorMessage = "إيصال الدفع مطلوب")]
+            public IFormFile? Receipt { get; set; }
 
-        [Required(ErrorMessage = "بيانات السلة مطلوبة")]
-        public string? CartItemsJson { get; set; }
+            [Required(ErrorMessage = "بيانات السلة مطلوبة")]
+            public string? CartItemsJson { get; set; }
 
-        [Required(ErrorMessage = "منطقة الشحن مطلوبة")]
-        [Range(1, int.MaxValue, ErrorMessage = "يرجى اختيار منطقة شحن صالحة.")]
-        public int ShippingZoneId { get; set; }
-    }
+            [Required(ErrorMessage = "منطقة الشحن مطلوبة")]
+            [Range(1, int.MaxValue, ErrorMessage = "يرجى اختيار منطقة شحن صالحة.")]
+            public int ShippingZoneId { get; set; }
+        }
 
-    public class CashOrderSubmitRequest
-    {
-        [Required(ErrorMessage = "الاسم مطلوب")]
-        public string? Name { get; set; }
+        public class CashOrderSubmitRequest
+        {
+            [Required(ErrorMessage = "الاسم مطلوب")]
+            public string? Name { get; set; }
 
-        [Required(ErrorMessage = "رقم الهاتف مطلوب")]
-        [Phone(ErrorMessage = "رقم هاتف غير صالح")]
-        public string? Phone { get; set; }
+            [Required(ErrorMessage = "رقم الهاتف مطلوب")]
+            [Phone(ErrorMessage = "رقم هاتف غير صالح")]
+            public string? Phone { get; set; }
 
-        [Required(ErrorMessage = "العنوان مطلوب")]
-        public string? Address { get; set; }
+            [Required(ErrorMessage = "العنوان مطلوب")]
+            public string? Address { get; set; }
 
-        [Required(ErrorMessage = "صورة الهوية مطلوبة")]
-        public IFormFile? IdImage { get; set; }
+            public IFormFile? IdImage { get; set; }
 
-        [Required(ErrorMessage = "بيانات السلة مطلوبة")]
-        public string? CartItemsJson { get; set; }
+            [Required(ErrorMessage = "بيانات السلة مطلوبة")]
+            public string? CartItemsJson { get; set; }
 
-        [Required(ErrorMessage = "منطقة الشحن مطلوبة")]
-        [Range(1, int.MaxValue, ErrorMessage = "يرجى اختيار منطقة شحن صالحة.")]
-        public int ShippingZoneId { get; set; }
-    }
+            [Required(ErrorMessage = "منطقة الشحن مطلوبة")]
+            [Range(1, int.MaxValue, ErrorMessage = "يرجى اختيار منطقة شحن صالحة.")]
+            public int ShippingZoneId { get; set; }
+        }
 
-    public class InstapayOrderRequest
-    {
-        [Required(ErrorMessage = "الاسم مطلوب")]
-        public string? Name { get; set; }
+        public class InstapayOrderRequest
+        {
+            [Required(ErrorMessage = "الاسم مطلوب")]
+            public string? Name { get; set; }
 
-        [Required(ErrorMessage = "رقم الهاتف مطلوب")]
-        [Phone(ErrorMessage = "رقم هاتف غير صالح")]
-        public string? Phone { get; set; }
+            [Required(ErrorMessage = "رقم الهاتف مطلوب")]
+            [Phone(ErrorMessage = "رقم هاتف غير صالح")]
+            public string? Phone { get; set; }
 
-        [Required(ErrorMessage = "العنوان مطلوب")]
-        public string? Address { get; set; }
+            [Required(ErrorMessage = "العنوان مطلوب")]
+            public string? Address { get; set; }
 
-        [Required(ErrorMessage = "إيصال الدفع مطلوب")]
-        public IFormFile? Receipt { get; set; }
+            [Required(ErrorMessage = "إيصال الدفع مطلوب")]
+            public IFormFile? Receipt { get; set; }
 
-        [Required(ErrorMessage = "بيانات السلة مطلوبة")]
-        public string? CartItemsJson { get; set; }
+            [Required(ErrorMessage = "بيانات السلة مطلوبة")]
+            public string? CartItemsJson { get; set; }
 
-        [Required(ErrorMessage = "منطقة الشحن مطلوبة")]
-        [Range(1, int.MaxValue, ErrorMessage = "يرجى اختيار منطقة شحن صالحة.")]
-        public int ShippingZoneId { get; set; }
-    }
+            [Required(ErrorMessage = "منطقة الشحن مطلوبة")]
+            [Range(1, int.MaxValue, ErrorMessage = "يرجى اختيار منطقة شحن صالحة.")]
+            public int ShippingZoneId { get; set; }
+        }
 
-    public class VisaOrderRequest // This is for Manual Visa, not Paymob redirect
-    {
-        [Required(ErrorMessage = "الاسم مطلوب")]
-        public string? Name { get; set; }
+        public class VisaOrderRequest // This is for Manual Visa, not Paymob redirect
+        {
+            [Required(ErrorMessage = "الاسم مطلوب")]
+            public string? Name { get; set; }
 
-        [Required(ErrorMessage = "رقم الهاتف مطلوب")]
-        [Phone(ErrorMessage = "رقم هاتف غير صالح")]
-        public string? Phone { get; set; }
+            [Required(ErrorMessage = "رقم الهاتف مطلوب")]
+            [Phone(ErrorMessage = "رقم هاتف غير صالح")]
+            public string? Phone { get; set; }
 
-        [Required(ErrorMessage = "العنوان مطلوب")]
-        public string? Address { get; set; }
+            [Required(ErrorMessage = "العنوان مطلوب")]
+            public string? Address { get; set; }
 
-        public IFormFile? ConfirmationFile { get; set; } // Optional file for manual visa
+            public IFormFile? ConfirmationFile { get; set; } // Optional file for manual visa
 
-        [Required(ErrorMessage = "بيانات السلة مطلوبة")]
-        public string? CartItemsJson { get; set; }
+            [Required(ErrorMessage = "بيانات السلة مطلوبة")]
+            public string? CartItemsJson { get; set; }
 
-        [Required(ErrorMessage = "منطقة الشحن مطلوبة")]
-        [Range(1, int.MaxValue, ErrorMessage = "يرجى اختيار منطقة شحن صالحة.")]
-        public int ShippingZoneId { get; set; }
-    }
+            [Required(ErrorMessage = "منطقة الشحن مطلوبة")]
+            [Range(1, int.MaxValue, ErrorMessage = "يرجى اختيار منطقة شحن صالحة.")]
+            public int ShippingZoneId { get; set; }
+        }
 
-    // ViewModel for items coming from client-side cart (localStorage)
-    public class CartItemViewModel
-    {
-        [Required(ErrorMessage = "معرف المنتج مطلوب في السلة")]
-        [Range(1, int.MaxValue, ErrorMessage = "معرف المنتج غير صالح في السلة.")]
-        public int ProductId { get; set; } // Ensure this matches the casing from JS (productId)
+        // ViewModel for items coming from client-side cart (localStorage)
+        public class CartItemViewModel
+        {
+            [Required(ErrorMessage = "معرف المنتج مطلوب في السلة")]
+            [Range(1, int.MaxValue, ErrorMessage = "معرف المنتج غير صالح في السلة.")]
+            public int ProductId { get; set; } // Ensure this matches the casing from JS (productId)
 
-        public string? Title { get; set; } // Ensure this matches the casing from JS (title)
+            public string? Title { get; set; } // Ensure this matches the casing from JS (title)
 
-        public decimal Price { get; set; } // Ensure this matches the casing from JS (price)
+            public decimal Price { get; set; } // Ensure this matches the casing from JS (price)
 
-        [Range(1, int.MaxValue, ErrorMessage = "الكمية يجب أن تكون 1 على الأقل")]
-        public int Quantity { get; set; } // Ensure this matches the casing from JS (quantity)
+            [Range(1, int.MaxValue, ErrorMessage = "الكمية يجب أن تكون 1 على الأقل")]
+            public int Quantity { get; set; } // Ensure this matches the casing from JS (quantity)
 
-        public string? ImageUrl { get; set; } // Ensure this matches the casing from JS (imageUrl)
-    }
+            public string? ImageUrl { get; set; } // Ensure this matches the casing from JS (imageUrl)
+        }
+        public class PickupOrderViewModel
+        {
+            [Required(ErrorMessage = "الاسم الكامل مطلوب.")]
+            public string FullName { get; set; }
+
+            [Required(ErrorMessage = "رقم الهاتف مطلوب.")]
+            public string PhoneNumber { get; set; }
+
+            public string PaymentMethod { get; set; }
+            public decimal TotalPrice { get; set; }
+            public List<CartItemViewModel> CartItems { get; set; }
+        }
+
+
+    
 }

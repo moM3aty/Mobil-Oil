@@ -2,6 +2,18 @@
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     var totalAmount = Model.OrderItems?.Sum(item => item.Price * item.Quantity) ?? 0;
+    var ShipCost = Model.ShippingFee ?? 0;
+
+    // تحسين: تحديد مسار الصورة في متغير واحد لسهولة القراءة
+    var imagePath = "";
+    if (Model.PaymentMethod == "E-Wallet" || Model.PaymentMethod == "Instapay")
+    {
+        imagePath = Model.ReceiptFileName;
+    }
+    else
+    {
+        imagePath = Model.IdImageFileName;
+    }
 }
 
 <h2 class="mb-4 text-success fw-bold">📦 تفاصيل الأوردر</h2>
@@ -9,21 +21,32 @@
 <div class="mb-3">
     <p><strong>🧾 الاسم:</strong> @Model.Name</p>
     <p><strong>📞 التليفون:</strong> @Model.Phone</p>
-    <p><strong>📌 العنوان:</strong> @Model.Address</p>
+
+    <p>
+        <strong>📌 العنوان:</strong>
+        @if (Model.PaymentMethod == "Pickup")
+        {
+            // لطلبات الاستلام، اعرض حقل العنوان مباشرة لأنه يحتوي على الوصف الكامل
+            @Model.Address
+        }
+        else
+        {
+            // لباقي الطلبات، اعرض المنطقة مع العنوان (مع استخدام ?. للأمان)
+            @(Model.SelectedShippingZone?.NameAr)
+            @Model.Address
+                }
+    </p>
     <p><strong>💳 طريقة الدفع:</strong> @Model.PaymentMethod</p>
     <p><strong>📅 تاريخ الطلب:</strong> @Model.CreatedAt.ToString("yyyy-MM-dd hh:mm tt")</p>
-    @if (Model.PaymentMethod != "Visa (Paymob)")
+
+    @if (Model.PaymentMethod != "Visa (Paymob)" && Model.PaymentMethod != "Pickup" && !string.IsNullOrEmpty(imagePath))
     {
         <p>
-            <strong>📷 الصوره:</strong> <img width="200px" src="@if(Model.PaymentMethod == "E-Wallet" || Model.PaymentMethod == "Instapay") {
-        @Model.ReceiptFileName
-    }
-    else
-    {
-
-        @Model.IdImageFileName
-    }
- " alt="Alternate Text" /></p>
+            <strong>📷 الإيصال/الهوية:</strong>
+            <a href="/@imagePath.Replace("\\", "/")" target="_blank">
+                <img width="200px" src="/@imagePath.Replace("\\", "/")" alt="صورة الإثبات" class="img-thumbnail" />
+            </a>
+        </p>
     }
 </div>
 
@@ -52,11 +75,11 @@
                                 <td>@item.Title</td>
                                 <td>@item.Price.ToString("N2")</td>
                                 <td>@item.Quantity</td>
-                                <td>@(item.Price* item.Quantity)</td>
+                                <td>@((item.Price * item.Quantity).ToString("N2"))</td>
                                 <td>
                                     @if (!string.IsNullOrEmpty(item.ImageUrl))
                                     {
-                                        <img src="@item.ImageUrl" alt="@item.Title" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;" />
+                                        <img src="/@item.ImageUrl.Replace("\\", "/")" alt="@item.Title" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;" />
                                     }
                                     else
                                     {
@@ -77,9 +100,17 @@
                 @if (Model.OrderItems != null && Model.OrderItems.Any())
                 {
                     <tfoot>
-                        <tr class="table-success fw-bold">
+                        <tr class="table-light">
+                            <td colspan="4" class="text-end fw-bold">إجمالي المنتجات:</td>
+                            <td colspan="2" class="fw-bold">@totalAmount.ToString("N2") جنيه</td>
+                        </tr>
+                        <tr class="table-light">
+                            <td colspan="4" class="text-end fw-bold">مصاريف الشحن:</td>
+                            <td colspan="2" class="fw-bold">@ShipCost.ToString("N2") جنيه</td>
+                        </tr>
+                        <tr class="table-success fw-bolder fs-5">
                             <td colspan="4" class="text-end">الإجمالي الكلي:</td>
-                            <td colspan="2">@totalAmount</td>
+                            <td colspan="2">@((totalAmount + ShipCost).ToString("N2")) جنيه</td>
                         </tr>
                     </tfoot>
                 }

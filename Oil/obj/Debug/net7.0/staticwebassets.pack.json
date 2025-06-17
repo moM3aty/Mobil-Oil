@@ -1,0 +1,477 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\Oil.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Oil.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\Manifest-Admin.json",
+      "PackagePath": "staticwebassets\\Manifest-Admin.json"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\css\\all.min.css",
+      "PackagePath": "staticwebassets\\css\\all.min.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\css\\main.css",
+      "PackagePath": "staticwebassets\\css\\main.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Accessories.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Accessories.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Car-oils.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Car-oils.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Cooling-water-and-additives.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Cooling-water-and-additives.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Diesel-oils.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Diesel-oils.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Fuel-additives.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Fuel-additives.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\GMT.png",
+      "PackagePath": "staticwebassets\\imgs\\GMT.png"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Maintenance-and-repair.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Maintenance-and-repair.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\MobilTMLogo.png",
+      "PackagePath": "staticwebassets\\imgs\\MobilTMLogo.png"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Motorcycle-care.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Motorcycle-care.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Motorcycle-oils.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Motorcycle-oils.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Oil-additives.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Oil-additives.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\Transmission-oils.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Transmission-oils.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\about.png",
+      "PackagePath": "staticwebassets\\imgs\\about.png"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\about1.png",
+      "PackagePath": "staticwebassets\\imgs\\about1.png"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\car-care.jpg",
+      "PackagePath": "staticwebassets\\imgs\\car-care.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\car1.jpg",
+      "PackagePath": "staticwebassets\\imgs\\car1.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\elf-logo.svg",
+      "PackagePath": "staticwebassets\\imgs\\elf-logo.svg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\header2.png",
+      "PackagePath": "staticwebassets\\imgs\\header2.png"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\image1.jpg",
+      "PackagePath": "staticwebassets\\imgs\\image1.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\image2.jpg",
+      "PackagePath": "staticwebassets\\imgs\\image2.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logo.png",
+      "PackagePath": "staticwebassets\\imgs\\logo.png"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logo.svg",
+      "PackagePath": "staticwebassets\\imgs\\logo.svg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logo1.svg",
+      "PackagePath": "staticwebassets\\imgs\\logo1.svg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logoAdmin.jpg",
+      "PackagePath": "staticwebassets\\imgs\\logoAdmin.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logo_totalenergies_mobile.webp",
+      "PackagePath": "staticwebassets\\imgs\\logo_totalenergies_mobile.webp"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\logohead.jpg",
+      "PackagePath": "staticwebassets\\imgs\\logohead.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\mannol.png",
+      "PackagePath": "staticwebassets\\imgs\\mannol.png"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\motor2.jpg",
+      "PackagePath": "staticwebassets\\imgs\\motor2.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\motul.png",
+      "PackagePath": "staticwebassets\\imgs\\motul.png"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\opa.jpg",
+      "PackagePath": "staticwebassets\\imgs\\opa.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\scooter.jpg",
+      "PackagePath": "staticwebassets\\imgs\\scooter.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\shell.png",
+      "PackagePath": "staticwebassets\\imgs\\shell.png"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\spare-parts.jpg",
+      "PackagePath": "staticwebassets\\imgs\\spare-parts.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\totalenergies.png",
+      "PackagePath": "staticwebassets\\imgs\\totalenergies.png"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\trucks.jpg",
+      "PackagePath": "staticwebassets\\imgs\\trucks.jpg"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\video.mp4",
+      "PackagePath": "staticwebassets\\imgs\\video.mp4"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\imgs\\video2.mp4",
+      "PackagePath": "staticwebassets\\imgs\\video2.mp4"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\js\\index.js",
+      "PackagePath": "staticwebassets\\js\\index.js"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.js"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.js"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.map"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\manifest.json",
+      "PackagePath": "staticwebassets\\manifest.json"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\webfonts\\fa-brands-400.ttf",
+      "PackagePath": "staticwebassets\\webfonts\\fa-brands-400.ttf"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\webfonts\\fa-brands-400.woff2",
+      "PackagePath": "staticwebassets\\webfonts\\fa-brands-400.woff2"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\webfonts\\fa-regular-400.ttf",
+      "PackagePath": "staticwebassets\\webfonts\\fa-regular-400.ttf"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\webfonts\\fa-regular-400.woff2",
+      "PackagePath": "staticwebassets\\webfonts\\fa-regular-400.woff2"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\webfonts\\fa-solid-900.ttf",
+      "PackagePath": "staticwebassets\\webfonts\\fa-solid-900.ttf"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\webfonts\\fa-solid-900.woff2",
+      "PackagePath": "staticwebassets\\webfonts\\fa-solid-900.woff2"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\webfonts\\fa-v4compatibility.ttf",
+      "PackagePath": "staticwebassets\\webfonts\\fa-v4compatibility.ttf"
+    },
+    {
+      "Id": "D:\\مشاريع حقيقية علي الويبgmt\\Mobil-Oil\\Mobil-Oil\\Oil\\wwwroot\\webfonts\\fa-v4compatibility.woff2",
+      "PackagePath": "staticwebassets\\webfonts\\fa-v4compatibility.woff2"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.Oil.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.Oil.props",
+      "PackagePath": "build\\Oil.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.Oil.props",
+      "PackagePath": "buildMultiTargeting\\Oil.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.Oil.props",
+      "PackagePath": "buildTransitive\\Oil.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

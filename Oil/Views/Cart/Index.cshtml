@@ -796,7 +796,7 @@
         </div>
 
         <div id="cart-checkout-button-wrapper" class="cart-checkout-wrapper" style="display: none;">
-            <button class="cart-checkout-btn" id="checkout-btn" data-ar="الدفع الآن" data-en="Checkout Now" aria-haspopup="dialog" aria-controls="paymentModal">الدفع الآن</button>
+            <button class="cart-checkout-btn" id="checkout-btn" data-ar="متابعة عملية التسجيل" data-en="Follow up on registration" aria-haspopup="dialog" aria-controls="paymentModal">متابعة عملية التسجيل</button>
         </div>
     </div>
 </section>
@@ -813,6 +813,10 @@
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="paymentMethod" id="cash" value="cash" checked>
                         <label class="form-check-label" for="cash" data-ar="🏠 الدفع عند الاستلام" data-en="🏠 Cash on Delivery">الدفع عند الاستلام</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="pickup" value="pickup">
+                        <label class="form-check-label" for="pickup" data-ar="🚶 الاستلام من الفرع" data-en="🚶 Pick up from Branch">الاستلام من الفرع</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="paymentMethod" id="ewallet" value="ewallet">
@@ -1069,12 +1073,20 @@
             }
 
             if (confirmPaymentButton) {
-                confirmPaymentButton.addEventListener("click", function () {
-                    const selectedPaymentInput = document.querySelector('input[name="paymentMethod"]:checked');
-                    if (selectedPaymentInput) {
-                        const selectedPayment = selectedPaymentInput.value;
-                        localStorage.setItem('selectedPaymentMethod', selectedPayment);
-                        window.location.href = "@Url.Action("Register", "Cart")";
+               confirmPaymentButton.addEventListener("click", function () {
+        const selectedPaymentInput = document.querySelector('input[name="paymentMethod"]:checked');
+        if (selectedPaymentInput) {
+            const selectedPayment = selectedPaymentInput.value;
+            localStorage.setItem('selectedPaymentMethod', selectedPayment);
+
+            // --- التعديل هنا ---
+            if (selectedPayment === 'pickup') {
+                // إذا اختار الاستلام من الفرع، اذهب لصفحة التسجيل الخاصة به
+                window.location.href = "@Url.Action("PickupRegistration", "Cart")";
+            } else {
+                // لباقي الخيارات، اذهب لصفحة التسجيل العادية
+                window.location.href = "@Url.Action("Register", "Cart")";
+            }
                     } else {
                         showSubmissionError(
                             currentLang === 'ar' ? 'تنبيه' : 'Attention',

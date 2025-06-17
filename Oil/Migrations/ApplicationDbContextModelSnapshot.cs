@@ -17,7 +17,7 @@ namespace Oil.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.5")
+                .HasAnnotation("ProductVersion", "7.0.20")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -61,7 +61,7 @@ namespace Oil.Migrations
                     b.Property<string>("ReceiptFileName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("ShippingFee")
+                    b.Property<decimal?>("ShippingFee")
                         .HasColumnType("decimal(18, 2)");
 
                     b.Property<int?>("ShippingZoneId")

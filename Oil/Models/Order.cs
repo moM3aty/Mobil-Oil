@@ -29,7 +29,7 @@ namespace Oil.Models
 
         [DataType(DataType.Currency)]
         [Column(TypeName = "decimal(18, 2)")]
-        public decimal ShippingFee { get; set; } 
+        public decimal? ShippingFee { get; set; } 
 
     }
 }
