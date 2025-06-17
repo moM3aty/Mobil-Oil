@@ -88,7 +88,7 @@
                                 <span class="text-danger fs-5 fw-bold mt-auto product-price" data-ar="@product.Price جنيه" data-en="EGP @product.Price">@product.Price @currencyLocalized</span>
 
                                 <!-- Display availability status -->
-                                <span class="fs-5 fw-bold" style="color: @(product.IsAvailable ? "green" : "red");">
+                                <span data-ar="@(product.IsAvailable ? " متوفر" : "غير متوفر")" data-en="@(product.IsAvailable ? " Available" : "Unavailable" )" class="fs-5 fw-bold" style="color: @(product.IsAvailable ? "green" : "red");">
                                     @(currentLang == "ar" ? (product.IsAvailable ? "متوفر" : "غير متوفر") : (product.IsAvailable ? "Available" : "Unavailable"))
                                 </span>
 

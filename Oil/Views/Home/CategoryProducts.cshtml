@@ -1,134 +1,216 @@
 ﻿@model List<Oil.Models.Product>
 @{
-    var direction = ViewData["Direction"]?.ToString() ?? "ltr";
+    ViewData["Title"] = "Home Page"; // Or set in controller
 }
 
-<section class="ships-products padding">
-    <div class="container text-center" data-aos="fade" data-aos-delay="100">
 
-        <h2 class="mb-5 section-title" data-ar="@ViewBag.Category.NameAr" data-en="@ViewBag.Category.NameEn">
-            @(direction == "rtl" ? ViewBag.Category.NameAr : ViewBag.Category.NameEn)
-        </h2>
-        <div class="row g-4">
-            @foreach (var product in Model) // Changed from 'products' to 'Model' as the controller passes a List<Product>
-            {
-                var productId = $"product_{product.Id}";
-                <div class="col-6 col-lg-4 col-xl-3">
-                    <div class="card">
-                        <div class="img">
-                            <img src="@product.ImageUrl" alt="product image" />
-                        </div>
-                        <div class="content d-flex flex-column gap-2 gap-md-3 g p-2 p-md-4">
-                            <h3 data-en="@product.TitleEn" data-ar="@product.TitleAr">
-                                @(direction == "rtl" ? product.TitleAr : product.TitleEn)
-                            </h3>
-                            <p class="text-muted" data-ar="@product.DescriptionAr" data-en="@product.DescriptionEn">
-                                @(direction == "rtl" ? product.DescriptionAr : product.DescriptionEn)
-                            </p>
-                            <span class="text-danger fs-5">
-                                @(direction == "rtl" ? "السعر" : "Price") : @product.Price.ToString("C")
-                            </span>
+<section class="offers-section text-center">
+    <div class="container">
 
-                            <!-- Display availability status -->
-                            <span class="fs-5 fw-bold" style="color: @(product.IsAvailable ? "green" : "red");">
-                                @(direction == "rtl" ? (product.IsAvailable ? "متوفر" : "غير متوفر") : (product.IsAvailable ? "Available" : "Unavailable"))
-                            </span>
+        <div class="motor-products padding" style="position: relative; z-index: 0;">
+            <h2 class="section-title mb-5 fw-bold" data-en="Featured Offers 💥" data-ar=" 💥 العروض المميزة">💥 العروض المميزة</h2>
+            <div class="row g-4">
+                @if (Model != null)
+                {
+                    foreach (var offer in Model.Where(p => p.IsVisible))
+                    {
+                        // Logic to determine localized title and image path
+                        var currentDirectionForLoop = ViewData["Direction"]?.ToString() ??
+                        (Context.Request.Cookies["Language"] == "en" ? "ltr" : "rtl");
+                        var offerTitleLocalized = currentDirectionForLoop == "rtl" ? offer.TitleAr : offer.TitleEn;
+                        if (string.IsNullOrEmpty(offerTitleLocalized)) offerTitleLocalized = offer.TitleAr ?? offer.TitleEn; // Fallback
 
-                            <!-- Add to Cart Button -->
-                            <button class="btn btn-outline-primary mt-2" onclick="showQuantity('@productId')"
-                                    data-ar="اضافة الى السلة" data-en="Add to Cart" @(product.IsAvailable ? "" : "disabled")>
-                                @(direction == "rtl" ? "اضافة الى السلة" : "Add to Cart")
-                            </button>
+                        var offerImage = Url.Content(string.IsNullOrEmpty(offer.ImageUrl) ? "/images/products/default.png" : offer.ImageUrl);
+                        var btnTextAddToCart = currentDirectionForLoop == "rtl" ? "اضافه للسلة" : "Add To Cart";
+                        var btnTextConfirm = currentDirectionForLoop == "rtl" ? "اضافه" : "Add";
+                        var btnTextDetails = currentDirectionForLoop == "rtl" ? "تفاصيل المنتج" : "Products Details";
 
-                            <!-- Quantity Input + Confirm Button -->
-                            <div id="@productId" class="quantity-container mt-2 d-none">
-                                <input type="number" class="form-control mb-2 quantity-input" id="qty_@product.Id" value="1" min="1" />
-                                <button class="btn btn-success w-100"
-                                        onclick="addToCart(@product.Id, '@(product.TitleAr)', '@(product.TitleEn)', '@product.ImageUrl', @product.Price)">
-                                    @(direction == "rtl" ? "تأكيد الإضافة" : "Confirm Add")
-                                </button>
+                        // IMPORTANT: Added "product-card" class to this div
+                        <div class="col-md-6 col-lg-4 col-xl-3 product-card"
+                             data-product-id="@offer.Id"
+                             data-title-ar="@offer.TitleAr"
+                             data-title-en="@offer.TitleEn"
+                             data-price="@offer.Price"
+                             data-image="@offerImage">
+                            <div class="card text-decoration-none" style="min-height:420px;">
+                                <div class="img m-0">
+                                    <img src="@offerImage" alt="@offerTitleLocalized" />
+                                </div>
+                                <div class="offer-card-content d-flex flex-column p-2 p-md-3">
+                                    <div class="content d-flex flex-column gap-1">
+                                        <h3 class="fs-6" data-en="@offer.TitleEn" data-ar="@offer.TitleAr" style="min-height: 3em;">@offerTitleLocalized</h3>
+                                        <div class="d-flex justify-content-evenly">
+                                            <span class="text-danger fs-5 fw-bold" style="text-decoration:line-through" data-ar="@offer.PriceBeforeDiscount جنيه" data-en="EGP @offer.PriceBeforeDiscount">@offer.PriceBeforeDiscount @(currentDirectionForLoop == "rtl" ? "جنيه" : "EGP")</span>
+                                            <span class="text-success fs-5 fw-bold" data-ar="@offer.Price جنيه" data-en="EGP @offer.Price">@offer.Price @(currentDirectionForLoop == "rtl" ? "جنيه" : "EGP")</span>
+
+  
+                                        </div>
+                                            <span data-ar="@(offer.IsAvailable ? " متوفر" : "غير متوفر")" data-en="@(offer.IsAvailable ? " Available" : "Unavailable")" class="fs-5 fw-bold" style="color: @(offer.IsAvailable ? "green" : "red");">
+                                                @(offer.IsAvailable ? "متوفر" : "غير متوفر") 
+                                            </span>
+                                        <a href="@Url.Action("productDetail", "Home", new { id = offer.Id })" class="btn btn-sm btn-outline-info show-details mt-1" data-ar="تفاصيل المنتج" data-en="Products Details">@btnTextDetails</a>
+                                        <button class="btn btn-sm btn-danger add-to-cart mt-1" data-ar="اضافه للسلة" data-en="Add To Cart">@btnTextAddToCart</button>
+                                    </div>
+                                    <div class="quantity-section d-none mt-2 p-1" style="display: flex; justify-content: space-between; gap: 5px;">
+                                        <input type="number" class="form-control form-control-sm quantity-input" min="1" value="1" style="width: 60px;" />
+                                        <button class="btn btn-sm btn-success confirm-add flex-grow-1" data-ar="اضافه" data-en="Add">@btnTextConfirm</button>
+                                    </div>
+                                </div>
                             </div>
-
-                            <!-- Details Button -->
-                            <a href="/Product/Details/@product.Id" class="btn btn-secondary mt-2">
-                                @(direction == "rtl" ? "عرض التفاصيل" : "Show Details")
-                            </a>
                         </div>
-                    </div>
-                </div>
-            }
+                    }
+                }
+            </div>
         </div>
     </div>
 </section>
 
-<script>
-    function showQuantity(productId) {
-        const quantityDiv = document.getElementById(productId);
-        if (quantityDiv) {
-            quantityDiv.classList.remove("d-none");
-        }
-    }
 
-    function addToCart(id, titleAr, titleEn, imageUrl, price) {
-        const direction = '@direction';
-        const title = direction === 'rtl' ? titleAr : titleEn;
-
-        const quantityInput = document.getElementById("qty_" + id);
-        const quantity = parseInt(quantityInput.value);
-
-        if (isNaN(quantity) || quantity < 1) {
-            Swal.fire({
-                icon: 'error',
-                timer: 2000,
-                showConfirmButton: false,
-                toast: true,
-                position: 'top-end'
-            });
-            return;
-        }
-
-        const product = {
-            id: id,
-            title: title,
-            price: parseFloat(price),
-            imageUrl: imageUrl,
-            quantity: quantity
-        };
-
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-        const existing = cart.find(p => p.id === id);
-        if (existing) {
-            existing.quantity += product.quantity;
-        } else {
-            cart.push(product);
-        }
-
-        localStorage.setItem("cart", JSON.stringify(cart));
-
-        // Hide quantity section
-        const quantityDiv = document.getElementById("product_" + id);
-        quantityDiv.classList.add("d-none");
-
-        updateCartBadge();
-
-        Swal.fire({ icon: 'success', title: (direction === 'rtl' ? 'أُضيف للسلة!' : 'Added to Cart!'), timer: 2500, timerProgressBar: true, showConfirmButton: false, toast: true, position: 'top-end' });
-    }
-
-    function updateCartBadge() {
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
-        const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
-
-        const badge = document.querySelector('.fixed-cart-button .badge');
-        if (badge) {
-            if (totalQuantity > 0) {
-                badge.textContent = totalQuantity;
-                badge.style.display = 'inline-block';
-            } else {
-                badge.style.display = 'none';
+@section Scripts {
+    <script>
+        // Ensure updateCartBadge is available (e.g., from index.js or define it here if this page is standalone)
+        // This is a good practice if this function might be globally defined or needs a local fallback.
+        if (typeof updateCartBadge !== 'function') {
+            function updateCartBadge() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const totalQuantity = cart.reduce((sum, p) => sum + (p.quantity || 0), 0);
+                const badge = document.querySelector(".fixed-cart-button .badge");
+                if (badge) {
+                    badge.textContent = totalQuantity;
+                    badge.style.display = totalQuantity > 0 ? 'inline-block' : 'none';
+                }
             }
         }
-    }
 
-    document.addEventListener("DOMContentLoaded", updateCartBadge);
-</script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Selects all elements with the class "product-card".
+            // Ensure the HTML structure has the "product-card" class on the correct div
+            // (the one containing data attributes and as a parent to buttons/inputs).
+            const cards = document.querySelectorAll(".product-card");
+            const currentLangDirection = document.documentElement.dir || "rtl"; // Get current language direction
+
+            cards.forEach(card => {
+                const addToCartBtn = card.querySelector(".add-to-cart");
+                const quantitySection = card.querySelector(".quantity-section");
+                const confirmAddBtn = card.querySelector(".confirm-add");
+                const quantityInput = card.querySelector(".quantity-input");
+
+                // Event listener for the "Add to Cart" button (initial state)
+                addToCartBtn?.addEventListener("click", () => {
+                    if(quantitySection) quantitySection.classList.remove("d-none"); // Show quantity input and confirm button
+                    if(addToCartBtn) addToCartBtn.classList.add("d-none"); // Hide the initial "Add to Cart" button
+                });
+
+                // Event listener for the "Confirm Add" button (after quantity is chosen)
+                confirmAddBtn?.addEventListener("click", () => {
+                    const productIdString = card.getAttribute("data-product-id");
+                    const productId = parseInt(productIdString);
+
+                    const titleAr = card.getAttribute("data-title-ar") || "";
+                    const titleEn = card.getAttribute("data-title-en") || "";
+                    let productTitleForCart = (currentLangDirection === 'rtl' ? titleAr : titleEn).trim();
+                    // Fallback title if specific language title is missing
+                    if (!productTitleForCart) { productTitleForCart = (titleAr || titleEn || (currentLangDirection === 'rtl' ? "منتج" : "Product")).trim(); }
+
+                    const priceString = card.getAttribute("data-price");
+                    const productPrice = parseFloat(priceString);
+
+                    const productImage = card.getAttribute("data-image") || "/images/products/default.png"; // Fallback image
+                    const quantity = parseInt(quantityInput.value);
+
+                    // --- Input Validation ---
+                    if (isNaN(productId) || productId <= 0) {
+                        console.error("Invalid productId on category page:", productIdString, "for card:", card);
+                        const errorTitle = currentLangDirection === 'rtl' ? 'خطأ بالمنتج' : 'Product Error';
+                        const errorMessage = currentLangDirection === 'rtl' ? 'معرف المنتج غير صالح.' : 'Invalid product ID.';
+                        // Check if Swal is defined before using it
+                        if (typeof Swal !== 'undefined') {
+                            Swal.fire({ icon: 'error', title: errorTitle, text: errorMessage });
+                        } else {
+                            console.error(`${errorTitle}: ${errorMessage}`); // Fallback to console error
+                        }
+                        return; // Stop execution if validation fails
+                    }
+                    if (isNaN(quantity) || quantity < 1) {
+                        const errorTitle = currentLangDirection === 'rtl' ? 'خطأ بالكمية' : 'Quantity Error';
+                        const errorMessage = currentLangDirection === 'rtl' ? 'يرجى إدخال كمية صحيحة (1 على الأقل).' : 'Please enter a valid quantity (at least 1).';
+                        if (typeof Swal !== 'undefined') {
+                            Swal.fire({ icon: 'error', title: errorTitle, text: errorMessage });
+                        } else {
+                            console.error(`${errorTitle}: ${errorMessage}`);
+                        }
+                        return;
+                    }
+                    if (isNaN(productPrice) || productPrice < 0) { // Price can be 0 (e.g. free item), but not negative
+                         console.error("Invalid productPrice on category page:", priceString, "for card:", card);
+                        const errorTitle = currentLangDirection === 'rtl' ? 'خطأ بالسعر' : 'Price Error';
+                        const errorMessage = currentLangDirection === 'rtl' ? 'سعر المنتج غير صالح.' : 'Invalid product price.';
+                        if (typeof Swal !== 'undefined') {
+                            Swal.fire({ icon: 'error', title: errorTitle, text: errorMessage });
+                        } else {
+                            console.error(`${errorTitle}: ${errorMessage}`);
+                        }
+                        return;
+                    }
+                    // --- End of Input Validation ---
+
+                    // Product object to be added to the cart
+                    const productForCart = {
+                        productId: productId,
+                        title: productTitleForCart,
+                        price: productPrice,
+                        imageUrl: productImage,
+                        quantity: quantity
+                    };
+
+                    // Retrieve cart from localStorage or initialize an empty array
+                    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                    const existingProductIndex = cart.findIndex(p => p.productId === productForCart.productId);
+
+                    // If product already in cart, update quantity; otherwise, add new product
+                    if (existingProductIndex > -1) {
+                        cart[existingProductIndex].quantity += productForCart.quantity;
+                    } else {
+                        cart.push(productForCart);
+                    }
+                    // Save updated cart back to localStorage
+                    localStorage.setItem("cart", JSON.stringify(cart));
+
+                    // Reset UI elements on the card
+                    if(quantitySection) quantitySection.classList.add("d-none"); // Hide quantity section
+                    if(addToCartBtn) addToCartBtn.classList.remove("d-none"); // Show initial "Add to Cart" button again
+                    if(quantityInput) quantityInput.value = 1; // Reset quantity input to 1
+
+                    // Update the cart badge in the UI
+                    updateCartBadge();
+
+                    // Success notification
+                    const successTitle = currentLangDirection === 'rtl' ? 'أُضيف للسلة' : 'Added to Cart';
+                    if (typeof Swal !== 'undefined') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: successTitle,
+                            toast: true, // Display as a small, non-blocking notification
+                            position: 'top-end', // Position at the top-right (or top-left for RTL)
+                            showConfirmButton: false, // No "OK" button
+                            timer: 2500, // Automatically close after 2.5 seconds
+                            timerProgressBar: true, // Show a progress bar for the timer
+                            customClass: {
+                                popup: 'swal2-toast', // Optional: if you have custom CSS for toasts
+                            },
+                            didOpen: (toast) => { // Pause timer on hover
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        });
+                    } else {
+                        // Fallback to console log if Swal is not available
+                        console.log(successTitle + (productTitleForCart ? `: ${productTitleForCart}` : ''));
+                    }
+                });
+            });
+            // Initial call to update cart badge when the page loads
+            updateCartBadge();
+        });
+    </script>
+}

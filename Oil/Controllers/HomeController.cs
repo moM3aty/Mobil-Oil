@@ -35,8 +35,6 @@ namespace Oil.Controllers
         {
 
             // Get all categories from the database, including related products if needed
-            // For the main Index, you might not need to include products for categories
-            // if you're only showing the category list here.
             var categories = _context.ProductTypes.ToList();
             var products = _context.Products.ToList();
             // Pass to the view via ViewBag or ViewData
@@ -77,10 +75,7 @@ namespace Oil.Controllers
             ViewBag.ProductsToDisplay = productsOfType;
 
             // 3. الحصول على جميع الشركات (ProductCategory) لاستخدامها في الفلتر العلوي
-            // IMPORTANT: Include Products here to make categoryFilterItem.Products.Any() work in the view.
-            var filterCategories = _context.ProductCategories
-                                         .Include(pc => pc.Products) // Eager load products for each category
-                                         .ToList();
+            var filterCategories = _context.ProductCategories.ToList();
             ViewBag.FilterCategories = filterCategories;
 
             // 4. تعيين عنوان الصفحة بناءً على اسم القسم (ProductType) المحدد
@@ -116,16 +111,13 @@ namespace Oil.Controllers
 
         public IActionResult CategoryProducts(int id)
         {
-            var category = _context.Products.Where(p => p.CategoryId == id).ToList(); // Filter by CategoryId
+            var category = _context.Products.ToList();
+
 
             if (category == null)
                 return NotFound();
 
-            // Store the category name for the view to use
-            var categoryName = _context.ProductCategories.FirstOrDefault(c => c.Id == id);
-            ViewBag.Category = categoryName;
-
-            ViewData["Direction"] = Request.Cookies["Language"] == "en" ? "ltr" : "rtl";
+            ViewData["Direction"] = "rtl";
 
             return View(category);
         }

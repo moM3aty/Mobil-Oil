@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Oil")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b3cd5d00d70959570748886024f2584a1d7090ee")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b9ea85e4b73f380996f4752f8d5dd2f43f536f8")]
 [assembly: System.Reflection.AssemblyProductAttribute("Oil")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Oil")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
