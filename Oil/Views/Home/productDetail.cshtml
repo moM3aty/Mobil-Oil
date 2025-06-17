@@ -1,4 +1,4 @@
-﻿@model Product
+﻿@model Oil.Models.Product
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     // Determine initial direction based on cookie or default to RTL
@@ -19,6 +19,9 @@
     var viscosityLocalized = initialDirection == "rtl" ? Model.ViscosityAr : Model.ViscosityEn;
 
     var productImage = Url.Content(string.IsNullOrEmpty(Model.ImageUrl) ? "/images/products/default.png" : Model.ImageUrl);
+
+    var addToCartText = initialDirection == "rtl" ? "اضافه للسلة" : "Add To Cart";
+    var unavailableText = initialDirection == "rtl" ? "غير متوفر" : "Unavailable";
 }
 <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
@@ -41,15 +44,23 @@
                             <span data-ar="السعة: @Model.CapacityAr" data-en="Capacity: @Model.CapacityEn"><strong>@(initialDirection == "rtl" ? "السعة:" : "Capacity:")</strong> @capacityLocalized</span>
                             <span class="text-danger fs-4 fw-bold" data-en="@Model.Price EGP" data-ar="@Model.Price جنيه">@Model.Price @(initialDirection == "rtl" ? "جنيه" : "EGP")</span>
 
+                            <!-- Display availability status -->
+                            <span class="fs-5 fw-bold" style="color: @(Model.IsAvailable ? "green" : "red");">
+                                @(initialDirection == "rtl" ? (Model.IsAvailable ? "متوفر" : "غير متوفر") : (Model.IsAvailable ? "Available" : "Unavailable"))
+                            </span>
+
                             <div class="d-flex align-items-center justify-content-between m-auto">
                                 <div class="add-to-cart-controls d-flex flex-column align-items-end"
                                      data-product-id="@Model.Id"
                                      data-title-ar="@Model.TitleAr"
                                      data-title-en="@Model.TitleEn"
                                      data-price="@Model.Price"
-                                     data-image="@productImage">
-                                    <button class="btn btn-lg btn-danger add-to-cart-detail" data-ar="اضافه للسلة" data-en="Add To Cart">
-                                        <i class="fas fa-cart-plus me-2"></i> <span class="btn-text">@(initialDirection == "rtl" ? "اضافه للسلة" : "Add To Cart")</span>
+                                     data-image="@productImage"
+                                     data-is-available="@Model.IsAvailable.ToString().ToLower()">
+                                    @* Add IsAvailable as a data attribute *@
+                                    <button class="btn btn-lg @(Model.IsAvailable ? "btn-danger" : "btn-secondary") add-to-cart-detail"
+                                            data-ar="اضافه للسلة" data-en="Add To Cart" @(Model.IsAvailable ? "" : "disabled")>
+                                        <i class="fas fa-cart-plus me-2"></i> <span class="btn-text">@(Model.IsAvailable? addToCartText : unavailableText)</span>
                                     </button>
                                     <div class="quantity-section-detail d-none mt-2" style="display: flex; gap: 10px;">
                                         <input type="number" class="form-control quantity-input-detail" min="1" value="1" style="width: 70px;" aria-label="Quantity" />
@@ -152,18 +163,32 @@
             const controlsContainer = document.querySelector(".add-to-cart-controls");
             if (!controlsContainer) return;
 
+            const isAvailable = controlsContainer.getAttribute("data-is-available") === "true"; // Get availability
             const addToCartBtnDetail = controlsContainer.querySelector(".add-to-cart-detail");
             const quantitySectionDetail = controlsContainer.querySelector(".quantity-section-detail");
             const confirmAddBtnDetail = controlsContainer.querySelector(".confirm-add-detail");
             const quantityInputDetail = controlsContainer.querySelector(".quantity-input-detail");
 
             // Get current language from HTML dir attribute for messages
-            const currentLangDirection = document.documentElement.dir || "rtl";
+            const currentLangDirection = document.documentElement.getAttribute('dir') || "rtl";
 
-            addToCartBtnDetail?.addEventListener("click", () => {
-                if(quantitySectionDetail) quantitySectionDetail.classList.remove("d-none");
-                if(addToCartBtnDetail) addToCartBtnDetail.classList.add("d-none");
-            });
+            // Conditionally enable/disable and style the Add to Cart button
+            if (!isAvailable) {
+                if (addToCartBtnDetail) {
+                    addToCartBtnDetail.disabled = true;
+                    // Ensure the correct classes are applied for styling
+                    addToCartBtnDetail.classList.remove("btn-danger");
+                    addToCartBtnDetail.classList.add("btn-secondary");
+                    // The text is already handled in Razor, but good to have fallback/confirmation in JS
+                    addToCartBtnDetail.querySelector(".btn-text").textContent = currentLangDirection === 'rtl' ? "غير متوفر" : "Unavailable";
+                }
+            } else {
+                // Only add event listener if the product is available
+                addToCartBtnDetail?.addEventListener("click", () => {
+                    if(quantitySectionDetail) quantitySectionDetail.classList.remove("d-none");
+                    if(addToCartBtnDetail) addToCartBtnDetail.classList.add("d-none");
+                });
+            }
 
             confirmAddBtnDetail?.addEventListener("click", () => {
                 const productIdString = controlsContainer.getAttribute("data-product-id");

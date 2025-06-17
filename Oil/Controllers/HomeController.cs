@@ -8,7 +8,7 @@ using System.Diagnostics;
 namespace Oil.Controllers
 {
     public class HomeController : Controller
-    {      
+    {
         private readonly ApplicationDbContext _context;
 
         public HomeController(ApplicationDbContext context)
@@ -35,20 +35,22 @@ namespace Oil.Controllers
         {
 
             // Get all categories from the database, including related products if needed
+            // For the main Index, you might not need to include products for categories
+            // if you're only showing the category list here.
             var categories = _context.ProductTypes.ToList();
             var products = _context.Products.ToList();
             // Pass to the view via ViewBag or ViewData
             ViewBag.Categories = categories;
 
             // Also set direction (example)
-            ViewData["Direction"] = "rtl"; // or "ltr" based on your logic
+            ViewData["Direction"] = Request.Cookies["Language"] == "en" ? "ltr" : "rtl"; // Set direction based on cookie
 
             return View(products);
         }
 
         public IActionResult cartProducts()
         {
-            
+
             return View();
         }
         public IActionResult Parts()
@@ -68,14 +70,17 @@ namespace Oil.Controllers
 
             // 2. الحصول على المنتجات التي تنتمي إلى هذا القسم (ProductType) وتكون مرئية
             var productsOfType = _context.Products
-                                        .Where(p => p.ProductTypeId == id )
-                                        .Include(p => p.Category) // لتحميل معلومات الشركة (ProductCategory) مع المنتج
-                                        .ToList();
+                                         .Where(p => p.ProductTypeId == id)
+                                         .Include(p => p.Category) // لتحميل معلومات الشركة (ProductCategory) مع المنتج
+                                         .ToList();
 
             ViewBag.ProductsToDisplay = productsOfType;
 
             // 3. الحصول على جميع الشركات (ProductCategory) لاستخدامها في الفلتر العلوي
-            var filterCategories = _context.ProductCategories.ToList();
+            // IMPORTANT: Include Products here to make categoryFilterItem.Products.Any() work in the view.
+            var filterCategories = _context.ProductCategories
+                                         .Include(pc => pc.Products) // Eager load products for each category
+                                         .ToList();
             ViewBag.FilterCategories = filterCategories;
 
             // 4. تعيين عنوان الصفحة بناءً على اسم القسم (ProductType) المحدد
@@ -95,7 +100,7 @@ namespace Oil.Controllers
 
 
         public IActionResult CompanyParts()
-        {           
+        {
             return View();
         }
 
@@ -106,18 +111,21 @@ namespace Oil.Controllers
             {
                 return NotFound();
             }
-            return View(product); 
+            return View(product);
         }
 
         public IActionResult CategoryProducts(int id)
         {
-            var category = _context.Products.ToList();
-                
+            var category = _context.Products.Where(p => p.CategoryId == id).ToList(); // Filter by CategoryId
 
             if (category == null)
                 return NotFound();
 
-            ViewData["Direction"] = "rtl";
+            // Store the category name for the view to use
+            var categoryName = _context.ProductCategories.FirstOrDefault(c => c.Id == id);
+            ViewBag.Category = categoryName;
+
+            ViewData["Direction"] = Request.Cookies["Language"] == "en" ? "ltr" : "rtl";
 
             return View(category);
         }
@@ -127,7 +135,7 @@ namespace Oil.Controllers
         {
             return View();
         }
-       
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

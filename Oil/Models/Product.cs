@@ -84,7 +84,7 @@ namespace Oil.Models
         public string? ManufacturerEn { get; set; }
 
         [Display(Name = "السعر قبل الخصم")]
-        [Column(TypeName = "decimal(18,2)")] 
+        [Column(TypeName = "decimal(18,2)")]
         public decimal? PriceBeforeDiscount { get; set; }
 
         [Display(Name = "عرض المنتج")]
@@ -94,5 +94,8 @@ namespace Oil.Models
         [ForeignKey("ProductTypeId")]
         public ProductType? ProductType { get; set; }
 
+        // New property for product availability
+        [Display(Name = "متوفر")]
+        public bool IsAvailable { get; set; } = true;
     }
 }

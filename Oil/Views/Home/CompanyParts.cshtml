@@ -1,5 +1,4 @@
-﻿
-@using Oil.Models
+﻿@using Oil.Models
 @{
     Layout = "~/Views/Shared/_Layout.cshtml"; // تأكد أن هذا المسار صحيح
 
@@ -36,20 +35,18 @@
                 data-en="All" data-ar="الكل" data-filter-id="all" style="cursor:pointer; transition: all 0.3s ease;">
                 @(initialDirection == "rtl" ? "الكل" : "All")
             </li>
-          
 
-                @foreach (var categoryFilterItem in filterCategories) 
-                {
-                if (categoryFilterItem.Products != null && categoryFilterItem.Products.Any())
-                {
-                    <li class="border border-primary py-2 px-4 px-md-5 rounded-pill @(categoryFilterItem.Id.ToString() == selectedCategoryId ? "active-filter" : "") filter-item"
-                        data-en="@categoryFilterItem.NameEn"
-                        data-ar="@categoryFilterItem.NameAr"
-                        data-filter-id="@categoryFilterItem.Id" 
-                        style="cursor:pointer; transition: all 0.3s ease;">
-                        @(initialDirection == "rtl" ? categoryFilterItem.NameAr : categoryFilterItem.NameEn)
-                    </li>
-                }
+            @foreach (var categoryFilterItem in filterCategories)
+            {
+                @* تم إزالة شرط @if (categoryFilterItem.Products != null && categoryFilterItem.Products.Any()) من هنا
+                       وسيتم التحكم في إخفاء/إظهار عنصر الفلتر باستخدام JavaScript *@
+                <li class="border border-primary py-2 px-4 px-md-5 rounded-pill @(categoryFilterItem.Id.ToString() == selectedCategoryId ? "active-filter" : "") filter-item"
+                    data-en="@categoryFilterItem.NameEn"
+                    data-ar="@categoryFilterItem.NameAr"
+                    data-filter-id="@categoryFilterItem.Id"
+                    style="cursor:pointer; transition: all 0.3s ease;">
+                    @(initialDirection == "rtl" ? categoryFilterItem.NameAr : categoryFilterItem.NameEn)
+                </li>
             }
         </ul>
     </div>
@@ -80,6 +77,7 @@
                          data-price="@productPrice"
                          data-image="@productImage"
                          data-category-id="@product.CategoryId"
+                         data-is-available="@product.IsAvailable.ToString().ToLower()"
                          style="min-height:420px; display: flex !important;">
                         <div class="card w-100 shadow-sm product-card-hover">
                             <div class="img m-0" style="height: 200px; overflow:hidden; padding: 10px; background-color: #f8f9fa;">
@@ -88,9 +86,17 @@
                             <div class="content d-flex flex-column gap-1 p-2 p-md-3 flex-grow-1">
                                 <h3 class="fs-6 fw-semibold product-title" data-en="@product.TitleEn" data-ar="@product.TitleAr" style="min-height: 3em; max-height: 3em; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">@productTitleLocalized</h3>
                                 <span class="text-danger fs-5 fw-bold mt-auto product-price" data-ar="@product.Price جنيه" data-en="EGP @product.Price">@product.Price @currencyLocalized</span>
+
+                                <!-- Display availability status -->
+                                <span class="fs-5 fw-bold" style="color: @(product.IsAvailable ? "green" : "red");">
+                                    @(currentLang == "ar" ? (product.IsAvailable ? "متوفر" : "غير متوفر") : (product.IsAvailable ? "Available" : "Unavailable"))
+                                </span>
+
                                 <div class="mt-2 d-grid gap-1">
                                     <a href="@Url.Action("productDetail", "Home", new { id = product.Id })" class="btn btn-sm btn-outline-info show-details w-100 mb-1" data-ar="تفاصيل المنتج" data-en="Products Details">@btnTextDetailsLocalized</a>
-                                    <button class="btn btn-sm btn-danger add-to-cart w-100" data-ar="اضافه للسلة" data-en="Add To Cart">@btnTextAddToCartLocalized</button>
+                                    <button class="btn btn-sm btn-danger add-to-cart w-100" data-ar="اضافه للسلة" data-en="Add To Cart" @(product.IsAvailable ? "" : "disabled")>
+                                        @(product.IsAvailable? btnTextAddToCartLocalized : (currentLang == "ar" ? "غير متوفر" : "Unavailable"))
+                                    </button>
                                 </div>
                                 <div class="quantity-section d-none mt-2 p-1" style="display: flex; justify-content: space-between; gap: 5px;">
                                     <input type="number" class="form-control form-control-sm quantity-input" min="1" value="1" style="width: 70px;" aria-label="Quantity" />
@@ -178,6 +184,21 @@
                 }
             }
 
+            // JavaScript to hide filter items if no products are displayed for them
+            const productCategoryIdsOnPage = new Set();
+            allProductCards.forEach(card => {
+                productCategoryIdsOnPage.add(card.getAttribute("data-category-id"));
+            });
+
+            filterItems.forEach(item => {
+                const filterId = item.getAttribute("data-filter-id");
+                // Hide the filter item if it's not "All" and its ID is not found among the displayed products' categories
+                if (filterId !== "all" && !productCategoryIdsOnPage.has(filterId)) {
+                    item.style.setProperty('display', 'none', 'important');
+                }
+            });
+
+            // Rest of the existing event listeners and initialization
             filterItems.forEach(item => {
                 item.addEventListener("click", () => {
                     const selectedFilterId = item.getAttribute('data-filter-id');
@@ -212,7 +233,7 @@
             const activeFilterElement = document.querySelector(`.filter-item[data-filter-id="${initialSelectedFilterIdFromServer}"]`);
 
             if (activeFilterElement) {
-                 applyFilter(initialSelectedFilterIdFromServer); // طبق الفلتر المحدد من الخادم
+                    applyFilter(initialSelectedFilterIdFromServer); // طبق الفلتر المحدد من الخادم
             } else { // إذا لم يكن هناك فلتر محدد من الخادم أو لم يتم العثور عليه، طبق "الكل"
                 const allFilterButton = document.querySelector('.filter-item[data-filter-id="all"]');
                 if (allFilterButton) {
@@ -229,12 +250,26 @@
                     const card = target.closest('.product-card-item');
                     if (!card) return;
 
+                    const isAvailable = card.getAttribute("data-is-available") === "true"; // Get availability from data attribute
+
                     const addToCartBtn = card.querySelector(".add-to-cart");
                     const quantitySection = card.querySelector(".quantity-section");
                     const confirmAddBtn = card.querySelector(".confirm-add");
                     const quantityInput = card.querySelector(".quantity-input");
 
                     if (target.classList.contains('add-to-cart') || (target.parentElement && target.parentElement.classList.contains('add-to-cart'))) {
+                        if (!isAvailable) { // Double check availability before showing quantity, though button should be disabled
+                             Swal.fire({
+                                icon: 'error',
+                                title: (getCurrentLanguage() === 'ar' ? 'المنتج غير متوفر' : 'Product Unavailable'),
+                                text: (getCurrentLanguage() === 'ar' ? 'هذا المنتج غير متوفر حاليًا.' : 'This product is currently unavailable.'),
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 2000
+                            });
+                            return; // Stop further execution if unavailable
+                        }
                         if (quantitySection) quantitySection.classList.remove("d-none");
                         if (addToCartBtn) addToCartBtn.classList.add("d-none");
                     } else if (target.classList.contains('confirm-add') || (target.parentElement && target.parentElement.classList.contains('confirm-add'))) {
@@ -321,7 +356,7 @@
 <style>
     .company-tabs .active-filter {
         background-color: #0d6efd; /* Bootstrap primary color */
-        color: #dc3545 !important;
+        color: #fff !important; /* Changed text color to white for better contrast */
         border-color: #0d6efd !important;
         font-weight: 600;
     }

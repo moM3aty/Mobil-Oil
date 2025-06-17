@@ -2,7 +2,6 @@
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    // var productTypes = ViewBag.ProductTypes as List<Oil.Models.ProductType> ?? new List<Oil.Models.ProductType>(); // لا حاجة لهذا السطر الآن
     var categories = ViewBag.Categories as List<Oil.Models.ProductCategory> ?? new List<Oil.Models.ProductCategory>();
 }
 
@@ -303,10 +302,20 @@
                 <div class="col-md-6 form-group">
                     <div class="form-check mt-3">
                         @* The ID for IsVisible checkbox is "IsVisible" by default due to asp-for,
-                           but your script used "addToOffers", so I'm keeping your explicit ID. *@
+                            but your script used "addToOffers", so I'm keeping your explicit ID. *@
                         <input asp-for="IsVisible" class="form-check-input" type="checkbox" id="addToOffers" />
                         <label class="form-check-label" for="addToOffers">
                             إضافه الى العروض
+                        </label>
+                    </div>
+                </div>
+
+                <!-- New checkbox for IsAvailable -->
+                <div class="col-md-6 form-group">
+                    <div class="form-check mt-3">
+                        <input asp-for="IsAvailable" class="form-check-input" type="checkbox" id="isAvailableCreate" />
+                        <label class="form-check-label" for="isAvailableCreate">
+                            متوفر
                         </label>
                     </div>
                 </div>
@@ -386,7 +395,7 @@
                     priceBeforeDiscountGroup.classList.remove('visible');
                     priceBeforeDiscountGroup.style.opacity = "0";
                     priceBeforeDiscountGroup.style.maxHeight = "0";
-                    priceBeforeDiscountInput.value = '';      // Clear the value
+                    priceBeforeDiscountInput.value = '';        // Clear the value
                     priceBeforeDiscountInput.disabled = true; // Disable input
                 }
             }

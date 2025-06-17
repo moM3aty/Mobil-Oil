@@ -322,6 +322,14 @@
                 <label asp-for="IsVisible" class="form-check-label">إضافه للعروض</label>
             </div>
         </div>
+        <!-- New checkbox for IsAvailable in Edit view -->
+        <div class="col-md-6 d-flex align-items-center">
+            <div class="form-check mt-3">
+                <input asp-for="IsAvailable" class="form-check-input" id="isAvailableEditCheckbox" />
+                <label asp-for="IsAvailable" class="form-check-label">متوفر</label>
+            </div>
+        </div>
+
         <div class="col-md-6">
             <label asp-for="Price" class="form-label"></label>
             <input asp-for="Price" type="number" step="0.01" class="form-control" />
@@ -385,9 +393,9 @@
 
                 if (!currentImageUrl) {
 
-                     output.src = "#"; // Clear if no current image
+                    output.src = "#"; // Clear if no current image
 
-                     output.style.display = "none";
+                    output.style.display = "none";
 
                 }
 
@@ -426,7 +434,7 @@
                 isVisibleCheckbox.addEventListener("change", togglePriceBeforeDiscount);
                 togglePriceBeforeDiscount();
 
-                 if (isVisibleCheckbox.checked) {
+                if (isVisibleCheckbox.checked) {
                     priceBeforeDiscountGroup.classList.add('visible');
                 } else {
                     priceBeforeDiscountGroup.classList.remove('visible');
