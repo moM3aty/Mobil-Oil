@@ -94,7 +94,15 @@ namespace Oil.Controllers
 
             return View(order);
         }
-
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (!IsLoggedIn()) return RedirectToAction("Index", "Login");
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null) return NotFound();
+            _context.Orders.Remove(order);
+            await _context.SaveChangesAsync();           
+            return RedirectToAction(nameof(Orders));
+        }
         private bool IsLoggedIn()
         {
             return !string.IsNullOrEmpty(HttpContext.Session.GetString("Username"));

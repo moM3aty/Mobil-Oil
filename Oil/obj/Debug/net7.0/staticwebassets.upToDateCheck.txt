@@ -103,6 +103,9 @@ wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
 wwwroot\Manifest-Admin.json
 wwwroot\manifest.json
+wwwroot\uploads\products\0721cfa5-05ff-4ee5-953e-7d00058defde.jpg
+wwwroot\uploads\products\b10ae82a-c79f-4a6e-a223-4205618cf44e.jpg
+wwwroot\uploads\receipts\ewallet\1b0239f3-4c2b-471e-abd3-950ef8e54473.jpeg
 wwwroot\webfonts\fa-brands-400.ttf
 wwwroot\webfonts\fa-brands-400.woff2
 wwwroot\webfonts\fa-regular-400.ttf

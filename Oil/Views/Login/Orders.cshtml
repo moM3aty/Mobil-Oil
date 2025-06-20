@@ -17,6 +17,8 @@
                         <th>💳 طريقة الدفع</th> 
                         <th>📅 تاريخ الطلب</th> 
                         <th>📦 التفاصيل</th>
+                        <th style="width: 180px;">⚙️ التحكم</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +36,13 @@
                                     <a class="btn btn-sm btn-outline-primary"
                                        href="@Url.Action("OrderItems", "Login", new { orderId = order.Id })">
                                         عرض العناصر
+                                    </a>
+                                </td>
+                                <td>
+                                    <a asp-action="Delete" asp-route-id="@order.Id"
+                                       class="btn btn-sm btn-outline-danger"
+                                       onclick="return confirm('هل أنت متأكد من حذف المنتج ؟');">
+                                        🗑️ حذف
                                     </a>
                                 </td>
                             </tr>

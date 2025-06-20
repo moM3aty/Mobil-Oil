@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Developer\\Github\\Mobil-Oil\\Oil\\Oil.csproj": {}
+    "G:\\Developer\\Github\\Mobil-Oil\\Oil\\Oil.csproj": {}
   },
   "projects": {
-    "E:\\Developer\\Github\\Mobil-Oil\\Oil\\Oil.csproj": {
+    "G:\\Developer\\Github\\Mobil-Oil\\Oil\\Oil.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Developer\\Github\\Mobil-Oil\\Oil\\Oil.csproj",
+        "projectUniqueName": "G:\\Developer\\Github\\Mobil-Oil\\Oil\\Oil.csproj",
         "projectName": "Oil",
-        "projectPath": "E:\\Developer\\Github\\Mobil-Oil\\Oil\\Oil.csproj",
+        "projectPath": "G:\\Developer\\Github\\Mobil-Oil\\Oil\\Oil.csproj",
         "packagesPath": "C:\\Users\\MOHAMED ABO-ELM3ATY\\.nuget\\packages\\",
-        "outputPath": "E:\\Developer\\Github\\Mobil-Oil\\Oil\\obj\\",
+        "outputPath": "G:\\Developer\\Github\\Mobil-Oil\\Oil\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
