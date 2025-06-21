@@ -3092,11 +3092,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Developer\\Github\\Mobil-Oil\\Oil\\Oil.csproj",
+      "projectUniqueName": "E:\\Developer\\Github\\Mobil-Oil\\Oil\\Oil.csproj",
       "projectName": "Oil",
-      "projectPath": "G:\\Developer\\Github\\Mobil-Oil\\Oil\\Oil.csproj",
+      "projectPath": "E:\\Developer\\Github\\Mobil-Oil\\Oil\\Oil.csproj",
       "packagesPath": "C:\\Users\\MOHAMED ABO-ELM3ATY\\.nuget\\packages\\",
-      "outputPath": "G:\\Developer\\Github\\Mobil-Oil\\Oil\\obj\\",
+      "outputPath": "E:\\Developer\\Github\\Mobil-Oil\\Oil\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
